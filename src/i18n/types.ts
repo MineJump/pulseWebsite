@@ -18,12 +18,28 @@ export interface TeamMember {
   email?: string;
 }
 
+export interface USPItem {
+  title: string;
+  description: string;
+}
+
+export interface MethodCard {
+  title: string;
+  tag: string;
+  description: string;
+  href: string;
+}
+
 export interface Translations {
   nav: {
-    research: string;
-    platform: string;
-    team: string;
-    contact: string;
+    methoden: string;
+    befragen: string;
+    beobachten: string;
+    intervenieren: string;
+    auswerten: string;
+    features: string;
+    ueber_uns: string;
+    login: string;
   };
   hero: {
     eyebrow: string;
@@ -32,6 +48,25 @@ export interface Translations {
     tagline: string;
     primaryCta: string;
     secondaryCta: string;
+  };
+  testimonials: {
+    items: string[];
+  };
+  usps: {
+    heading: string;
+    items: USPItem[];
+  };
+  howItWorks: {
+    heading: string;
+    steps: string[];
+    cta: string;
+  };
+  methoden: {
+    eyebrow: string;
+    heading: string;
+    intro: string;
+    cta: string;
+    cards: MethodCard[];
   };
   research: {
     eyebrow: string;
@@ -63,5 +98,7 @@ export interface Translations {
     imprint: string;
     privacy: string;
     backLink: string;
+    docs: string;
+    contact: string;
   };
 }

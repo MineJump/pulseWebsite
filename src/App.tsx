@@ -3,11 +3,18 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { MarqueeStrip } from "./components/MarqueeStrip";
 import { Hero } from "./components/sections/Hero";
-import { Research } from "./components/sections/Research";
-import { Platform } from "./components/sections/Platform";
-import { Team } from "./components/sections/Team";
+import { Testimonials } from "./components/sections/Testimonials";
+import { USPs } from "./components/sections/USPs";
+import { HowItWorks } from "./components/sections/HowItWorks";
 import { Impressum } from "./components/sections/Impressum";
 import { Privacy } from "./components/sections/Privacy";
+import { MethodenPage } from "./pages/MethodenPage";
+import { BefragenPage } from "./pages/BefragenPage";
+import { BeobachtenPage } from "./pages/BeobachtenPage";
+import { IntervenienPage } from "./pages/IntervenienPage";
+import { AuswertenPage } from "./pages/AuswertenPage";
+import { FeaturesPage } from "./pages/FeaturesPage";
+import { UeberUnsPage } from "./pages/UeberUnsPage";
 
 function MarqueeContent() {
   const { language } = useTranslation();
@@ -42,10 +49,7 @@ function ImpressumPage() {
           <a
             href="/"
             className="text-sm uppercase tracking-[0.18em] mb-12 inline-block py-2 transition-opacity hover:opacity-70"
-            style={{
-              color: "var(--text-dim)",
-              fontFamily: "'IBM Plex Mono', monospace",
-            }}
+            style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
           >
             &larr; {t.footer.backLink}
           </a>
@@ -67,10 +71,7 @@ function PrivacyPage() {
           <a
             href="/"
             className="text-sm uppercase tracking-[0.18em] mb-12 inline-block py-2 transition-opacity hover:opacity-70"
-            style={{
-              color: "var(--text-dim)",
-              fontFamily: "'IBM Plex Mono', monospace",
-            }}
+            style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
           >
             &larr; {t.footer.backLink}
           </a>
@@ -89,9 +90,9 @@ function HomePage() {
       <main>
         <Hero />
         <MarqueeContent />
-        <Research />
-        <Platform />
-        <Team />
+        <Testimonials />
+        <USPs />
+        <HowItWorks />
       </main>
       <Footer />
     </>
@@ -99,7 +100,7 @@ function HomePage() {
 }
 
 function App() {
-  const path = typeof window !== "undefined" ? window.location.pathname : "/";
+  const path = typeof window !== "undefined" ? window.location.pathname.replace(/\/$/, "") || "/" : "/";
 
   return (
     <LanguageProvider>
@@ -107,6 +108,20 @@ function App() {
         <ImpressumPage />
       ) : path === "/privacy" ? (
         <PrivacyPage />
+      ) : path === "/methoden" ? (
+        <MethodenPage />
+      ) : path === "/methoden/befragen" ? (
+        <BefragenPage />
+      ) : path === "/methoden/beobachten" ? (
+        <BeobachtenPage />
+      ) : path === "/methoden/intervenieren" ? (
+        <IntervenienPage />
+      ) : path === "/methoden/auswerten" ? (
+        <AuswertenPage />
+      ) : path === "/features" ? (
+        <FeaturesPage />
+      ) : path === "/ueber-uns" ? (
+        <UeberUnsPage />
       ) : (
         <HomePage />
       )}

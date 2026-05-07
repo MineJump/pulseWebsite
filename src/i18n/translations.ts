@@ -3,19 +3,93 @@ import type { Language, Translations } from "./types";
 export const translations: Record<Language, Translations> = {
   de: {
     nav: {
-      research: "Forschung",
-      platform: "Plattform",
-      team: "Team",
-      contact: "Kontakt",
+      methoden: "Methoden",
+      befragen: "Befragen",
+      beobachten: "Beobachten",
+      intervenieren: "Intervenieren",
+      auswerten: "Auswerten",
+      features: "Features & Pricing",
+      ueber_uns: "Über uns",
+      login: "Login",
     },
     hero: {
-      eyebrow: "2chub – Research Institute",
-      title: "Center for Computation\nof Human Behavior.",
-      subtitle: "Verhaltensforschung, die im Alltag stattfindet.",
+      eyebrow: "Entwickelt an der LMU München",
+      title: "Forschungsplattform\nfür mobile Studien.",
+      subtitle: "Gebaut von Forschenden.",
       tagline:
-        "Wir erforschen menschliches Verhalten dort, wo es tatsächlich passiert – auf dem Smartphone. Mobile Studien, Experience Sampling, Passive Sensing und datengetriebene Psychometrik.",
-      primaryCta: "Unsere Forschung",
-      secondaryCta: "Plattform kennenlernen",
+        "ESM und Passive Sensing – weniger Aufwand: bessere Daten, mehr Erkenntnisse.",
+      primaryCta: "Use Cases",
+      secondaryCta: "Studie Konfigurieren",
+    },
+    testimonials: {
+      items: ["EU-Hosted", "DSGVO-konform", "by 2c HUB", "A LMU München Venture"],
+    },
+    usps: {
+      heading: "Warum PULSE",
+      items: [
+        {
+          title: "Bessere Datenqualität",
+          description:
+            "Kontextsensitive Abfragen direkt im Alltag – weniger Erinnerungsverzerrung, mehr valide Daten.",
+        },
+        {
+          title: "All-in-one Tool",
+          description:
+            "Befragung, Passive Sensing, Interventionen und automatisierte Auswertung in einer Plattform.",
+        },
+        {
+          title: "Automatisierte Datenauswertung",
+          description:
+            "Von Rohdaten zur Erkenntnis – automatisiert, reproduzierbar und publikationsreif exportierbar.",
+        },
+        {
+          title: "Top Preis-Leistungs-Verhältnis",
+          description:
+            "Zahlen Sie nur für das, was Sie brauchen. Alle Preise transparent, per Studie.",
+        },
+      ],
+    },
+    howItWorks: {
+      heading: "So funktioniert PULSE",
+      steps: ["Studie konfigurieren", "Teilnehmende einladen", "Erkenntnisse gewinnen"],
+      cta: "Jetzt Konfigurieren",
+    },
+    methoden: {
+      eyebrow: "Methoden",
+      heading: "Von der Erhebung bis zur Erkenntnis.",
+      intro:
+        "PULSE deckt vier Forschungsmethoden ab: aktive Befragung im Alltag, automatische Sensordaten, digitale Interventionen und automatisierte Auswertung. Alles in einer Plattform.",
+      cta: "Eigene Studie konfigurieren",
+      cards: [
+        {
+          title: "Befragen",
+          tag: "ESM / EMA",
+          description:
+            "Konfiguriere kontextsensitive Kurzfragen, event- oder intervallbasiertes Sampling, Branching-Logik und validierte Skalen.",
+          href: "/methoden/befragen",
+        },
+        {
+          title: "Beobachten",
+          tag: "Passive Sensing",
+          description:
+            "Aktiviere Sensorströme für Bewegung, Schlaf, Kommunikation und Mediennutzung. Sub-Millisekunden Datenschutzgranularität pro Studie.",
+          href: "/methoden/beobachten",
+        },
+        {
+          title: "Intervenieren",
+          tag: "Digitale Interventionen",
+          description:
+            "Definiere Trigger-Bedingungen für Just-in-Time-Interventions, randomisiere Interventionen und steuere das Studiendesign.",
+          href: "/methoden/intervenieren",
+        },
+        {
+          title: "Auswerten",
+          tag: "Automatisierte Analyse",
+          description:
+            "Deskriptive Statistik, Compliance-Reports, Mehrebenenmodelle direkt im Admin Panel. Export als CSV, SPSS oder direkt nach R.",
+          href: "/methoden/auswerten",
+        },
+      ],
     },
     research: {
       eyebrow: "Was wir tun",
@@ -123,23 +197,99 @@ export const translations: Record<Language, Translations> = {
       imprint: "Impressum",
       privacy: "Datenschutz",
       backLink: "Zurück",
+      docs: "Docs",
+      contact: "Kontakt",
     },
   },
   en: {
     nav: {
-      research: "Research",
-      platform: "Platform",
-      team: "Team",
-      contact: "Contact",
+      methoden: "Methods",
+      befragen: "Survey",
+      beobachten: "Observe",
+      intervenieren: "Intervene",
+      auswerten: "Analyse",
+      features: "Features & Pricing",
+      ueber_uns: "About",
+      login: "Login",
     },
     hero: {
-      eyebrow: "2chub – Research Institute",
-      title: "Center for Computation\nof Human Behavior.",
-      subtitle: "Behavioural research, in everyday life.",
+      eyebrow: "Developed at LMU Munich",
+      title: "Research platform\nfor mobile studies.",
+      subtitle: "Built by researchers.",
       tagline:
-        "We study human behaviour where it actually happens – on the smartphone. Mobile studies, experience sampling, passive sensing, and data-driven psychometrics.",
-      primaryCta: "Our research",
-      secondaryCta: "See the platform",
+        "ESM and Passive Sensing – less effort: better data, more insights.",
+      primaryCta: "Use Cases",
+      secondaryCta: "Configure Study",
+    },
+    testimonials: {
+      items: ["EU-Hosted", "GDPR-compliant", "by 2c HUB", "A LMU Munich Venture"],
+    },
+    usps: {
+      heading: "Why PULSE",
+      items: [
+        {
+          title: "Better Data Quality",
+          description:
+            "Context-sensitive surveys in everyday life – less recall bias, more valid data.",
+        },
+        {
+          title: "All-in-one Tool",
+          description:
+            "Surveys, passive sensing, interventions and automated analysis in one platform.",
+        },
+        {
+          title: "Automated Data Analysis",
+          description:
+            "From raw data to insight – automated, reproducible and export-ready for publication.",
+        },
+        {
+          title: "Best Price-Performance Ratio",
+          description:
+            "Pay only for what you need. All prices transparent, per study.",
+        },
+      ],
+    },
+    howItWorks: {
+      heading: "How PULSE works",
+      steps: ["Configure study", "Invite participants", "Gain insights"],
+      cta: "Configure Now",
+    },
+    methoden: {
+      eyebrow: "Methods",
+      heading: "From data collection to insight.",
+      intro:
+        "PULSE covers four research methods: active surveys in everyday life, automatic sensor data, digital interventions and automated analysis. All in one platform.",
+      cta: "Configure your own study",
+      cards: [
+        {
+          title: "Survey",
+          tag: "ESM / EMA",
+          description:
+            "Configure context-sensitive short surveys, event- or interval-based sampling, branching logic and validated scales.",
+          href: "/methoden/befragen",
+        },
+        {
+          title: "Observe",
+          tag: "Passive Sensing",
+          description:
+            "Activate sensor streams for movement, sleep, communication and media use. Sub-millisecond privacy granularity per study.",
+          href: "/methoden/beobachten",
+        },
+        {
+          title: "Intervene",
+          tag: "Digital Interventions",
+          description:
+            "Define trigger conditions for just-in-time interventions, randomise interventions and control study design.",
+          href: "/methoden/intervenieren",
+        },
+        {
+          title: "Analyse",
+          tag: "Automated Analysis",
+          description:
+            "Descriptive statistics, compliance reports, multilevel models directly in the admin panel. Export as CSV, SPSS or R.",
+          href: "/methoden/auswerten",
+        },
+      ],
     },
     research: {
       eyebrow: "What we do",
@@ -247,6 +397,8 @@ export const translations: Record<Language, Translations> = {
       imprint: "Imprint",
       privacy: "Privacy Policy",
       backLink: "Back",
+      docs: "Docs",
+      contact: "Contact",
     },
   },
 };

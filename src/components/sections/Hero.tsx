@@ -37,7 +37,7 @@ export function Hero() {
           initial={initial}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: prefersReducedMotion ? 0 : 0.1 }}
-          className="max-w-[1000px] whitespace-pre-line"
+          className="max-w-[900px] whitespace-pre-line"
         >
           {t.hero.title}
         </motion.h1>
@@ -46,7 +46,7 @@ export function Hero() {
           initial={initial}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: prefersReducedMotion ? 0 : 0.2 }}
-          className="mt-6 text-xl md:text-2xl leading-snug max-w-[720px]"
+          className="mt-5 text-xl md:text-2xl leading-snug max-w-[620px]"
           style={{ color: "var(--ink)", fontFamily: "'IBM Plex Mono', monospace", fontWeight: 400 }}
         >
           {t.hero.subtitle}
@@ -56,7 +56,7 @@ export function Hero() {
           initial={initial}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: prefersReducedMotion ? 0 : 0.3 }}
-          className="mt-6 max-w-[620px] text-lg leading-relaxed"
+          className="mt-5 max-w-[560px] text-lg leading-relaxed"
           style={{ color: "var(--text-muted)" }}
         >
           {t.hero.tagline}
@@ -69,8 +69,8 @@ export function Hero() {
           className="mt-12 flex flex-col sm:flex-row gap-4"
         >
           <a
-            href="#research"
-            className="inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-opacity"
+            href="/methoden"
+            className="inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-opacity rounded-full"
             style={{
               backgroundColor: "var(--btn-primary-bg)",
               color: "var(--btn-primary-fg)",
@@ -83,8 +83,8 @@ export function Hero() {
             <span className="ml-2">→</span>
           </a>
           <a
-            href="#platform"
-            className="liquid-glass inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-all hover:-translate-y-[1px]"
+            href="https://app.pulse-research.de"
+            className="liquid-glass inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-all hover:-translate-y-[1px] rounded-full"
             style={{
               color: "var(--ink)",
               fontFamily: "'IBM Plex Mono', monospace",

@@ -47,7 +47,7 @@ export function Footer() {
           >
             <a
               href={`mailto:${t.contact.email}`}
-              className="inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-opacity"
+              className="inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-opacity rounded-full"
               style={{
                 backgroundColor: "var(--btn-primary-bg)",
                 color: "var(--btn-primary-fg)",
@@ -76,7 +76,7 @@ export function Footer() {
         </div>
 
         <div
-          className="border-t pt-5 pb-2 flex flex-col md:flex-row md:items-center md:justify-between gap-3"
+          className="border-t pt-5 pb-2 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
           style={{ borderColor: "var(--border)" }}
         >
           <p
@@ -89,55 +89,51 @@ export function Footer() {
             © {new Date().getFullYear()} {t.footer.legalName}
           </p>
 
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center gap-5">
+            <a
+              href="https://docs.pulse-research.de"
+              className="text-sm py-1 transition-opacity duration-200 hover:opacity-70"
+              style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
+            >
+              {t.footer.docs}
+            </a>
+            <a
+              href={`mailto:${t.contact.email}`}
+              className="text-sm py-1 transition-opacity duration-200 hover:opacity-70"
+              style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
+            >
+              {t.footer.contact}
+            </a>
             <a
               href="/impressum"
-              className="text-sm py-2 transition-opacity duration-200 hover:opacity-70"
-              style={{
-                color: "var(--text-dim)",
-                fontFamily: "'IBM Plex Mono', monospace",
-              }}
+              className="text-sm py-1 transition-opacity duration-200 hover:opacity-70"
+              style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
             >
               {t.footer.imprint}
             </a>
             <a
               href="/privacy"
-              className="text-sm py-2 transition-opacity duration-200 hover:opacity-70"
-              style={{
-                color: "var(--text-dim)",
-                fontFamily: "'IBM Plex Mono', monospace",
-              }}
+              className="text-sm py-1 transition-opacity duration-200 hover:opacity-70"
+              style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
             >
-              {language === "de" ? "Datenschutz" : "Privacy"}
+              {t.footer.privacy}
+            </a>
+            <a
+              href="https://2chub.de"
+              className="text-sm py-1 transition-opacity duration-200 hover:opacity-70"
+              style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
+            >
+              2chub
             </a>
             <button
               onClick={toggleLanguage}
-              className="text-sm uppercase tracking-[0.1em] py-2 transition-opacity duration-200 hover:opacity-70"
-              style={{
-                color: "var(--text-dim)",
-                fontFamily: "'IBM Plex Mono', monospace",
-              }}
+              className="text-sm uppercase tracking-[0.1em] py-1 transition-opacity duration-200 hover:opacity-70"
+              style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
               aria-label="Toggle language"
             >
-              <span
-                style={{
-                  opacity: language === "de" ? 1 : 0.4,
-                  color: language === "de" ? "var(--ink)" : undefined,
-                }}
-              >
-                DE
-              </span>
-              <span className="mx-1" style={{ opacity: 0.4 }}>
-                /
-              </span>
-              <span
-                style={{
-                  opacity: language === "en" ? 1 : 0.4,
-                  color: language === "en" ? "var(--ink)" : undefined,
-                }}
-              >
-                EN
-              </span>
+              <span style={{ opacity: language === "de" ? 1 : 0.4, color: language === "de" ? "var(--ink)" : undefined }}>DE</span>
+              <span className="mx-1" style={{ opacity: 0.4 }}>/</span>
+              <span style={{ opacity: language === "en" ? 1 : 0.4, color: language === "en" ? "var(--ink)" : undefined }}>EN</span>
             </button>
           </div>
         </div>

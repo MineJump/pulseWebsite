@@ -1,10 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
 import { useTranslation } from "../i18n";
+
+const currentPath =
+  typeof window !== "undefined" ? window.location.pathname : "/";
+
+function NavLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  const active = currentPath === href || currentPath.startsWith(href + "/");
+  return (
+    <a
+      href={href}
+      className="transition-opacity hover:opacity-70"
+      style={{
+        color: active ? "var(--ink)" : "var(--text-muted)",
+        fontWeight: active ? 500 : undefined,
+      }}
+    >
+      {children}
+    </a>
+  );
+}
 
 export function Header() {
   const { t, language, toggleLanguage } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
+  const [methodenOpen, setMethodenOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 12);
@@ -13,77 +41,279 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setMethodenOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const methodeItems = [
+    { label: t.nav.befragen, href: "/methoden/befragen", tag: "ESM / EMA" },
+    { label: t.nav.beobachten, href: "/methoden/beobachten", tag: "Passive Sensing" },
+    { label: t.nav.intervenieren, href: "/methoden/intervenieren", tag: "Interventionen" },
+    { label: t.nav.auswerten, href: "/methoden/auswerten", tag: "Analyse" },
+  ];
+
+  const isMethodenActive =
+    currentPath === "/methoden" || currentPath.startsWith("/methoden/");
+
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-colors duration-300"
       style={{
-        backgroundColor: scrolled ? "rgba(250, 250, 247, 0.82)" : "transparent",
+        backgroundColor: scrolled ? "rgba(250, 250, 247, 0.92)" : "transparent",
         backdropFilter: scrolled ? "blur(14px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
         borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
       }}
     >
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 h-20 md:h-28 flex items-center justify-between">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 h-20 md:h-28 flex items-center justify-between gap-8">
         <Logo />
 
-        <nav className="hidden md:flex items-center gap-8 text-sm">
-          <a
-            href="#research"
-            className="transition-opacity hover:opacity-70"
-            style={{ color: "var(--text-muted)" }}
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-7 text-sm flex-1 justify-center">
+          {/* Methoden dropdown */}
+          <div
+            ref={dropdownRef}
+            className="relative"
+            onMouseEnter={() => setMethodenOpen(true)}
+            onMouseLeave={() => setMethodenOpen(false)}
           >
-            {t.nav.research}
-          </a>
-          <a
-            href="#platform"
-            className="transition-opacity hover:opacity-70"
-            style={{ color: "var(--text-muted)" }}
-          >
-            {t.nav.platform}
-          </a>
-          <a
-            href="#team"
-            className="transition-opacity hover:opacity-70"
-            style={{ color: "var(--text-muted)" }}
-          >
-            {t.nav.team}
-          </a>
-          <a
-            href="#contact"
-            className="transition-opacity hover:opacity-70"
-            style={{ color: "var(--text-muted)" }}
-          >
-            {t.nav.contact}
-          </a>
+            <button
+              onClick={() => setMethodenOpen((o) => !o)}
+              className="flex items-center gap-1 transition-opacity hover:opacity-70"
+              style={{
+                color: isMethodenActive ? "var(--ink)" : "var(--text-muted)",
+                fontWeight: isMethodenActive ? 500 : undefined,
+              }}
+              aria-expanded={methodenOpen}
+            >
+              {t.nav.methoden}
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                className="transition-transform duration-200"
+                style={{ transform: methodenOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+              >
+                <path
+                  d="M2 4l4 4 4-4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+
+            {methodenOpen && (
+              <div
+                className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[420px] liquid-glass rounded-xl p-2 shadow-lg"
+                style={{ borderColor: "var(--border)" }}
+              >
+                <div className="grid grid-cols-2 gap-1">
+                  {methodeItems.map((item) => {
+                    const active = currentPath === item.href;
+                    return (
+                      <a
+                        key={item.href}
+                        href={item.href}
+                        className="flex flex-col gap-1 px-4 py-3 rounded-lg transition-colors hover:bg-white/60"
+                        style={{
+                          backgroundColor: active ? "rgba(255,255,255,0.7)" : undefined,
+                        }}
+                        onClick={() => setMethodenOpen(false)}
+                      >
+                        <span
+                          className="text-[10px] uppercase tracking-[0.18em]"
+                          style={{
+                            color: "var(--accent)",
+                            fontFamily: "'IBM Plex Mono', monospace",
+                          }}
+                        >
+                          {item.tag}
+                        </span>
+                        <span
+                          className="text-sm font-medium"
+                          style={{ color: "var(--ink)" }}
+                        >
+                          {item.label}
+                        </span>
+                      </a>
+                    );
+                  })}
+                </div>
+                <div
+                  className="mt-1 pt-1 px-2"
+                  style={{ borderTop: "1px solid var(--border)" }}
+                >
+                  <a
+                    href="/methoden"
+                    className="flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors hover:bg-white/60"
+                    style={{ color: "var(--text-muted)" }}
+                    onClick={() => setMethodenOpen(false)}
+                  >
+                    <span>{language === "de" ? "Methoden-Übersicht" : "All methods"}</span>
+                    <span style={{ opacity: 0.5 }}>→</span>
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <NavLink href="/features">{t.nav.features}</NavLink>
+          <NavLink href="/ueber-uns">{t.nav.ueber_uns}</NavLink>
         </nav>
 
+        {/* Right side: language + login */}
+        <div className="hidden md:flex items-center gap-4">
+          <button
+            onClick={toggleLanguage}
+            className="text-sm uppercase tracking-[0.1em] py-2 transition-opacity duration-200 hover:opacity-70"
+            style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
+            aria-label="Toggle language"
+          >
+            <span
+              style={{
+                opacity: language === "de" ? 1 : 0.4,
+                color: language === "de" ? "var(--ink)" : undefined,
+              }}
+            >
+              DE
+            </span>
+            <span className="mx-1" style={{ opacity: 0.4 }}>/</span>
+            <span
+              style={{
+                opacity: language === "en" ? 1 : 0.4,
+                color: language === "en" ? "var(--ink)" : undefined,
+              }}
+            >
+              EN
+            </span>
+          </button>
+
+          <a
+            href="https://app.pulse-research.de"
+            className="text-sm uppercase tracking-[0.1em] px-4 py-2 rounded-full transition-opacity hover:opacity-88"
+            style={{
+              backgroundColor: "#2563eb",
+              color: "#fff",
+              fontFamily: "'IBM Plex Mono', monospace",
+            }}
+          >
+            {t.nav.login}
+          </a>
+        </div>
+
+        {/* Mobile hamburger */}
         <button
-          onClick={toggleLanguage}
-          className="text-sm uppercase tracking-[0.1em] py-2 transition-opacity duration-200 hover:opacity-70"
-          style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
-          aria-label="Toggle language"
+          className="md:hidden flex flex-col gap-1.5 p-2"
+          onClick={() => setMobileOpen((o) => !o)}
+          aria-label="Toggle menu"
         >
           <span
+            className="block w-5 h-px transition-transform duration-200"
             style={{
-              opacity: language === "de" ? 1 : 0.4,
-              color: language === "de" ? "var(--ink)" : undefined,
+              backgroundColor: "var(--ink)",
+              transform: mobileOpen ? "translateY(4px) rotate(45deg)" : "",
             }}
-          >
-            DE
-          </span>
-          <span className="mx-1" style={{ opacity: 0.4 }}>
-            /
-          </span>
+          />
           <span
+            className="block w-5 h-px transition-opacity duration-200"
             style={{
-              opacity: language === "en" ? 1 : 0.4,
-              color: language === "en" ? "var(--ink)" : undefined,
+              backgroundColor: "var(--ink)",
+              opacity: mobileOpen ? 0 : 1,
             }}
-          >
-            EN
-          </span>
+          />
+          <span
+            className="block w-5 h-px transition-transform duration-200"
+            style={{
+              backgroundColor: "var(--ink)",
+              transform: mobileOpen ? "translateY(-4px) rotate(-45deg)" : "",
+            }}
+          />
         </button>
       </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div
+          className="md:hidden border-t px-6 py-6 flex flex-col gap-4"
+          style={{
+            backgroundColor: "rgba(250,250,247,0.98)",
+            borderColor: "var(--border)",
+          }}
+        >
+          <a
+            href="/methoden"
+            className="text-sm font-medium py-1"
+            style={{ color: "var(--ink)" }}
+            onClick={() => setMobileOpen(false)}
+          >
+            {t.nav.methoden}
+          </a>
+          <div className="pl-4 flex flex-col gap-3">
+            {methodeItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm py-1"
+                style={{ color: "var(--text-muted)" }}
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+          <a
+            href="/features"
+            className="text-sm py-1"
+            style={{ color: "var(--ink)" }}
+            onClick={() => setMobileOpen(false)}
+          >
+            {t.nav.features}
+          </a>
+          <a
+            href="/ueber-uns"
+            className="text-sm py-1"
+            style={{ color: "var(--ink)" }}
+            onClick={() => setMobileOpen(false)}
+          >
+            {t.nav.ueber_uns}
+          </a>
+          <div
+            className="pt-3 flex items-center justify-between border-t"
+            style={{ borderColor: "var(--border)" }}
+          >
+            <button
+              onClick={() => {
+                toggleLanguage();
+                setMobileOpen(false);
+              }}
+              className="text-sm uppercase tracking-[0.1em]"
+              style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
+            >
+              {language === "de" ? "DE / EN" : "EN / DE"}
+            </button>
+            <a
+              href="https://app.pulse-research.de"
+              className="text-sm uppercase tracking-[0.1em] px-4 py-2 rounded-full"
+              style={{
+                backgroundColor: "#2563eb",
+                color: "#fff",
+                fontFamily: "'IBM Plex Mono', monospace",
+              }}
+            >
+              {t.nav.login}
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
