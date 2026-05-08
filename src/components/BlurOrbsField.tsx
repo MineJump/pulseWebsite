@@ -19,13 +19,7 @@ const PRESETS: Record<Intensity, OrbSpec[]> = {
   ],
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function BlurOrbsField({ intensity = "section" }: { intensity?: Intensity }) {
-  const orbs = PRESETS[intensity];
-  return (
-    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
-      {orbs.map((orb, i) => (
-        <BlurOrb key={i} {...orb} />
-      ))}
-    </div>
-  );
+  return null;
 }

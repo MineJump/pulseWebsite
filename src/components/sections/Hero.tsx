@@ -11,8 +11,6 @@ export function Hero() {
 
   return (
     <section className="relative w-full min-h-[100svh] flex items-center overflow-hidden">
-      <BlurOrbsField intensity="hero" />
-      <div className="absolute inset-0 z-0 grid-overlay" aria-hidden="true" />
 
       <div className="hidden lg:block absolute right-[4%] top-1/2 -translate-y-1/2 z-[1] opacity-90">
         <MergingBlobs size={440} />
