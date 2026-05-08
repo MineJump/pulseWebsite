@@ -205,7 +205,7 @@ export function Header() {
             className="block w-5 h-px transition-transform duration-200"
             style={{
               backgroundColor: "var(--ink)",
-              transform: mobileOpen ? "translateY(4px) rotate(45deg)" : "",
+              transform: mobileOpen ? "translateY(7px) rotate(45deg)" : "",
             }}
           />
           <span
@@ -219,7 +219,7 @@ export function Header() {
             className="block w-5 h-px transition-transform duration-200"
             style={{
               backgroundColor: "var(--ink)",
-              transform: mobileOpen ? "translateY(-4px) rotate(-45deg)" : "",
+              transform: mobileOpen ? "translateY(-7px) rotate(-45deg)" : "",
             }}
           />
         </button>
