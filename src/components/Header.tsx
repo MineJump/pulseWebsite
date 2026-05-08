@@ -65,9 +65,7 @@ export function Header() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-colors duration-300"
       style={{
-        backgroundColor: scrolled ? "rgba(250, 250, 247, 0.92)" : "transparent",
-        backdropFilter: scrolled ? "blur(14px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
+        backgroundColor: scrolled ? "#FAFAF7" : "transparent",
         borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
       }}
     >
@@ -83,14 +81,13 @@ export function Header() {
             onMouseEnter={() => setMethodenOpen(true)}
             onMouseLeave={() => setMethodenOpen(false)}
           >
-            <button
-              onClick={() => setMethodenOpen((o) => !o)}
+            <a
+              href="/methoden"
               className="flex items-center gap-1 transition-opacity hover:opacity-70"
               style={{
                 color: isMethodenActive ? "var(--ink)" : "var(--text-muted)",
                 fontWeight: isMethodenActive ? 500 : undefined,
               }}
-              aria-expanded={methodenOpen}
             >
               {t.nav.methoden}
               <svg
@@ -109,11 +106,12 @@ export function Header() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
+            </a>
 
             {methodenOpen && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[420px]">
               <div
-                className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[420px] liquid-glass rounded-xl p-2 shadow-lg"
+                className="liquid-glass rounded-xl p-2 shadow-lg"
                 style={{ borderColor: "var(--border)" }}
               >
                 <div className="grid grid-cols-2 gap-1">
@@ -148,20 +146,7 @@ export function Header() {
                     );
                   })}
                 </div>
-                <div
-                  className="mt-1 pt-1 px-2"
-                  style={{ borderTop: "1px solid var(--border)" }}
-                >
-                  <a
-                    href="/methoden"
-                    className="flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors hover:bg-white/60"
-                    style={{ color: "var(--text-muted)" }}
-                    onClick={() => setMethodenOpen(false)}
-                  >
-                    <span>{language === "de" ? "Methoden-Übersicht" : "All methods"}</span>
-                    <span style={{ opacity: 0.5 }}>→</span>
-                  </a>
-                </div>
+              </div>
               </div>
             )}
           </div>
