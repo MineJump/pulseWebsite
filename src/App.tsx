@@ -13,26 +13,8 @@ import { FeaturesPage } from "./pages/FeaturesPage";
 import { UeberUnsPage } from "./pages/UeberUnsPage";
 
 function MarqueeContent() {
-  const { language } = useTranslation();
-  const items =
-    language === "de"
-      ? [
-          "Experience Sampling",
-          "Passive Sensing",
-          "Ecological Momentary Assessment",
-          "Mobile Research",
-          "Clinical Studies",
-          "Behavioural Science",
-        ]
-      : [
-          "Experience Sampling",
-          "Passive Sensing",
-          "Ecological Momentary Assessment",
-          "Mobile Research",
-          "Clinical Studies",
-          "Behavioural Science",
-        ];
-  return <MarqueeStrip items={items} />;
+  const { t } = useTranslation();
+  return <MarqueeStrip items={t.marquee} />;
 }
 
 function ImpressumPage() {

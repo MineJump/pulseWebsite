@@ -5,17 +5,11 @@ import { BlurOrbsField } from "../components/BlurOrbsField";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import { useTranslation } from "../i18n";
 
-const timeline = [
-  { year: "2021", event: "Gründung des 2CHUB am Department Psychologie der LMU München." },
-  { year: "2022", event: "Erste PULSE-PilotStudien mit externen Forschungspartnern." },
-  { year: "2023", event: "Launch der PULSE-Plattform mit ESM und Passive Sensing." },
-  { year: "2024", event: "Erweiterung um Interventionsmodul und automatisierte Analyse." },
-];
-
 export function UeberUnsPage() {
   const { t } = useTranslation();
   const prefersReducedMotion = usePrefersReducedMotion();
   const initial = prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 };
+  const up = t.ueberUnsPage;
 
   return (
     <>
@@ -33,14 +27,14 @@ export function UeberUnsPage() {
               style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
             >
               <span className="inline-block w-2 h-2 rounded-full" style={{ backgroundColor: "var(--accent)" }} />
-              Über uns
+              {up.eyebrow}
             </motion.p>
             <motion.h1
               initial={initial}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
             >
-              Aus der Forschung. Für die Forschung.
+              {up.heading}
             </motion.h1>
             <motion.p
               initial={initial}
@@ -49,9 +43,7 @@ export function UeberUnsPage() {
               className="mt-6 text-lg leading-relaxed"
               style={{ color: "var(--text-muted)" }}
             >
-              PULSE entsteht am 2CHUB, dem Center for Computation of Human Behavior. Wir sind ein
-              unabhängiges Forschungsinstitut für mobile Studien, Experience Sampling und Passive
-              Sensing. PULSE ist das Werkzeug, das wir selbst gebraucht hätten.
+              {up.body}
             </motion.p>
           </div>
         </section>
@@ -59,13 +51,13 @@ export function UeberUnsPage() {
         {/* Timeline */}
         <section className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28" style={{ backgroundColor: "var(--bg-elev)" }}>
           <div className="max-w-[900px] mx-auto">
-            <h2 className="mb-12">Meilensteine</h2>
+            <h2 className="mb-12">{up.milestonesHeading}</h2>
             <div className="relative flex flex-col gap-0">
               <div
                 className="absolute left-[3.5rem] top-0 bottom-0 w-px"
                 style={{ backgroundColor: "var(--border)" }}
               />
-              {timeline.map((item, i) => (
+              {up.timeline.map((item, i) => (
                 <motion.div
                   key={i}
                   initial={initial}
@@ -162,11 +154,9 @@ export function UeberUnsPage() {
         {/* 2CHUB */}
         <section className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28" style={{ backgroundColor: "var(--bg-elev)" }}>
           <div className="max-w-[900px] mx-auto">
-            <h2 className="mb-6">2CHUB</h2>
+            <h2 className="mb-6">{up.chubHeading}</h2>
             <p className="text-lg leading-relaxed mb-12" style={{ color: "var(--text-muted)" }}>
-              Das Center for Computation of Human Behavior (2CHUB) ist eine unabhängige
-              Forschungseinrichtung am Department Psychologie der LMU München. Wir entwickeln
-              Methoden, Infrastruktur und Werkzeuge für die mobile Verhaltensforschung.
+              {up.chubBody}
             </p>
           </div>
         </section>

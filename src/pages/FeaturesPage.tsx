@@ -4,125 +4,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { BlurOrbsField } from "../components/BlurOrbsField";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
-
-interface Plan {
-  id: string;
-  name: string;
-  price: string;
-  period: string;
-  tagline: string;
-  features: string[];
-  overage?: string;
-  cta: string;
-  ctaHref: string;
-  highlight?: boolean;
-  detail: string;
-}
-
-const plans: Plan[] = [
-  {
-    id: "explore",
-    name: "Explore",
-    price: "€ 2.900",
-    period: "/ Jahr",
-    tagline: "Ideal für Studien mit bis zu 100 Teilnehmenden.",
-    features: [
-      "Einzelstudien-Setup",
-      "Core Sensing-Module",
-      "Vollständiges ESM / EMA",
-      "Standard-Dashboard",
-      "CSV-Datenexport",
-      "E-Mail-Support",
-    ],
-    cta: "Explore wählen",
-    ctaHref: "https://app.pulse-research.de",
-    detail:
-      "Explore ist der Einstiegsplan für kleinere Studien und Pilotprojekte. Sie erhalten das vollständige ESM/EMA-Befragungsmodul und die Core Sensing-Module für bis zu 100 Teilnehmende, inklusive Standard-Dashboard und CSV-Export.",
-  },
-  {
-    id: "professional",
-    name: "Professional",
-    price: "€ 9.900",
-    period: "/ Jahr",
-    tagline: "Ideal für Studien mit bis zu 400 Teilnehmenden.",
-    features: [
-      "Multi-Studien-Setup",
-      "Alle 14 Sensing-Module + ESM",
-      "White-Label-App",
-      "Research-Dashboard",
-      "Erweiterte Exporte",
-      "Priority-Support",
-    ],
-    overage: "Mehrnutzung möglich für 25 €/Teilnehmer",
-    cta: "Professional wählen",
-    ctaHref: "https://app.pulse-research.de",
-    highlight: true,
-    detail:
-      "Professional ist der meistgewählte Plan für etablierte Forschungsprojekte. Sie erhalten Zugriff auf alle 14 Sensing-Module, das vollständige ESM/EMA-Modul, eine White-Label-App mit Ihrem Branding sowie das Research-Dashboard für Live-Monitoring. Mehrnutzung über 400 Teilnehmende hinaus ist flexibel möglich.",
-  },
-  {
-    id: "research",
-    name: "Research",
-    price: "€ 14.900",
-    period: "/ Jahr",
-    tagline: "Ideal für Studien mit bis zu 1000 Teilnehmenden.",
-    features: [
-      "Individuelles Studien-Setup",
-      "Individuelles Teilnehmer-Volumen",
-      "Erweiterte Analytik",
-      "API-Integrationen",
-      "Compliance-Support",
-      "Dediziertes SLA",
-    ],
-    cta: "Research wählen",
-    ctaHref: "https://app.pulse-research.de",
-    detail:
-      "Research richtet sich an große Forschungseinrichtungen, klinische Studien und Konsortien. Sie erhalten ein individuell konfigurierbares Studien-Setup, erweiterte Analytik direkt in der Plattform, API-Integrationen in bestehende Systeme sowie dediziertes Service Level Agreement und Compliance-Support.",
-  },
-  {
-    id: "ema-only",
-    name: "EMA-Only",
-    price: "€ 2.900",
-    period: "/ Jahr",
-    tagline: "Ideal für Studien mit bis zu 400 Teilnehmenden.",
-    features: [
-      "Nur ESM / EMA-Befragungen",
-      "Individuelle Fragebögen",
-      "Geplante Prompts",
-      "Teilnehmer-Verwaltung",
-      "Response-Monitoring",
-      "CSV-Datenexport",
-    ],
-    overage: "Mehrnutzung möglich für 10 €/Teilnehmer",
-    cta: "EMA-Only wählen",
-    ctaHref: "https://app.pulse-research.de",
-    detail:
-      "EMA-Only ist der spezialisierte Plan für Studien, die ausschließlich auf Selbstberichten basieren. Sie konfigurieren individuelle Fragebögen, planen Prompt-Schemata und überwachen Responses in Echtzeit – für bis zu 400 Teilnehmende, flexibel skalierbar.",
-  },
-];
-
-const faqs = [
-  {
-    q: "Was passiert bei mehr als 1000 Teilnehmenden?",
-    a: "Für Studien mit über 1000 Teilnehmenden erstellen wir ein individuelles Angebot. Kontaktieren Sie uns für ein Custom Quote.",
-  },
-  {
-    q: "Was bedeutet Mehrnutzung (Overage)?",
-    a: "Die Pläne Professional und EMA-Only erlauben die Aufnahme zusätzlicher Teilnehmender über das jeweilige Kontingent hinaus – pro zusätzlichem Teilnehmer fallen 25 € (Professional) bzw. 10 € (EMA-Only) an.",
-  },
-  {
-    q: "Sind die Preise pro Jahr?",
-    a: "Ja. Alle Pakete werden auf Jahresbasis abgerechnet und verstehen sich zzgl. MwSt.",
-  },
-  {
-    q: "Was passiert nach Ablauf der Studie mit den Daten?",
-    a: "Ihre Daten verbleiben 90 Tage nach Studienabschluss in PULSE und können vollständig exportiert werden. Danach werden sie DSGVO-konform gelöscht.",
-  },
-  {
-    q: "Gibt es eine Testversion?",
-    a: "Wir bieten auf Anfrage eine Demo-Instanz für bis zu 10 Teilnehmende an. Kontaktieren Sie uns für einen kostenlosen Testzugang.",
-  },
-];
+import { useTranslation } from "../i18n";
 
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -169,11 +51,13 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 }
 
 export function FeaturesPage() {
+  const { t } = useTranslation();
   const prefersReducedMotion = usePrefersReducedMotion();
   const initial = prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 };
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const fp = t.featuresPage;
 
-  const selected = plans.find((p) => p.id === selectedPlan) ?? null;
+  const selected = fp.plans.find((p) => p.id === selectedPlan) ?? null;
 
   return (
     <>
@@ -194,7 +78,7 @@ export function FeaturesPage() {
                 className="inline-block w-2 h-2 rounded-full"
                 style={{ backgroundColor: "var(--accent)" }}
               />
-              Features & Pricing
+              {fp.eyebrow}
             </motion.p>
             <motion.h1
               initial={initial}
@@ -202,7 +86,7 @@ export function FeaturesPage() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="max-w-[780px]"
             >
-              Wählen Sie den Plan, der zu Ihrer Studie passt.
+              {fp.heading}
             </motion.h1>
             <motion.p
               initial={initial}
@@ -211,7 +95,7 @@ export function FeaturesPage() {
               className="mt-6 max-w-[640px] text-lg leading-relaxed"
               style={{ color: "var(--text-muted)" }}
             >
-              Vier Pläne für unterschiedliche Studiengrößen und Anforderungen. Alle Preise verstehen sich pro Jahr und zzgl. MwSt.
+              {fp.subheading}
             </motion.p>
           </div>
         </section>
@@ -220,7 +104,7 @@ export function FeaturesPage() {
         <section className="w-full px-6 md:px-12 lg:px-16 py-10 md:py-14">
           <div className="max-w-[1400px] mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {plans.map((plan, i) => {
+              {fp.plans.map((plan, i) => {
                 const isSelected = selectedPlan === plan.id;
                 return (
                   <motion.div
@@ -250,7 +134,7 @@ export function FeaturesPage() {
                           fontFamily: "'IBM Plex Mono', monospace",
                         }}
                       >
-                        Beliebt
+                        {fp.badge}
                       </span>
                     )}
 
@@ -340,7 +224,7 @@ export function FeaturesPage() {
               className="mt-8 text-center text-sm"
               style={{ color: "var(--text-muted)", fontFamily: "'IBM Plex Mono', monospace" }}
             >
-              Für Studien mit über 1000 Teilnehmenden kontaktieren Sie uns für ein individuelles Angebot.
+              {fp.overflowNote}
             </p>
           </div>
         </section>
@@ -389,7 +273,7 @@ export function FeaturesPage() {
                       className="text-sm px-4 py-2 transition-opacity hover:opacity-60"
                       style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
                     >
-                      Schließen
+                      {fp.close}
                     </button>
                   </div>
                 </div>
@@ -398,7 +282,7 @@ export function FeaturesPage() {
           )}
         </AnimatePresence>
 
-        {/* "Nicht sicher?" CTA */}
+        {/* Advisor CTA */}
         <section className="w-full px-6 md:px-12 lg:px-16 py-6 md:py-8">
           <div className="max-w-[1400px] mx-auto">
             <motion.div
@@ -414,19 +298,17 @@ export function FeaturesPage() {
                   className="text-xl mb-3"
                   style={{ color: "var(--btn-primary-fg)" }}
                 >
-                  Nicht sicher, welcher Plan passt?
+                  {fp.advisorHeading}
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
                   style={{ color: "rgba(255,255,255,0.7)" }}
                 >
-                  Buchen Sie ein 15-minütiges Beratungsgespräch. Wir helfen Ihnen, die
-                  richtige Konfiguration für Ihre Studie zu finden – kostenlos und
-                  unverbindlich.
+                  {fp.advisorBody}
                 </p>
               </div>
               <a
-                href="mailto:info@2chub.com?subject=Beratungsgespräch PULSE"
+                href={`mailto:info@2chub.com?subject=${encodeURIComponent(fp.advisorMailSubject)}`}
                 className="flex-shrink-0 inline-flex items-center justify-center px-6 py-3.5 rounded-full text-sm uppercase tracking-[0.12em] transition-opacity hover:opacity-90"
                 style={{
                   backgroundColor: "rgba(255,255,255,0.15)",
@@ -435,7 +317,7 @@ export function FeaturesPage() {
                   fontFamily: "'IBM Plex Mono', monospace",
                 }}
               >
-                Beratungsgespräch buchen
+                {fp.advisorCta}
               </a>
             </motion.div>
           </div>
@@ -451,10 +333,10 @@ export function FeaturesPage() {
               transition={{ duration: 0.6 }}
               className="mb-8"
             >
-              Häufige Fragen
+              {fp.faqHeading}
             </motion.h2>
             <div className="flex flex-col gap-3 max-w-[900px]">
-              {faqs.map((faq, i) => (
+              {fp.faqs.map((faq, i) => (
                 <motion.div
                   key={i}
                   initial={initial}

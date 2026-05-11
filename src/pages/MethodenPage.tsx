@@ -5,90 +5,6 @@ import { BlurOrbsField } from "../components/BlurOrbsField";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import { useTranslation } from "../i18n";
 
-const platformPillars = [
-  {
-    title: "Passive Mobile Sensing",
-    desc: "Smartphone-Sensordaten kontinuierlich und mit minimaler Teilnehmer-Belastung im Hintergrund erfassen.",
-  },
-  {
-    title: "White-Label Study App",
-    desc: "App an Ihre Studie anpassen – von Branding bis zu Inhalten und Workflows.",
-  },
-  {
-    title: "Research Dashboard",
-    desc: "Studien, Teilnehmende und Datenqualität überwachen, Fortschritt in Echtzeit verfolgen.",
-  },
-  {
-    title: "Data Export & API-Ready",
-    desc: "Daten in Standardformaten exportieren oder via API in Ihre Systeme integrieren.",
-  },
-  {
-    title: "Privacy & Security by Design",
-    desc: "Privacy-by-Design, Verschlüsselung, rollenbasierter Zugriff und Compliance.",
-  },
-];
-
-const sensingCategories = [
-  {
-    name: "Standort & Mobilität",
-    modules: ["Location Tracking", "Pedometer", "Activity Tracking"],
-  },
-  {
-    name: "Bewegung & Kontext",
-    modules: ["Motion Sensor", "Ambient Sound & Light", "Battery Monitoring"],
-  },
-  {
-    name: "Digitales Verhalten",
-    modules: ["Phone Call Events", "Screen Time & App Events", "PULSE Keyboard"],
-  },
-  {
-    name: "Gesundheit & Wearables",
-    modules: ["Apple Health / Health Connect", "Garmin Smartwatch Integration"],
-  },
-  {
-    name: "Konnektivität & Medien",
-    modules: ["Wi-Fi & Bluetooth", "Music Tracking", "Spotify History"],
-  },
-];
-
-const privacyPoints = [
-  "Kommunikationsdaten: nur Metadaten (Zeitstempel, Dauer) – keine Inhalte.",
-  "GPS: konfigurierbare Auflösung, auf 500 m-Genauigkeit reduzierbar.",
-  "Audio: nur aggregierte Lautstärke-Features, keine Aufnahmen.",
-  "Ende-zu-Ende-Verschlüsselung, Pseudonymisierung aller Rohdaten.",
-  "Granulares Consent-Modul: Teilnehmende können einzelne Datenströme selektiv freigeben.",
-];
-
-const interventionTypes = [
-  { label: "Push-Reminder", detail: "Kurze Erinnerung oder Handlungsaufforderung" },
-  { label: "Mikro-Intervention", detail: "Angeleitete Kurzübung (1 bis 3 Minuten)" },
-  { label: "Edukationsinhalt", detail: "Psychoedukative Texte, Grafiken oder kurze Videos" },
-  { label: "Feedback", detail: "Rückmeldung auf Basis eigener Daten" },
-  { label: "Selbstmonitoring-Prompt", detail: "Aufforderung zur Reflexion ohne Bewertung" },
-];
-
-const studyDesigns = [
-  { title: "Parallelgruppen-RCT", desc: "Zuweisung zu Interventions- und Kontrollgruppe bei Studienstart." },
-  { title: "Micro-Randomized Trial", desc: "Randomisierung auf Momentebene (z. B. Trigger 50% Intervention, 50% Kontrolle)." },
-  { title: "SMART-Design", desc: "Mehrstufige Randomisierung zur Optimierung adaptiver Interventionsstrategien." },
-  { title: "Crossover-Washout", desc: "Zwei Bedingungen, konfigurierbare Washout-Phase." },
-];
-
-const computations = [
-  { title: "Deskriptive Statistik", desc: "Verteilungen, Compliance-Kennwerte, Missingness" },
-  { title: "Multilevel-Modelle (MLM)", desc: "Within-Between-Effekte, Random Slopes, Cross-Level-Interaktionen" },
-  { title: "Zeitreihenanalyse", desc: "Autokorrelation, Trend, Zyklen, VAR-Modelle" },
-  { title: "DSEM", desc: "Autoregressive Prozesse, Mediation auf Momentebene" },
-  { title: "Klassifikation / Regression (ML)", desc: "Prädiktion von Zuständen aus Sensorfeatures" },
-];
-
-const visualizations = [
-  { title: "Verlaufskurven", desc: "Individuelle und aggregierte Trajektorien über die Studienzeit" },
-  { title: "Heatmaps", desc: "Tageszeit-Map für Aktivität oder Affektvariablen" },
-  { title: "Netzwerkgrafiken", desc: "Symptom- oder Affektmatrizen auf Personen- und Gruppenebene" },
-  { title: "Compliance-Dashboards", desc: "Response-Raten, Sensorkonfigurbarkeit, Drop-out-Verläufe" },
-];
-
 const exportFormats = ["CSV", "R-Dataset (.rds)", "SPSS (.sav)", "JSON", "REST-API"];
 
 function SectionTag({ children }: { children: React.ReactNode }) {
@@ -107,6 +23,7 @@ export function MethodenPage() {
   const { t } = useTranslation();
   const prefersReducedMotion = usePrefersReducedMotion();
   const initial = prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 };
+  const mp = t.methodenPage;
 
   return (
     <>
@@ -158,7 +75,7 @@ export function MethodenPage() {
               style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
             >
               <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--accent)" }} />
-              Plattform
+              {mp.platformTag}
             </motion.p>
             <motion.h2
               initial={initial}
@@ -167,10 +84,10 @@ export function MethodenPage() {
               transition={{ duration: 0.6, delay: 0.05 }}
               className="mb-12 max-w-[780px]"
             >
-              Alles, was Sie für Ihre Studie brauchen.
+              {mp.platformHeading}
             </motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {platformPillars.map((pillar, i) => (
+              {mp.pillars.map((pillar, i) => (
                 <motion.div
                   key={pillar.title}
                   initial={initial}
@@ -189,22 +106,20 @@ export function MethodenPage() {
           </div>
         </section>
 
-        {/* Beobachten */}
+        {/* Passive Sensing */}
         <section id="beobachten" className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28" style={{ backgroundColor: "var(--bg-elev)" }}>
           <div className="max-w-[900px] mx-auto">
             <SectionTag>Passive Sensing</SectionTag>
-            <h2 className="mb-4">Verhalten passiv erfassen. Kontinuierlich, kontextuell, unauffällig.</h2>
+            <h2 className="mb-4">{mp.sensingHeading}</h2>
             <p className="mb-12 text-lg leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              PULSE nutzt Smartphone- und Wearable-Sensoren, um die kontinuierliche Nutzung im
-              Alltag zu erfassen. Die Sensorprofile sind datenschutzkonform konfigurierbar –
-              mit Sampling-Raten, Aggregationsstufen und granularen Consent-Modulen.
+              {mp.sensingBody}
             </p>
-            <h3 className="mb-2">14 Sensing-Module in 5 Kategorien</h3>
+            <h3 className="mb-2">{mp.sensingModulesHeading}</h3>
             <p className="mb-8 text-sm" style={{ color: "var(--text-muted)" }}>
-              iOS und Android. Modular aktivierbar – je nach Studiendesign und Consent.
+              {mp.sensingModulesNote}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-14">
-              {sensingCategories.map((cat, i) => (
+              {mp.sensingCategories.map((cat, i) => (
                 <motion.div
                   key={cat.name}
                   initial={initial}
@@ -235,14 +150,12 @@ export function MethodenPage() {
                 </motion.div>
               ))}
             </div>
-            <h3 className="mb-4">Datenschutz im passiven Sensing</h3>
+            <h3 className="mb-4">{mp.sensingPrivacyHeading}</h3>
             <p className="mb-8 leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              Jeder Sensorstrom kann individuell konfiguriert, pseudonymisiert und auf
-              Teilnehmer-Ebene eingeschränkt werden. Die folgenden Schutzmaßnahmen greifen
-              bei jedem Sensing-Modul.
+              {mp.sensingPrivacyBody}
             </p>
             <div className="flex flex-col gap-4">
-              {privacyPoints.map((point, i) => (
+              {mp.sensingPrivacyPoints.map((point, i) => (
                 <motion.div
                   key={i}
                   initial={initial}
@@ -259,30 +172,20 @@ export function MethodenPage() {
           </div>
         </section>
 
-        {/* Befragen */}
+        {/* ESM / EMA */}
         <section id="befragen" className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28">
           <div className="max-w-[900px] mx-auto">
             <SectionTag>ESM / EMA</SectionTag>
-            <h2 className="mb-4">Befragen im Alltag. Präzise, kontextsensitiv, wissenschaftlich fundiert.</h2>
+            <h2 className="mb-4">{mp.esmHeading}</h2>
             <p className="mb-12 text-lg leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              PULSE unterstützt Experience Sampling (ESM), Ecological Momentary Assessment (EMA)
-              und Daily Diary Designs in einer konfigurierbaren Umgebung. Sie definieren Trigger,
-              Itemlogik und Sampling-Schema. PULSE übernimmt Auslieferung, Compliance-Monitoring
-              und Datenaggregation.
+              {mp.esmBody}
             </p>
-            <h3 className="mb-4">Qualitätssicherung in der Feldphase</h3>
+            <h3 className="mb-4">{mp.esmQaHeading}</h3>
             <p className="mb-8 leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              PULSE protokolliert in Echtzeit und stellt Forschenden ein Live-Dashboard zur
-              Verfügung. Die Berichterstellung folgt den Empfehlungen für intensive Längsschnittstudien.
+              {mp.esmQaBody}
             </p>
             <div className="flex flex-col gap-3">
-              {[
-                "Response-Rate je Teilnehmender und je Prompt",
-                "Latenz zwischen Prompt und Antwort",
-                "Carelessness-Indikatoren",
-                "Drop-out-Risiko über Verlaufsmuster der Compliance",
-                "Forschende erhalten ein Live-Dashboard mit Empfehlungen für Re-Engagement-Nachrichten gemäß den STROBE- und CONSORT-Standards für Längsschnittstudien.",
-              ].map((item, i) => (
+              {mp.esmQaItems.map((item, i) => (
                 <motion.div
                   key={i}
                   initial={initial}
@@ -302,20 +205,17 @@ export function MethodenPage() {
           </div>
         </section>
 
-        {/* Intervenieren */}
+        {/* Interventions */}
         <section id="intervenieren" className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28" style={{ backgroundColor: "var(--bg-elev)" }}>
           <div className="max-w-[900px] mx-auto">
-            <SectionTag>Interventionen</SectionTag>
-            <h2 className="mb-4">Interventionen, die auf den richtigen Moment reagieren.</h2>
+            <SectionTag>{mp.interventionsTag}</SectionTag>
+            <h2 className="mb-4">{mp.interventionsHeading}</h2>
             <p className="mb-12 text-lg leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              PULSE ermöglicht digitale Interventionen vom einfachen Reminder bis zu
-              Just-in-Time Adaptive Interventionen (JITAIs). Sie definieren Auslöser,
-              Inhalte und Randomisierungslogik. PULSE liefert aus und protokolliert
-              Adhärenz automatisch.
+              {mp.interventionsBody}
             </p>
-            <h3 className="mb-6">Welche Interventionsformen PULSE unterstützt</h3>
+            <h3 className="mb-6">{mp.interventionTypesHeading}</h3>
             <div className="flex flex-col gap-3 mb-14">
-              {interventionTypes.map((item, i) => (
+              {mp.interventionTypes.map((item, i) => (
                 <motion.div
                   key={i}
                   initial={initial}
@@ -333,9 +233,9 @@ export function MethodenPage() {
                 </motion.div>
               ))}
             </div>
-            <h3 className="mb-6">Interventionsforschung mit kontrollierten Designs</h3>
+            <h3 className="mb-6">{mp.interventionStudyHeading}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {studyDesigns.map((design, i) => (
+              {mp.studyDesigns.map((design, i) => (
                 <motion.div
                   key={i}
                   initial={initial}
@@ -352,19 +252,17 @@ export function MethodenPage() {
           </div>
         </section>
 
-        {/* Auswerten */}
+        {/* Analysis */}
         <section id="auswerten" className="w-full px-6 md:px-12 lg:px-16 pt-20 md:pt-28 pb-12">
           <div className="max-w-[900px] mx-auto">
-            <SectionTag>Analyse</SectionTag>
-            <h2 className="mb-4">Von Rohdaten zur Erkenntnis. Automatisiert und reproduzierbar.</h2>
+            <SectionTag>{mp.analysisTag}</SectionTag>
+            <h2 className="mb-4">{mp.analysisHeading}</h2>
             <p className="mb-12 text-lg leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              PULSE integriert statistische Analysen, Machine-Learning-Pipelines und interaktive
-              Visualisierungen direkt in die Plattform. Sie konfigurieren die Auswertung parallel
-              zum Studiendesign. PULSE liefert reproduzierbare Ergebnisse und publikationsreife Exporte.
+              {mp.analysisBody}
             </p>
-            <h3 className="mb-6">Was PULSE berechnen kann</h3>
+            <h3 className="mb-6">{mp.computationsHeading}</h3>
             <div className="flex flex-col gap-3 mb-14">
-              {computations.map((item, i) => (
+              {mp.computations.map((item, i) => (
                 <motion.div
                   key={i}
                   initial={initial}
@@ -382,12 +280,12 @@ export function MethodenPage() {
                 </motion.div>
               ))}
             </div>
-            <h3 className="mb-4">Daten sichtbar machen</h3>
+            <h3 className="mb-4">{mp.vizHeading}</h3>
             <p className="mb-8 leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              PULSE generiert interaktive Visualisierungen direkt aus den Studiendaten.
+              {mp.vizBody}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-14">
-              {visualizations.map((viz, i) => (
+              {mp.visualizations.map((viz, i) => (
                 <motion.div
                   key={i}
                   initial={initial}
@@ -401,10 +299,9 @@ export function MethodenPage() {
                 </motion.div>
               ))}
             </div>
-            <h3 className="mb-4">Ihre Daten, Ihre Werkzeuge</h3>
+            <h3 className="mb-4">{mp.exportHeading}</h3>
             <p className="mb-8 leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              Jeder Analysedurchlauf wird automatisch dokumentiert – Zeitstempel, Parameter,
-              Datenstand und Diff-Ansicht zu früheren Durchläufen.
+              {mp.exportBody}
             </p>
             <div className="flex flex-wrap gap-3">
               {exportFormats.map((fmt) => (
