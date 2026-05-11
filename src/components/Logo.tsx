@@ -2,15 +2,31 @@ export function Logo() {
   return (
     <a
       href="/"
-      className="inline-flex items-center transition-opacity duration-200 hover:opacity-80"
-      aria-label="2CHUB – Center for Computation of Human Behavior"
+      className="inline-flex items-center gap-3 transition-opacity duration-200 hover:opacity-80"
+      aria-label="PULSE by 2CHUB"
     >
       <img
         src="/logo-2chub.svg"
-        alt="2CHUB – Center for Computation of Human Behavior"
-        className="h-14 md:h-20 w-auto"
+        alt="2CHUB"
+        className="h-8 md:h-10 w-auto"
         draggable={false}
       />
+      <span
+        className="w-px self-stretch"
+        style={{ backgroundColor: "var(--border)" }}
+        aria-hidden="true"
+      />
+      <span
+        style={{
+          fontFamily: "'IBM Plex Mono', monospace",
+          fontWeight: 500,
+          fontSize: "1.1rem",
+          letterSpacing: "0.08em",
+          color: "var(--ink)",
+        }}
+      >
+        PULSE
+      </span>
     </a>
   );
 }

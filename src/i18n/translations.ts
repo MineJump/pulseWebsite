@@ -9,7 +9,7 @@ export const translations: Record<Language, Translations> = {
       login: "Login",
     },
     hero: {
-      eyebrow: "Entwickelt an der LMU München",
+      eyebrow: "Ein Produkt des 2CHUB · LMU München",
       title: "Forschungsplattform\nfür mobile Studien.",
       subtitle: "Gebaut von Forschenden.",
       tagline:
@@ -391,7 +391,7 @@ export const translations: Record<Language, Translations> = {
       login: "Login",
     },
     hero: {
-      eyebrow: "Developed at LMU Munich",
+      eyebrow: "A product by 2CHUB · LMU Munich",
       title: "Research platform\nfor mobile studies.",
       subtitle: "Built by researchers.",
       tagline:

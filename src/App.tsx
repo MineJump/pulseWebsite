@@ -1,9 +1,7 @@
 import { LanguageProvider, useTranslation } from "./i18n";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { MarqueeStrip } from "./components/MarqueeStrip";
 import { Hero } from "./components/sections/Hero";
-import { Testimonials } from "./components/sections/Testimonials";
 import { USPs } from "./components/sections/USPs";
 import { HowItWorks } from "./components/sections/HowItWorks";
 import { Impressum } from "./components/sections/Impressum";
@@ -11,11 +9,6 @@ import { Privacy } from "./components/sections/Privacy";
 import { MethodenPage } from "./pages/MethodenPage";
 import { FeaturesPage } from "./pages/FeaturesPage";
 import { UeberUnsPage } from "./pages/UeberUnsPage";
-
-function MarqueeContent() {
-  const { t } = useTranslation();
-  return <MarqueeStrip items={t.marquee} />;
-}
 
 function ImpressumPage() {
   const { t } = useTranslation();
