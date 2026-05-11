@@ -9,10 +9,6 @@ import { HowItWorks } from "./components/sections/HowItWorks";
 import { Impressum } from "./components/sections/Impressum";
 import { Privacy } from "./components/sections/Privacy";
 import { MethodenPage } from "./pages/MethodenPage";
-import { BefragenPage } from "./pages/BefragenPage";
-import { BeobachtenPage } from "./pages/BeobachtenPage";
-import { IntervenienPage } from "./pages/IntervenienPage";
-import { AuswertenPage } from "./pages/AuswertenPage";
 import { FeaturesPage } from "./pages/FeaturesPage";
 import { UeberUnsPage } from "./pages/UeberUnsPage";
 
@@ -110,14 +106,6 @@ function App() {
         <PrivacyPage />
       ) : path === "/methoden" ? (
         <MethodenPage />
-      ) : path === "/methoden/befragen" ? (
-        <BefragenPage />
-      ) : path === "/methoden/beobachten" ? (
-        <BeobachtenPage />
-      ) : path === "/methoden/intervenieren" ? (
-        <IntervenienPage />
-      ) : path === "/methoden/auswerten" ? (
-        <AuswertenPage />
       ) : path === "/features" ? (
         <FeaturesPage />
       ) : path === "/ueber-uns" ? (
