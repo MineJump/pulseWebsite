@@ -67,19 +67,6 @@ export function IntervenienPage() {
               className="mt-10 flex flex-col sm:flex-row gap-4"
             >
               <a
-                href="#beispielstudien"
-                className="inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-opacity rounded-full"
-                style={{
-                  backgroundColor: "var(--btn-primary-bg)",
-                  color: "var(--btn-primary-fg)",
-                  fontFamily: "'IBM Plex Mono', monospace",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-              >
-                Beispielstudien
-              </a>
-              <a
                 href="https://app.pulse-research.de"
                 className="liquid-glass inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-all hover:-translate-y-[1px] rounded-full"
                 style={{ color: "var(--ink)", fontFamily: "'IBM Plex Mono', monospace" }}
@@ -133,49 +120,6 @@ export function IntervenienPage() {
                   <h3 className="text-base mb-3">{design.title}</h3>
                   <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{design.desc}</p>
                 </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Wissenschaftlicher Hintergrund */}
-        <section className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28" style={{ backgroundColor: "var(--bg-elev)" }}>
-          <div className="max-w-[900px] mx-auto">
-            <h2 className="mb-10">Wissenschaftlicher Hintergrund</h2>
-            <div className="flex flex-col gap-8">
-              {[
-                { title: "Just-in-Time Adaptive Interventions (JITAIs)", author: "nach Nahum-Shani et al. (2016)", desc: "Kontextadaptive Interventionen, ausgelöst durch Echtzeit-Daten zu Zustand und Situation des Nutzers." },
-                { title: "Micro-Randomized Trials (MRT)", author: "nach Klasnja et al. (2015)", desc: "Experimentelle Designs, die Interventionseffekte auf Momentebene kausal prüfbar machen." },
-                { title: "Sequential Multiple Assignment Randomized Trials (SMART)", author: "nach Lei et al. (2012)", desc: "Mehrstufige Randomisierung zur Optimierung adaptiver Interventionsstrategien über den Studienverlauf." },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={initial}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.07 }}
-                  className="border-l-2 pl-6"
-                  style={{ borderColor: "var(--accent)" }}
-                >
-                  <p className="text-xs uppercase tracking-[0.18em] mb-1" style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}>{item.author}</p>
-                  <h3 className="text-lg mb-2">{item.title}</h3>
-                  <p className="leading-relaxed" style={{ color: "var(--text-muted)" }}>{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Beispielstudien */}
-        <section id="beispielstudien" className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28">
-          <div className="max-w-[900px] mx-auto">
-            <h2 className="mb-10">Beispielstudien</h2>
-            <div className="flex flex-col gap-6">
-              {["JITAI zur Stressreduktion im Arbeitsalltag", "Digitale Compliance-Intervention bei chronischen Erkrankungen", "Sensor-getriggerter Bewegungs-Prompt"].map((title, i) => (
-                <div key={i} className="liquid-glass rounded-xl p-6">
-                  <h3 className="text-base mb-3">{title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>Beispielinhalt – wird mit Studiendetails befüllt.</p>
-                </div>
               ))}
             </div>
           </div>

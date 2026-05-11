@@ -21,12 +21,6 @@ const privacyPoints = [
   "Granulares Consent-Modul: Teilnehmende können einzelne Datenströme selektiv freigeben.",
 ];
 
-const references = [
-  "Harari, G. M., et al. (2016). Smartphones as a Research Tool for Behavior and Daily Experience. Social Psychological and Personality Science.",
-  "Torous, J., et al. (2016). New Tools for New Research in Psychiatry: A Scalable and Customizable Platform to Empower Data Driven Smartphone Research. JMIR Mental Health.",
-  "Trull, T. J., & Ebner-Priemer, U. (2013). Ambulatory assessment. Annual Review of Clinical Psychology, 9, 151–176.",
-  "Bolger, N., Davis, A., & Rafaeli, E. (2003). Diary methods: Capturing life as it is lived. Annual Review of Psychology, 54, 579–616.",
-];
 
 export function BeobachtenPage() {
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -74,19 +68,6 @@ export function BeobachtenPage() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="mt-10 flex flex-col sm:flex-row gap-4"
             >
-              <a
-                href="#beispielstudien"
-                className="inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-opacity rounded-full"
-                style={{
-                  backgroundColor: "var(--btn-primary-bg)",
-                  color: "var(--btn-primary-fg)",
-                  fontFamily: "'IBM Plex Mono', monospace",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-              >
-                Beispielstudien
-              </a>
               <a
                 href="https://app.pulse-research.de"
                 className="liquid-glass inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-all hover:-translate-y-[1px] rounded-full"
@@ -148,66 +129,6 @@ export function BeobachtenPage() {
                   <span className="text-base mt-0.5" style={{ color: "var(--accent)" }}>✓</span>
                   <p className="leading-relaxed" style={{ color: "var(--text-muted)" }}>{point}</p>
                 </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Wissenschaftlicher Hintergrund */}
-        <section className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28" style={{ backgroundColor: "var(--bg-elev)" }}>
-          <div className="max-w-[900px] mx-auto">
-            <h2 className="mb-10">Wissenschaftlicher Hintergrund</h2>
-            <div className="flex flex-col gap-8">
-              {[
-                { title: "Mobile Sensing", author: "nach Harari et al. (2016)", desc: "Kontinuierliche Erfassung von Verhalten und Kontext über Smartphone-Sensorik als naturalistisches Beobachtungsverfahren." },
-                { title: "Digital Phenotyping", author: "nach Torous et al. (2016)", desc: "Quantifizierung individueller Verhaltensmuster über Geräte-Interaktionsdaten zur klinischen Diagnostik und Verlaufsmessung." },
-                { title: "Ambulatory Assessment", author: "nach Trull & Ebner-Priemer (2013)", desc: "Integriertes Framework für Sensorik und Selbstbericht. Passive Sensorik reduziert Selbstbericht-Burden und erfasst Verhalten unaufdringlich." },
-                { title: "Passive Sensorik als Ergänzung", author: "", desc: "Passive Sensorik ergänzt subjektive Daten um objektive Verhaltensindikatoren und ermöglicht so multi-methodische Längsschnittforschung." },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={initial}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.07 }}
-                  className="border-l-2 pl-6"
-                  style={{ borderColor: "var(--accent)" }}
-                >
-                  {item.author && (
-                    <p className="text-xs uppercase tracking-[0.18em] mb-1" style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}>
-                      {item.author}
-                    </p>
-                  )}
-                  <h3 className="text-lg mb-2">{item.title}</h3>
-                  <p className="leading-relaxed" style={{ color: "var(--text-muted)" }}>{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Beispielstudien */}
-        <section id="beispielstudien" className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28">
-          <div className="max-w-[900px] mx-auto">
-            <h2 className="mb-10">Beispielstudien</h2>
-            <div className="flex flex-col gap-6">
-              {["Schlaf- und Aktivitätsmuster bei Schichtarbeitenden", "Passive Phänotypisierung bei Depression", "Kontextuelle Determinanten von Medienkonsum"].map((title, i) => (
-                <div key={i} className="liquid-glass rounded-xl p-6">
-                  <h3 className="text-base mb-3">{title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>Beispielinhalt – wird mit Studiendetails befüllt.</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Referenzen */}
-        <section className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28" style={{ backgroundColor: "var(--bg-elev)" }}>
-          <div className="max-w-[900px] mx-auto">
-            <h2 className="mb-8">Referenzen</h2>
-            <div className="flex flex-col gap-4">
-              {references.map((ref, i) => (
-                <p key={i} className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{ref}</p>
               ))}
             </div>
           </div>

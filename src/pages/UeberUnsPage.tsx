@@ -116,7 +116,7 @@ export function UeberUnsPage() {
             >
               {t.team.heading}
             </motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
               {t.team.members.map((member, i) => (
                 <motion.div
                   key={member.name}
@@ -126,28 +126,32 @@ export function UeberUnsPage() {
                   transition={{ duration: 0.55, ease: "easeOut", delay: i * 0.08 }}
                   className="flex flex-col gap-4"
                 >
-                  <div
-                    className="w-full aspect-square rounded-xl"
-                    style={{ backgroundColor: "var(--bg-elev)" }}
-                    aria-hidden="true"
-                  />
-                  <div>
+                  <div className="w-full aspect-square rounded-xl overflow-hidden" style={{ backgroundColor: "var(--bg-elev)" }}>
+                    <img
+                      src={`/Person${i + 1}.png`}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col flex-1">
                     <p className="font-medium" style={{ color: "var(--ink)" }}>{member.name}</p>
-                    <p className="text-sm mt-1" style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}>
+                    <p className="text-sm mt-1 min-h-[2.5rem]" style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}>
                       {member.role}
                     </p>
-                    <p className="text-sm mt-3 leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                    <p className="text-sm mt-3 leading-relaxed flex-1" style={{ color: "var(--text-muted)" }}>
                       {member.background}
                     </p>
-                    {member.email && (
-                      <a
-                        href={`mailto:${member.email}`}
-                        className="text-xs mt-3 inline-block transition-opacity hover:opacity-70"
-                        style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
-                      >
-                        {member.email}
-                      </a>
-                    )}
+                    <div className="mt-3 min-h-[1.25rem]">
+                      {member.email && (
+                        <a
+                          href={`mailto:${member.email}`}
+                          className="text-xs transition-opacity hover:opacity-70"
+                          style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
+                        >
+                          {member.email}
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -164,28 +168,6 @@ export function UeberUnsPage() {
               Forschungseinrichtung am Department Psychologie der LMU München. Wir entwickeln
               Methoden, Infrastruktur und Werkzeuge für die mobile Verhaltensforschung.
             </p>
-            <h3 className="mb-6">Ausgewählte Publikationen</h3>
-            <div className="flex flex-col gap-4">
-              {[
-                "Terhorst, Y., et al. (2024). Ecological Validity of Smartphone-Based ESM in Clinical Populations. Journal of Medical Internet Research.",
-                "Paletta, L., et al. (2023). PULSE: An Open-Source Platform for Mobile Research. Behavior Research Methods.",
-                "Bühner, M., et al. (2022). Psychometric Properties of ESM-Derived Affect Scales. Psychological Assessment.",
-                "Terhorst, Y., et al. (2021). Mobile Health Interventions in Routine Care. Digital Health.",
-                "Lohse, T., et al. (2023). Privacy-Preserving Passive Sensing in Field Studies. Computers in Human Behavior.",
-              ].map((pub, i) => (
-                <motion.p
-                  key={i}
-                  initial={initial}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.07 }}
-                  className="text-sm leading-relaxed py-4 border-b"
-                  style={{ color: "var(--text-muted)", borderColor: "var(--border)" }}
-                >
-                  {pub}
-                </motion.p>
-              ))}
-            </div>
           </div>
         </section>
       </main>

@@ -160,34 +160,36 @@ export const translations: Record<Language, Translations> = {
           name: "Prof. Dr. Markus Bühner",
           role: "Mitgründer – Psychometrik & Methodenlehre",
           background:
-            "Professor für Psychologische Methodenlehre und Diagnostik. Forschungsschwerpunkte: Psychometrie, Intelligenztheorien, digitale Assessments.",
+            "Prof. für Psychologische Methodenlehre und Diagnostik, LMU München. Verantwortlich für Forschung zu Intelligenz, Aufmerksamkeit und psychologischer Diagnostik. Ehemaliger Präsident der Deutschen Gesellschaft für Psychologie.",
           email: "markus.buehner@2chub.com",
         },
         {
           name: "Dr. Yannik Terhorst",
           role: "Mitgründer – Klinische Psychologie & Digital Health",
           background:
-            "Forscher im Bereich Klinische Psychologie und Psychotherapie. Fokus auf digitale Interventionen, Mobile Health und Ecological Momentary Assessment.",
+            "M.Sc. Psychologie, Dr. rer. nat. Forscher an der Schnittstelle von Klinischer Psychologie, KI und digitaler Gesundheitsversorgung. Schwerpunkt auf eHealth, mHealth und datenbasierter Psychotherapie.",
           email: "yannik.terhorst@2chub.com",
         },
         {
           name: "Leon Paletta",
           role: "Mitgründer – Plattform & Data",
           background:
-            "M.Sc. Robotics & AI, B.Sc. Engineering Science. Fokus auf Plattformarchitektur, Data Engineering und Produkt.",
+            "M.Sc. Robotics & AI, TU München. Co-Founder von THEO Labs. Fokus auf Anwendungen künstlicher Intelligenz, maschinelles Lernen und intelligente Systeme.",
+          email: "leon.paletta@2chub.com",
         },
         {
           name: "Till-Ole Lohse",
           role: "Mitgründer – Engineering",
           background:
-            "B.Sc. Computer Science, B.Sc. Management. Verantwortlich für Systemarchitektur, Infrastruktur und Hardware-Integration.",
+            "TU München. Mitgründer von THEO Labs. Verantwortlich für Produktentwicklung und technische Umsetzung an der Schnittstelle von KI und Praxisanwendung.",
+          email: "till-ole.lohse@2chub.com",
         },
       ],
     },
     contact: {
-      heading: "Lust auf eine Studie?",
+      heading: "Gemeinsam forschen.",
       subheading:
-        "Ob Forschungskooperation, klinische Studie oder Auftragsforschung – wir hören zu.",
+        "Ob Forschungskooperation, klinische Studie oder Auftragsforschung – sprechen Sie uns an.",
       email: "info@2chub.com",
       location: "München",
       cta: "Kontakt aufnehmen",
@@ -360,27 +362,29 @@ export const translations: Record<Language, Translations> = {
           name: "Prof. Dr. Markus Bühner",
           role: "Co-founder – Psychometrics & Methodology",
           background:
-            "Professor of Psychological Methodology and Assessment. Research focus: psychometrics, theories of intelligence, digital assessments.",
+            "Professor of Psychological Methodology and Assessment, LMU Munich. Research on intelligence, attention, and psychological diagnostics. Former president of the German Psychological Society.",
           email: "markus.buehner@2chub.com",
         },
         {
           name: "Dr. Yannik Terhorst",
           role: "Co-founder – Clinical Psychology & Digital Health",
           background:
-            "Researcher in clinical psychology and psychotherapy. Focus on digital interventions, mobile health, and ecological momentary assessment.",
+            "M.Sc. Psychology, Dr. rer. nat. Researcher at the intersection of clinical psychology, AI, and digital healthcare. Focus on eHealth, mHealth, and data-driven psychotherapy.",
           email: "yannik.terhorst@2chub.com",
         },
         {
           name: "Leon Paletta",
           role: "Co-founder – Platform & Data",
           background:
-            "M.Sc. Robotics & AI, B.Sc. Engineering Science. Platform architecture, data engineering, and product.",
+            "M.Sc. Robotics & AI, TU Munich. Co-founder of THEO Labs. Focus on artificial intelligence applications, machine learning, and intelligent systems.",
+          email: "leon.paletta@2chub.com",
         },
         {
           name: "Till-Ole Lohse",
           role: "Co-founder – Engineering",
           background:
-            "B.Sc. Computer Science, B.Sc. Management. System architecture, infrastructure, and hardware integration.",
+            "TU Munich. Co-founder of THEO Labs. Responsible for product development and technical implementation at the intersection of AI and real-world application.",
+          email: "till-ole.lohse@2chub.com",
         },
       ],
     },

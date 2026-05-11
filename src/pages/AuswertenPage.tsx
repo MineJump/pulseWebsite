@@ -68,19 +68,6 @@ export function AuswertenPage() {
               className="mt-10 flex flex-col sm:flex-row gap-4"
             >
               <a
-                href="#beispielstudien"
-                className="inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-opacity rounded-full"
-                style={{
-                  backgroundColor: "var(--btn-primary-bg)",
-                  color: "var(--btn-primary-fg)",
-                  fontFamily: "'IBM Plex Mono', monospace",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-              >
-                Beispielanalyse ansehen
-              </a>
-              <a
                 href="https://app.pulse-research.de"
                 className="liquid-glass inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-all hover:-translate-y-[1px] rounded-full"
                 style={{ color: "var(--ink)", fontFamily: "'IBM Plex Mono', monospace" }}
@@ -163,57 +150,6 @@ export function AuswertenPage() {
                 >
                   {fmt}
                 </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Wissenschaftlicher Hintergrund */}
-        <section className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28">
-          <div className="max-w-[900px] mx-auto">
-            <h2 className="mb-10">Wissenschaftlicher Hintergrund</h2>
-            <div className="flex flex-col gap-8">
-              {[
-                { title: "Multilevel Modeling", author: "nach Bolger & Laurenceau (2013)", desc: "Trennung von Within- und Between-Personen-Effekten in intensiven Längsschnittdaten aus ESM und Sensing." },
-                { title: "Dynamic Structural Equation Modeling (DSEM)", author: "nach Asparouhov et al. (2018)", desc: "Zeitreihenbasierte Mehrebenenmodelle für autoregressive und Cross-Lagged-Prozesse auf Personenebene." },
-                { title: "Machine Learning für Verhaltensdaten", author: "nach Harari et al. (2020)", desc: "Klassifikation und Prädiktion auf Basis von Sensorfeatures – psychologisch interpretierbar und reproduzierbar." },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={initial}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.07 }}
-                  className="border-l-2 pl-6"
-                  style={{ borderColor: "var(--accent)" }}
-                >
-                  <p className="text-xs uppercase tracking-[0.18em] mb-1" style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}>{item.author}</p>
-                  <h3 className="text-lg mb-2">{item.title}</h3>
-                  <p className="leading-relaxed" style={{ color: "var(--text-muted)" }}>{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Beispielstudien */}
-        <section id="beispielstudien" className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28" style={{ backgroundColor: "var(--bg-elev)" }}>
-          <div className="max-w-[900px] mx-auto">
-            <h2 className="mb-10">Beispielstudien</h2>
-            <div className="flex flex-col gap-6">
-              {["Multilevel-Analyse von Affektdynamiken", "ML-Klassifikation von Stresszuständen aus Sensordaten", "DSEM: Autoregressive Prozesse bei Angststörungen"].map((title, i) => (
-                <div key={i} className="liquid-glass rounded-xl p-6 flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-base mb-3">{title}</h3>
-                    <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>Beispielinhalt – wird mit Analysedetails befüllt.</p>
-                  </div>
-                  <button
-                    className="flex-shrink-0 text-xs uppercase tracking-[0.12em] px-3 py-1.5 rounded-full border transition-opacity hover:opacity-70"
-                    style={{ borderColor: "var(--border)", color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
-                  >
-                    Vorlage öffnen
-                  </button>
-                </div>
               ))}
             </div>
           </div>

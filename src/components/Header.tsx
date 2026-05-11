@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 import { useTranslation } from "../i18n";
 
@@ -30,9 +30,7 @@ function NavLink({
 export function Header() {
   const { t, language, toggleLanguage } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
-  const [methodenOpen, setMethodenOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 12);
@@ -40,26 +38,6 @@ export function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setMethodenOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const methodeItems = [
-    { label: t.nav.befragen, href: "/methoden/befragen", tag: "ESM / EMA" },
-    { label: t.nav.beobachten, href: "/methoden/beobachten", tag: "Passive Sensing" },
-    { label: t.nav.intervenieren, href: "/methoden/intervenieren", tag: "Interventionen" },
-    { label: t.nav.auswerten, href: "/methoden/auswerten", tag: "Analyse" },
-  ];
-
-  const isMethodenActive =
-    currentPath === "/methoden" || currentPath.startsWith("/methoden/");
 
   return (
     <header
@@ -74,83 +52,7 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-7 text-sm flex-1 justify-center">
-          {/* Methoden dropdown */}
-          <div
-            ref={dropdownRef}
-            className="relative"
-            onMouseEnter={() => setMethodenOpen(true)}
-            onMouseLeave={() => setMethodenOpen(false)}
-          >
-            <a
-              href="/methoden"
-              className="flex items-center gap-1 transition-opacity hover:opacity-70"
-              style={{
-                color: isMethodenActive ? "var(--ink)" : "var(--text-muted)",
-                fontWeight: isMethodenActive ? 500 : undefined,
-              }}
-            >
-              {t.nav.methoden}
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                className="transition-transform duration-200"
-                style={{ transform: methodenOpen ? "rotate(180deg)" : "rotate(0deg)" }}
-              >
-                <path
-                  d="M2 4l4 4 4-4"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-
-            {methodenOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[420px]">
-              <div
-                className="liquid-glass rounded-xl p-2 shadow-lg"
-                style={{ borderColor: "var(--border)" }}
-              >
-                <div className="grid grid-cols-2 gap-1">
-                  {methodeItems.map((item) => {
-                    const active = currentPath === item.href;
-                    return (
-                      <a
-                        key={item.href}
-                        href={item.href}
-                        className="flex flex-col gap-1 px-4 py-3 rounded-lg transition-colors hover:bg-white/60"
-                        style={{
-                          backgroundColor: active ? "rgba(255,255,255,0.7)" : undefined,
-                        }}
-                        onClick={() => setMethodenOpen(false)}
-                      >
-                        <span
-                          className="text-[10px] uppercase tracking-[0.18em]"
-                          style={{
-                            color: "var(--accent)",
-                            fontFamily: "'IBM Plex Mono', monospace",
-                          }}
-                        >
-                          {item.tag}
-                        </span>
-                        <span
-                          className="text-sm font-medium"
-                          style={{ color: "var(--ink)" }}
-                        >
-                          {item.label}
-                        </span>
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
-              </div>
-            )}
-          </div>
-
+          <NavLink href="/methoden">{t.nav.methoden}</NavLink>
           <NavLink href="/features">{t.nav.features}</NavLink>
           <NavLink href="/ueber-uns">{t.nav.ueber_uns}</NavLink>
         </nav>
@@ -242,19 +144,6 @@ export function Header() {
           >
             {t.nav.methoden}
           </a>
-          <div className="pl-4 flex flex-col gap-3">
-            {methodeItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-sm py-1"
-                style={{ color: "var(--text-muted)" }}
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
           <a
             href="/features"
             className="text-sm py-1"
