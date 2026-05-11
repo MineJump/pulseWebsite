@@ -5,13 +5,54 @@ import { BlurOrbsField } from "../components/BlurOrbsField";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import { useTranslation } from "../i18n";
 
-const dataStreams = [
-  { label: "Akzelerometer, Gyroskop, Schrittzähler", detail: "Bewegung & körperliche Aktivität" },
-  { label: "GPS, WLAN, Bluetooth", detail: "Standort & Mobilität (konfigurierbare Auflösung)" },
-  { label: "Wearables: Herzrate, HRV, Hauttemperatur, SpO₂", detail: "Physiologische Indikatoren" },
-  { label: "Bildschirmzeit, App-Kategorien, Unlock-Frequenz", detail: "Medien- & Gerätenutzung" },
-  { label: "Anruf- und Nachrichten-Metadaten", detail: "Datenschutzkonform – nur Metadaten, keine Inhalte" },
-  { label: "Mikrofon: Lautstärke-Aggregat", detail: "Ohne Aufnahme, nur Umgebungslautstärke" },
+const platformPillars = [
+  {
+    title: "Passive Mobile Sensing",
+    desc: "Smartphone-Sensordaten kontinuierlich und mit minimaler Teilnehmer-Belastung im Hintergrund erfassen.",
+  },
+  {
+    title: "White-Label Study App",
+    desc: "App an Ihre Studie anpassen – von Branding bis zu Inhalten und Workflows.",
+  },
+  {
+    title: "Research Dashboard",
+    desc: "Studien, Teilnehmende und Datenqualität überwachen, Fortschritt in Echtzeit verfolgen.",
+  },
+  {
+    title: "Data Export & API-Ready",
+    desc: "Daten in Standardformaten exportieren oder via API in Ihre Systeme integrieren.",
+  },
+  {
+    title: "Privacy & Security by Design",
+    desc: "Privacy-by-Design, Verschlüsselung, rollenbasierter Zugriff und Compliance.",
+  },
+  {
+    title: "Science at Our Core",
+    desc: "Entwickelt von Forschenden, für Forschende. Auf bewährten Methoden aufgebaut.",
+  },
+];
+
+const sensingCategories = [
+  {
+    name: "Standort & Mobilität",
+    modules: ["Location Tracking", "Pedometer", "Activity Tracking"],
+  },
+  {
+    name: "Bewegung & Kontext",
+    modules: ["Motion Sensor", "Ambient Sound & Light", "Battery Monitoring"],
+  },
+  {
+    name: "Digitales Verhalten",
+    modules: ["Phone Call Events", "Screen Time & App Events", "PULSE Keyboard"],
+  },
+  {
+    name: "Gesundheit & Wearables",
+    modules: ["Apple Health / Health Connect", "Garmin Smartwatch Integration"],
+  },
+  {
+    name: "Konnektivität & Medien",
+    modules: ["Wi-Fi & Bluetooth", "Music Tracking", "Spotify History"],
+  },
 ];
 
 const privacyPoints = [
@@ -109,6 +150,49 @@ export function MethodenPage() {
           </div>
         </section>
 
+        {/* Platform pillars */}
+        <section className="w-full px-6 md:px-12 lg:px-16 pb-20 md:pb-28">
+          <div className="max-w-[1400px] mx-auto">
+            <motion.p
+              initial={initial}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-xs uppercase tracking-[0.2em] mb-4 inline-flex items-center gap-2"
+              style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
+            >
+              <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--accent)" }} />
+              Plattform
+            </motion.p>
+            <motion.h2
+              initial={initial}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+              className="mb-12 max-w-[780px]"
+            >
+              Alles, was Sie für Ihre Studie brauchen.
+            </motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {platformPillars.map((pillar, i) => (
+                <motion.div
+                  key={pillar.title}
+                  initial={initial}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: i * 0.06 }}
+                  className="liquid-glass rounded-xl p-6 flex flex-col gap-3"
+                >
+                  <h3 className="text-base" style={{ color: "var(--ink)" }}>{pillar.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                    {pillar.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Beobachten */}
         <section id="beobachten" className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28" style={{ backgroundColor: "var(--bg-elev)" }}>
           <div className="max-w-[900px] mx-auto">
@@ -119,23 +203,39 @@ export function MethodenPage() {
               Alltag zu erfassen. Die Sensorprofile sind datenschutzkonform konfigurierbar –
               mit Sampling-Raten, Aggregationsstufen und granularen Consent-Modulen.
             </p>
-            <h3 className="mb-6">Welche Datenströme PULSE erfasst</h3>
-            <div className="flex flex-col gap-3 mb-14">
-              {dataStreams.map((stream, i) => (
+            <h3 className="mb-2">14 Sensing-Module in 5 Kategorien</h3>
+            <p className="mb-8 text-sm" style={{ color: "var(--text-muted)" }}>
+              iOS und Android. Modular aktivierbar – je nach Studiendesign und Consent.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-14">
+              {sensingCategories.map((cat, i) => (
                 <motion.div
-                  key={i}
+                  key={cat.name}
                   initial={initial}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.06 }}
-                  className="flex items-start gap-4 py-4 border-b"
-                  style={{ borderColor: "var(--border)" }}
+                  className="rounded-xl p-5"
+                  style={{ backgroundColor: "white", border: "1px solid var(--border)" }}
                 >
-                  <span className="mt-1 w-4 h-4 flex-shrink-0 rounded-full border-2" style={{ borderColor: "var(--accent)" }} />
-                  <div>
-                    <p className="font-medium mb-0.5" style={{ color: "var(--ink)" }}>{stream.label}</p>
-                    <p className="text-sm" style={{ color: "var(--text-muted)" }}>{stream.detail}</p>
-                  </div>
+                  <p
+                    className="text-xs uppercase tracking-[0.18em] mb-3"
+                    style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
+                  >
+                    {cat.name}
+                  </p>
+                  <ul className="flex flex-col gap-1.5">
+                    {cat.modules.map((m) => (
+                      <li
+                        key={m}
+                        className="text-sm flex items-start gap-2"
+                        style={{ color: "var(--ink)" }}
+                      >
+                        <span className="mt-1.5 w-1 h-1 flex-shrink-0 rounded-full" style={{ backgroundColor: "var(--accent)" }} />
+                        {m}
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
               ))}
             </div>
