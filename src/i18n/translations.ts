@@ -4,10 +4,6 @@ export const translations: Record<Language, Translations> = {
   de: {
     nav: {
       methoden: "Methoden",
-      befragen: "Befragen",
-      beobachten: "Beobachten",
-      intervenieren: "Intervenieren",
-      auswerten: "Auswerten",
       features: "Features & Pricing",
       ueber_uns: "Über uns",
       login: "Login",
@@ -43,9 +39,9 @@ export const translations: Record<Language, Translations> = {
             "Von Rohdaten zur Erkenntnis – automatisiert, reproduzierbar und publikationsreif exportierbar.",
         },
         {
-          title: "Top Preis-Leistungs-Verhältnis",
+          title: "DSGVO-konform & EU-gehostet",
           description:
-            "Zahlen Sie nur für das, was Sie brauchen. Alle Preise transparent, per Studie.",
+            "Hosting in der EU, verschlüsselte Übertragung, granulare Einwilligungen und vollständige DSGVO-Konformität.",
         },
       ],
     },
@@ -60,97 +56,6 @@ export const translations: Record<Language, Translations> = {
       intro:
         "PULSE deckt vier Forschungsmethoden ab: aktive Befragung im Alltag, automatische Sensordaten, digitale Interventionen und automatisierte Auswertung. Alles in einer Plattform.",
       cta: "Eigene Studie konfigurieren",
-      cards: [
-        {
-          title: "Befragen",
-          tag: "ESM / EMA",
-          description:
-            "Konfiguriere kontextsensitive Kurzfragen, event- oder intervallbasiertes Sampling, Branching-Logik und validierte Skalen.",
-          href: "/methoden/befragen",
-        },
-        {
-          title: "Beobachten",
-          tag: "Passive Sensing",
-          description:
-            "Aktiviere Sensorströme für Bewegung, Schlaf, Kommunikation und Mediennutzung. Sub-Millisekunden Datenschutzgranularität pro Studie.",
-          href: "/methoden/beobachten",
-        },
-        {
-          title: "Intervenieren",
-          tag: "Digitale Interventionen",
-          description:
-            "Definiere Trigger-Bedingungen für Just-in-Time-Interventions, randomisiere Interventionen und steuere das Studiendesign.",
-          href: "/methoden/intervenieren",
-        },
-        {
-          title: "Auswerten",
-          tag: "Automatisierte Analyse",
-          description:
-            "Deskriptive Statistik, Compliance-Reports, Mehrebenenmodelle direkt im Admin Panel. Export als CSV, SPSS oder direkt nach R.",
-          href: "/methoden/auswerten",
-        },
-      ],
-    },
-    research: {
-      eyebrow: "Was wir tun",
-      heading: "Vier Säulen unserer Forschung.",
-      intro:
-        "Das Center for Computation of Human Behavior kombiniert etablierte Methoden der Psychologie mit moderner Sensorik und Datenanalyse. Unsere Studien entstehen in Kooperation mit Universitäten, Kliniken und Unternehmen.",
-      items: [
-        {
-          number: "01",
-          title: "Experience Sampling.",
-          description:
-            "Kurze, kontextsensitive Fragebögen direkt im Alltag. Gedanken, Emotionen und Erfahrungen erfassen, ohne auf retrospektive Erinnerung angewiesen zu sein.",
-        },
-        {
-          number: "02",
-          title: "Passive Sensing.",
-          description:
-            "Bewegung, Standort, Aktivität, Kommunikation, Medienkonsum, Bildschirmzeit – hochfrequente, anonymisierte Verhaltensdaten direkt vom Smartphone.",
-        },
-        {
-          number: "03",
-          title: "Momentary Interventions.",
-          description:
-            "Digitale Interventionen im richtigen Moment – personalisiert, wissenschaftlich validiert und messbar in ihrer Wirkung.",
-        },
-        {
-          number: "04",
-          title: "Clinical & Applied Research.",
-          description:
-            "Studien zu psychischer Gesundheit, Arbeit, Bildung und Konsumverhalten. Von der Forschungsfrage bis zur publikationsreifen Auswertung.",
-        },
-      ],
-    },
-    platform: {
-      eyebrow: "Unsere Plattform",
-      heading: "PULSE.",
-      subheading: "Die Infrastruktur hinter jeder Studie.",
-      description:
-        "PULSE ist die vom Center for Computation of Human Behavior entwickelte Forschungsplattform für mobile Studien – mit einer iOS- und Android-App für Teilnehmende und einem Admin-Panel für Forschende. DSGVO-konform, gehostet in Europa, offen für Kooperationen.",
-      features: [
-        {
-          title: "Mobile App",
-          description:
-            "Native Apps für iOS und Android. Abfragen, Benachrichtigungen, Sensorzugriff, Offline-Support.",
-        },
-        {
-          title: "Admin Panel",
-          description:
-            "Studien konfigurieren, Fragebögen bauen, Teilnehmende verwalten, Daten exportieren. Ohne Code.",
-        },
-        {
-          title: "Passive Sensing",
-          description:
-            "Sensorik für Standort, Bewegung, Aktivität, Anrufe, Musik und Bildschirmzeit – transparent und konfigurierbar.",
-        },
-        {
-          title: "Datenschutz by Design",
-          description:
-            "Hosting in der EU, verschlüsselte Uploads, granulare Einwilligungen, DSGVO-konform.",
-        },
-      ],
     },
     team: {
       eyebrow: "Das Team",
@@ -206,10 +111,6 @@ export const translations: Record<Language, Translations> = {
   en: {
     nav: {
       methoden: "Methods",
-      befragen: "Survey",
-      beobachten: "Observe",
-      intervenieren: "Intervene",
-      auswerten: "Analyse",
       features: "Features & Pricing",
       ueber_uns: "About",
       login: "Login",
@@ -245,9 +146,9 @@ export const translations: Record<Language, Translations> = {
             "From raw data to insight – automated, reproducible and export-ready for publication.",
         },
         {
-          title: "Best Price-Performance Ratio",
+          title: "GDPR-compliant & EU-hosted",
           description:
-            "Pay only for what you need. All prices transparent, per study.",
+            "Hosted in the EU, encrypted transmission, granular consent and full GDPR compliance.",
         },
       ],
     },
@@ -262,97 +163,6 @@ export const translations: Record<Language, Translations> = {
       intro:
         "PULSE covers four research methods: active surveys in everyday life, automatic sensor data, digital interventions and automated analysis. All in one platform.",
       cta: "Configure your own study",
-      cards: [
-        {
-          title: "Survey",
-          tag: "ESM / EMA",
-          description:
-            "Configure context-sensitive short surveys, event- or interval-based sampling, branching logic and validated scales.",
-          href: "/methoden/befragen",
-        },
-        {
-          title: "Observe",
-          tag: "Passive Sensing",
-          description:
-            "Activate sensor streams for movement, sleep, communication and media use. Sub-millisecond privacy granularity per study.",
-          href: "/methoden/beobachten",
-        },
-        {
-          title: "Intervene",
-          tag: "Digital Interventions",
-          description:
-            "Define trigger conditions for just-in-time interventions, randomise interventions and control study design.",
-          href: "/methoden/intervenieren",
-        },
-        {
-          title: "Analyse",
-          tag: "Automated Analysis",
-          description:
-            "Descriptive statistics, compliance reports, multilevel models directly in the admin panel. Export as CSV, SPSS or R.",
-          href: "/methoden/auswerten",
-        },
-      ],
-    },
-    research: {
-      eyebrow: "What we do",
-      heading: "Four pillars of our research.",
-      intro:
-        "The Center for Computation of Human Behavior combines established psychological methods with modern sensing and data science. Our studies run in partnership with universities, clinics, and industry.",
-      items: [
-        {
-          number: "01",
-          title: "Experience Sampling.",
-          description:
-            "Brief, context-aware surveys delivered in the moment. Capture thoughts, emotions, and experiences without relying on retrospective recall.",
-        },
-        {
-          number: "02",
-          title: "Passive Sensing.",
-          description:
-            "Motion, location, activity, communication, media use, screen time – high-frequency, anonymised behavioural data straight from the phone.",
-        },
-        {
-          number: "03",
-          title: "Momentary Interventions.",
-          description:
-            "Digital interventions in the right moment – personalised, validated, and measurable in their effect.",
-        },
-        {
-          number: "04",
-          title: "Clinical & Applied Research.",
-          description:
-            "Studies on mental health, work, education, and consumer behaviour. From research question to publication-ready analysis.",
-        },
-      ],
-    },
-    platform: {
-      eyebrow: "Our platform",
-      heading: "PULSE.",
-      subheading: "The infrastructure behind every study.",
-      description:
-        "PULSE is the research platform built by the Center for Computation of Human Behavior – with native iOS and Android apps for participants and an admin panel for researchers. GDPR-compliant, hosted in Europe, open for collaboration.",
-      features: [
-        {
-          title: "Mobile App",
-          description:
-            "Native iOS and Android apps. Questionnaires, notifications, sensor access, offline support.",
-        },
-        {
-          title: "Admin Panel",
-          description:
-            "Configure studies, build questionnaires, manage participants, export data. No code required.",
-        },
-        {
-          title: "Passive Sensing",
-          description:
-            "Sensors for location, motion, activity, calls, music, and screen time – transparent and configurable.",
-        },
-        {
-          title: "Privacy by Design",
-          description:
-            "Hosted in the EU, encrypted uploads, granular consent, GDPR-compliant.",
-        },
-      ],
     },
     team: {
       eyebrow: "The team",

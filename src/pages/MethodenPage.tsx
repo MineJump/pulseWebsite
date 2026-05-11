@@ -26,10 +26,6 @@ const platformPillars = [
     title: "Privacy & Security by Design",
     desc: "Privacy-by-Design, Verschlüsselung, rollenbasierter Zugriff und Compliance.",
   },
-  {
-    title: "Science at Our Core",
-    desc: "Entwickelt von Forschenden, für Forschende. Auf bewährten Methoden aufgebaut.",
-  },
 ];
 
 const sensingCategories = [
@@ -239,10 +235,11 @@ export function MethodenPage() {
                 </motion.div>
               ))}
             </div>
-            <h3 className="mb-4">Privacy by Design</h3>
+            <h3 className="mb-4">Datenschutz im passiven Sensing</h3>
             <p className="mb-8 leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              Datenschutz ist kein Add-on, sondern Architekturprinzip. Jeder Datenstrom kann
-              individuell konfiguriert, pseudonymisiert und auf Teilnehmer-Ebene eingeschränkt werden.
+              Jeder Sensorstrom kann individuell konfiguriert, pseudonymisiert und auf
+              Teilnehmer-Ebene eingeschränkt werden. Die folgenden Schutzmaßnahmen greifen
+              bei jedem Sensing-Modul.
             </p>
             <div className="flex flex-col gap-4">
               {privacyPoints.map((point, i) => (
