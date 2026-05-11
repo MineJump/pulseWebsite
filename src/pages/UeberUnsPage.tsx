@@ -26,7 +26,7 @@ export function UeberUnsPage() {
               className="text-sm uppercase tracking-[0.22em] mb-6 inline-flex items-center gap-2.5"
               style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
             >
-              <span className="inline-block w-2 h-2 rounded-full" style={{ backgroundColor: "var(--accent)" }} />
+              <span className="inline-block w-2 h-2 rounded-full pulse-dot-shift" aria-hidden="true" />
               {up.eyebrow}
             </motion.p>
             <motion.h1

@@ -75,8 +75,8 @@ export function FeaturesPage() {
               style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
             >
               <span
-                className="inline-block w-2 h-2 rounded-full"
-                style={{ backgroundColor: "var(--accent)" }}
+                className="inline-block w-2 h-2 rounded-full pulse-dot-shift"
+                aria-hidden="true"
               />
               {fp.eyebrow}
             </motion.p>
