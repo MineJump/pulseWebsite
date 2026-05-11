@@ -13,7 +13,7 @@ export const translations: Record<Language, Translations> = {
       title: "Forschungsplattform\nfür mobile Studien.",
       subtitle: "Gebaut von Forschenden.",
       tagline:
-        "ESM und Passive Sensing – weniger Aufwand: bessere Daten, mehr Erkenntnisse.",
+        "PULSE ist eine dedizierte Forschungsplattform für passives mobiles Sensing, Digital Phenotyping und Ecological Momentary Assessment. Sie befähigt Forschungsteams, authentische Verhaltensdaten in realen Alltagskontexten zu erfassen und in evidenzbasierte Erkenntnisse zu überführen.",
       primaryCta: "Angebote vergleichen",
       secondaryCta: "Studie Konfigurieren",
     },
@@ -47,7 +47,21 @@ export const translations: Record<Language, Translations> = {
     },
     howItWorks: {
       heading: "So funktioniert PULSE",
-      steps: ["Studie konfigurieren", "Teilnehmende einladen", "Erkenntnisse gewinnen"],
+      subheading: "In drei Schritten zur laufenden Studie.",
+      steps: [
+        {
+          label: "Studie konfigurieren",
+          description: "ESM-Protokoll, Sensing-Module und Interventionslogik per Dashboard einrichten – ohne Programmieraufwand.",
+        },
+        {
+          label: "Teilnehmende einladen",
+          description: "Link oder QR-Code versenden. Die PULSE-App führt Teilnehmende durch Onboarding und Consent.",
+        },
+        {
+          label: "Erkenntnisse gewinnen",
+          description: "Live-Dashboard, automatisierte Analysen und publikationsreife Exporte – alles in einer Plattform.",
+        },
+      ],
       cta: "Jetzt Konfigurieren",
     },
     methoden: {
@@ -381,7 +395,7 @@ export const translations: Record<Language, Translations> = {
       title: "Research platform\nfor mobile studies.",
       subtitle: "Built by researchers.",
       tagline:
-        "ESM and Passive Sensing – less effort: better data, more insights.",
+        "PULSE is a dedicated research platform built for passive mobile sensing, digital phenotyping, and Ecological Momentary Assessment. It empowers research teams to capture authentic behavioral data in real-world contexts and translate that data into evidence-based insights that drive discovery.",
       primaryCta: "Compare Plans",
       secondaryCta: "Configure Study",
     },
@@ -415,7 +429,21 @@ export const translations: Record<Language, Translations> = {
     },
     howItWorks: {
       heading: "How PULSE works",
-      steps: ["Configure study", "Invite participants", "Gain insights"],
+      subheading: "Three steps to a running study.",
+      steps: [
+        {
+          label: "Configure study",
+          description: "Set up your ESM protocol, sensing modules and intervention logic via dashboard – no coding required.",
+        },
+        {
+          label: "Invite participants",
+          description: "Send a link or QR code. The PULSE app guides participants through onboarding and consent.",
+        },
+        {
+          label: "Gain insights",
+          description: "Live dashboard, automated analyses and publication-ready exports – all in one platform.",
+        },
+      ],
       cta: "Configure Now",
     },
     methoden: {

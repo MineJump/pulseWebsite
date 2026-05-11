@@ -67,8 +67,6 @@ function HomePage() {
       <Header />
       <main>
         <Hero />
-        <MarqueeContent />
-        <Testimonials />
         <USPs />
         <HowItWorks />
       </main>

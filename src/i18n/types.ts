@@ -80,7 +80,8 @@ export interface Translations {
   };
   howItWorks: {
     heading: string;
-    steps: string[];
+    subheading: string;
+    steps: { label: string; description: string }[];
     cta: string;
   };
   methoden: {
