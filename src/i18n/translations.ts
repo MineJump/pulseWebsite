@@ -188,6 +188,7 @@ export const translations: Record<Language, Translations> = {
       exportHeading: "Ihre Daten, Ihre Werkzeuge",
       exportBody:
         "Jeder Analysedurchlauf wird automatisch dokumentiert – Zeitstempel, Parameter, Datenstand und Diff-Ansicht zu früheren Durchläufen.",
+      exportFormatsNote: "Alle Daten sind direkt für moderne Statistik-Software optimiert und sofort einsatzbereit.",
     },
     featuresPage: {
       eyebrow: "Features & Pricing",
@@ -570,6 +571,7 @@ export const translations: Record<Language, Translations> = {
       exportHeading: "Your data, your tools",
       exportBody:
         "Every analysis run is automatically documented – timestamps, parameters, data state and a diff view against previous runs.",
+      exportFormatsNote: "All data is optimised for modern statistical software and ready to use immediately.",
     },
     featuresPage: {
       eyebrow: "Features & Pricing",

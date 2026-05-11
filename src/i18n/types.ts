@@ -124,6 +124,7 @@ export interface Translations {
     analysisTag: string;
     exportHeading: string;
     exportBody: string;
+    exportFormatsNote: string;
   };
   featuresPage: {
     eyebrow: string;

@@ -299,21 +299,63 @@ export function MethodenPage() {
                 </motion.div>
               ))}
             </div>
-            <h3 className="mb-4">{mp.exportHeading}</h3>
-            <p className="mb-8 leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              {mp.exportBody}
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {exportFormats.map((fmt) => (
+            <motion.div
+              initial={initial}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden"
+              style={{ border: "1px solid var(--border)" }}
+            >
+              {/* Left: dark card */}
+              <div
+                className="relative p-8 md:p-10 flex flex-col justify-between gap-8 overflow-hidden"
+                style={{ backgroundColor: "var(--brand-blue)" }}
+              >
                 <span
-                  key={fmt}
-                  className="px-4 py-2 rounded-full text-sm"
-                  style={{ border: "1px solid var(--border)", color: "var(--ink)", fontFamily: "'IBM Plex Mono', monospace" }}
+                  className="absolute -bottom-6 -right-6 text-[10rem] font-bold leading-none select-none pointer-events-none opacity-[0.06]"
+                  style={{ color: "#fff", fontFamily: "'IBM Plex Mono', monospace" }}
+                  aria-hidden="true"
                 >
-                  {fmt}
+                  { }
                 </span>
-              ))}
-            </div>
+                <h3 className="text-2xl md:text-3xl leading-snug" style={{ color: "#fff", fontWeight: 500 }}>
+                  {mp.exportHeading}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+                  {mp.exportBody}
+                </p>
+              </div>
+
+              {/* Right: light card */}
+              <div className="p-8 md:p-10 flex flex-col gap-6" style={{ backgroundColor: "var(--bg-elev)" }}>
+                <p
+                  className="text-xs uppercase tracking-[0.2em]"
+                  style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
+                >
+                  Export-Formate
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {exportFormats.map((fmt) => (
+                    <span
+                      key={fmt}
+                      className="px-3 py-1.5 rounded-full text-xs"
+                      style={{
+                        border: "1px solid var(--border-strong)",
+                        color: "var(--ink)",
+                        fontFamily: "'IBM Plex Mono', monospace",
+                        backgroundColor: "rgba(255,255,255,0.6)",
+                      }}
+                    >
+                      {fmt}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  {mp.exportFormatsNote}
+                </p>
+              </div>
+            </motion.div>
           </div>
         </section>
       </main>
