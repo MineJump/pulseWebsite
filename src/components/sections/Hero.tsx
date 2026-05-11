@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 import { useTranslation } from "../../i18n";
-import { BlurOrbsField } from "../BlurOrbsField";
 import { MergingBlobs } from "../MergingBlobs";
 
 export function Hero() {
