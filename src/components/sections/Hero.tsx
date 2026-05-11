@@ -66,7 +66,7 @@ export function Hero() {
           className="mt-12 flex flex-col sm:flex-row gap-4"
         >
           <a
-            href="/methoden"
+            href="/features"
             className="inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-opacity rounded-full"
             style={{
               backgroundColor: "var(--btn-primary-bg)",
@@ -78,16 +78,6 @@ export function Hero() {
           >
             {t.hero.primaryCta}
             <span className="ml-2">→</span>
-          </a>
-          <a
-            href="https://app.pulse-research.de"
-            className="liquid-glass inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-all hover:-translate-y-[1px] rounded-full"
-            style={{
-              color: "var(--ink)",
-              fontFamily: "'IBM Plex Mono', monospace",
-            }}
-          >
-            {t.hero.secondaryCta}
           </a>
         </motion.div>
       </div>

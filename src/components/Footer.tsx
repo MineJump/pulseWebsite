@@ -91,13 +91,6 @@ export function Footer() {
 
           <div className="flex flex-wrap items-center gap-5">
             <a
-              href="https://docs.pulse-research.de"
-              className="text-sm py-1 transition-opacity duration-200 hover:opacity-70"
-              style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
-            >
-              {t.footer.docs}
-            </a>
-            <a
               href={`mailto:${t.contact.email}`}
               className="text-sm py-1 transition-opacity duration-200 hover:opacity-70"
               style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}

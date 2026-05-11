@@ -14,7 +14,7 @@ export const translations: Record<Language, Translations> = {
       subtitle: "Gebaut von Forschenden.",
       tagline:
         "ESM und Passive Sensing – weniger Aufwand: bessere Daten, mehr Erkenntnisse.",
-      primaryCta: "Use Cases",
+      primaryCta: "Angebote vergleichen",
       secondaryCta: "Studie Konfigurieren",
     },
     testimonials: {
@@ -345,12 +345,12 @@ export const translations: Record<Language, Translations> = {
       ],
     },
     contact: {
-      heading: "Gemeinsam forschen.",
+      heading: "Bereit zu erkunden, was PULSE für Ihre Organisation leisten kann?",
       subheading:
-        "Ob Forschungskooperation, klinische Studie oder Auftragsforschung – sprechen Sie uns an.",
+        "Wir freuen uns auf Forschungskooperationen, klinische Partnerschaften und strategische Anfragen.",
       email: "info@2chub.com",
       location: "München",
-      cta: "Kontakt aufnehmen",
+      cta: "Team kontaktieren",
     },
     footer: {
       legalName: "2chub – Center for Computation of Human Behavior",
@@ -382,7 +382,7 @@ export const translations: Record<Language, Translations> = {
       subtitle: "Built by researchers.",
       tagline:
         "ESM and Passive Sensing – less effort: better data, more insights.",
-      primaryCta: "Use Cases",
+      primaryCta: "Compare Plans",
       secondaryCta: "Configure Study",
     },
     testimonials: {
@@ -713,12 +713,12 @@ export const translations: Record<Language, Translations> = {
       ],
     },
     contact: {
-      heading: "Want to run a study?",
+      heading: "Ready to explore what PULSE can do for your organization?",
       subheading:
-        "Research collaborations, clinical trials, commissioned research – we listen.",
+        "We welcome research collaborations, clinical partnerships, and strategic inquiries.",
       email: "info@2chub.com",
       location: "Munich, Germany",
-      cta: "Get in touch",
+      cta: "Contact Our Team",
     },
     footer: {
       legalName: "2chub – Center for Computation of Human Behavior",
