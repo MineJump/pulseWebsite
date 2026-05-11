@@ -11,7 +11,7 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="relative w-full px-6 md:px-12 lg:px-16 pt-24 md:pt-32 lg:pt-40 pb-10 overflow-hidden"
+      className="relative w-full px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-10 overflow-hidden"
     >
       <BlurOrbsField intensity="subtle" />
       <div className="relative z-10 max-w-[1400px] mx-auto">

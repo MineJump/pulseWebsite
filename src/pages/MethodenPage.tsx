@@ -353,7 +353,7 @@ export function MethodenPage() {
         </section>
 
         {/* Auswerten */}
-        <section id="auswerten" className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28">
+        <section id="auswerten" className="w-full px-6 md:px-12 lg:px-16 pt-20 md:pt-28 pb-12">
           <div className="max-w-[900px] mx-auto">
             <SectionTag>Analyse</SectionTag>
             <h2 className="mb-4">Von Rohdaten zur Erkenntnis. Automatisiert und reproduzierbar.</h2>
@@ -417,29 +417,6 @@ export function MethodenPage() {
                 </span>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28" style={{ backgroundColor: "var(--bg-elev)" }}>
-          <div className="max-w-[900px] mx-auto flex justify-center">
-            <motion.a
-              initial={initial}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              href="https://app.pulse-research.de"
-              className="inline-flex items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.12em] transition-opacity rounded-full"
-              style={{
-                backgroundColor: "var(--btn-primary-bg)",
-                color: "var(--btn-primary-fg)",
-                fontFamily: "'IBM Plex Mono', monospace",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-            >
-              {t.methoden.cta} <span className="ml-2">→</span>
-            </motion.a>
           </div>
         </section>
       </main>
