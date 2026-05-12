@@ -5,7 +5,7 @@ export function Logo() {
       className="inline-flex items-center gap-3 transition-opacity duration-200 hover:opacity-80"
       aria-label="PULSE by 2CHUB"
     >
-      <span className="inline-flex items-center gap-1.5">
+      <span className="inline-flex items-center gap-0.5">
         <img
           src="/logo-2chub2.svg"
           alt="2CHUB"
