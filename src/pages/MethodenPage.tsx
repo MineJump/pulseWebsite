@@ -1,4 +1,14 @@
 import { motion } from "framer-motion";
+import { Smartphone, Palette, LayoutDashboard, Download, ShieldCheck, Wrench } from "lucide-react";
+
+const pillarIcons = [Smartphone, Palette, LayoutDashboard, Download, ShieldCheck];
+const pillarSpan = [
+  "lg:col-span-2",
+  "lg:col-span-1",
+  "lg:col-span-1",
+  "lg:col-span-2",
+  "sm:col-span-2 lg:col-span-3",
+];
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { BlurOrbsField } from "../components/BlurOrbsField";
@@ -86,22 +96,44 @@ export function MethodenPage() {
             >
               {mp.platformHeading}
             </motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {mp.pillars.map((pillar, i) => (
-                <motion.div
-                  key={pillar.title}
-                  initial={initial}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.5, delay: i * 0.06 }}
-                  className="liquid-glass rounded-xl p-6 flex flex-col gap-3"
-                >
-                  <h3 className="text-base" style={{ color: "var(--ink)" }}>{pillar.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                    {pillar.desc}
-                  </p>
-                </motion.div>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {mp.pillars.map((pillar, i) => {
+                const Icon = pillarIcons[i];
+                const isWide = i === 0 || i === 3;
+                const isFull = i === 4;
+                return (
+                  <motion.div
+                    key={pillar.title}
+                    initial={initial}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.5, delay: i * 0.07 }}
+                    className={`liquid-glass rounded-2xl flex ${isFull ? "flex-col md:flex-row md:items-center gap-8 md:gap-12" : "flex-col gap-4"} ${isWide || isFull ? "p-8 md:p-10" : "p-6 md:p-7"} ${pillarSpan[i]}`}
+                    style={isFull ? { backgroundColor: "var(--brand-blue)" } : {}}
+                  >
+                    <div className={`flex ${isFull ? "flex-col gap-4 md:min-w-[260px]" : "flex-col gap-4"}`}>
+                      <div
+                        className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                        style={{ backgroundColor: isFull ? "rgba(255,255,255,0.12)" : "rgba(13,35,66,0.08)" }}
+                      >
+                        <Icon size={20} style={{ color: isFull ? "rgba(255,255,255,0.9)" : "var(--brand-blue)" }} strokeWidth={1.5} />
+                      </div>
+                      <h3
+                        className={isWide || isFull ? "text-xl" : "text-base"}
+                        style={{ color: isFull ? "#fff" : "var(--ink)" }}
+                      >
+                        {pillar.title}
+                      </h3>
+                    </div>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: isFull ? "rgba(255,255,255,0.6)" : "var(--text-muted)" }}
+                    >
+                      {pillar.desc}
+                    </p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -304,35 +336,42 @@ export function MethodenPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden"
-              style={{ border: "1px solid var(--border)" }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-4"
             >
               {/* Left: dark card */}
               <div
-                className="relative p-8 md:p-10 flex flex-col justify-between gap-8 overflow-hidden"
+                className="relative rounded-2xl p-10 md:p-12 flex flex-col justify-between gap-10 overflow-hidden min-h-[280px]"
                 style={{ backgroundColor: "var(--brand-blue)" }}
               >
-                <span
-                  className="absolute -bottom-6 -right-6 text-[10rem] font-bold leading-none select-none pointer-events-none opacity-[0.06]"
-                  style={{ color: "#fff", fontFamily: "'IBM Plex Mono', monospace" }}
+                {/* Background icon */}
+                <Wrench
+                  size={180}
+                  strokeWidth={1}
+                  className="absolute -top-6 -right-6 pointer-events-none select-none"
+                  style={{ color: "rgba(255,255,255,0.07)" }}
                   aria-hidden="true"
+                />
+                <h2
+                  className="relative z-10 leading-tight"
+                  style={{ color: "#fff", fontWeight: 600, fontSize: "clamp(1.6rem, 3.2vw, 2.4rem)" }}
                 >
-                  { }
-                </span>
-                <h3 className="text-2xl md:text-3xl leading-snug" style={{ color: "#fff", fontWeight: 500 }}>
                   {mp.exportHeading}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+                </h2>
+                <p className="relative z-10 text-sm leading-relaxed max-w-[360px]" style={{ color: "rgba(255,255,255,0.55)" }}>
                   {mp.exportBody}
                 </p>
               </div>
 
-              {/* Right: light card */}
-              <div className="p-8 md:p-10 flex flex-col gap-6" style={{ backgroundColor: "var(--bg-elev)" }}>
+              {/* Right: light card with accent border */}
+              <div
+                className="rounded-2xl p-10 md:p-12 flex flex-col justify-center gap-6"
+                style={{ border: "1px solid var(--accent)", backgroundColor: "var(--bg)" }}
+              >
                 <p
-                  className="text-xs uppercase tracking-[0.2em]"
+                  className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em]"
                   style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
                 >
+                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "var(--accent)" }} />
                   Export-Formate
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -344,7 +383,7 @@ export function MethodenPage() {
                         border: "1px solid var(--border-strong)",
                         color: "var(--ink)",
                         fontFamily: "'IBM Plex Mono', monospace",
-                        backgroundColor: "rgba(255,255,255,0.6)",
+                        backgroundColor: "rgba(255,255,255,0.8)",
                       }}
                     >
                       {fmt}
