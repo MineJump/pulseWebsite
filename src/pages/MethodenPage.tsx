@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Smartphone, Palette, LayoutDashboard, Download, ShieldCheck, Wrench } from "lucide-react";
+import { Smartphone, Palette, LayoutDashboard, Download, ShieldCheck, Wrench, MapPin, Footprints, Activity, Waves, Volume2, BatteryMedium, Phone, Monitor, Keyboard, Heart, Watch, Wifi, Music, Headphones } from "lucide-react";
 
 const pillarIcons = [Smartphone, Palette, LayoutDashboard, Download, ShieldCheck];
 const pillarSpan = [
@@ -16,6 +16,23 @@ import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import { useTranslation } from "../i18n";
 
 const exportFormats = ["CSV", "R-Dataset (.rds)", "SPSS (.sav)", "JSON", "REST-API"];
+
+const MODULE_ICONS: Record<string, React.ElementType> = {
+  "Location Tracking": MapPin,
+  "Pedometer": Footprints,
+  "Activity Tracking": Activity,
+  "Motion Sensor": Waves,
+  "Ambient Sound & Light": Volume2,
+  "Battery Monitoring": BatteryMedium,
+  "Phone Call Events": Phone,
+  "Screen Time & App Events": Monitor,
+  "PULSE Keyboard": Keyboard,
+  "Apple Health / Health Connect": Heart,
+  "Garmin Smartwatch Integration": Watch,
+  "Wi-Fi & Bluetooth": Wifi,
+  "Music Tracking": Music,
+  "Spotify History": Headphones,
+};
 
 function SectionTag({ children }: { children: React.ReactNode }) {
   return (
@@ -181,13 +198,14 @@ export function MethodenPage() {
                           whileInView={{ opacity: 1, scale: 1 }}
                           viewport={{ once: true }}
                           transition={{ duration: 0.3, delay: i * 0.07 + mi * 0.05 }}
-                          className="px-3 py-1.5 rounded-full text-xs"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs"
                           style={{
                             backgroundColor: `${color}12`,
                             color: "var(--ink)",
                             border: `1px solid ${color}30`,
                           }}
                         >
+                          {(() => { const Icon = MODULE_ICONS[m]; return Icon ? <Icon size={11} style={{ color, flexShrink: 0 }} strokeWidth={1.8} /> : null; })()}
                           {m}
                         </motion.span>
                       ))}
