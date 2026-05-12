@@ -150,37 +150,51 @@ export function MethodenPage() {
             <p className="mb-8 text-sm" style={{ color: "var(--text-muted)" }}>
               {mp.sensingModulesNote}
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-14">
-              {mp.sensingCategories.map((cat, i) => (
-                <motion.div
-                  key={cat.name}
-                  initial={initial}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.06 }}
-                  className="rounded-xl p-5"
-                  style={{ backgroundColor: "white", border: "1px solid var(--border)" }}
-                >
-                  <p
-                    className="text-xs uppercase tracking-[0.18em] mb-3"
-                    style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
+            <div className="mb-14">
+              {mp.sensingCategories.map((cat, i) => {
+                const colors = ["#FF9242", "#43C6AC", "#4B6BFB", "#8B5CF6", "#0D9488"];
+                const color = colors[i % colors.length];
+                return (
+                  <motion.div
+                    key={cat.name}
+                    initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: i * 0.07 }}
+                    className="py-4"
+                    style={{ borderBottom: "1px solid var(--border)" }}
                   >
-                    {cat.name}
-                  </p>
-                  <ul className="flex flex-col gap-1.5">
-                    {cat.modules.map((m) => (
-                      <li
-                        key={m}
-                        className="text-sm flex items-start gap-2"
-                        style={{ color: "var(--ink)" }}
+                    <div className="flex items-center gap-2.5 mb-3">
+                      <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: color }} />
+                      <p
+                        className="text-xs uppercase tracking-[0.2em]"
+                        style={{ color, fontFamily: "'IBM Plex Mono', monospace" }}
                       >
-                        <span className="mt-1.5 w-1 h-1 flex-shrink-0 rounded-full" style={{ backgroundColor: "var(--accent)" }} />
-                        {m}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
+                        {cat.name}
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {cat.modules.map((m, mi) => (
+                        <motion.span
+                          key={m}
+                          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, scale: 0.92 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.3, delay: i * 0.07 + mi * 0.05 }}
+                          className="px-3 py-1.5 rounded-full text-xs"
+                          style={{
+                            backgroundColor: `${color}12`,
+                            color: "var(--ink)",
+                            border: `1px solid ${color}30`,
+                          }}
+                        >
+                          {m}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
             <h3 className="mb-4">{mp.sensingPrivacyHeading}</h3>
             <p className="mb-8 leading-relaxed" style={{ color: "var(--text-muted)" }}>
