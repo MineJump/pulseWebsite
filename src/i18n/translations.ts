@@ -312,6 +312,7 @@ export const translations: Record<Language, Translations> = {
         "PULSE entsteht am 2CHUB, dem Center for Computation of Human Behavior. Wir sind ein unabhängiges Forschungsinstitut für mobile Studien, Experience Sampling und Passive Sensing. PULSE ist das Werkzeug, das wir selbst gebraucht hätten.",
       milestonesHeading: "Meilensteine",
       timeline: [
+        { year: "xxxx", event: "Start von PhoneStudy: Grundlagenforschung zu mobilem Sensing an der LMU München – Ausgangspunkt für 2CHUB und PULSE." },
         { year: "2021", event: "Gründung des 2CHUB am Department Psychologie der LMU München." },
         { year: "2022", event: "Erste PULSE-Pilotstudien mit externen Forschungspartnern." },
         { year: "2023", event: "Launch der PULSE-Plattform mit ESM und Passive Sensing." },
@@ -691,6 +692,7 @@ export const translations: Record<Language, Translations> = {
         "PULSE is developed at the 2CHUB, the Center for Computation of Human Behavior. We are an independent research institute for mobile studies, experience sampling and passive sensing. PULSE is the tool we wished we'd had.",
       milestonesHeading: "Milestones",
       timeline: [
+        { year: "xxxx", event: "Launch of PhoneStudy: foundational research on mobile sensing at LMU Munich – the origin of 2CHUB and PULSE." },
         { year: "2021", event: "Foundation of 2CHUB at the Department of Psychology, LMU Munich." },
         { year: "2022", event: "First PULSE pilot studies with external research partners." },
         { year: "2023", event: "Launch of the PULSE platform with ESM and Passive Sensing." },
