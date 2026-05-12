@@ -4,6 +4,7 @@ import { Footer } from "../components/Footer";
 import { BlurOrbsField } from "../components/BlurOrbsField";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import { useTranslation } from "../i18n";
+import { TimelineDiagram } from "../components/diagrams/TimelineDiagram";
 
 export function UeberUnsPage() {
   const { t } = useTranslation();
@@ -48,40 +49,21 @@ export function UeberUnsPage() {
           </div>
         </section>
 
+        {/* 2CHUB */}
+        <section className="w-full px-6 md:px-12 lg:px-16 py-16 md:py-20">
+          <div className="max-w-[900px] mx-auto">
+            <h2 className="mb-6">{up.chubHeading}</h2>
+            <p className="text-lg leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              {up.chubBody}
+            </p>
+          </div>
+        </section>
+
         {/* Timeline */}
         <section className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28" style={{ backgroundColor: "var(--bg-elev)" }}>
           <div className="max-w-[900px] mx-auto">
             <h2 className="mb-12">{up.milestonesHeading}</h2>
-            <div className="relative flex flex-col gap-0">
-              <div
-                className="absolute left-[3.5rem] top-0 bottom-0 w-px"
-                style={{ backgroundColor: "var(--border)" }}
-              />
-              {up.timeline.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={initial}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="flex items-start gap-8 pb-10"
-                >
-                  <span
-                    className="flex-shrink-0 w-14 text-sm text-right"
-                    style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
-                  >
-                    {item.year}
-                  </span>
-                  <div
-                    className="flex-shrink-0 w-3 h-3 rounded-full mt-1 relative z-10"
-                    style={{ backgroundColor: "var(--accent)" }}
-                  />
-                  <p className="leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                    {item.event}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+            <TimelineDiagram />
           </div>
         </section>
 
@@ -151,15 +133,6 @@ export function UeberUnsPage() {
           </div>
         </section>
 
-        {/* 2CHUB */}
-        <section className="w-full px-6 md:px-12 lg:px-16 py-20 md:py-28" style={{ backgroundColor: "var(--bg-elev)" }}>
-          <div className="max-w-[900px] mx-auto">
-            <h2 className="mb-6">{up.chubHeading}</h2>
-            <p className="text-lg leading-relaxed mb-12" style={{ color: "var(--text-muted)" }}>
-              {up.chubBody}
-            </p>
-          </div>
-        </section>
       </main>
       <Footer />
     </>

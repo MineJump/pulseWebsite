@@ -5,6 +5,7 @@ import { Footer } from "../components/Footer";
 import { BlurOrbsField } from "../components/BlurOrbsField";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import { useTranslation } from "../i18n";
+import { PricingMatrix } from "../components/diagrams/PricingMatrix";
 
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -51,7 +52,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 }
 
 export function FeaturesPage() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const prefersReducedMotion = usePrefersReducedMotion();
   const initial = prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 };
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
@@ -282,6 +283,23 @@ export function FeaturesPage() {
           )}
         </AnimatePresence>
 
+        {/* Feature comparison matrix */}
+        <section className="w-full px-6 md:px-12 lg:px-16 py-14 md:py-20">
+          <div className="max-w-[1400px] mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55 }}
+              className="mb-10"
+              style={{ fontSize: "clamp(1.25rem, 2vw, 1.6rem)" }}
+            >
+              {language === "de" ? "Plan-Vergleich im Überblick" : "Plan comparison at a glance"}
+            </motion.h2>
+            <PricingMatrix />
+          </div>
+        </section>
+
         {/* Advisor CTA */}
         <section className="w-full px-6 md:px-12 lg:px-16 py-6 md:py-8">
           <div className="max-w-[1400px] mx-auto">
@@ -335,7 +353,7 @@ export function FeaturesPage() {
             >
               {fp.faqHeading}
             </motion.h2>
-            <div className="flex flex-col gap-3 max-w-[900px]">
+            <div className="flex flex-col gap-3">
               {fp.faqs.map((faq, i) => (
                 <motion.div
                   key={i}

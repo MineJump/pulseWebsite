@@ -194,7 +194,7 @@ export const translations: Record<Language, Translations> = {
       eyebrow: "Features & Pricing",
       heading: "Wählen Sie den Plan, der zu Ihrer Studie passt.",
       subheading:
-        "Vier Pläne für unterschiedliche Studiengrößen und Anforderungen. Alle Preise verstehen sich pro Jahr und zzgl. MwSt.",
+        "Vier Pläne für unterschiedliche Studiengrößen und Anforderungen. Alle Preise zzgl. MwSt.",
       badge: "Beliebt",
       close: "Schließen",
       overflowNote:
@@ -252,7 +252,7 @@ export const translations: Record<Language, Translations> = {
             "Erweiterte Analytik",
             "API-Integrationen",
             "Compliance-Support",
-            "Dediziertes SLA",
+            "Dediziertes SLA (Service Level Agreement)",
           ],
           cta: "Research wählen",
           ctaHref: "https://app.pulse-research.de",
@@ -294,10 +294,6 @@ export const translations: Record<Language, Translations> = {
         {
           q: "Was bedeutet Mehrnutzung (Overage)?",
           a: "Die Pläne Professional und EMA-Only erlauben die Aufnahme zusätzlicher Teilnehmender über das jeweilige Kontingent hinaus – pro zusätzlichem Teilnehmer fallen 25 € (Professional) bzw. 10 € (EMA-Only) an.",
-        },
-        {
-          q: "Sind die Preise pro Jahr?",
-          a: "Ja. Alle Pakete werden auf Jahresbasis abgerechnet und verstehen sich zzgl. MwSt.",
         },
         {
           q: "Was passiert nach Ablauf der Studie mit den Daten?",
@@ -577,7 +573,7 @@ export const translations: Record<Language, Translations> = {
       eyebrow: "Features & Pricing",
       heading: "Choose the plan that fits your study.",
       subheading:
-        "Four plans for different study sizes and requirements. All prices per year, excluding VAT.",
+        "Four plans for different study sizes and requirements. All prices excluding VAT.",
       badge: "Popular",
       close: "Close",
       overflowNote:
@@ -635,7 +631,7 @@ export const translations: Record<Language, Translations> = {
             "Advanced analytics",
             "API integrations",
             "Compliance support",
-            "Dedicated SLA",
+            "Dedicated SLA (Service Level Agreement)",
           ],
           cta: "Choose Research",
           ctaHref: "https://app.pulse-research.de",
@@ -677,10 +673,6 @@ export const translations: Record<Language, Translations> = {
         {
           q: "What does overage mean?",
           a: "The Professional and EMA-Only plans allow additional participants beyond the included quota – at €25 (Professional) or €10 (EMA-Only) per additional participant.",
-        },
-        {
-          q: "Are prices per year?",
-          a: "Yes. All plans are billed annually and are exclusive of VAT.",
         },
         {
           q: "What happens to the data after the study ends?",

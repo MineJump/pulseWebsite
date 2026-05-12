@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section className="relative w-full min-h-[100svh] flex items-center overflow-hidden">
 
-      <div className="hidden min-[1230px]:block absolute right-[4%] top-1/2 -translate-y-1/2 z-[1] opacity-90">
+      <div className="hidden min-[1024px]:block absolute right-[4%] top-1/2 -translate-y-1/2 z-[1] opacity-90">
         <MergingBlobs size={440} />
       </div>
 

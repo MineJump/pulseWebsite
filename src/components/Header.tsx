@@ -138,7 +138,7 @@ export function Header() {
         >
           <a
             href="/methoden"
-            className="text-sm font-medium py-1"
+            className="text-sm py-1"
             style={{ color: "var(--ink)" }}
             onClick={() => setMobileOpen(false)}
           >
