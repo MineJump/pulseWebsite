@@ -6,7 +6,7 @@ export function Logo() {
       aria-label="PULSE by 2CHUB"
     >
       <img
-        src="/logo-2chub.svg"
+        src="/Logo_2CHuB2.svg"
         alt="2CHUB"
         className="h-8 md:h-10 w-auto"
         draggable={false}
