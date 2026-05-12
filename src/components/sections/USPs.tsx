@@ -12,7 +12,7 @@ export function USPs() {
   const initial = prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 };
 
   return (
-    <section className="relative w-full px-6 md:px-12 lg:px-16 py-12 md:py-16 overflow-hidden">
+    <section className="relative w-full px-6 md:px-12 lg:px-16 py-8 md:py-10 overflow-hidden">
       <BlurOrbsField intensity="subtle" />
       <div className="relative z-10 max-w-[1400px] mx-auto">
         <motion.p

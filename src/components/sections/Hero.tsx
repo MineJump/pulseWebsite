@@ -15,7 +15,7 @@ export function Hero() {
         <MergingBlobs size={440} />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 pt-32 pb-14 md:pt-40 md:pb-20">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 pt-32 pb-6 md:pt-40 md:pb-10">
         <motion.p
           initial={initial}
           animate={{ opacity: 1, y: 0 }}
