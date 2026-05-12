@@ -70,7 +70,6 @@ export interface Translations {
     tagline: string;
     primaryCta: string;
     secondaryCta: string;
-    platforms: string;
   };
   testimonials: {
     items: string[];
