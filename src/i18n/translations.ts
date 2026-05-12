@@ -16,6 +16,7 @@ export const translations: Record<Language, Translations> = {
         "PULSE ist eine dedizierte Forschungsplattform für passives mobiles Sensing, Digital Phenotyping und Ecological Momentary Assessment. Sie befähigt Forschungsteams, authentische Verhaltensdaten in realen Alltagskontexten zu erfassen und in evidenzbasierte Erkenntnisse zu überführen.",
       primaryCta: "Angebote vergleichen",
       secondaryCta: "Studie Konfigurieren",
+      platforms: "Verfügbar für iOS & Android",
     },
     testimonials: {
       items: ["EU-Hosted", "DSGVO-konform", "by 2c HUB", "A LMU München Venture"],
@@ -396,6 +397,7 @@ export const translations: Record<Language, Translations> = {
         "PULSE is a dedicated research platform built for passive mobile sensing, digital phenotyping, and Ecological Momentary Assessment. It empowers research teams to capture authentic behavioral data in real-world contexts and translate that data into evidence-based insights that drive discovery.",
       primaryCta: "Compare Plans",
       secondaryCta: "Configure Study",
+      platforms: "Available for iOS & Android",
     },
     testimonials: {
       items: ["EU-Hosted", "GDPR-compliant", "by 2c HUB", "A LMU Munich Venture"],

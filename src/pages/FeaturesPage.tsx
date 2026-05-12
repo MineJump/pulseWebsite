@@ -58,8 +58,6 @@ export function FeaturesPage() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const fp = t.featuresPage;
 
-  const selected = fp.plans.find((p) => p.id === selectedPlan) ?? null;
-
   return (
     <>
       <Header />
@@ -216,6 +214,32 @@ export function FeaturesPage() {
                     >
                       {plan.cta}
                     </a>
+
+                    <AnimatePresence>
+                      {isSelected && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="overflow-hidden"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <div className="pt-5 mt-5" style={{ borderTop: "1px solid var(--border)" }}>
+                            <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-muted)" }}>
+                              {plan.detail}
+                            </p>
+                            <button
+                              onClick={() => setSelectedPlan(null)}
+                              className="text-xs transition-opacity hover:opacity-60"
+                              style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
+                            >
+                              {fp.close} ✕
+                            </button>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
                 );
               })}
@@ -229,59 +253,6 @@ export function FeaturesPage() {
             </p>
           </div>
         </section>
-
-        {/* Selected plan detail */}
-        <AnimatePresence>
-          {selected && (
-            <motion.section
-              key={selected.id}
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden w-full px-6 md:px-12 lg:px-16"
-            >
-              <div className="max-w-[1400px] mx-auto pb-6">
-                <div
-                  className="rounded-2xl p-8"
-                  style={{
-                    border: "2px solid var(--accent)",
-                    backgroundColor: "rgba(255,255,255,0.9)",
-                  }}
-                >
-                  <h2 className="text-2xl mb-4" style={{ color: "var(--ink)" }}>
-                    {selected.name}
-                  </h2>
-                  <p className="leading-relaxed max-w-[860px]" style={{ color: "var(--text-muted)" }}>
-                    {selected.detail}
-                  </p>
-                  <div className="mt-6 flex gap-4">
-                    <a
-                      href={selected.ctaHref}
-                      className="inline-flex items-center justify-center px-6 py-3 text-sm uppercase tracking-[0.12em] transition-opacity rounded-full"
-                      style={{
-                        backgroundColor: "var(--btn-primary-bg)",
-                        color: "var(--btn-primary-fg)",
-                        fontFamily: "'IBM Plex Mono', monospace",
-                      }}
-                      onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
-                      onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-                    >
-                      {selected.cta} →
-                    </a>
-                    <button
-                      onClick={() => setSelectedPlan(null)}
-                      className="text-sm px-4 py-2 transition-opacity hover:opacity-60"
-                      style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
-                    >
-                      {fp.close}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </motion.section>
-          )}
-        </AnimatePresence>
 
         {/* Feature comparison matrix */}
         <section className="w-full px-6 md:px-12 lg:px-16 py-14 md:py-20">
