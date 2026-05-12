@@ -35,25 +35,21 @@ const OUTPUT_ICONS: LucideIcon[] = [LayoutDashboard, BarChart2, Download, BookOp
 const OUTPUT_LABELS_DE = ["Live Dashboard", "Analyse", "Export", "Publikationen"];
 const OUTPUT_LABELS_EN = ["Live Dashboard", "Analysis", "Export", "Publications"];
 
-// SVG coordinates
-const VW = 960;
-const VH = 480;
-const LX = 110;   // left nodes x
-const CX = 480;   // center x
-const RX = 840;   // right nodes x
-const CY = VH / 2; // 240
+// Diagram coordinates in percent (viewBox 0..100). HTML chips and SVG share these coords.
+const LX = 8;   // input column x
+const RX = 92;  // output column x
+const CX = 50;  // center x
+const CY = 50;  // center y
 
-const LEFT_Y  = [80, 160, 240, 320, 400];   // 5 nodes, spacing 80, centred at 240
-const RIGHT_Y = [108, 196, 284, 372];        // 4 nodes, spacing 88, centred at 240
+// 5 input rows, evenly spaced
+const LEFT_Y  = [12, 31, 50, 69, 88];
+// 4 output rows, evenly spaced
+const RIGHT_Y = [16, 38.7, 61.3, 84];
 
-const CTRL_L = (LX + CX) / 2;  // 295
-const CTRL_R = (CX + RX) / 2;  // 660
+// Bezier horizontal control offset (in % of width)
+const BEND = 18;
 
-function splitLabel(name: string): [string, string | null] {
-  const idx = name.indexOf(" & ");
-  if (idx === -1) return [name, null];
-  return [name.slice(0, idx + 2), name.slice(idx + 3)];
-}
+const CHIP_OFFSET_PX = 30; // (padding-left 12) + (circle radius 18)
 
 export function DataFlowDiagram() {
   const { t, language } = useTranslation();
@@ -68,226 +64,300 @@ export function DataFlowDiagram() {
   const outputHeader = language === "de" ? "Research-Outputs" : "Research Outputs";
 
   function toggle(i: number) {
-    setSelected(i === selected ? null : i);
+    setSelected((s) => (s === i ? null : i));
   }
 
   return (
-    <section className="w-full px-6 md:px-12 lg:px-16 pb-4 md:pb-6">
-      <div ref={ref} className="max-w-[1400px] mx-auto">
+    <section className="w-full px-6 md:px-12 lg:px-16 pb-12 md:pb-16">
+      <div ref={ref} className="max-w-[1100px] mx-auto">
 
-        {/* ── Desktop SVG ── */}
-        <div className="hidden md:block">
+        {/* Section headers (desktop only) */}
+        <div className="hidden md:flex justify-between mb-5 px-4">
+          <span className="text-xs uppercase tracking-[0.18em]" style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}>
+            {inputHeader}
+          </span>
+          <span className="text-xs uppercase tracking-[0.18em]" style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}>
+            {outputHeader}
+          </span>
+        </div>
+
+        {/* ─────────── Desktop diagram ─────────── */}
+        <div className="hidden md:block relative" style={{ aspectRatio: "12 / 5", minHeight: 360 }}>
+
+          {/* SVG lines layer (behind chips) */}
           <svg
-            viewBox={`0 0 ${VW} ${VH}`}
-            width="100%"
-            style={{ overflow: "visible" }}
-            aria-label="PULSE data flow diagram"
+            className="absolute inset-0 w-full h-full"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            aria-hidden="true"
           >
-            {/* Section headers */}
-            {[
-              { x: LX, label: inputHeader },
-              { x: RX, label: outputHeader },
-            ].map(({ x, label }) => (
-              <motion.text
-                key={label}
-                x={x}
-                y={38}
-                textAnchor="middle"
-                fontSize={9}
-                fill="var(--text-dim)"
-                fontFamily="'IBM Plex Mono', monospace"
-                letterSpacing="0.15em"
-                initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
-                animate={inView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                style={{ textTransform: "uppercase" }}
-              >
-                {label}
-              </motion.text>
-            ))}
-
-            {/* ── Curves: left → center ── */}
-            {LEFT_Y.map((ly, i) => (
-              <motion.path
-                key={`lc-${i}`}
-                d={`M ${LX},${ly} C ${CTRL_L},${ly} ${CTRL_L},${CY} ${CX},${CY}`}
-                fill="none"
-                stroke={CAT_COLORS[i]}
-                strokeWidth={selected === i ? 2 : 1}
-                strokeOpacity={selected === i ? 0.7 : 0.2}
-                initial={prefersReducedMotion ? {} : { pathLength: 0 }}
-                animate={inView ? { pathLength: 1 } : {}}
-                transition={{ duration: 0.7, delay: 0.3 + i * 0.09, ease: "easeInOut" }}
-                style={{ transition: "stroke-opacity 0.2s, stroke-width 0.2s" }}
-              />
-            ))}
-
-            {/* ── Curves: center → right ── */}
+            {/* Input → Center */}
+            {LEFT_Y.map((ly, i) => {
+              const active = selected === i;
+              return (
+                <motion.path
+                  key={`lc-${i}`}
+                  d={`M ${LX} ${ly} C ${LX + BEND} ${ly}, ${CX - BEND} ${CY}, ${CX} ${CY}`}
+                  fill="none"
+                  stroke={CAT_COLORS[i]}
+                  strokeWidth={active ? 1.8 : 1}
+                  strokeOpacity={active ? 0.75 : 0.18}
+                  vectorEffect="non-scaling-stroke"
+                  initial={prefersReducedMotion ? {} : { pathLength: 0 }}
+                  animate={inView ? { pathLength: 1 } : {}}
+                  transition={{ duration: 0.8, delay: 0.3 + i * 0.08, ease: "easeInOut" }}
+                  style={{ transition: "stroke-opacity 0.2s, stroke-width 0.2s" }}
+                />
+              );
+            })}
+            {/* Center → Output */}
             {RIGHT_Y.map((ry, i) => (
               <motion.path
                 key={`cr-${i}`}
-                d={`M ${CX},${CY} C ${CTRL_R},${CY} ${CTRL_R},${ry} ${RX},${ry}`}
+                d={`M ${CX} ${CY} C ${CX + BEND} ${CY}, ${RX - BEND} ${ry}, ${RX} ${ry}`}
                 fill="none"
                 stroke={OUTPUT_COLOR}
                 strokeWidth={1}
                 strokeOpacity={0.2}
+                vectorEffect="non-scaling-stroke"
                 initial={prefersReducedMotion ? {} : { pathLength: 0 }}
                 animate={inView ? { pathLength: 1 } : {}}
-                transition={{ duration: 0.7, delay: 1.0 + i * 0.08, ease: "easeInOut" }}
+                transition={{ duration: 0.8, delay: 0.95 + i * 0.08, ease: "easeInOut" }}
               />
             ))}
-
-            {/* ── Center node ── */}
-            <motion.circle
-              cx={CX} cy={CY} r={52}
-              fill="var(--brand-blue)" fillOpacity={0.07}
-              stroke="var(--brand-blue)" strokeWidth={1.5} strokeOpacity={0.35}
-              initial={prefersReducedMotion ? { scale: 1 } : { scale: 0 }}
-              animate={inView ? { scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.6 }}
-            />
-            {["PULSE", "Platform"].map((txt, i) => (
-              <motion.text
-                key={txt}
-                x={CX} y={CY - 6 + i * 18}
-                textAnchor="middle"
-                fontSize={i === 0 ? 15 : 9}
-                fontWeight={i === 0 ? 600 : 400}
-                fontFamily={i === 0 ? "Satoshi, sans-serif" : "'IBM Plex Mono', monospace"}
-                fill="var(--brand-blue)"
-                fillOpacity={i === 0 ? 0.9 : 0.45}
-                letterSpacing={i === 1 ? "0.1em" : undefined}
-                initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
-                animate={inView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.4, delay: 0.75 + i * 0.08 }}
-              >
-                {txt}
-              </motion.text>
-            ))}
-
-            {/* ── Left nodes (clickable) ── */}
-            {LEFT_Y.map((ly, i) => {
-              const Icon = CAT_ICONS[i];
-              const color = CAT_COLORS[i];
-              const active = selected === i;
-              const [line1, line2] = splitLabel(categories[i]?.name ?? "");
-              return (
-                <g
-                  key={`ln-${i}`}
-                  onClick={() => toggle(i)}
-                  style={{ cursor: "pointer" }}
-                  role="button"
-                  tabIndex={0}
-                  aria-pressed={active}
-                  onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggle(i)}
-                >
-                  <motion.circle
-                    cx={LX} cy={ly} r={active ? 27 : 23}
-                    fill={color} fillOpacity={active ? 0.18 : 0.1}
-                    stroke={color} strokeWidth={active ? 2 : 1.5} strokeOpacity={active ? 0.9 : 0.5}
-                    strokeDasharray={active ? "none" : "4 3"}
-                    initial={prefersReducedMotion ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                    animate={inView ? { scale: 1, opacity: 1 } : {}}
-                    transition={{ duration: 0.4, delay: i * 0.08 }}
-                    style={{ transition: "r 0.15s, fill-opacity 0.15s, stroke-opacity 0.15s" }}
-                  />
-                  <foreignObject x={LX - 10} y={ly - 10} width={20} height={20}>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 20, height: 20 }}>
-                      <Icon size={13} style={{ color }} strokeWidth={1.8} />
-                    </div>
-                  </foreignObject>
-                  {/* Label below node */}
-                  <motion.text
-                    x={LX} y={ly + 35}
-                    textAnchor="middle"
-                    fontSize={9}
-                    fill={color}
-                    fillOpacity={active ? 1 : 0.7}
-                    fontFamily="'IBM Plex Mono', monospace"
-                    initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
-                    animate={inView ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.4, delay: i * 0.08 + 0.25 }}
-                    style={{ userSelect: "none" }}
-                  >
-                    <tspan x={LX} dy="0">{line1}</tspan>
-                    {line2 && <tspan x={LX} dy="11">{line2}</tspan>}
-                  </motion.text>
-                </g>
-              );
-            })}
-
-            {/* ── Right nodes ── */}
-            {RIGHT_Y.map((ry, i) => {
-              const Icon = OUTPUT_ICONS[i];
-              return (
-                <g key={`rn-${i}`}>
-                  <motion.circle
-                    cx={RX} cy={ry} r={23}
-                    fill={OUTPUT_COLOR} fillOpacity={0.1}
-                    stroke={OUTPUT_COLOR} strokeWidth={1.5} strokeOpacity={0.45}
-                    initial={prefersReducedMotion ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                    animate={inView ? { scale: 1, opacity: 1 } : {}}
-                    transition={{ duration: 0.4, delay: 1.1 + i * 0.08 }}
-                  />
-                  <foreignObject x={RX - 10} y={ry - 10} width={20} height={20}>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 20, height: 20 }}>
-                      <Icon size={13} style={{ color: OUTPUT_COLOR }} strokeWidth={1.8} />
-                    </div>
-                  </foreignObject>
-                  <motion.text
-                    x={RX + 34} y={ry + 4}
-                    textAnchor="start"
-                    fontSize={11}
-                    fill={OUTPUT_COLOR}
-                    fillOpacity={0.8}
-                    fontFamily="'IBM Plex Mono', monospace"
-                    initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
-                    animate={inView ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.4, delay: 1.1 + i * 0.08 + 0.2 }}
-                    style={{ userSelect: "none" }}
-                  >
-                    {outputLabels[i]}
-                  </motion.text>
-                </g>
-              );
-            })}
           </svg>
-        </div>
 
-        {/* ── Mobile layout ── */}
-        <div className="flex md:hidden flex-col gap-2">
-          <p className="text-[10px] uppercase tracking-[0.18em] mb-2" style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}>
-            {inputHeader}
-          </p>
-          {categories.map((cat, i) => {
+          {/* Input chips */}
+          {LEFT_Y.map((ly, i) => {
             const Icon = CAT_ICONS[i];
             const color = CAT_COLORS[i];
             const active = selected === i;
             return (
-              <button
-                key={i}
-                onClick={() => toggle(i)}
-                className="flex items-center gap-3 text-left py-2.5 w-full"
-                style={{ borderBottom: `1px solid ${color}20` }}
+              <div
+                key={`in-${i}`}
+                className="absolute z-10"
+                style={{
+                  left: `${LX}%`,
+                  top: `${ly}%`,
+                  transform: `translate(-${CHIP_OFFSET_PX}px, -50%)`,
+                }}
               >
-                <div
-                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                <motion.button
+                  type="button"
+                  onClick={() => toggle(i)}
+                  aria-pressed={active}
+                  initial={prefersReducedMotion ? { scale: 1, opacity: 1 } : { scale: 0.92, opacity: 0 }}
+                  animate={inView ? { scale: 1, opacity: 1 } : {}}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  whileHover={prefersReducedMotion ? {} : { scale: 1.03 }}
+                  className="flex items-center gap-3 px-3 py-2 rounded-xl whitespace-nowrap focus-visible:outline-none focus-visible:ring-2"
                   style={{
-                    backgroundColor: `${color}${active ? "20" : "12"}`,
-                    border: `1px solid ${color}${active ? "50" : "30"}`,
+                    backgroundColor: active ? `${color}1a` : "var(--bg)",
+                    border: `1px solid ${active ? color : `${color}55`}`,
+                    boxShadow: active ? `0 0 0 4px ${color}14` : "0 1px 2px rgba(15,13,41,0.04)",
+                    transition: "background-color 0.18s, border-color 0.18s, box-shadow 0.18s",
                   }}
                 >
-                  <Icon size={15} style={{ color }} strokeWidth={1.8} />
-                </div>
-                <span className="text-xs uppercase tracking-[0.14em]" style={{ color, fontFamily: "'IBM Plex Mono', monospace" }}>
-                  {cat.name}
-                </span>
-              </button>
+                  <span
+                    className="flex items-center justify-center rounded-full flex-shrink-0"
+                    style={{
+                      width: 36,
+                      height: 36,
+                      backgroundColor: `${color}1f`,
+                      border: `1.5px solid ${color}55`,
+                    }}
+                  >
+                    <Icon size={16} style={{ color }} strokeWidth={2} />
+                  </span>
+                  <span className="text-sm font-medium text-left" style={{ color: "var(--ink)" }}>
+                    {categories[i]?.name}
+                  </span>
+                </motion.button>
+              </div>
+            );
+          })}
+
+          {/* Center node */}
+          <motion.div
+            className="absolute z-20 flex flex-col items-center justify-center rounded-full"
+            style={{
+              left: `${CX}%`,
+              top: `${CY}%`,
+              width: 128,
+              height: 128,
+              transform: "translate(-50%, -50%)",
+              backgroundColor: "var(--bg)",
+              border: "1px solid var(--brand-blue)",
+              boxShadow: "0 8px 32px rgba(13,35,66,0.10), 0 0 0 6px rgba(13,35,66,0.04)",
+            }}
+            initial={prefersReducedMotion ? { scale: 1, opacity: 1 } : { scale: 0.85, opacity: 0 }}
+            animate={inView ? { scale: 1, opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <span
+              className="text-base font-semibold"
+              style={{ color: "var(--brand-blue)", letterSpacing: "0.04em" }}
+            >
+              PULSE
+            </span>
+            <span
+              className="text-[10px] uppercase mt-0.5"
+              style={{ color: "var(--brand-blue)", opacity: 0.55, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.16em" }}
+            >
+              Platform
+            </span>
+          </motion.div>
+
+          {/* Output chips */}
+          {RIGHT_Y.map((ry, i) => {
+            const Icon = OUTPUT_ICONS[i];
+            return (
+              <div
+                key={`out-${i}`}
+                className="absolute z-10"
+                style={{
+                  right: `${100 - RX}%`,
+                  top: `${ry}%`,
+                  transform: `translate(${CHIP_OFFSET_PX}px, -50%)`,
+                }}
+              >
+                <motion.div
+                  initial={prefersReducedMotion ? { scale: 1, opacity: 1 } : { scale: 0.92, opacity: 0 }}
+                  animate={inView ? { scale: 1, opacity: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 1.0 + i * 0.08 }}
+                  className="flex items-center gap-3 px-3 py-2 rounded-xl whitespace-nowrap"
+                  style={{
+                    backgroundColor: "var(--bg)",
+                    border: `1px solid ${OUTPUT_COLOR}45`,
+                    boxShadow: "0 1px 2px rgba(15,13,41,0.04)",
+                  }}
+                >
+                  <span className="text-sm font-medium" style={{ color: "var(--ink)" }}>
+                    {outputLabels[i]}
+                  </span>
+                  <span
+                    className="flex items-center justify-center rounded-full flex-shrink-0"
+                    style={{
+                      width: 36,
+                      height: 36,
+                      backgroundColor: `${OUTPUT_COLOR}1f`,
+                      border: `1.5px solid ${OUTPUT_COLOR}55`,
+                    }}
+                  >
+                    <Icon size={16} style={{ color: OUTPUT_COLOR }} strokeWidth={2} />
+                  </span>
+                </motion.div>
+              </div>
             );
           })}
         </div>
 
-        {/* ── Detail panel (desktop + mobile) ── */}
+        {/* ─────────── Mobile layout ─────────── */}
+        <div className="md:hidden">
+          <p
+            className="text-[10px] uppercase tracking-[0.18em] mb-3"
+            style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
+          >
+            {inputHeader}
+          </p>
+          <div className="flex flex-col gap-2">
+            {categories.map((cat, i) => {
+              const Icon = CAT_ICONS[i];
+              const color = CAT_COLORS[i];
+              const active = selected === i;
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => toggle(i)}
+                  aria-pressed={active}
+                  className="flex items-center gap-3 w-full text-left px-3 py-2.5 rounded-xl transition-all"
+                  style={{
+                    backgroundColor: active ? `${color}15` : "var(--bg)",
+                    border: `1px solid ${active ? color : `${color}40`}`,
+                  }}
+                >
+                  <span
+                    className="flex items-center justify-center rounded-full flex-shrink-0"
+                    style={{
+                      width: 36,
+                      height: 36,
+                      backgroundColor: `${color}1f`,
+                      border: `1.5px solid ${color}55`,
+                    }}
+                  >
+                    <Icon size={16} style={{ color }} strokeWidth={2} />
+                  </span>
+                  <span className="text-sm font-medium" style={{ color: "var(--ink)" }}>
+                    {cat.name}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Center connector */}
+          <div className="flex flex-col items-center my-5">
+            <div className="w-px h-6" style={{ backgroundColor: "var(--border)" }} />
+            <div
+              className="rounded-full px-4 py-2"
+              style={{
+                backgroundColor: "var(--bg)",
+                border: "1px solid var(--brand-blue)",
+              }}
+            >
+              <span className="text-xs font-semibold" style={{ color: "var(--brand-blue)" }}>
+                PULSE
+              </span>
+              <span
+                className="text-[9px] uppercase ml-1.5"
+                style={{ color: "var(--brand-blue)", opacity: 0.5, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: "0.16em" }}
+              >
+                Platform
+              </span>
+            </div>
+            <div className="w-px h-6" style={{ backgroundColor: "var(--border)" }} />
+          </div>
+
+          <p
+            className="text-[10px] uppercase tracking-[0.18em] mb-3"
+            style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
+          >
+            {outputHeader}
+          </p>
+          <div className="flex flex-col gap-2">
+            {outputLabels.map((label, i) => {
+              const Icon = OUTPUT_ICONS[i];
+              return (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl"
+                  style={{
+                    backgroundColor: "var(--bg)",
+                    border: `1px solid ${OUTPUT_COLOR}40`,
+                  }}
+                >
+                  <span
+                    className="flex items-center justify-center rounded-full flex-shrink-0"
+                    style={{
+                      width: 36,
+                      height: 36,
+                      backgroundColor: `${OUTPUT_COLOR}1f`,
+                      border: `1.5px solid ${OUTPUT_COLOR}55`,
+                    }}
+                  >
+                    <Icon size={16} style={{ color: OUTPUT_COLOR }} strokeWidth={2} />
+                  </span>
+                  <span className="text-sm font-medium" style={{ color: "var(--ink)" }}>
+                    {label}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ─────────── Detail panel ─────────── */}
         <AnimatePresence>
           {selected !== null && (
             <motion.div
@@ -296,10 +366,10 @@ export function DataFlowDiagram() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 6 }}
               transition={{ duration: 0.22 }}
-              className="mt-5 rounded-2xl p-5 md:p-6"
+              className="mt-6 rounded-2xl p-5 md:p-6"
               style={{
-                backgroundColor: `${CAT_COLORS[selected]}08`,
-                border: `1px solid ${CAT_COLORS[selected]}25`,
+                backgroundColor: `${CAT_COLORS[selected]}0a`,
+                border: `1px solid ${CAT_COLORS[selected]}30`,
               }}
             >
               <div className="flex items-center justify-between mb-4">
@@ -311,9 +381,11 @@ export function DataFlowDiagram() {
                   {categories[selected]?.name}
                 </span>
                 <button
+                  type="button"
                   onClick={() => setSelected(null)}
-                  className="text-xs transition-opacity hover:opacity-60 ml-4"
-                  style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace", flexShrink: 0 }}
+                  aria-label="Close"
+                  className="text-xs transition-opacity hover:opacity-60"
+                  style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
                 >
                   ✕
                 </button>
@@ -326,9 +398,9 @@ export function DataFlowDiagram() {
                       key={m}
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs"
                       style={{
-                        backgroundColor: `${CAT_COLORS[selected]}12`,
+                        backgroundColor: `${CAT_COLORS[selected]}14`,
                         color: "var(--ink)",
-                        border: `1px solid ${CAT_COLORS[selected]}30`,
+                        border: `1px solid ${CAT_COLORS[selected]}35`,
                       }}
                     >
                       {Icon && <Icon size={11} style={{ color: CAT_COLORS[selected] }} strokeWidth={1.8} />}
@@ -340,7 +412,6 @@ export function DataFlowDiagram() {
             </motion.div>
           )}
         </AnimatePresence>
-
       </div>
     </section>
   );
