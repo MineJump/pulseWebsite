@@ -2,6 +2,7 @@ import { LanguageProvider, useTranslation } from "./i18n";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/sections/Hero";
+import { TrustBar } from "./components/sections/TrustBar";
 import { USPs } from "./components/sections/USPs";
 import { HowItWorks } from "./components/sections/HowItWorks";
 import { Impressum } from "./components/sections/Impressum";
@@ -60,6 +61,7 @@ function HomePage() {
       <Header />
       <main>
         <Hero />
+        <TrustBar />
         <USPs />
         <HowItWorks />
       </main>
