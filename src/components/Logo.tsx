@@ -8,9 +8,20 @@ export function Logo() {
       <img
         src="/logo-2chub2.svg"
         alt="2CHUB"
-        className="h-8 md:h-10 w-auto"
+        className="h-10 md:h-12 w-auto"
         draggable={false}
       />
+      <span
+        style={{
+          fontFamily: "'IBM Plex Mono', monospace",
+          fontWeight: 500,
+          fontSize: "1.1rem",
+          letterSpacing: "0.08em",
+          color: "var(--ink)",
+        }}
+      >
+        2CHUB
+      </span>
       <span
         className="w-px self-stretch"
         style={{ backgroundColor: "var(--border)" }}
