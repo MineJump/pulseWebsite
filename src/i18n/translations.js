@@ -26,10 +26,10 @@ export const translations = {
     },
     hero:{
       eyebrow:"Center for Computation of Human Behavior",
-      title:`Die Plattform für mobile
+      title:`Die Plattform für smartphonebasierte
 Verhaltensforschung`,
-      subtitle:"Experience Sampling, passives Sensing und adaptive Interventionen in einer durchgängigen Studieninfrastruktur.",
-      tagline:"PULSE entstand 2014 am Lehrstuhl für psychologische Methodenlehre der LMU München und wird heute als Software-Infrastruktur des Center for Computation of Human Behavior weiterentwickelt. Studienteams konzipieren, führen und werten ihre Studien in einem System aus.",
+      subtitle:"Experience Sampling, passive Sensordatenerfassung und adaptive Interventionen in einer durchgängigen Studieninfrastruktur.",
+      tagline:"PULSE entstand 2014 am Lehrstuhl für psychologische Methodenlehre der LMU München und wird heute als Software-Infrastruktur des Center for Computation of Human Behavior weiterentwickelt. Studienteams planen, erheben und analysieren ihre Daten in einem gemeinsamen System.",
       primaryCta:"Plattform ansehen",
       secondaryCta:"Demo vereinbaren"
     },
@@ -108,10 +108,10 @@ Verhaltensforschung`,
     },
     contact:{
       heading:"Unklarheiten bei der Förderung?",
-      subheading:"Wir unterstützen bei der Integration von PULSE in Förderanträge — DFG, BMBF, EU oder Industrie. Methoden-Bausteine, Kostenkalkulationen und Referenzen aus laufenden Studien stellen wir auf Anfrage zur Verfügung.",
+      subheading:"Wir unterstützen Sie dabei, PULSE in Förderanträgen nachvollziehbar darzustellen – ob für DFG, BMBF, EU-Förderprogramme oder Industrieprojekte. Methoden-Bausteine, Kostenkalkulationen und Referenzen aus laufenden Studien stellen wir auf Anfrage zur Verfügung.",
       email:"info@2chub.com",
       location:"München",
-      cta:"Antragsmaterial anfragen"
+      cta:"Antragsunterlagen anfordern"
     },
     footer:{
       legalName:"2CHuB GmbH · Center for Computation of Human Behavior",
@@ -119,7 +119,7 @@ Verhaltensforschung`,
       privacy:"Datenschutz",
       backLink:"Zurück",
       status:{
-        none:"Alle Systeme online",
+        none:"Alle Systeme verfügbar",
         minor:"Kleinere Störung",
         major:"Störung",
         critical:"Kritische Störung",
@@ -159,7 +159,7 @@ Verhaltensforschung`,
             },
             {
               number:"03",
-              title:"Längsschnitt-fähig",
+              title:"Für Längsschnittdesigns geeignet",
               description:"Innersubjektvariabilität, Zeitreihen, Dynamiken werden sichtbar."
             }]
           },
@@ -179,7 +179,7 @@ Verhaltensforschung`,
             },
             {
               number:"03",
-              title:"App liefert aus",
+              title:"App zeigt Befragungen an",
               description:"Native iOS- und Android-App. Offline-fähig, lokale Speicherung, Energiemanagement."
             },
             {
@@ -338,14 +338,14 @@ Verhaltensforschung`,
             },
             {
               number:"03",
-              title:"Privacy-respektierend",
+              title:"Datenschutzorientiert",
               description:"Granulare Einwilligung, lokale Vorverarbeitung, keine Inhaltserfassung."
             }]
           },
           pipeline:{
             eyebrow:"Pipeline",
             title:"Vom Sensor zum verwertbaren Feature",
-            body:"PULSE liefert keine Rohdaten-Dumps. Sie bekommen direkt analysefertige Verhaltensfeatures.",
+            body:"PULSE liefert keine unstrukturierten Rohdatenexporte. Sie bekommen direkt analysefertige Verhaltensfeatures.",
             steps:[{
               number:"01",
               title:"Sensorik erfassen",
@@ -430,7 +430,7 @@ Verhaltensforschung`,
             eyebrow:"Forschungsfähige Sensorpipeline",
             title:"Validierte Features statt Roh-Zeitstempel",
             body:"PULSE liefert keine unstrukturierten Sensorströme, sondern dokumentierte Verhaltensfeatures auf validierten Algorithmen. Die Auswertung beginnt mit publikationsreifen Variablen.",
-            checks:["Pre-processed Features statt Zeitstempel-Dumps",
+            checks:["Pre-processed Features statt unstrukturierten Rohdatenexporten",
             "Validierte Algorithmen aus peer-reviewter Forschung",
             "On-device Privacy-Filter vor Upload",
             "Transparenter Sensor-Toggle für Teilnehmende",
@@ -504,7 +504,7 @@ Verhaltensforschung`,
         shortDesc:"JITAI",
         cardDesc:"Just-in-Time Adaptive Interventions im richtigen Moment, personalisiert und wirksam.",
         pageTitle:"Intervenieren: Just-in-Time Adaptive Interventions",
-        pageIntro:"Just-in-Time Adaptive Interventions verbinden Befragung, Sensorik und Inhalt in einer kohärenten Logik, sodass eine Mikro-Intervention dann zugestellt wird, wenn sie kontextuell wirksam ist.",
+        pageIntro:"Just-in-Time Adaptive Interventions verbinden Befragung, Sensorik und Inhalt in einer kohärenten Logik, sodass eine Mikro-Intervention dann zugestellt wird, wenn ein definierter Kontext oder Bedarf vorliegt.",
         bullets:["Trigger-Logik basierend auf Sensorik + Kontext + Studienarm.",
         "Mikro-Interventionen, die im Alltag verankert sind.",
         "Effekte werden im selben Studienlauf gemessen."],
@@ -540,7 +540,7 @@ Verhaltensforschung`,
             },
             {
               number:"02",
-              title:"Inhalt bauen",
+              title:"Inhalte konfigurieren",
               description:"Mikro-Interventionen, Push, In-App-Inhalte, Audio. Validierte Inhaltsvorlagen verfügbar."
             },
             {
@@ -611,7 +611,7 @@ Verhaltensforschung`,
           },
           pulseDifference:{
             eyebrow:"Integrierte Wirkungsmessung",
-            title:"Intervention und Effekt in einer Datenstruktur",
+            title:"Intervention und Ergebnismaße in einer Datenstruktur",
             body:"PULSE protokolliert ausgelöste Interventionen und deren Wirkung im selben reproduzierbaren Datensatz. Effekte lassen sich dadurch kontextspezifisch quantifizieren, ohne separate Daten-Joins.",
             checks:["Trigger über Sensorik und Befragung kombinierbar",
             "Inhaltsvorlagen aus klinischer Forschung",
@@ -633,8 +633,8 @@ Verhaltensforschung`,
         title:"Auswerten",
         shortDesc:"Pre-processed",
         cardDesc:"Vorverarbeitete Features, LLM-gestützte Berichte, Exporte für R, SPSS, Python.",
-        pageTitle:`Auswerten,
-direkt analysefertig`,
+        pageTitle:`Auswerten:
+analysefertige Daten`,
         pageIntro:"Vorverarbeitete Features, LLM-gestützte Berichtsentwürfe und reproduzierbare Pipelines. Studienteams erhalten keinen Zeitstempel-Dump, sondern validierte Verhaltensfeatures, dokumentierte Schemas und sofort analysefähige Datensätze.",
         bullets:["Automatische Vor-Aggregation: stündlich, täglich, sitzungsbasiert.",
         "Feature-Bibliotheken für Bewegung, Schlaf, Kommunikation, App-Use.",
@@ -642,11 +642,11 @@ direkt analysefertig`,
         rich:{
           whatIsIt:{
             eyebrow:"Was & Warum",
-            title:"Begründung der Vorverarbeitung",
+            title:"Warum Vorverarbeitung wichtig ist",
             body:"Rohe Sensorströme stellen keinen Datensatz dar, sondern eine Aufbereitungsaufgabe. PULSE übergibt diese Aufgabe nicht an die Studienteams, sondern liefert validierte Features, dokumentierte Schemas und reproduzierbare Hashes. Die wissenschaftliche Arbeit beginnt damit bei der Hypothese, nicht bei der Datenbereinigung.",
             keyPoints:[{
               number:"01",
-              title:"Schneller zur Hypothese",
+              title:"Schneller zur Hypothesenprüfung",
               description:"Wochenlange Datenbereinigung entfällt."
             },
             {
@@ -662,7 +662,7 @@ direkt analysefertig`,
           },
           pipeline:{
             eyebrow:"Pipeline",
-            title:"Vom Rohstrom zur Erkenntnis",
+            title:"Von Rohdaten zu analysefertigen Features",
             body:"Vier Schritte, jeder dokumentiert und versioniert.",
             steps:[{
               number:"01",
@@ -681,7 +681,7 @@ direkt analysefertig`,
             },
             {
               number:"04",
-              title:"LLM-Bericht (optional)",
+              title:"LLM-gestützter Berichtsentwurf (optional)",
               description:"Automatischer Vorbericht aus den Features, einschließlich eines zitierfähigen Methodikteils."
             }],
             schemaEyebrow:"Schema-Snippet eines Exports",
@@ -969,58 +969,58 @@ Lab`,
     },
     app:{
       eyebrow:"Mobile Anwendung",
-      title:"Die mobile Anwendung von PULSE",
-      subtitle:"Native iOS- und Android-Anwendung für Experience Sampling, passives Sensing und adaptive Interventionen. Datensparsam, transparent, white-label-fähig.",
-      intro:"Die Forschungsplattform PULSE hat ein Pendant in der Hand der Studienteilnehmenden: eine native mobile Anwendung, die täglich genutzt wird. Sie respektiert Studienzeit, holt Einwilligungen kategoriespezifisch ein und arbeitet zurückhaltend im Hintergrund. Auf Wunsch im Branding der jeweiligen Forschungsinstitution.",
+      title:"Die PULSE-Studien-App",
+      subtitle:"Native iOS- und Android-Anwendung für Experience Sampling, passive Sensordatenerfassung und adaptive Interventionen. Datensparsam, transparent, white-label-fähig.",
+      intro:"Zur Forschungsplattform PULSE gehört eine native App für Studienteilnehmende, die im Studienalltag genutzt wird. Sie geht sparsam mit der Zeit der Teilnehmenden um, holt Einwilligungen kategoriespezifisch ein und läuft datensparsam im Hintergrund. Auf Wunsch im Branding der jeweiligen Forschungsinstitution.",
       ctaPrimary:"Demo vereinbaren",
       ctaSecondary:"Plattform ansehen",
       survey:{
         eyebrow:"Befragung im Alltag",
-        title:"Befragung, die den Alltag respektiert",
-        body:"Kurze, kontextsensitive Fragen werden im jeweils relevanten Moment ausgespielt. Likert-Skalen, Slider, Single- und Multiple-Choice, Freitext sowie Voice-Memo stehen zur Verfügung. Eine Branching-Logik adaptiert die Items je nach vorheriger Antwort.",
+        title:"Befragungen, die in den Alltag passen",
+        body:"Kurze, kontextsensitive Fragen werden im jeweils relevanten Moment angezeigt. Likert-Skalen, Slider, Single- und Multiple-Choice, Freitext sowie Voice-Memo stehen zur Verfügung. Branching-Logik passt Items je nach vorheriger Antwort an.",
         bullets:["Adaptive Items mit Branching und Computation",
         "Klare Fortschrittsanzeige pro Studienwelle",
-        "Offline-fähig, sammelt und synchronisiert später",
-        "12 Item-Typen aus dem Studio konfigurierbar"],
+        "Offline-fähig: sammelt Daten lokal und synchronisiert später",
+        "12 Item-Typen im Studio konfigurierbar"],
         imageAlt:"PULSE-App: Fragebogen-Screen mit Likert-Skala und Slidern"
       },
       sensing:{
         eyebrow:"Mobile Sensing",
-        title:"Sensing, das im Hintergrund läuft",
-        body:"Smartphone und Wearable fungieren als Forschungsinstrumente und erfassen Bewegung, Standort, Aktivität, Schlaf sowie Bildschirmzeit. Probanden sehen jederzeit, welche Sensoren aktiv sind, und können einzelne Kategorien deaktivieren.",
+        title:"Sensing im Hintergrund",
+        body:"Smartphone und Wearables dienen als Forschungsinstrumente und erfassen Bewegung, Standort, Aktivität, Schlaf sowie Bildschirmzeit. Probanden sehen jederzeit, welche Sensoren aktiv sind, und können einzelne Kategorien deaktivieren.",
         bullets:["Granulare Einwilligung pro Sensor-Kategorie",
-        "On-device Pre-processing ohne Roh-Streams im Upload",
+        "On-device Preprocessing ohne Upload von Rohdaten-Streams",
         "Live-Daten-Vorschau für Transparenz",
         "Energie-optimiert, läuft tagelang ohne Akku-Sorgen"],
         imageAlt:"PULSE-App: Mobile-Sensing-Dashboard mit Live-Sensordaten"
       },
       participantPromise:{
         eyebrow:"Versprechen an Teilnehmende",
-        title:"Eine App, die Vertrauen erweckt!",
-        intro:"Verlässliche Daten setzen Compliance voraus, und Compliance entsteht aus respektvollem Umgang mit den Teilnehmenden. Die App ist entsprechend auf die Erwartungen Forschungsteilnehmender zugeschnitten.",
+        title:"Eine App, der Teilnehmende vertrauen können",
+        intro:"Verlässliche Daten setzen Teilnahmetreue voraus – und diese entsteht durch Transparenz, Kontrolle und respektvollen Umgang. Die App ist entsprechend auf die Erwartungen Forschungsteilnehmender zugeschnitten.",
         items:[{
           title:"Granulare Einwilligung",
           description:"Jede Sensor-Kategorie lässt sich einzeln aktivieren und vor sowie während der Studie ändern."
         },
         {
           title:"Datensparsam by Design",
-          description:"On-device Cleaning und Privacy-Filter laufen, bevor Daten überhaupt das Gerät verlassen."
+          description:"On-device Processing und Privacy-Filter greifen, bevor Daten das Gerät verlassen."
         },
         {
           title:"Keine Werbung, kein Tracking",
           description:"Keine Drittanbieter-SDKs, keine Analytics, keine Weitergabe an Werbenetzwerke."
         },
         {
-          title:"Battery-friendly",
+          title:"Akkuschonend",
           description:"Adaptive Sampling-Raten und Edge-Aggregation ermöglichen einen tagelangen Betrieb ohne nennenswerten Akkuverbrauch."
         },
         {
-          title:"Löschung jederzeit",
+          title:"Datenlöschung jederzeit möglich",
           description:"Eine Mail genügt: Alle personenbezogenen Daten werden vollständig gelöscht."
         },
         {
           title:"Eigenes Branding möglich",
-          description:"White-Label: eigenes Icon, eigener Name, eigene Akzentfarbe. PULSE bleibt im Hintergrund die Engine."
+          description:"White-Label: eigenes Icon, eigener Name, eigene Akzentfarbe. PULSE bleibt als technische Grundlage im Hintergrund."
         }]
       },
       finalCta:{
@@ -1047,18 +1047,18 @@ Lab`,
       subpages:{
         eyebrow:"Bereiche",
         title:"Inhalte im Überblick",
-        intro:"Direkter Zugang zu den zentralen Bereichen der Plattform: Methodik, Architektur, mobile Anwendung, Anwendungsfelder, Preisstruktur und institutioneller Hintergrund.",
+        intro:"Ein schneller Überblick über die zentralen Bereiche von PULSE: Methodik, Architektur, Studien-App, Anwendungsfelder, Preismodelle und institutioneller Hintergrund.",
         items:[{
           href:"/methoden",
           eyebrow:"01 · Methoden",
-          title:"Vier Methoden, eine durchgehende Pipeline",
-          description:"Experience Sampling, passives Sensing, adaptive Interventionen und reproduzierbare Auswertung in einem System."
+          title:"Vier Methoden, ein durchgängiger Studienablauf",
+          description:"PULSE verbindet Experience Sampling, passive Sensordatenerfassung, adaptive Interventionen und reproduzierbare Auswertung in einem integrierten Studiensystem."
         },
         {
           href:"/plattform",
           eyebrow:"02 · Plattform",
           title:"Studieninfrastruktur und Architektur",
-          description:"Native mobile Anwendung, Studio-Cockpit, validierte Sensorpipelines, dokumentierte Datenexporte."
+          description:"Studien-App, webbasiertes Cockpit, validierte Sensorverarbeitung und dokumentierte Datenexporte."
         },
         {
           href:"/app",
@@ -1076,13 +1076,13 @@ Lab`,
           href:"/preise",
           eyebrow:"05 · Preise",
           title:"Preismodelle und Konditionen",
-          description:"Fünf Pakete für unterschiedliche Forschungskontexte, kompatibel mit Drittmittelanträgen."
+          description:"Fünf Pakete für unterschiedliche Forschungskontexte – transparent kalkulierbar für Drittmittelanträge."
         },
         {
           href:"/ueber-uns",
           eyebrow:"06 · Institut",
           title:"Center for Computation of Human Behavior",
-          description:"Eigenständiges Institut, gegründet 2026 als Träger von PULSE, der Weiterentwicklung der PhoneStudy-Plattform aus zwölf Jahren akademischer Vorarbeit."
+          description:"Eigenständiges Institut hinter PULSE – der Weiterentwicklung der PhoneStudy-Plattform auf Basis von zwölf Jahren akademischer Vorarbeit."
         }]
       },
       credibility:{
@@ -1110,7 +1110,7 @@ Lab`,
     anwendungen:{
       eyebrow:"Anwendungsfelder",
       title:"Anwendungsfelder von PULSE",
-      intro:"PULSE wird in akademischer Forschung, in der klinischen Versorgung, in Forschungsinstituten, in Unternehmen sowie in der Markt- und Feldforschung eingesetzt. Im Folgenden fünf Anwendungsfelder mit typischen Bedarfen, Lösungsansätzen und konkreten Beispielprojekten.",
+      intro:"PULSE wird in akademischer Forschung, in der klinischen Versorgung, in Forschungsinstituten, in Unternehmen sowie in der Markt- und Feldforschung eingesetzt. Im Folgenden zeigen wir fünf Anwendungsfelder mit typischen Anforderungen, Lösungsansätzen und konkreten Beispielprojekten.",
       ctaPrimary:"Demo vereinbaren",
       ctaSecondary:"Plattform ansehen",
       needsLabel:"Bedarf",
@@ -1118,12 +1118,12 @@ Lab`,
       areas:[{
         number:"01",
         domain:"Forschende & Universitäten",
-        title:"Längsschnittstudien im Feld, ohne IT-Projekt",
-        body:"Vom Methodenseminar bis zum DFG-Großantrag stellt PULSE die Infrastruktur bereit, mit der Forschende sich auf die wissenschaftliche Fragestellung konzentrieren können statt auf App-Entwicklung. Die stärkste Domäne sind Psychologie, BWL, Pädagogik sowie Konsum- und Kommunikationsforschung. Rund 90 % der laufenden Studien werden an staatlich geförderten Lehrstühlen durchgeführt.",
+        title:"Längsschnittstudien im Alltag – ohne eigenes IT-Projekt",
+        body:"Vom Methodenseminar bis zum DFG-Großantrag stellt PULSE die technische und methodische Infrastruktur bereit, damit Forschende sich auf ihre wissenschaftliche Fragestellung konzentrieren können – nicht auf App-Entwicklung. Besonders häufig wird PULSE in Psychologie, BWL, Pädagogik sowie Konsum- und Kommunikationsforschung eingesetzt. Rund 90 % der laufenden Studien werden an öffentlich finanzierten Hochschulen und Forschungseinrichtungen durchgeführt.",
         needs:["Schneller Studienstart, oft mit knappem Budget",
-        "Methodische Flexibilität für Pilots und Hauptstudien",
+        "Methodische Flexibilität für Pilot- und Hauptstudien",
         "Transparente Datenherkunft und Reproduzierbarkeit",
-        "Einbindung von Studierenden und Forschungsassistenz"],
+        "Einbindung von Studierenden und wissenschaftlichen Hilfskräften"],
         delivers:["Studienstart in Tagen, nicht Quartalen",
         "Methodenvorlagen aus peer-reviewter Forschung",
         "Granulare Versionierung pro Studie",
@@ -1137,9 +1137,9 @@ Lab`,
         number:"02",
         domain:"Kliniken & Therapie",
         title:"EMA für Diagnostik, Therapieverlauf und Prävention",
-        body:"PULSE wird in Universitätskliniken und Versorgungsstrukturen als Instrument für Diagnostik, Verlaufsmessung und ergänzende digitale Interventionen eingesetzt.",
+        body:"PULSE wird in Universitätskliniken und klinischen Versorgungskontexten als Instrument für Diagnostik, Verlaufserfassung und ergänzende digitale Interventionen eingesetzt.",
         needs:["Klinisch validierte Methoden",
-        "Reibungsarme Integration in den Therapiealltag",
+        "Einbindung in den Therapiealltag mit wenig Zusatzaufwand",
         "Sichere Verarbeitung von Gesundheitsdaten",
         "Reporting für Behandlungsteams"],
         delivers:["EMA-, EMI- und JITAI-Designs out of the box",
@@ -1148,22 +1148,22 @@ Lab`,
         "Schnittstelle zu KIS und elektronischer Patientenakte"],
         example:{
           label:"Beispielprojekt",
-          text:"Ambulant ergänzende EMA bei Patient:innen mit Depression: tägliche Stimmungsratings, passive Aktivitätsdaten und kontextuelle Mikro-Interventionen."
+          text:"EMA als ambulante Ergänzung bei Patient:innen mit Depression: tägliche Stimmungsratings, passive Aktivitätsdaten und kontextuelle Mikro-Interventionen."
         }
       },
       {
         number:"03",
         domain:"Institute & öffentlicher Sektor",
         title:"Gesundheits-, Bildungs- und Sozialforschung im Alltag",
-        body:"Forschungsinstitute und öffentliche Auftraggeber setzen PULSE ein, wenn klassische Befragungen an methodische Grenzen stoßen und Verhaltensdaten aus der Lebensrealität erforderlich sind.",
+        body:"Forschungsinstitute und öffentliche Auftraggeber setzen PULSE ein, wenn klassische Befragungen an methodische Grenzen stoßen und Verhaltensdaten aus Alltagssituationen erforderlich sind.",
         needs:["Nachvollziehbare Methodik für Auftraggeber",
-        "Hohe Stichprobengüte und Compliance",
+        "Hohe Stichprobenqualität und Teilnahmetreue",
         "Bilinguale und barrierearme Erhebung",
         "Klare Vergabe- und Vertragsstrukturen"],
         delivers:["Validierte Erhebungsmodule für Public Health, Bildung, Arbeit",
-        "Multilinguale Apps mit barrierearmer UX",
-        "Reportings für Stakeholder:innen, nicht nur Forschende",
-        "Vertraglich saubere Auftragsforschung"],
+        "Mehrsprachige Apps mit barrierearmer Nutzerführung",
+        "Berichte für Stakeholder:innen, nicht nur Forschende",
+        "Rechtssichere Grundlagen für Auftragsforschung"],
         example:{
           label:"Beispielprojekt",
           text:"Bevölkerungsstudie zu mentaler Gesundheit nach Pandemie-Phasen: 8-Wellen-Design über 18 Monate mit kombinierter EMA und Sensorik."
@@ -1173,18 +1173,18 @@ Lab`,
         number:"04",
         domain:"Unternehmen & HR",
         title:"Wohlbefinden, Belastung und Verhaltensmuster im Arbeitskontext",
-        body:"Für Unternehmen, die psychische Gesundheit adressieren wollen, ohne die Belegschaft zu überwachen. PULSE liefert anonymisierte, aggregierte Befunde, die für Entscheidungsträger:innen nutzbar sind.",
-        needs:["Tatsächliches Bild psychischer Belastung",
+        body:"Für Unternehmen, die psychische Gesundheit fördern wollen, ohne die Belegschaft zu überwachen. PULSE liefert anonymisierte, aggregierte Befunde, die für Entscheidungsträger:innen nutzbar sind.",
+        needs:["Realistisches Bild psychischer Belastung",
         "Vertrauen der Belegschaft",
-        "DSGVO- und betriebsverfassungsrechtlich saubere Lösung",
+        "Rechtssichere Lösung nach DSGVO und Betriebsverfassungsrecht",
         "Integration in Gesundheitsstrategie und EAP"],
-        delivers:["Aggregierte Insights, niemals individuelle Profile",
+        delivers:["Aggregierte Erkenntnisse, niemals individuelle Profile",
         "Klar dokumentierte Datenflüsse für Betriebsräte",
         "Validierte Skalen aus klinischer Forschung",
-        "Konfigurierbare Reportings für HR und Führung"],
+        "Konfigurierbare Auswertungen für HR und Führung"],
         example:{
           label:"Beispielprojekt",
-          text:"Pilot bei einem Industrieunternehmen: anonymisierte EMA zu Belastung und Erholung über vier Wochen, abgeleitet wurden konkrete Maßnahmen für Schichtmodelle."
+          text:"Pilot bei einem Industrieunternehmen: anonymisierte EMA zu Belastung und Erholung über vier Wochen, daraus wurden konkrete Maßnahmen für Schichtmodelle abgeleitet."
         }
       },
       {
@@ -1192,13 +1192,13 @@ Lab`,
         domain:"EMA-Only & Markt­forschung",
         title:"Verifizierte Befragungen — Antworten, die nicht gefälscht werden können",
         body:"Reine Fragebogen-Studien ohne Sensing-Overhead, aber mit eingebauter Verifikation. Jede Antwort ist über die installierte App einer realen Person zugeordnet und kann optional mit GPS-Kontext hinterlegt werden. Das löst das Problem, an dem Online-Panels und Click-Worker-Studien scheitern: nachweisbar echte Antworten von echten Menschen — auf Wunsch sogar aus einem definierten Kontext (Filiale, Klinik, Schulgebäude, Veranstaltung).",
-        needs:["Schutz vor Mehrfach-Teilnahmen und Panel-Betrug",
+        needs:["Schutz vor Mehrfachteilnahmen und Panel-Betrug",
         "Niedrige Einstiegskosten ohne Sensing-Paket",
         "Hohe Datenqualität ohne aufwendige Rekrutierung",
         "Marktforschung, Behavioural Science, Feldexperimente, Mystery-Shopping"],
-        delivers:["App-gebundene Identität — eine Person, eine Pulse-ID, kein Account-Sharing",
+        delivers:["App-gebundene Identität — eine Person, eine Pulse-ID, keine gemeinsame Account-Nutzung",
         "Optionaler GPS-Kontext pro Antwort (mit transparenter Einwilligung)",
-        "Geofence-Trigger: Fragebögen erscheinen erst am definierten Ort",
+        "Geofence-Trigger: Fragebögen werden erst am definierten Ort angezeigt",
         "Günstigstes Einstiegspaket (EMA Only · € 1.900) — bewusst ohne Sensing, dafür mit voller API + Onboarding-Call"],
         example:{
           label:"Beispielprojekt",
@@ -1315,7 +1315,7 @@ Lab`,
           name:"Lab",
           price:"€ 14.900",
           period:"/ Jahr",
-          tagline:"Ideal für Forschungsgruppen & Labs.",
+          tagline:"Ideal für Forschungsgruppen & Laboratorien.",
           features:["bis 1.000 Teilnehmer","Full Sensing + Priority Processing","Alle EMA-Fragebogentypen","CSV + API + Custom Export","Priority + Onboarding-Call","DSGVO-konformes EU-Hosting"],
           overage:"Mehrnutzung: € 15 / zusätzl. Teilnehmer über 1.000",
           cta:"Lab wählen",
@@ -1335,7 +1335,7 @@ Lab`,
           detail:"Enterprise richtet sich an Kliniken, Konsortien und Studien ab 1.000 Teilnehmern. Sensor-Konfiguration, Datenpipeline, Vertragsmodell und Hosting werden individuell nach Anforderung gestaltet. Ein dedizierter Account Manager begleitet die Implementierung. Preisangaben auf Anfrage."
         }
       ],
-      matrixHeading:"Was in jedem Paket inklusive ist",
+      matrixHeading:"Leistungsstufen im Vergleich",
       matrix:{
         featureColLabel:"Feature",
         rows:[
@@ -1375,8 +1375,8 @@ Lab`,
       },
       advisor:{
         heading:"Unklarheiten bei der Förderung?",
-        body:"Wir unterstützen bei der Integration von PULSE in Förderanträge — DFG, BMBF, EU oder Industrie. Methoden-Bausteine, Kostenkalkulationen und Referenzen aus laufenden Studien stellen wir auf Anfrage zur Verfügung.",
-        cta:"Antragsmaterial anfragen",
+        body:"Wir unterstützen Sie dabei, PULSE in Förderanträgen nachvollziehbar darzustellen – ob für DFG, BMBF, EU-Förderprogramme oder Industrieprojekte. Methoden-Bausteine, Kostenkalkulationen und Referenzen aus laufenden Studien stellen wir auf Anfrage zur Verfügung.",
+        cta:"Antragsunterlagen anfordern",
         mailSubject:"Antragsmaterial PULSE"
       },
       faqHeading:"Häufige Fragen",

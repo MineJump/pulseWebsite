@@ -104,10 +104,10 @@ export default function UeberUnsPage() {
                   <Card
                     key={m.name}
                     variant="material"
-                    className="p-5 flex flex-col gap-4 h-full"
+                    className="p-5 flex flex-col h-full"
                   >
                     <div
-                      className="w-full aspect-square rounded-xl overflow-hidden"
+                      className="w-full aspect-square rounded-xl overflow-hidden mb-5"
                       style={{ backgroundColor: "var(--bg-elev)" }}
                     >
                       <img
@@ -119,7 +119,7 @@ export default function UeberUnsPage() {
                     </div>
                     <div className="flex flex-col flex-1">
                       <h3
-                        className="text-base leading-tight"
+                        className="text-base leading-tight mb-1.5"
                         style={{
                           fontFamily: "'IBM Plex Mono', monospace",
                           fontWeight: 500,
@@ -129,7 +129,7 @@ export default function UeberUnsPage() {
                         {m.name}
                       </h3>
                       <p
-                        className="text-xs mt-1 min-h-[2.5rem]"
+                        className="text-xs min-h-[2.5rem]"
                         style={{
                           color: "var(--accent)",
                           fontFamily: "'IBM Plex Mono', monospace",

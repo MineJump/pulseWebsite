@@ -14,7 +14,8 @@
       "WebFetch(domain:iconstack.io)",
       "WebSearch",
       "Bash(xmllint *)",
-      "Bash(npx --yes svgexport)"
+      "Bash(npx --yes svgexport)",
+      "Bash(textutil -convert txt -stdout \"/Users/hendrik/Documents/2-Studium/Project-Study/Website_Feedback.docx\")"
     ]
   }
 }

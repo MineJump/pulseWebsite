@@ -11,7 +11,15 @@ import Card from "../components/Card.jsx";
 import SubtleArrowLink from "../components/SubtleArrowLink.jsx";
 import UspPipelineDiagram from "../components/UspPipelineDiagram.jsx";
 
-const MARQUEE_ITEMS = [
+const MARQUEE_ITEMS_DE = [
+  "Experience Sampling",
+  "Passive Sensordatenerfassung",
+  "Ecological Momentary Assessment",
+  "Mobile Verhaltensforschung",
+  "Klinische Studien",
+  "Verhaltenswissenschaft",
+];
+const MARQUEE_ITEMS_EN = [
   "Experience Sampling",
   "Passive Sensing",
   "Ecological Momentary Assessment",
@@ -104,7 +112,7 @@ function SubpageCard({ item, isFirst }) {
     <Card
       variant="material"
       interactive
-      className="relative flex flex-col p-6 md:p-7 min-h-[220px]"
+      className="relative flex flex-col p-6 md:p-7 min-h-[260px] h-full"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       backdrop={
@@ -222,7 +230,7 @@ function SubpagesSection() {
           viewport={{ once: true, margin: "-60px" }}
         >
           {t.welcome.subpages.items.map((it, i) => (
-            <motion.div key={it.href} variants={card}>
+            <motion.div key={it.href} variants={card} className="h-full">
               <SubpageCard item={it} isFirst={i === 0} />
             </motion.div>
           ))}
@@ -233,10 +241,11 @@ function SubpagesSection() {
 }
 
 export default function HomePage() {
+  const { language } = useLang();
   return (
     <PageScaffold topPad={false}>
       <Hero />
-      <Marquee items={MARQUEE_ITEMS} />
+      <Marquee items={language === "de" ? MARQUEE_ITEMS_DE : MARQUEE_ITEMS_EN} />
       <UspSection />
       <SubpagesSection />
     </PageScaffold>

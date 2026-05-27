@@ -258,6 +258,18 @@ export default function PreisePage() {
                 ))}
             </motion.div>
 
+            {p.overflowNote && (
+              <p
+                className="mt-6 mb-2 text-center text-sm"
+                style={{
+                  color: "var(--text-muted)",
+                  fontFamily: "'IBM Plex Mono', monospace",
+                }}
+              >
+                {p.overflowNote}
+              </p>
+            )}
+
             {(() => {
               const enterprise = p.plans.find((plan) => plan.isEnterprise);
               if (!enterprise) return null;
@@ -267,7 +279,7 @@ export default function PreisePage() {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true }}
-                  className="mt-5"
+                  className="mt-3"
                 >
                   <Card variant="material" className="p-7 md:p-9">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10 h-full">
@@ -329,17 +341,6 @@ export default function PreisePage() {
               );
             })()}
 
-            {p.overflowNote && (
-              <p
-                className="mt-8 text-center text-sm"
-                style={{
-                  color: "var(--text-muted)",
-                  fontFamily: "'IBM Plex Mono', monospace",
-                }}
-              >
-                {p.overflowNote}
-              </p>
-            )}
           </div>
         </section>
 
@@ -360,60 +361,6 @@ export default function PreisePage() {
                 </motion.h2>
                 <PricingMatrix />
               </Card>
-            </div>
-          </section>
-        )}
-
-        {/* Advisor CTA */}
-        {p.advisor && (
-          <section className="relative w-full px-6 md:px-12 lg:px-16 py-6 md:py-8">
-            <div className="relative z-10 max-w-[1280px] mx-auto">
-              <motion.div
-                variants={item}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                className="rounded-3xl px-7 md:px-10 py-9 md:py-11 flex flex-col md:flex-row md:items-center justify-between gap-6"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
-                  boxShadow:
-                    "inset 0 1px 0 rgba(255,255,255,0.32), 0 18px 48px -16px rgba(29,78,216,0.45), 0 4px 12px -4px rgba(15,13,41,0.18)",
-                }}
-              >
-                <div className="max-w-[620px]">
-                  <h3
-                    className="text-xl md:text-2xl mb-3"
-                    style={{
-                      color: "#fff",
-                      fontFamily: "'IBM Plex Mono', monospace",
-                      fontWeight: 500,
-                    }}
-                  >
-                    {p.advisor.heading}
-                  </h3>
-                  <p
-                    className="text-sm md:text-base leading-relaxed"
-                    style={{ color: "rgba(255,255,255,0.82)" }}
-                  >
-                    {p.advisor.body}
-                  </p>
-                </div>
-                <a
-                  href={`mailto:info@2chub.com?subject=${encodeURIComponent(
-                    p.advisor.mailSubject
-                  )}`}
-                  className="flex-shrink-0 inline-flex items-center justify-center px-6 py-3.5 rounded-full text-sm uppercase tracking-[0.12em] transition-all duration-200 hover:bg-white/95 focus-halo"
-                  style={{
-                    backgroundColor: "#fff",
-                    color: "#1d4ed8",
-                    fontFamily: "'IBM Plex Mono', monospace",
-                    fontWeight: 500,
-                  }}
-                >
-                  {p.advisor.cta}
-                </a>
-              </motion.div>
             </div>
           </section>
         )}
