@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useLang } from "../lib/i18n.jsx";
 import { usePrefersReducedMotion } from "../lib/hooks.js";
 import { fadeUp, stagger } from "../lib/motion.js";
-import BlurOrbField from "./BlurOrbField.jsx";
 import Button from "./Button.jsx";
 import GooeyBlobs from "./GooeyBlobs.jsx";
 
@@ -17,8 +16,6 @@ export default function Hero() {
 
   return (
     <section className="relative w-full min-h-[100svh] flex items-center overflow-hidden section-fade-bottom-elev">
-      <BlurOrbField intensity="hero" />
-      <div className="absolute inset-0 z-0 grid-overlay" aria-hidden="true" />
       <div className="hidden xl:block absolute right-[-4%] top-1/2 -translate-y-1/2 z-[1] opacity-70 pointer-events-none">
         <GooeyBlobs size={360} />
       </div>

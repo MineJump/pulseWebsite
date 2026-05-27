@@ -6,7 +6,6 @@ import { dur, ease, fadeUp, fadeUpScale, stagger } from "../lib/motion.js";
 import PageScaffold from "../components/PageScaffold.jsx";
 import Hero from "../components/Hero.jsx";
 import Marquee from "../components/Marquee.jsx";
-import BlurOrbField from "../components/BlurOrbField.jsx";
 import Card from "../components/Card.jsx";
 import SubtleArrowLink from "../components/SubtleArrowLink.jsx";
 import UspPipelineDiagram from "../components/UspPipelineDiagram.jsx";
@@ -37,14 +36,7 @@ function UspSection() {
   const container = reduced ? { hidden: {}, show: {} } : stagger(0.07, 0.05);
 
   return (
-    <section
-      className="relative w-full px-6 md:px-12 lg:px-16 py-16 md:py-24 overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(180deg, var(--bg) 0%, var(--bg-elev) 32%, var(--bg-elev) 68%, var(--bg) 100%)",
-      }}
-    >
-      <BlurOrbField intensity="section" />
+    <section className="relative w-full px-6 md:px-12 lg:px-16 py-16 md:py-24 overflow-hidden">
       <div className="relative z-10 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <motion.div
@@ -115,20 +107,6 @@ function SubpageCard({ item, isFirst }) {
       className="relative flex flex-col p-6 md:p-7 min-h-[260px] h-full"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      backdrop={
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            borderRadius: "inherit",
-            backgroundImage: isFirst
-              ? "radial-gradient(75% 80% at 100% 0%, rgba(255, 146, 66, 0.18), transparent 60%)"
-              : "radial-gradient(75% 80% at 100% 0%, rgba(255, 146, 66, 0.08), transparent 60%)",
-            transition: `opacity ${dur.base}s var(--ease-out-soft)`,
-            opacity: hover ? 1 : 0.85,
-          }}
-        />
-      }
     >
       <a
         href={item.href}
@@ -187,7 +165,6 @@ function SubpagesSection() {
   const container = reduced ? { hidden: {}, show: {} } : stagger(0.07, 0.05);
   return (
     <section className="relative w-full px-6 md:px-12 lg:px-16 py-16 md:py-24 overflow-hidden">
-      <BlurOrbField intensity="subtle" />
       <div className="relative z-10 max-w-[1400px] mx-auto">
         <motion.div
           className="mb-12 md:mb-16 max-w-[820px]"

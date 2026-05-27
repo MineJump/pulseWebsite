@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useLang } from "../lib/i18n.jsx";
 import { usePrefersReducedMotion } from "../lib/hooks.js";
 import { fadeUp, stagger } from "../lib/motion.js";
-import BlurOrbField from "./BlurOrbField.jsx";
 import Card from "./Card.jsx";
 import Button from "./Button.jsx";
 import StatusBadge from "./StatusBadge.jsx";
@@ -37,21 +36,10 @@ export default function Footer() {
       id="contact"
       className="relative w-full px-6 md:px-12 lg:px-16 pt-12 md:pt-16 lg:pt-20 pb-10 overflow-hidden"
     >
-      <BlurOrbField intensity="subtle" />
       <div className="relative z-10 max-w-[1400px] mx-auto">
         <Card
           variant="elevated"
           className="relative overflow-hidden px-6 md:px-10 py-8 md:py-10 mb-12 md:mb-16"
-          backdrop={
-            <span
-              aria-hidden="true"
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(80% 120% at 100% 100%, rgba(255, 146, 66, 0.10), transparent 62%), radial-gradient(60% 90% at 0% 0%, rgba(255, 146, 66, 0.05), transparent 60%)",
-              }}
-            />
-          }
         >
           <motion.div
             variants={container}
@@ -81,21 +69,6 @@ export default function Footer() {
               className="md:col-span-5 flex flex-col sm:items-start md:items-end gap-3"
             >
               <div className="relative inline-flex">
-                <motion.span
-                  aria-hidden="true"
-                  className="absolute inset-0 rounded-full pointer-events-none"
-                  style={{
-                    background:
-                      "radial-gradient(60% 90% at 50% 50%, rgba(255, 146, 66, 0.42), transparent 72%)",
-                    filter: "blur(14px)",
-                  }}
-                  animate={reduced ? undefined : { opacity: [0.55, 0.95, 0.55] }}
-                  transition={
-                    reduced
-                      ? undefined
-                      : { duration: 3.6, repeat: Infinity, ease: "easeInOut" }
-                  }
-                />
                 <Button
                   href={`mailto:${t.contact.email}`}
                   variant="primary"
