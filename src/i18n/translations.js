@@ -29,7 +29,7 @@ export const translations = {
       title:`Die Plattform für smartphonebasierte
 Verhaltensforschung`,
       subtitle:"Experience Sampling, passive Sensordatenerfassung und adaptive Interventionen in einer durchgängigen Studieninfrastruktur.",
-      tagline:"PULSE entstand 2014 am Lehrstuhl für psychologische Methodenlehre der LMU München und wird heute als Software-Infrastruktur des Center for Computation of Human Behavior weiterentwickelt. Studienteams planen, erheben und analysieren ihre Daten in einem gemeinsamen System.",
+      tagline:"Die Plattform geht auf PhoneStudy (2014) zurück und wird heute am Center for Computation of Human Behavior als Software-Infrastruktur für mobile Verhaltensforschung weitergeführt. Studienteams planen, erheben und analysieren ihre Daten in einem gemeinsamen System.",
       primaryCta:"Plattform ansehen",
       secondaryCta:"Demo vereinbaren"
     },
@@ -632,7 +632,7 @@ Verhaltensforschung`,
         slug:"auswerten",
         title:"Auswerten",
         shortDesc:"Pre-processed",
-        cardDesc:"Vorverarbeitete Features, LLM-gestützte Berichte, Exporte für R, SPSS, Python.",
+        cardDesc:"Vorverarbeitete Features, automatische Berichtsentwürfe (LLM-gestützt, direkt aus Ihren Feature-Daten), Exporte für R, SPSS, Python.",
         pageTitle:`Auswerten:
 analysefertige Daten`,
         pageIntro:"Vorverarbeitete Features, LLM-gestützte Berichtsentwürfe und reproduzierbare Pipelines. Studienteams erhalten keinen Zeitstempel-Dump, sondern validierte Verhaltensfeatures, dokumentierte Schemas und sofort analysefähige Datensätze.",
@@ -991,7 +991,7 @@ Lab`,
         bullets:["Granulare Einwilligung pro Sensor-Kategorie",
         "On-device Preprocessing ohne Upload von Rohdaten-Streams",
         "Live-Daten-Vorschau für Transparenz",
-        "Energie-optimiert, läuft tagelang ohne Akku-Sorgen"],
+        "Energie-optimiert: unter 3 % Akkuverbrauch pro Tag bei Standardkonfiguration"],
         imageAlt:"PULSE-App: Mobile-Sensing-Dashboard mit Live-Sensordaten"
       },
       participantPromise:{
@@ -1012,7 +1012,7 @@ Lab`,
         },
         {
           title:"Akkuschonend",
-          description:"Adaptive Sampling-Raten und Edge-Aggregation ermöglichen einen tagelangen Betrieb ohne nennenswerten Akkuverbrauch."
+          description:"Adaptive Sampling-Raten und Edge-Aggregation halten den Akkuverbrauch unter 3 % pro Tag bei Standardkonfiguration."
         },
         {
           title:"Datenlöschung jederzeit möglich",
@@ -1127,7 +1127,7 @@ Lab`,
         delivers:["Studienstart in Tagen, nicht Quartalen",
         "Methodenvorlagen aus peer-reviewter Forschung",
         "Granulare Versionierung pro Studie",
-        "Faire akademische Lizenzen"],
+        "Ab € 1.900/Jahr, Drittmittel-kompatibel"],
         example:{
           label:"Referenzstudie",
           text:"CoCo-Studie (Coping with Corona): Multi-Site-Längsschnittstudie der WWU Münster, Universität Osnabrück und LMU München. EMA und Passive Sensing zur Erfassung von sozialer Interaktion, Persönlichkeit, Stimmung und Wohlbefinden im Alltag der COVID-19-Pandemie. Weitere Studie: DIPS (Universität Heidelberg, DIW Berlin, LMU München) – Längsschnittuntersuchung zu Dynamiken in sozialen Beziehungen und dem Einfluss von Persönlichkeitsmerkmalen im Alltag."
@@ -1250,7 +1250,7 @@ Lab`,
         cta:"Mit dem Team sprechen",
         services:[{
           title:"Methodenberatung",
-          description:"Studiendesign-Begleitung durch ein methodenlehre-erfahrenes Team. Lehrbücher zur Studiendurchführung gehören zum Handwerkszeug, das in jede Studienkonzeption einfließt."
+          description:"Studiendesign-Begleitung durch das Team hinter PULSE – mit Expertise aus über einem Jahrzehnt mobiler Verhaltensforschung und mehr als 20 begleiteten Studien."
         },
         {
           title:"Ethik und Datenschutz",
@@ -1272,14 +1272,14 @@ Lab`,
       intro:"Unbegrenzte Studienanzahl, API und vollständiger Datenexport sind in jedem Paket inklusive. EU-Hosting, DSGVO-konform, Drittmittel-kompatibel. Alle Preise zzgl. MwSt.",
       badge:"Beliebt",
       close:"Schließen",
-      overflowNote:"Studien mit mehr als 1.000 Teilnehmenden? Enterprise unten.",
+      overflowNote:"",
       plans:[
         {
           id:"emaOnly",
           name:"EMA Only",
           price:"€ 1.900",
           period:"/ Jahr",
-          tagline:"Ideal für reine Fragebogen-Studien — ohne Sensing.",
+          tagline:"Für Forschende, die EMA ohne App-Entwicklung betreiben wollen — ohne Sensing, volles API.",
           features:["bis 400 Teilnehmer","Alle EMA-Fragebogentypen","CSV + API + Custom Export","E-Mail + Onboarding-Call","DSGVO-konformes EU-Hosting"],
           overage:"Mehrnutzung: € 10 / zusätzl. Teilnehmer (bis 1.000)",
           cta:"EMA Only wählen",
@@ -1291,7 +1291,7 @@ Lab`,
           name:"Explore",
           price:"€ 2.900",
           period:"/ Jahr",
-          tagline:"Ideal für Pilotstudien & Masterarbeiten.",
+          tagline:"Für Masterarbeiten und Pilotstudien mit Sensing-Komponente — Laufzeit 1 Semester.",
           features:["bis 100 Teilnehmer","Standard Sensing (Steps, Location, Screen Time)","Alle EMA-Fragebogentypen","CSV + API + Custom Export","E-Mail-Support","DSGVO-konformes EU-Hosting"],
           cta:"Explore wählen",
           ctaHref:"https://pulse.2chub.com",
@@ -1414,7 +1414,7 @@ Lab`,
       title:`The platform for mobile
 behavioural research`,
       subtitle:"Experience sampling, passive sensing and adaptive interventions within a single study infrastructure.",
-      tagline:"PULSE was developed in 2014 at the Chair of Psychological Methodology at LMU Munich and is maintained today as the software infrastructure of the Center for Computation of Human Behavior. Research teams design, conduct and analyse their studies in one system.",
+      tagline:"The platform traces back to PhoneStudy (2014) and is maintained today at the Center for Computation of Human Behavior as software infrastructure for mobile behavioural research. Research teams design, conduct and analyse their studies in one system.",
       primaryCta:"See the platform",
       secondaryCta:"Request a demo"
     },
@@ -2376,7 +2376,7 @@ Lab`,
         bullets:["Granular consent per sensor category",
         "On-device pre-processing with no raw streams uploaded",
         "Live data preview for transparency",
-        "Battery-optimised, runs for days without drain concerns"],
+        "Battery-optimised: under 3 % battery use per day at default settings"],
         imageAlt:"PULSE app: mobile sensing dashboard with live sensor data"
       },
       participantPromise:{
@@ -2397,7 +2397,7 @@ Lab`,
         },
         {
           title:"Battery-friendly",
-          description:"Adaptive sampling rates and edge aggregation allow the app to run for days without noticeable battery impact."
+          description:"Adaptive sampling rates and edge aggregation keep battery use under 3 % per day at default settings."
         },
         {
           title:"Deletion any time",
@@ -2512,7 +2512,7 @@ Lab`,
         delivers:["Study start in days, not quarters",
         "Method templates from peer-reviewed research",
         "Granular versioning per study",
-        "Fair academic licences"],
+        "From € 1,900/year, compatible with third-party funding"],
         example:{
           label:"Example study",
           text:"CoCo Study (Coping with Corona): multi-site longitudinal study by WWU Münster, University of Osnabrück and LMU Munich. EMA and passive sensing to capture social interaction, personality, mood and wellbeing during the COVID-19 pandemic. Further reference: DIPS (University of Heidelberg, DIW Berlin, LMU Munich) – longitudinal investigation of dynamics in social relationships and the influence of personality traits in everyday life."
@@ -2635,7 +2635,7 @@ Lab`,
         cta:"Talk to the team",
         services:[{
           title:"Methods consulting",
-          description:"Study-design support from a methodology-trained team. Textbooks on running studies are part of the toolkit that informs every study concept."
+          description:"Study-design support from the team behind PULSE — with expertise from over a decade of mobile behavioural research and more than 20 studies accompanied."
         },
         {
           title:"Ethics and data protection",
@@ -2657,14 +2657,14 @@ Lab`,
       intro:"Unlimited studies, API and full data export are included in every tier. EU hosting, GDPR-compliant, grant-friendly. All prices excl. VAT.",
       badge:"Popular",
       close:"Close",
-      overflowNote:"Studies with more than 1,000 participants? Enterprise below.",
+      overflowNote:"",
       plans:[
         {
           id:"emaOnly",
           name:"EMA Only",
           price:"€ 1,900",
           period:"/ year",
-          tagline:"Ideal for survey-only studies — no sensing.",
+          tagline:"For researchers running EMA without app development — no sensing, full API.",
           features:["up to 400 participants","All ESM questionnaire types","CSV + API + Custom export","Email + onboarding call","GDPR-compliant EU hosting"],
           overage:"Overage: € 10 / extra participant (up to 1,000)",
           cta:"Choose EMA Only",
@@ -2676,7 +2676,7 @@ Lab`,
           name:"Explore",
           price:"€ 2,900",
           period:"/ year",
-          tagline:"Ideal for pilot studies & master's theses.",
+          tagline:"For master's theses and pilot studies with a sensing component — one-semester duration.",
           features:["up to 100 participants","Standard sensing (steps, location, screen time)","All ESM questionnaire types","CSV + API + Custom export","Email support","GDPR-compliant EU hosting"],
           cta:"Choose Explore",
           ctaHref:"https://pulse.2chub.com",
