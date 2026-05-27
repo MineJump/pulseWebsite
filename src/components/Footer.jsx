@@ -66,9 +66,9 @@ export default function Footer() {
             </div>
             <motion.div
               variants={item}
-              className="md:col-span-5 flex flex-col sm:items-start md:items-end gap-3"
+              className="md:col-span-5 flex flex-col items-start md:items-end gap-6"
             >
-              <div className="relative inline-flex">
+              <div className="flex flex-col items-center gap-3">
                 <Button
                   href={`mailto:${t.contact.email}`}
                   variant="primary"
@@ -76,24 +76,22 @@ export default function Footer() {
                 >
                   {t.contact.cta}
                 </Button>
-              </div>
-              <div
-                className="flex flex-row gap-3 items-baseline text-xs"
-                style={{ fontFamily: "'IBM Plex Mono', monospace" }}
-              >
-                <a
-                  href={`mailto:${t.contact.email}`}
-                  className="focus-halo rounded-sm transition-colors"
-                  style={{ color: "var(--ink)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink)")}
+                <div
+                  className="flex flex-row gap-3 items-baseline text-xs"
+                  style={{ fontFamily: "'IBM Plex Mono', monospace" }}
                 >
-                  {t.contact.email}
-                </a>
-                <span aria-hidden="true" style={{ color: "var(--text-dim)" }}>
-                  ·
-                </span>
-                <span style={{ color: "var(--text-dim)" }}>{t.contact.location}</span>
+                  <a
+                    href={`mailto:${t.contact.email}`}
+                    className="focus-halo rounded-sm transition-colors"
+                    style={{ color: "var(--ink)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink)")}
+                  >
+                    {t.contact.email}
+                  </a>
+                  <span aria-hidden="true" style={{ color: "var(--text-dim)" }}>·</span>
+                  <span style={{ color: "var(--text-dim)" }}>{t.contact.location}</span>
+                </div>
               </div>
             </motion.div>
           </motion.div>
