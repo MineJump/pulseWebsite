@@ -120,7 +120,7 @@ function TableRow({ pub, query, index, reduced }) {
         {/* Journal visible on mobile only */}
         <span
           className="md:hidden block text-xs mt-1.5"
-          style={{ color: "var(--text-dim)", ...MONO }}
+          style={{ color: "var(--text-muted)", ...MONO }}
         >
           {highlight(pub.journal, query)}
           {pub.volume ? ` · ${pub.volume}` : ""}
@@ -130,11 +130,11 @@ function TableRow({ pub, query, index, reduced }) {
       {/* Journal + volume — desktop only */}
       <td
         className="hidden md:table-cell py-4 pr-5 align-top text-xs leading-relaxed"
-        style={{ color: "var(--text-dim)", ...MONO, maxWidth: "16rem" }}
+        style={{ color: "var(--text-muted)", ...MONO, maxWidth: "16rem" }}
       >
         <span className="block">{highlight(pub.journal, query)}</span>
         {pub.volume && (
-          <span className="block mt-0.5" style={{ color: "var(--border)" }}>
+          <span className="block mt-0.5" style={{ color: "var(--text-dim)" }}>
             {pub.volume}
           </span>
         )}
