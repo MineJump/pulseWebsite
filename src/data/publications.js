@@ -50,7 +50,7 @@ export const PUBLICATIONS = [
   {
     id: "scharbert-2024-ukraine",
     year: 2024,
-    authors: "Scharbert, J., Humberg, S., Kroencke, L., Reiter, T., Sakel, S., ter Horst, J., et al., & Back, M. D.",
+    authors: "Scharbert, J., Humberg, S., Kroencke, L., Reiter, T., Sakel, S., ter Horst, J., et al.",
     title: "Psychological well-being in Europe after the outbreak of war in Ukraine",
     journal: "Nature Communications",
     volume: "15(1), 1202",
@@ -59,7 +59,7 @@ export const PUBLICATIONS = [
   {
     id: "scharbert-2023-coco",
     year: 2023,
-    authors: "Scharbert, J., Reiter, T., Sakel, S., ter Horst, J., Geukes, K., Gosling, S. D., et al., & Back, M. D.",
+    authors: "Scharbert, J., Reiter, T., Sakel, S., ter Horst, J., Geukes, K., Gosling, S. D., et al.",
     title: "A global experience-sampling method study of well-being during times of crisis: The CoCo project",
     journal: "Social and Personality Psychology Compass",
     volume: "17(10), e12813",
@@ -81,6 +81,6 @@ export const PUBLICATIONS = [
     title: "Mobile sensing in psychological and educational research: Examples from two application fields",
     journal: "International Journal of Testing",
     volume: "22, 264–288",
-    doi: "",
+    doi: null,
   },
 ];

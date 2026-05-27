@@ -8,7 +8,6 @@ import PageHero from "../components/PageHero.jsx";
 import { PUBLICATIONS } from "../data/publications.js";
 
 const MONO = { fontFamily: "'IBM Plex Mono', monospace" };
-
 const ALL = "all";
 
 function highlight(text, query) {
@@ -33,12 +32,32 @@ function highlight(text, query) {
   );
 }
 
+function SearchIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      style={{ flexShrink: 0 }}
+    >
+      <circle cx="6" cy="6" r="4.25" stroke="currentColor" strokeWidth="1.25" />
+      <line x1="9.5" y1="9.5" x2="12.5" y2="12.5" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 function TableRow({ pub, query, index, reduced }) {
   const [hover, setHover] = useState(false);
 
   const rowVariants = reduced
     ? { hidden: { opacity: 1 }, show: { opacity: 1 } }
-    : { hidden: { opacity: 0, y: 6 }, show: { opacity: 1, y: 0, transition: { duration: 0.18, delay: index * 0.04 } } };
+    : {
+        hidden: { opacity: 0, y: 6 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.18, delay: index * 0.04 } },
+      };
 
   return (
     <motion.tr
@@ -57,13 +76,13 @@ function TableRow({ pub, query, index, reduced }) {
     >
       {/* Year */}
       <td
-        className="py-4 pr-5 align-top whitespace-nowrap text-xs"
-        style={{ color: "var(--accent)", ...MONO, width: "4rem" }}
+        className="pl-5 py-4 pr-4 align-top whitespace-nowrap text-xs"
+        style={{ color: "var(--accent)", ...MONO, width: "5rem" }}
       >
         {pub.year}
       </td>
 
-      {/* Title + Authors */}
+      {/* Title + Authors + mobile journal hint */}
       <td className="py-4 pr-5 align-top">
         {pub.doi ? (
           <a
@@ -98,21 +117,31 @@ function TableRow({ pub, query, index, reduced }) {
         >
           {highlight(pub.authors, query)}
         </span>
+        {/* Journal visible on mobile only */}
+        <span
+          className="md:hidden block text-xs mt-1.5"
+          style={{ color: "var(--text-dim)", ...MONO }}
+        >
+          {highlight(pub.journal, query)}
+          {pub.volume ? ` · ${pub.volume}` : ""}
+        </span>
       </td>
 
-      {/* Journal — hidden on small screens */}
+      {/* Journal + volume — desktop only */}
       <td
         className="hidden md:table-cell py-4 pr-5 align-top text-xs leading-relaxed"
         style={{ color: "var(--text-dim)", ...MONO, maxWidth: "16rem" }}
       >
         <span className="block">{highlight(pub.journal, query)}</span>
-        <span style={{ color: "var(--border)", marginTop: 2, display: "block" }}>
-          {pub.volume}
-        </span>
+        {pub.volume && (
+          <span className="block mt-0.5" style={{ color: "var(--border)" }}>
+            {pub.volume}
+          </span>
+        )}
       </td>
 
-      {/* DOI link */}
-      <td className="py-4 align-top whitespace-nowrap text-right" style={{ width: "4rem" }}>
+      {/* DOI */}
+      <td className="py-4 pr-5 align-top whitespace-nowrap text-right" style={{ width: "5rem" }}>
         {pub.doi ? (
           <a
             href={pub.doi}
@@ -172,27 +201,26 @@ export default function PublikationenPage() {
 
             {/* ── Toolbar ── */}
             <motion.div
-              className="mb-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center"
+              className="mb-6 flex flex-col sm:flex-row gap-3 items-start sm:items-center"
               variants={container}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-40px" }}
             >
               {/* Search */}
-              <motion.div variants={item} className="relative flex-1 w-full sm:max-w-sm">
+              <motion.div variants={item} className="relative flex-1 w-full sm:max-w-xs">
                 <span
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-xs pointer-events-none select-none"
-                  style={{ color: "var(--text-dim)", ...MONO }}
-                  aria-hidden="true"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none flex items-center"
+                  style={{ color: "var(--text-dim)" }}
                 >
-                  ⌕
+                  <SearchIcon />
                 </span>
                 <input
                   type="search"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder={p.searchPlaceholder}
-                  className="w-full pl-8 pr-4 py-2.5 text-sm rounded-lg focus-halo"
+                  className="w-full pl-8 pr-4 py-2 text-sm rounded-lg focus-halo"
                   style={{
                     ...MONO,
                     background: "var(--bg-elev)",
@@ -204,10 +232,10 @@ export default function PublikationenPage() {
               </motion.div>
 
               {/* Year filters */}
-              <motion.div variants={item} className="flex flex-wrap gap-2">
+              <motion.div variants={item} className="flex flex-wrap gap-1.5">
                 <button
                   onClick={() => setYearFilter(ALL)}
-                  className="text-xs uppercase tracking-[0.14em] px-3 py-1.5 rounded-full transition-colors focus-halo"
+                  className="text-xs uppercase tracking-[0.12em] px-3 py-1.5 rounded-full transition-colors focus-halo"
                   style={{
                     ...MONO,
                     backgroundColor: yearFilter === ALL ? "var(--accent)" : "var(--bg-elev)",
@@ -221,7 +249,7 @@ export default function PublikationenPage() {
                   <button
                     key={y}
                     onClick={() => setYearFilter(y)}
-                    className="text-xs uppercase tracking-[0.14em] px-3 py-1.5 rounded-full transition-colors focus-halo"
+                    className="text-xs uppercase tracking-[0.12em] px-3 py-1.5 rounded-full transition-colors focus-halo"
                     style={{
                       ...MONO,
                       backgroundColor: yearFilter === y ? "var(--accent)" : "var(--bg-elev)",
@@ -237,7 +265,7 @@ export default function PublikationenPage() {
               {/* Result count */}
               <motion.span
                 variants={item}
-                className="text-xs sm:ml-auto whitespace-nowrap"
+                className="text-xs sm:ml-auto whitespace-nowrap tabular-nums"
                 style={{ color: "var(--text-dim)", ...MONO }}
               >
                 {filtered.length} / {PUBLICATIONS.length} {p.entries}
@@ -253,33 +281,32 @@ export default function PublikationenPage() {
                 <thead>
                   <tr style={{ borderBottom: "1px solid var(--border)", background: "var(--bg-elev)" }}>
                     <th
-                      className="py-3 px-0 pr-5 text-left text-xs uppercase tracking-[0.18em]"
-                      style={{ color: "var(--text-dim)", ...MONO, paddingLeft: "1.25rem" }}
+                      className="pl-5 py-3 pr-4 text-left text-xs uppercase tracking-[0.16em] font-normal"
+                      style={{ color: "var(--text-dim)", ...MONO, width: "5rem" }}
                     >
                       {p.colYear}
                     </th>
                     <th
-                      className="py-3 pr-5 text-left text-xs uppercase tracking-[0.18em]"
+                      className="py-3 pr-5 text-left text-xs uppercase tracking-[0.16em] font-normal"
                       style={{ color: "var(--text-dim)", ...MONO }}
                     >
                       {p.colTitle}
                     </th>
                     <th
-                      className="hidden md:table-cell py-3 pr-5 text-left text-xs uppercase tracking-[0.18em]"
+                      className="hidden md:table-cell py-3 pr-5 text-left text-xs uppercase tracking-[0.16em] font-normal"
                       style={{ color: "var(--text-dim)", ...MONO }}
                     >
                       {p.colJournal}
                     </th>
-                    <th className="py-3 pr-5 text-right text-xs uppercase tracking-[0.18em]"
-                      style={{ color: "var(--text-dim)", ...MONO }}
+                    <th
+                      className="py-3 pr-5 text-right text-xs uppercase tracking-[0.16em] font-normal"
+                      style={{ color: "var(--text-dim)", ...MONO, width: "5rem" }}
                     >
                       {p.colDoi}
                     </th>
                   </tr>
                 </thead>
-                <tbody
-                  style={{ background: "var(--bg)" }}
-                >
+                <tbody style={{ background: "var(--bg)" }}>
                   <AnimatePresence mode="popLayout">
                     {filtered.length > 0 ? (
                       filtered.map((pub, i) => (
@@ -314,7 +341,7 @@ export default function PublikationenPage() {
 
             {/* Note */}
             <motion.p
-              className="text-xs leading-relaxed max-w-[640px] mt-6"
+              className="text-xs leading-relaxed max-w-[640px] mt-5"
               style={{ color: "var(--text-dim)", ...MONO }}
               variants={item}
               initial="hidden"
