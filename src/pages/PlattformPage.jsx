@@ -4,6 +4,7 @@ import { usePrefersReducedMotion } from "../lib/hooks.js";
 import { fadeUp, stagger } from "../lib/motion.js";
 import PageScaffold from "../components/PageScaffold.jsx";
 import PageHero from "../components/PageHero.jsx";
+import BlurOrbField from "../components/BlurOrbField.jsx";
 import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
 import SubtleArrowLink from "../components/SubtleArrowLink.jsx";

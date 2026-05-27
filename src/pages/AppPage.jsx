@@ -4,6 +4,7 @@ import { usePrefersReducedMotion } from "../lib/hooks.js";
 import { fadeUp, fadeUpScale, stagger } from "../lib/motion.js";
 import PageScaffold from "../components/PageScaffold.jsx";
 import PageHero from "../components/PageHero.jsx";
+import BlurOrbField from "../components/BlurOrbField.jsx";
 import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
 import PhoneMockup from "../components/PhoneMockup.jsx";
@@ -25,7 +26,16 @@ function FeatureWithMockup({
   return (
     <section
       className="relative w-full px-6 md:px-12 lg:px-16 py-14 md:py-20 overflow-hidden"
+      style={
+        elevated
+          ? {
+              background:
+                "linear-gradient(180deg, var(--bg) 0%, var(--bg-elev) 32%, var(--bg-elev) 68%, var(--bg) 100%)",
+            }
+          : undefined
+      }
     >
+      <BlurOrbField intensity={elevated ? "section" : "subtle"} />
       <div className="relative z-10 max-w-[1280px] mx-auto">
         <div
           className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center ${imageOnRight ? "" : "lg:[direction:rtl]"}`}
@@ -167,6 +177,7 @@ export default function AppPage() {
 
         {a.participantPromise && (
           <section className="relative w-full px-6 md:px-12 lg:px-16 py-14 md:py-20 overflow-hidden">
+            <BlurOrbField intensity="subtle" />
             <div className="relative z-10 max-w-[1280px] mx-auto">
               <motion.div
                 className="mb-14 md:mb-16 max-w-[820px]"

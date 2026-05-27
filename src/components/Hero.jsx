@@ -44,9 +44,9 @@ export default function Hero() {
         </motion.h1>
         <motion.p
           variants={item}
-          className="mt-6 text-lg md:text-[1.35rem] leading-snug max-w-[720px]"
+          className="mt-6 text-xl md:text-2xl leading-snug max-w-[720px]"
           style={{
-            color: "var(--text-muted)",
+            color: "var(--ink)",
             fontFamily: "'IBM Plex Mono', monospace",
             fontWeight: 400,
           }}
