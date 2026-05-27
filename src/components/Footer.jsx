@@ -7,17 +7,18 @@ import Button from "./Button.jsx";
 import StatusBadge from "./StatusBadge.jsx";
 
 function LanguageToggleInline() {
-  // Minimal inline toggle so we don't pull the full Header dependency just for the footer
   const { language, toggleLanguage } = useLang();
   return (
     <button
       type="button"
       onClick={toggleLanguage}
-      className="text-xs uppercase tracking-[0.14em] px-3 py-1 rounded-full material-thin focus-halo"
-      style={{ color: "var(--ink)", fontFamily: "'IBM Plex Mono', monospace" }}
-      aria-label={`Switch language. Current: ${language.toUpperCase()}`}
+      className="text-sm uppercase tracking-[0.1em] py-2 transition-opacity duration-200 hover:opacity-70 focus-halo rounded-sm"
+      style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
+      aria-label="Toggle language"
     >
-      {language === "de" ? "EN" : "DE"}
+      <span style={{ opacity: language === "de" ? 1 : 0.4, color: language === "de" ? "var(--ink)" : undefined }}>DE</span>
+      <span className="mx-1" style={{ opacity: 0.4 }}>/</span>
+      <span style={{ opacity: language === "en" ? 1 : 0.4, color: language === "en" ? "var(--ink)" : undefined }}>EN</span>
     </button>
   );
 }
