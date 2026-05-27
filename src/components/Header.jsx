@@ -148,7 +148,6 @@ function NavDropdown({ label, items, currentPath }) {
                       className="text-sm leading-tight"
                       style={{
                         color: "var(--ink)",
-                        fontFamily: "'IBM Plex Mono', monospace",
                         fontWeight: 500,
                       }}
                     >
@@ -248,7 +247,6 @@ function MobileMenuOverlay({ open, onClose, navItems, pulseItems, t, language, t
                   className="text-2xl"
                   style={{
                     color: "var(--ink)",
-                    fontFamily: "'IBM Plex Mono', monospace",
                     fontWeight: 500,
                   }}
                 >
@@ -293,7 +291,6 @@ function MobileMenuOverlay({ open, onClose, navItems, pulseItems, t, language, t
                             className="block text-base"
                             style={{
                               color: "var(--ink)",
-                              fontFamily: "'IBM Plex Mono', monospace",
                             }}
                           >
                             {it.label}
@@ -329,7 +326,6 @@ function MobileMenuOverlay({ open, onClose, navItems, pulseItems, t, language, t
                     className="text-2xl"
                     style={{
                       color: "var(--ink)",
-                      fontFamily: "'IBM Plex Mono', monospace",
                       fontWeight: active ? 500 : undefined,
                     }}
                   >
@@ -368,7 +364,6 @@ function MobileMenuOverlay({ open, onClose, navItems, pulseItems, t, language, t
               style={{
                 backgroundColor: "#2563eb",
                 color: "#fff",
-                fontFamily: "'IBM Plex Mono', monospace",
               }}
             >
               {t.nav.login}
@@ -480,7 +475,6 @@ export default function Header() {
               style={{
                 backgroundColor: "#2563eb",
                 color: "#fff",
-                fontFamily: "'IBM Plex Mono', monospace",
               }}
             >
               {t.nav.login}

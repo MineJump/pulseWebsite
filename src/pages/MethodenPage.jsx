@@ -8,33 +8,6 @@ import PageHero from "../components/PageHero.jsx";
 import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
 
-function MethodIcon({ active }) {
-  return (
-    <span
-      aria-hidden="true"
-      className="shrink-0 inline-flex items-center justify-center"
-      style={{ width: 18, height: 18 }}
-    >
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-        <circle
-          cx="9"
-          cy="9"
-          r="8"
-          fill="var(--bg)"
-          stroke={active ? "var(--accent)" : "rgba(255, 146, 66, 0.45)"}
-          strokeWidth="1"
-        />
-        <circle
-          cx="9"
-          cy="9"
-          r={active ? 3.2 : 2.4}
-          fill={active ? "var(--accent)" : "var(--ink)"}
-        />
-      </svg>
-    </span>
-  );
-}
-
 function MethodCard({ item, cta, variants, isFirst }) {
   const [hover, setHover] = useState(false);
   return (
@@ -43,27 +16,19 @@ function MethodCard({ item, cta, variants, isFirst }) {
       interactive
       variants={variants}
       className="relative flex flex-col p-6 md:p-7 min-h-[360px]"
+      style={{ backdropFilter: "none", WebkitBackdropFilter: "none", background: "var(--bg)" }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      backdrop={
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            borderRadius: "inherit",
-            backgroundImage:
-              "radial-gradient(75% 80% at 100% 0%, rgba(255, 146, 66, 0.18), transparent 60%)",
-            transition: `opacity ${dur.base}s var(--ease-out-soft)`,
-            opacity: hover ? 1 : 0.85,
-          }}
-        />
-      }
     >
       <div
-        className="flex items-center gap-3.5 mb-7"
+        className="flex items-center gap-2.5 mb-7"
         style={{ height: 32, position: "relative", zIndex: 6 }}
       >
-        <MethodIcon active={isFirst} />
+        <span
+          aria-hidden="true"
+          className="inline-block w-1.5 h-1.5 rounded-full shrink-0"
+          style={{ backgroundColor: "var(--accent)" }}
+        />
         <span
           className="text-xs tracking-[0.22em]"
           style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
@@ -79,7 +44,6 @@ function MethodCard({ item, cta, variants, isFirst }) {
       </div>
       <h3
         className="text-2xl md:text-[1.625rem] mb-4 leading-tight"
-        style={{ fontFamily: "'IBM Plex Mono', monospace" }}
       >
         {item.title}
       </h3>

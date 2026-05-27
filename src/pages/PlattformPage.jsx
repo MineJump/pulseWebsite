@@ -136,7 +136,6 @@ export default function PlattformPage() {
                     </p>
                     <h3
                       className="text-xl mb-3"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace" }}
                     >
                       {l.title}
                     </h3>
@@ -185,7 +184,6 @@ export default function PlattformPage() {
                     </p>
                     <h3
                       className="text-lg mb-2"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace" }}
                     >
                       {it.title}
                     </h3>
@@ -299,7 +297,6 @@ export default function PlattformPage() {
                           className="text-lg whitespace-pre-line leading-tight"
                           style={{
                             color: "var(--ink)",
-                            fontFamily: "'IBM Plex Mono', monospace",
                           }}
                         >
                           {v.name}

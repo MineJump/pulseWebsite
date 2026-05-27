@@ -15,7 +15,8 @@
       "WebSearch",
       "Bash(xmllint *)",
       "Bash(npx --yes svgexport)",
-      "Bash(textutil -convert txt -stdout \"/Users/hendrik/Documents/2-Studium/Project-Study/Website_Feedback.docx\")"
+      "Bash(textutil -convert txt -stdout \"/Users/hendrik/Documents/2-Studium/Project-Study/Website_Feedback.docx\")",
+      "Bash(curl -s http://localhost:5174/)"
     ]
   }
 }

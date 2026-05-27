@@ -47,8 +47,6 @@ export default function Hero() {
           className="mt-6 text-lg md:text-[1.35rem] leading-snug max-w-[720px]"
           style={{
             color: "var(--text-muted)",
-            fontFamily: "'IBM Plex Mono', monospace",
-            fontWeight: 400,
           }}
         >
           {t.hero.subtitle}

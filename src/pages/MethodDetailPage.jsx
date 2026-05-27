@@ -22,7 +22,6 @@ function KeyPointCard({ kp, variants }) {
         <div>
           <h3
             className="text-lg mb-2"
-            style={{ fontFamily: "'IBM Plex Mono', monospace" }}
           >
             {kp.title}
           </h3>
@@ -125,7 +124,6 @@ function PipelineSteps({ steps, container, item }) {
           </span>
           <h3
             className="text-lg md:text-xl mb-2"
-            style={{ fontFamily: "'IBM Plex Mono', monospace" }}
           >
             {s.title}
           </h3>
@@ -267,7 +265,7 @@ function UseCaseCard({ useCase, variants }) {
       </p>
       <p
         className="text-sm md:text-base leading-snug"
-        style={{ color: "var(--ink)", fontFamily: "'IBM Plex Mono', monospace" }}
+        style={{ color: "var(--ink)" }}
       >
         {useCase.question}
       </p>
@@ -339,7 +337,6 @@ function CatalogItemCard({ item, variants }) {
     <Card variant="material" interactive variants={variants} className="p-5 md:p-6">
       <h3
         className="text-base md:text-lg mb-2"
-        style={{ fontFamily: "'IBM Plex Mono', monospace" }}
       >
         {item.name}
       </h3>
@@ -431,9 +428,8 @@ function QuoteSection({ content, item, container, cardReveal }) {
               className="text-xl md:text-[1.85rem] leading-snug md:leading-[1.3] mb-8"
               style={{
                 color: "var(--ink)",
-                fontFamily: "'IBM Plex Mono', monospace",
                 fontWeight: 500,
-                letterSpacing: "-0.005em",
+                letterSpacing: "-0.02em",
               }}
             >
               <span aria-hidden="true" style={{ color: "var(--accent)" }}>
@@ -494,7 +490,7 @@ function ArchitectureCallout({ content, item, container }) {
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
         >
-          <Card variant="elevated" className="p-7 md:p-9">
+          <Card variant="material" className="p-7 md:p-9">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:items-center">
               <div className="md:col-span-9">
                 <motion.p
@@ -510,7 +506,6 @@ function ArchitectureCallout({ content, item, container }) {
                 <motion.h3
                   variants={item}
                   className="text-xl md:text-2xl mb-3"
-                  style={{ fontFamily: "'IBM Plex Mono', monospace" }}
                 >
                   {content.title}
                 </motion.h3>
@@ -559,7 +554,6 @@ function ExploreOtherMethodCard({ item, isCurrent, variants }) {
           className="text-lg md:text-xl"
           style={{
             color: "var(--ink)",
-            fontFamily: "'IBM Plex Mono', monospace",
           }}
         >
           {item.title}

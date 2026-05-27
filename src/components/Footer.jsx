@@ -39,7 +39,7 @@ export default function Footer() {
     >
       <div className="relative z-10 max-w-[1400px] mx-auto">
         <Card
-          variant="elevated"
+          variant="material"
           className="relative overflow-hidden px-6 md:px-10 py-8 md:py-10 mb-12 md:mb-16"
         >
           <motion.div
@@ -53,7 +53,6 @@ export default function Footer() {
               <motion.h3
                 variants={item}
                 className="text-2xl md:text-[1.65rem] leading-tight mb-3"
-                style={{ fontFamily: "'IBM Plex Mono', monospace" }}
               >
                 {t.contact.heading}
               </motion.h3>
@@ -79,7 +78,6 @@ export default function Footer() {
                 </Button>
                 <div
                   className="flex flex-row gap-3 items-baseline text-xs"
-                  style={{ fontFamily: "'IBM Plex Mono', monospace" }}
                 >
                   <a
                     href={`mailto:${t.contact.email}`}
@@ -105,7 +103,6 @@ export default function Footer() {
             className="text-sm"
             style={{
               color: "var(--text-dim)",
-              fontFamily: "'IBM Plex Mono', monospace",
             }}
           >
             © {new Date().getFullYear()} {t.footer.legalName}
@@ -117,7 +114,6 @@ export default function Footer() {
               className="text-sm py-2 focus-halo rounded-sm transition-colors"
               style={{
                 color: "var(--text-dim)",
-                fontFamily: "'IBM Plex Mono', monospace",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ink)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-dim)")}
@@ -129,7 +125,6 @@ export default function Footer() {
               className="text-sm py-2 focus-halo rounded-sm transition-colors"
               style={{
                 color: "var(--text-dim)",
-                fontFamily: "'IBM Plex Mono', monospace",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ink)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-dim)")}

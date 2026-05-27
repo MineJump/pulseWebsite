@@ -245,25 +245,43 @@ export default function UspPipelineDiagram({ labels, reduced }) {
       role="img"
       aria-label="PULSE pipeline: raw sensor data to validated behavioural features"
     >
-      <div className="absolute inset-x-0 top-0 grid grid-cols-12 px-1">
+      <div className="absolute inset-x-0 top-0 grid grid-cols-12 px-1 items-center">
         <span
-          className="col-span-4 text-[0.62rem] uppercase tracking-[0.22em]"
-          style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
+          className="col-span-4 text-[0.62rem] uppercase tracking-[0.22em] text-center"
+          style={{ color: "var(--text-muted)", fontFamily: "'IBM Plex Mono', monospace" }}
         >
           {labels.rawLabel}
         </span>
-        <span
-          className="col-span-3 text-[0.62rem] uppercase tracking-[0.22em] text-center"
-          style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
-        >
-          {labels.pipelineLabel}
-        </span>
-        <span
-          className="col-span-5 text-[0.62rem] uppercase tracking-[0.22em]"
-          style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
-        >
-          {labels.insightLabel}
-        </span>
+        <div className="col-span-3 flex items-center justify-center">
+          <span
+            className="text-[0.6rem] uppercase tracking-[0.15em]"
+            style={{
+              color: "var(--accent)",
+              fontFamily: "'IBM Plex Mono', monospace",
+              border: "1px solid rgba(255, 146, 66, 0.45)",
+              borderRadius: 9999,
+              padding: "3px 10px",
+              background: "rgba(255, 146, 66, 0.07)",
+            }}
+          >
+            {labels.pipelineLabel}
+          </span>
+        </div>
+        <div className="col-span-5 flex items-center justify-start pl-3">
+          <span
+            className="text-[0.6rem] uppercase tracking-[0.15em]"
+            style={{
+              color: "var(--text-muted)",
+              fontFamily: "'IBM Plex Mono', monospace",
+              border: "1px solid var(--border-strong)",
+              borderRadius: 9999,
+              padding: "3px 10px",
+              background: "rgba(15, 13, 41, 0.04)",
+            }}
+          >
+            {labels.insightLabel}
+          </span>
+        </div>
       </div>
       <div className="absolute inset-0 mt-7">
         {SENSOR_LABELS.map((l) => (

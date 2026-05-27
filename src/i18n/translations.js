@@ -1085,12 +1085,7 @@ Lab`,
           title:"Center for Computation of Human Behavior",
           description:"Eigenständiges Institut hinter PULSE – der Weiterentwicklung der PhoneStudy-Plattform auf Basis von zwölf Jahren akademischer Vorarbeit."
         },
-        {
-          href:"/anwendungen/publikationen",
-          eyebrow:"07 · Publikationen",
-          title:"Peer-reviewed Studien mit PULSE & PhoneStudy",
-          description:"Acht veröffentlichte Studien aus Experience Sampling und Mobile Sensing."
-        }]
+]
       },
       credibility:{
         eyebrow:"Wissenschaftlicher Hintergrund",
@@ -1123,7 +1118,7 @@ Lab`,
       pubTeaser:{
         eyebrow:"Publikationen",
         title:"Peer-reviewed Studien mit PULSE & PhoneStudy",
-        body:"9 veröffentlichte Arbeiten aus Experience Sampling und Mobile Sensing.",
+        body:"Veröffentlichte Arbeiten aus Experience Sampling und Mobile Sensing.",
         cta:"Alle Publikationen"
       },
       needsLabel:"Bedarf",
@@ -1230,7 +1225,7 @@ Lab`,
         intro:"Zwölf Jahre methodische Vorarbeit am Lehrstuhl, neu gefasst in einer eigenständigen Plattform unter dem Dach von 2CHuB.",
         items:[{
           year:"2014",
-          title:"PhoneStudy entsteht",
+          title:"PhoneStudy entsteht an der LMU München",
           description:"Entwicklung als Forschungs-App am Lehrstuhl für psychologische Methodenlehre der LMU München, in Kooperation mit der Universität St. Gallen und der Universität Bayreuth.",
           highlighted:!0
         },
@@ -1241,7 +1236,7 @@ Lab`,
         },
         {
           year:"2025",
-          title:"Entscheidung zur Ausgründung",
+          title:"Entscheidung zur eigenständigen Ausgründung",
           description:"Drittmittel werden knapper, Kooperationsaufwand steigt. Tragfähigkeit der Infrastruktur über das Lehrstuhlleben hinaus erfordert eine eigenständige Trägerstruktur."
         },
         {
@@ -1351,6 +1346,7 @@ Lab`,
       matrixHeading:"Leistungsstufen im Vergleich",
       matrix:{
         featureColLabel:"Feature",
+        compareHint:"ausgewählt",
         rows:[
           {label:"Teilnehmer",group:!0,cells:["bis 400","bis 100","bis 400","bis 1.000","Custom"]},
           {label:"Alle EMA-Fragebogentypen",cells:["check","check","check","check","check"]},
@@ -1397,7 +1393,12 @@ Lab`,
         {q:"Was passiert bei mehr als 1.000 Teilnehmenden?",a:"Ab 1.000 Teilnehmenden ist Enterprise das richtige Paket. Sensor-Konfiguration, Datenpipeline und Hosting werden individuell aufgesetzt. Schreiben Sie uns für ein Angebot."},
         {q:"Was bedeutet Mehrnutzung (Overage)?",a:"Die Pakete Research, Lab und EMA Only erlauben die Aufnahme zusätzlicher Teilnehmender über das jeweilige Kontingent hinaus — gegen einen festen Preis pro zusätzlichem Teilnehmer. EMA Only: € 10 bis 1.000 TN. Research: € 25 über 400 TN. Lab: € 15 über 1.000 TN."},
         {q:"Was passiert nach Ablauf der Studie mit den Daten?",a:"Ihre Daten verbleiben 90 Tage nach Studienabschluss in PULSE und können vollständig exportiert werden. Danach werden sie DSGVO-konform gelöscht."},
-        {q:"Gibt es ein kostenloses Paket?",a:"Für Studierende und Masterarbeiten bieten wir ein kostenloses Paket (bis 50 Teilnehmende) auf der vollständigen Plattform. Kontaktieren Sie uns für einen Zugang."}
+        {q:"Gibt es ein kostenloses Paket?",a:"Für Studierende und Masterarbeiten bieten wir ein kostenloses Paket (bis 50 Teilnehmende) auf der vollständigen Plattform. Kontaktieren Sie uns für einen Zugang."},
+        {q:"Brauche ich Programmierkenntnisse, um eine Studie aufzusetzen?",a:"Nein. Das PULSE Studio ist eine No-Code-Oberfläche. Fragebogen-Builder, Sensor-Konfiguration, Teilnehmerverwaltung und Datenexport sind komplett visuell bedienbar. Für erweiterte API-Integrationen oder R/Python-Auswertungen sind Grundkenntnisse hilfreich, aber nicht Voraussetzung."},
+        {q:"Funktioniert PULSE auf iOS und Android?",a:"Ja. PULSE stellt native Apps für iOS und Android bereit. Teilnehmende laden die App direkt aus dem App Store oder Google Play Store herunter und erhalten per Studiencode oder Link Zugang zur jeweiligen Studie."},
+        {q:"Können mehrere Forschende gleichzeitig auf eine Studie zugreifen?",a:"Ja. Alle bezahlten Pakete unterstützen mehrere Nutzerkonten pro Studie. Rollen (z. B. Studienleitung, Koordination, Datenanalyse) können individuell konfiguriert werden."},
+        {q:"Kann ich mehrere Studien gleichzeitig laufen lassen?",a:"Ja. Alle Pakete erlauben eine unbegrenzte Anzahl gleichzeitiger Studien. Das Teilnehmerkontingent gilt pro Paket und Vertragslaufzeit — nicht pro Studie."},
+        {q:"Wie kommen Teilnehmende in eine Studie?",a:"Teilnehmende erhalten einen persönlichen Studienlink oder QR-Code. Nach dem Download der App und dem Einlesen des Codes sind sie sofort aktiv. Optional können Onboarding-Schritte (Einwilligungserklärung, Baseline-Fragebogen) direkt in die App integriert werden."}
       ]
     },
     publikationen:{
@@ -2502,12 +2503,7 @@ Lab`,
           title:"Center for Computation of Human Behavior",
           description:"Independent institute, founded in 2026 as the home of PULSE, the successor to the PhoneStudy platform built on twelve years of academic groundwork."
         },
-        {
-          href:"/anwendungen/publikationen",
-          eyebrow:"07 · Publications",
-          title:"Peer-reviewed studies with PULSE & PhoneStudy",
-          description:"Eight published studies spanning experience sampling and mobile sensing."
-        }]
+]
       },
       credibility:{
         eyebrow:"Scientific background",
@@ -2540,7 +2536,7 @@ Lab`,
       pubTeaser:{
         eyebrow:"Publications",
         title:"Peer-reviewed studies with PULSE & PhoneStudy",
-        body:"9 published papers spanning experience sampling and mobile sensing.",
+        body:"Published papers spanning experience sampling and mobile sensing.",
         cta:"All publications"
       },
       needsLabel:"Needs",
@@ -2647,7 +2643,7 @@ Lab`,
         intro:"Twelve years of methodological groundwork at the chair, re-cast in an independent platform under the umbrella of 2CHuB.",
         items:[{
           year:"2014",
-          title:"PhoneStudy is created",
+          title:"PhoneStudy is founded at LMU Munich",
           description:"Development of a research application at the Chair of Psychological Methodology at LMU Munich, in collaboration with the University of St. Gallen and the University of Bayreuth.",
           highlighted:!0
         },
@@ -2658,7 +2654,7 @@ Lab`,
         },
         {
           year:"2025",
-          title:"Decision to spin out",
+          title:"Decision to become an independent platform",
           description:"Third-party funding tightens and collaboration overhead grows. Long-term sustainability of the infrastructure beyond the lifetime of a single chair requires an independent organisational structure."
         },
         {
@@ -2768,6 +2764,7 @@ Lab`,
       matrixHeading:"What's included in every tier",
       matrix:{
         featureColLabel:"Feature",
+        compareHint:"selected",
         rows:[
           {label:"Participants",group:!0,cells:["up to 400","up to 100","up to 400","up to 1,000","Custom"]},
           {label:"All ESM questionnaire types",cells:["check","check","check","check","check"]},
@@ -2814,7 +2811,12 @@ Lab`,
         {q:"What happens with more than 1,000 participants?",a:"Above 1,000 participants Enterprise is the right tier. Sensor configuration, data pipeline and hosting are set up individually. Contact us for a quote."},
         {q:"What does overage mean?",a:"The Research, Lab and EMA Only tiers allow adding more participants beyond the included contingent — at a fixed price per additional participant. EMA Only: € 10 up to 1,000. Research: € 25 above 400. Lab: € 15 above 1,000."},
         {q:"What happens with the data after the study ends?",a:"Your data stays in PULSE for 90 days after the study ends and can be fully exported. After that it is deleted in line with GDPR."},
-        {q:"Is there a free tier?",a:"For students and master's theses we offer a free tier (up to 50 participants) on the full platform. Contact us for access."}
+        {q:"Is there a free tier?",a:"For students and master's theses we offer a free tier (up to 50 participants) on the full platform. Contact us for access."},
+        {q:"Do I need programming skills to set up a study?",a:"No. The PULSE Studio is a no-code environment. Questionnaire builder, sensor configuration, participant management and data export are all handled through visual interfaces. Basic R or Python knowledge is helpful for advanced analysis, but not required to run a study."},
+        {q:"Does PULSE work on both iOS and Android?",a:"Yes. PULSE provides native apps for both iOS and Android. Participants download the app from the App Store or Google Play Store and join a study via a study code or invite link."},
+        {q:"Can multiple team members access the same study?",a:"Yes. All paid plans support multiple researcher accounts per study. Roles (e.g. principal investigator, study coordinator, data analyst) can be configured individually."},
+        {q:"Can I run multiple studies at the same time?",a:"Yes. All plans allow an unlimited number of simultaneous studies. The participant contingent applies per plan and contract period — not per individual study."},
+        {q:"How do participants join a study?",a:"Participants receive a personal study link or QR code. After downloading the app and scanning the code, they are immediately enrolled. Onboarding steps (informed consent, baseline questionnaire) can optionally be integrated directly into the app flow."}
       ]
     },
     publikationen:{

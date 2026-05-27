@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useLang } from "../../lib/i18n.jsx";
 import { usePrefersReducedMotion } from "../../lib/hooks.js";
 
-function Cell({ value, highlight, size = "md" }) {
+function Cell({ value, highlight, size = "md", compact = false }) {
   const sizeClass = size === "lg" ? "w-6 h-6" : "w-5 h-5";
   const dashSize = size === "lg" ? 20 : 18;
   if (value === "check") {
@@ -43,10 +43,15 @@ function Cell({ value, highlight, size = "md" }) {
   }
   return (
     <span
-      className="text-xs font-medium"
+      className="font-medium text-center"
       style={{
         fontFamily: "'IBM Plex Mono', monospace",
         color: highlight ? "var(--accent)" : "var(--text-muted)",
+        fontSize: compact ? 9 : 12,
+        display: compact ? "block" : "inline",
+        width: compact ? "100%" : undefined,
+        lineHeight: compact ? 1.3 : undefined,
+        wordBreak: compact ? "break-word" : undefined,
       }}
     >
       {value}
@@ -68,10 +73,19 @@ export default function PricingMatrix() {
     const i = plans?.findIndex((pl) => pl.highlight);
     return i >= 0 ? i : 0;
   })();
-  const [activeIdx, setActiveIdx] = useState(defaultIdx);
+  const [activeIndices, setActiveIndices] = useState([defaultIdx]);
+  function togglePlan(idx) {
+    setActiveIndices(prev => {
+      if (prev.includes(idx)) {
+        if (prev.length === 1) return prev; // keep at least 1 selected
+        return prev.filter(i => i !== idx);
+      }
+      if (prev.length >= 3) return prev; // cap at 3
+      return [...prev, idx].sort((a, b) => a - b);
+    });
+  }
 
   if (!matrix || !plans) return null;
-  const activePlan = plans[activeIdx];
 
   return (
     <motion.div
@@ -206,104 +220,97 @@ export default function PricingMatrix() {
         </table>
       </div>
 
-      {/* === Mobile tabs + feature list (< lg) === */}
+      {/* === Mobile multi-select comparison (< lg) === */}
       <div className="lg:hidden">
-        {/* Plan tab pills — horizontally scrollable */}
-        <div
-          className="flex gap-2 overflow-x-auto pb-3 mb-5 -mx-2 px-2"
-          style={{
-            scrollSnapType: "x mandatory",
-            WebkitOverflowScrolling: "touch",
-          }}
-          role="tablist"
-          aria-label={matrix.featureColLabel}
-        >
-          {plans.map((plan, idx) => {
-            const isActive = idx === activeIdx;
-            const isHighlight = !!plan.highlight;
-            return (
-              <button
-                key={plan.id}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => setActiveIdx(idx)}
-                className="flex-shrink-0 px-4 py-2.5 rounded-full text-xs uppercase tracking-[0.14em] transition-all focus-halo"
-                style={{
-                  scrollSnapAlign: "start",
-                  backgroundColor: isActive
-                    ? isHighlight
-                      ? "var(--accent)"
-                      : "var(--ink)"
-                    : "var(--bg-elev)",
-                  color: isActive ? "#fff" : "var(--ink)",
-                  border: isActive
-                    ? `1px solid ${isHighlight ? "var(--accent)" : "var(--ink)"}`
-                    : "1px solid var(--border)",
-                  fontFamily: "'IBM Plex Mono', monospace",
-                  fontWeight: isActive ? 500 : 400,
-                }}
-              >
-                {plan.name}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Active plan header */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activePlan.id}
-            initial={reduced ? { opacity: 1 } : { opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduced ? { opacity: 1 } : { opacity: 0, y: -8 }}
-            transition={{ duration: 0.22, ease: [0.22, 0.61, 0.36, 1] }}
+        {/* Plan selector: toggle pills, up to 3 */}
+        <div className="mb-5">
+          <div
+            className="flex flex-wrap gap-2 mb-2"
+            role="group"
+            aria-label="Pläne vergleichen"
           >
-            <div
-              className="flex items-baseline gap-3 mb-1 flex-wrap"
-            >
-              <h3
-                className="text-lg"
-                style={{
-                  color: "var(--ink)",
-                  fontFamily: "'IBM Plex Mono', monospace",
-                  fontWeight: 500,
-                }}
-              >
-                {activePlan.name}
-              </h3>
-              {activePlan.highlight && (
-                <span
-                  className="text-[9px] uppercase tracking-[0.18em] px-2 py-0.5 rounded-full"
+            {plans.map((plan, idx) => {
+              const isSelected = activeIndices.includes(idx);
+              const isHighlight = !!plan.highlight;
+              const canAdd = isSelected || activeIndices.length < 3;
+              return (
+                <button
+                  key={plan.id}
+                  type="button"
+                  aria-pressed={isSelected}
+                  onClick={() => togglePlan(idx)}
+                  className="px-4 py-2.5 rounded-full text-xs uppercase tracking-[0.14em] transition-all focus-halo"
                   style={{
-                    backgroundColor: "var(--accent-soft)",
-                    color: "var(--accent)",
+                    backgroundColor: isSelected
+                      ? isHighlight ? "var(--accent)" : "var(--ink)"
+                      : "var(--bg-elev)",
+                    color: isSelected ? "#fff" : "var(--ink)",
+                    border: `1px solid ${
+                      isSelected
+                        ? isHighlight ? "var(--accent)" : "var(--ink)"
+                        : "var(--border)"
+                    }`,
+                    opacity: !canAdd ? 0.35 : 1,
+                    pointerEvents: !canAdd ? "none" : undefined,
                     fontFamily: "'IBM Plex Mono', monospace",
+                    fontWeight: isSelected ? 500 : 400,
                   }}
                 >
-                  {p.badge}
-                </span>
-              )}
-            </div>
-            <p
-              className="text-sm mb-5"
-              style={{
-                color: "var(--text-dim)",
-                fontFamily: "'IBM Plex Mono', monospace",
-              }}
-            >
-              {activePlan.price}
-              {activePlan.period ? ` ${activePlan.period}` : ""}
-            </p>
+                  {plan.name}
+                </button>
+              );
+            })}
+          </div>
+          <p
+            className="text-[10px] uppercase tracking-[0.12em]"
+            style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}
+          >
+            {activeIndices.length} / 3 {matrix.compareHint}
+          </p>
+        </div>
 
-            {/* Feature list */}
-            <ul className="space-y-0">
-              {matrix.rows.map((row, ri) => {
-                const cellValue = row.cells[activeIdx];
-                return (
+        {/* Comparison table */}
+        {(() => {
+          const colW = activeIndices.length <= 1 ? 80 : activeIndices.length === 2 ? 56 : 44;
+          const cellSize = activeIndices.length === 1 ? "lg" : "md";
+          return (
+            <div>
+              {/* Plan column headers */}
+              <div
+                className="flex items-end pb-3"
+                style={{ borderBottom: "1px solid var(--border)" }}
+              >
+                <div className="flex-1 min-w-0" />
+                {activeIndices.map(idx => {
+                  const plan = plans[idx];
+                  const isHighlight = !!plan.highlight;
+                  return (
+                    <div
+                      key={plan.id}
+                      className="flex items-end justify-center overflow-hidden"
+                      style={{ width: colW, flexShrink: 0 }}
+                    >
+                      <span
+                        className="block text-[10px] font-medium text-center leading-tight w-full truncate px-0.5"
+                        title={plan.name}
+                        style={{
+                          color: isHighlight ? "var(--accent)" : "var(--ink)",
+                          fontFamily: "'IBM Plex Mono', monospace",
+                        }}
+                      >
+                        {plan.name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Feature rows */}
+              <ul className="space-y-0">
+                {matrix.rows.map((row, ri) => (
                   <li
                     key={`${row.label}-${ri}`}
-                    className={`flex items-center justify-between gap-4 py-3 ${
+                    className={`flex items-center py-3 ${
                       row.group ? "rounded-md px-3 -mx-3" : ""
                     }`}
                     style={{
@@ -317,7 +324,7 @@ export default function PricingMatrix() {
                     }}
                   >
                     <span
-                      className={`text-sm leading-snug flex-1 ${
+                      className={`text-sm leading-snug flex-1 min-w-0 pr-2 ${
                         row.group ? "font-medium" : ""
                       }`}
                       style={{
@@ -326,19 +333,29 @@ export default function PricingMatrix() {
                     >
                       {row.label}
                     </span>
-                    <div className="flex-shrink-0 flex items-center justify-end">
-                      <Cell
-                        value={cellValue}
-                        highlight={!!activePlan.highlight}
-                        size="lg"
-                      />
-                    </div>
+                    {activeIndices.map(idx => {
+                      const plan = plans[idx];
+                      return (
+                        <div
+                          key={plan.id}
+                          className="flex items-center justify-center flex-shrink-0 overflow-hidden"
+                          style={{ width: colW }}
+                        >
+                          <Cell
+                            value={row.cells[idx]}
+                            highlight={!!plan.highlight}
+                            size={cellSize}
+                            compact={activeIndices.length > 1}
+                          />
+                        </div>
+                      );
+                    })}
                   </li>
-                );
-              })}
-            </ul>
-          </motion.div>
-        </AnimatePresence>
+                ))}
+              </ul>
+            </div>
+          );
+        })()}
       </div>
     </motion.div>
   );

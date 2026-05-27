@@ -6,6 +6,7 @@ import PageScaffold from "../components/PageScaffold.jsx";
 import PageHero from "../components/PageHero.jsx";
 import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
+import SubtleArrowLink from "../components/SubtleArrowLink.jsx";
 
 export default function AnwendungenPage() {
   const { t } = useLang();
@@ -43,54 +44,37 @@ export default function AnwendungenPage() {
             </motion.div>
           </div>
         </section>
-        {/* Publications teaser box */}
+        {/* Publications teaser */}
         {a.pubTeaser && (
-          <section className="relative w-full px-6 md:px-12 lg:px-16 mb-10">
+          <section className="relative w-full px-6 md:px-12 lg:px-16 mb-14 md:mb-20">
             <div className="max-w-[1100px] mx-auto">
               <motion.div
-                variants={item}
+                variants={container}
                 initial={reduced ? false : "hidden"}
                 whileInView="show"
                 viewport={{ once: true, margin: "-40px" }}
               >
-                <Card variant="material" interactive className="relative p-7 md:p-10">
-                  <a
-                    href="/anwendungen/publikationen"
-                    className="absolute inset-0 focus-halo rounded-[20px]"
-                    aria-label={`${a.pubTeaser.eyebrow} — ${a.pubTeaser.title}`}
-                  >
-                    <span className="sr-only">{a.pubTeaser.title}</span>
-                  </a>
-                  <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
-                    <div>
-                      <p
-                        className="text-xs uppercase tracking-[0.22em] mb-3 inline-flex items-center gap-2.5"
-                        style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
-                      >
-                        <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
-                        {a.pubTeaser.eyebrow}
-                      </p>
-                      <h3
-                        className="text-xl md:text-2xl mb-2"
-                        style={{ fontFamily: "'IBM Plex Mono', monospace" }}
-                      >
-                        {a.pubTeaser.title}
-                      </h3>
-                      <p
-                        className="text-sm md:text-base leading-relaxed max-w-[560px]"
-                        style={{ color: "var(--text-muted)" }}
-                      >
-                        {a.pubTeaser.body}
-                      </p>
-                    </div>
-                    <span
-                      className="flex-shrink-0 text-xs uppercase tracking-[0.18em] inline-flex items-center gap-2"
-                      style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
-                    >
-                      {a.pubTeaser.cta} →
-                    </span>
-                  </div>
-                </Card>
+                <motion.p
+                  variants={item}
+                  className="text-xs uppercase tracking-[0.22em] mb-4 inline-flex items-center gap-2.5"
+                  style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
+                >
+                  <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
+                  {a.pubTeaser.eyebrow}
+                </motion.p>
+                <motion.h3 variants={item} className="text-xl md:text-2xl mb-3">
+                  {a.pubTeaser.title}
+                </motion.h3>
+                <motion.p
+                  variants={item}
+                  className="text-sm md:text-base leading-relaxed max-w-[620px] mb-5"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  {a.pubTeaser.body}
+                </motion.p>
+                <motion.div variants={item}>
+                  <SubtleArrowLink href="/anwendungen/publikationen" label={a.pubTeaser.cta} />
+                </motion.div>
               </motion.div>
             </div>
           </section>
@@ -120,7 +104,6 @@ export default function AnwendungenPage() {
                     </p>
                     <h2
                       className="text-2xl md:text-3xl mb-4"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace" }}
                     >
                       {area.title}
                     </h2>

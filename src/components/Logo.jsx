@@ -23,10 +23,10 @@ export default function Logo() {
         />
         <span
           style={{
-            fontFamily: "'IBM Plex Mono', monospace",
+            fontFamily: "'Satoshi', sans-serif",
             fontWeight: 500,
             fontSize: "0.95rem",
-            letterSpacing: "0.08em",
+            letterSpacing: "0.04em",
             color: "var(--ink)",
           }}
         >
@@ -42,10 +42,10 @@ export default function Logo() {
           />
           <span
             style={{
-              fontFamily: "'IBM Plex Mono', monospace",
+              fontFamily: "'Satoshi', sans-serif",
               fontWeight: 500,
               fontSize: "0.95rem",
-              letterSpacing: "0.08em",
+              letterSpacing: "0.04em",
               color: "var(--ink)",
             }}
           >

@@ -95,7 +95,6 @@ function TableRow({ pub, query, index, reduced }) {
             <span
               className="text-sm font-semibold leading-snug block mb-1"
               style={{
-                ...MONO,
                 color: hover ? "var(--accent)" : "var(--ink)",
                 transition: "color 0.15s ease",
               }}
@@ -106,7 +105,7 @@ function TableRow({ pub, query, index, reduced }) {
         ) : (
           <span
             className="text-sm font-semibold leading-snug block mb-1"
-            style={{ ...MONO, color: "var(--ink)" }}
+            style={{ color: "var(--ink)" }}
           >
             {highlight(pub.title, query)}
           </span>
@@ -328,7 +327,7 @@ export default function PublikationenPage() {
                         <td
                           colSpan={4}
                           className="py-12 text-center text-sm"
-                          style={{ color: "var(--text-dim)", ...MONO }}
+                          style={{ color: "var(--text-dim)" }}
                         >
                           {p.noResults}
                         </td>
@@ -342,7 +341,7 @@ export default function PublikationenPage() {
             {/* Note */}
             <motion.p
               className="text-xs leading-relaxed max-w-[640px] mt-5"
-              style={{ color: "var(--text-dim)", ...MONO }}
+              style={{ color: "var(--text-dim)" }}
               variants={item}
               initial="hidden"
               whileInView="show"

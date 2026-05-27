@@ -29,7 +29,7 @@ function variantStyle(variant) {
   };
 }
 
-const BASE_STYLE = { fontFamily: "'IBM Plex Mono', monospace" };
+const BASE_STYLE = { fontFamily: "'Satoshi', sans-serif" };
 
 function PrimaryGloss() {
   return (

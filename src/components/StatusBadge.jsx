@@ -42,7 +42,6 @@ export default function StatusBadge() {
       className="inline-flex items-center gap-2 text-sm py-2 focus-halo rounded-sm transition-colors"
       style={{
         color: "var(--text-dim)",
-        fontFamily: "'IBM Plex Mono', monospace",
       }}
       onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ink)")}
       onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-dim)")}

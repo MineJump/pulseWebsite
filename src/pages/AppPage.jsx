@@ -66,7 +66,7 @@ function FeatureWithMockup({
               {bullets.map((b, i) => (
                 <li
                   key={i}
-                  className="flex items-baseline gap-3 text-sm leading-relaxed"
+                  className="flex items-start gap-3 text-sm leading-relaxed"
                   style={{ color: "var(--text)" }}
                 >
                   <CheckIcon />
@@ -107,7 +107,7 @@ export default function AppPage() {
     <PageScaffold>
       <main>
         <PageHero eyebrow={a.eyebrow} title={a.title} intro={a.subtitle} />
-        <section className="relative z-10 w-full -mt-12 md:-mt-16 mb-20 md:mb-28">
+        <section className="relative z-10 w-full -mt-12 md:-mt-16 pt-20 md:pt-28 mb-20 md:mb-28">
           <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16">
             <motion.div
               variants={container}
@@ -117,7 +117,7 @@ export default function AppPage() {
             >
               <motion.p
                 variants={item}
-                className="text-base md:text-lg leading-relaxed mb-10 max-w-[680px]"
+                className="text-base md:text-lg leading-relaxed mb-14 max-w-[680px]"
                 style={{ color: "var(--text-muted)" }}
               >
                 {a.intro}
@@ -218,7 +218,6 @@ export default function AppPage() {
                   >
                     <h3
                       className="text-lg mb-3"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace" }}
                     >
                       {p.title}
                     </h3>

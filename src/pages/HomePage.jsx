@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLang } from "../lib/i18n.jsx";
 import { usePrefersReducedMotion } from "../lib/hooks.js";
-import { dur, ease, fadeUp, fadeUpScale, stagger } from "../lib/motion.js";
+import { fadeUp, fadeUpScale, stagger } from "../lib/motion.js";
 import PageScaffold from "../components/PageScaffold.jsx";
 import Hero from "../components/Hero.jsx";
 import Marquee from "../components/Marquee.jsx";
@@ -36,7 +35,7 @@ function UspSection() {
   const container = reduced ? { hidden: {}, show: {} } : stagger(0.07, 0.05);
 
   return (
-    <section className="relative w-full px-6 md:px-12 lg:px-16 py-16 md:py-24 overflow-hidden">
+    <section className="relative w-full px-6 md:px-12 lg:px-16 pt-16 md:pt-24 pb-8 md:pb-12 overflow-hidden">
       <div className="relative z-10 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <motion.div
@@ -61,14 +60,10 @@ function UspSection() {
               />
               {t.welcome.usp.eyebrow}
             </motion.p>
-            <motion.h2 variants={item} className="mb-2">
+            <motion.h2 variants={item} className="mb-0">
               {t.welcome.usp.titleLine1}
             </motion.h2>
-            <motion.h2
-              variants={item}
-              className="mb-7"
-              style={{ color: "var(--accent)" }}
-            >
+            <motion.h2 variants={item} className="mb-7">
               {t.welcome.usp.titleLine2}
             </motion.h2>
             <motion.p
@@ -98,20 +93,14 @@ function UspSection() {
 }
 
 function SubpageCard({ item, isFirst }) {
-  const [hover, setHover] = useState(false);
-  const label = item.eyebrow.split("·")[1]?.trim() ?? "öffnen";
   return (
     <Card
       variant="material"
       interactive
       className="relative flex flex-col p-6 md:p-7 min-h-[260px] h-full"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
     >
       <a
         href={item.href}
-        onFocus={() => setHover(true)}
-        onBlur={() => setHover(false)}
         className="absolute inset-0 focus-halo rounded-2xl"
         aria-label={`${item.eyebrow} — ${item.title}`}
       >
@@ -125,30 +114,12 @@ function SubpageCard({ item, isFirst }) {
       </p>
       <h3
         className="text-lg md:text-xl mb-3 leading-tight flex-grow"
-        style={{ fontFamily: "'IBM Plex Mono', monospace" }}
       >
         {item.title}
       </h3>
-      <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-muted)" }}>
+      <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
         {item.description}
       </p>
-      <div
-        className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] self-start mt-auto"
-        style={{
-          color: hover ? "var(--ink)" : "var(--text-muted)",
-          fontFamily: "'IBM Plex Mono', monospace",
-          transition: `color ${dur.fast}s var(--ease-in-out-soft)`,
-        }}
-      >
-        <span>→</span>
-        <motion.span
-          aria-hidden="true"
-          animate={{ x: hover ? 3 : 0 }}
-          transition={{ duration: dur.fast, ease: ease.inOut }}
-        >
-          {label}
-        </motion.span>
-      </div>
     </Card>
   );
 }

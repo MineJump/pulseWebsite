@@ -52,13 +52,12 @@ function ColumnLabel({ number, label, center, right }) {
 }
 
 function Edge({ from, to, active, reduced }) {
-  // Trim endpoints to sit outside each node's radius
+  // Side nodes: exit/enter from horizontal midpoint of their side.
+  // Compute Engine (lg): connect straight to its center — lines go into the middle.
   const shrink = (a, b) => {
-    const r = a.size === "lg" ? 9 : 6;
-    const dx = b.x - a.x;
-    const dy = b.y - a.y;
-    const d = Math.hypot(dx, dy) || 1;
-    return { x: a.x + (dx / d) * r, y: a.y + (dy / d) * r };
+    if (a.size === "lg") return { x: a.x, y: a.y };
+    const goingRight = b.x > a.x;
+    return { x: goingRight ? a.x + 6 : a.x - 6, y: a.y };
   };
   const start = shrink(from, to);
   const end = shrink(to, from);

@@ -167,7 +167,6 @@ export default function PricingRequestModal({ open, onClose, plan }) {
                   id="pricing-modal-title"
                   className="text-xl md:text-2xl mb-1"
                   style={{
-                    fontFamily: "'IBM Plex Mono', monospace",
                     color: "var(--ink)",
                   }}
                 >
@@ -177,7 +176,6 @@ export default function PricingRequestModal({ open, onClose, plan }) {
                   className="text-sm mb-5"
                   style={{
                     color: "var(--text-muted)",
-                    fontFamily: "'IBM Plex Mono', monospace",
                   }}
                 >
                   {plan.price}
@@ -226,7 +224,6 @@ export default function PricingRequestModal({ open, onClose, plan }) {
                       border: "1px solid var(--border)",
                       color: "var(--ink)",
                       backgroundColor: "var(--bg)",
-                      fontFamily: "'IBM Plex Mono', monospace",
                     }}
                   />
                 </div>
@@ -301,7 +298,6 @@ export default function PricingRequestModal({ open, onClose, plan }) {
                     className="px-5 py-3 rounded-full text-xs uppercase tracking-[0.12em] transition-opacity hover:opacity-70 focus-halo disabled:opacity-30"
                     style={{
                       color: "var(--text-muted)",
-                      fontFamily: "'IBM Plex Mono', monospace",
                     }}
                   >
                     {m.cancel}
@@ -313,7 +309,6 @@ export default function PricingRequestModal({ open, onClose, plan }) {
                     style={{
                       backgroundColor: "var(--ink)",
                       color: "#fff",
-                      fontFamily: "'IBM Plex Mono', monospace",
                     }}
                   >
                     {submitting && (
@@ -345,7 +340,6 @@ export default function PricingRequestModal({ open, onClose, plan }) {
                 <h3
                   className="text-xl mb-2"
                   style={{
-                    fontFamily: "'IBM Plex Mono', monospace",
                     color: "var(--ink)",
                   }}
                 >
@@ -364,7 +358,6 @@ export default function PricingRequestModal({ open, onClose, plan }) {
                   style={{
                     backgroundColor: "var(--ink)",
                     color: "#fff",
-                    fontFamily: "'IBM Plex Mono', monospace",
                   }}
                 >
                   {m.successCta}

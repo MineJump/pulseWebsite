@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { usePrefersReducedMotion } from "../lib/hooks.js";
 import { fadeUp, stagger } from "../lib/motion.js";
-import BlurOrbField from "./BlurOrbField.jsx";
-
 export default function PageHero({ eyebrow, title, intro, align = "left" }) {
   const reduced = usePrefersReducedMotion();
   const container = reduced ? { hidden: {}, show: {} } : stagger(0.08, 0.05);
@@ -14,8 +12,7 @@ export default function PageHero({ eyebrow, title, intro, align = "left" }) {
     align === "center" ? "text-center mx-auto items-center" : "items-start";
 
   return (
-    <section className="relative w-full overflow-hidden pt-12 md:pt-20 pb-20 md:pb-28 section-fade-bottom">
-      <BlurOrbField intensity="subtle" />
+    <section className="relative w-full overflow-hidden pt-10 md:pt-16 pb-12 md:pb-18 section-fade-bottom">
       <motion.div
         className={`relative z-10 max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col ${alignCls}`}
         variants={container}

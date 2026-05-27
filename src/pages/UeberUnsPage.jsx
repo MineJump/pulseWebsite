@@ -51,12 +51,17 @@ export default function UeberUnsPage() {
             >
               <motion.p
                 variants={item}
-                className="text-xs uppercase tracking-[0.22em] mb-3"
+                className="text-sm uppercase tracking-[0.22em] mb-3 inline-flex items-center gap-2.5"
                 style={{
                   color: "var(--accent)",
                   fontFamily: "'IBM Plex Mono', monospace",
                 }}
               >
+                <span
+                  aria-hidden="true"
+                  className="inline-block w-1.5 h-1.5 rounded-full"
+                  style={{ backgroundColor: "var(--accent)" }}
+                />
                 {u.timeline.eyebrow}
               </motion.p>
               <motion.h2 variants={item} className="mb-5">
@@ -85,12 +90,17 @@ export default function UeberUnsPage() {
             >
               <motion.p
                 variants={item}
-                className="text-xs uppercase tracking-[0.22em] mb-3"
+                className="text-sm uppercase tracking-[0.22em] mb-3 inline-flex items-center gap-2.5"
                 style={{
                   color: "var(--accent)",
                   fontFamily: "'IBM Plex Mono', monospace",
                 }}
               >
+                <span
+                  aria-hidden="true"
+                  className="inline-block w-1.5 h-1.5 rounded-full"
+                  style={{ backgroundColor: "var(--accent)" }}
+                />
                 {team.eyebrow}
               </motion.p>
               <motion.h2 variants={item} className="mb-10">
@@ -121,7 +131,6 @@ export default function UeberUnsPage() {
                       <h3
                         className="text-base leading-tight mb-1.5"
                         style={{
-                          fontFamily: "'IBM Plex Mono', monospace",
                           fontWeight: 500,
                           color: "var(--ink)",
                         }}
@@ -132,7 +141,6 @@ export default function UeberUnsPage() {
                         className="text-xs min-h-[2.5rem]"
                         style={{
                           color: "var(--accent)",
-                          fontFamily: "'IBM Plex Mono', monospace",
                         }}
                       >
                         {m.role}
@@ -149,7 +157,6 @@ export default function UeberUnsPage() {
                           className="text-xs mt-3 transition-opacity hover:opacity-70 focus-halo rounded-sm"
                           style={{
                             color: "var(--text-dim)",
-                            fontFamily: "'IBM Plex Mono', monospace",
                           }}
                         >
                           {m.email}
@@ -172,12 +179,17 @@ export default function UeberUnsPage() {
             >
               <motion.p
                 variants={item}
-                className="text-xs uppercase tracking-[0.22em] mb-3"
+                className="text-sm uppercase tracking-[0.22em] mb-3 inline-flex items-center gap-2.5"
                 style={{
                   color: "var(--accent)",
                   fontFamily: "'IBM Plex Mono', monospace",
                 }}
               >
+                <span
+                  aria-hidden="true"
+                  className="inline-block w-1.5 h-1.5 rounded-full"
+                  style={{ backgroundColor: "var(--accent)" }}
+                />
                 {u.mehrAlsSaas.eyebrow}
               </motion.p>
               <motion.h2 variants={item} className="mb-5">
@@ -198,7 +210,6 @@ export default function UeberUnsPage() {
                   <Card key={s.title} variant="material" className="p-6">
                     <h3
                       className="text-lg mb-2"
-                      style={{ fontFamily: "'IBM Plex Mono', monospace" }}
                     >
                       {s.title}
                     </h3>
