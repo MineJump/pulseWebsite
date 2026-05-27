@@ -398,6 +398,7 @@ export default function Header() {
     { href: "/anwendungen", label: t.nav.applications },
     { href: "/preise", label: t.nav.pricing },
     { href: "/ueber-uns", label: t.nav.about },
+    { href: "/publikationen", label: t.nav.publications },
   ];
 
   return (
@@ -439,6 +440,7 @@ export default function Header() {
             />
             <NavLink href="/preise" label={t.nav.pricing} currentPath={path} />
             <NavLink href="/ueber-uns" label={t.nav.about} currentPath={path} />
+            <NavLink href="/publikationen" label={t.nav.publications} currentPath={path} />
           </nav>
 
           {/* Right side: language + login — visible from lg */}

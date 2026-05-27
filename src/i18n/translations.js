@@ -16,6 +16,7 @@ export const translations = {
       login:"Login",
       allMethods:"Alle Methoden",
       seeApp:"Die App ansehen",
+      publications:"Publikationen",
       pulseEnvironment:{
         items:[
           {label:"Plattform",href:"/plattform",description:"Studienkonsole, Pipeline und Datenmodell"},
@@ -1083,6 +1084,12 @@ Lab`,
           eyebrow:"06 · Institut",
           title:"Center for Computation of Human Behavior",
           description:"Eigenständiges Institut hinter PULSE – der Weiterentwicklung der PhoneStudy-Plattform auf Basis von zwölf Jahren akademischer Vorarbeit."
+        },
+        {
+          href:"/publikationen",
+          eyebrow:"07 · Publikationen",
+          title:"Peer-reviewed Studien mit PULSE & PhoneStudy",
+          description:"Acht veröffentlichte Studien aus Experience Sampling und Mobile Sensing – von Nature Communications bis JPSP."
         }]
       },
       credibility:{
@@ -1386,6 +1393,17 @@ Lab`,
         {q:"Was passiert nach Ablauf der Studie mit den Daten?",a:"Ihre Daten verbleiben 90 Tage nach Studienabschluss in PULSE und können vollständig exportiert werden. Danach werden sie DSGVO-konform gelöscht."},
         {q:"Gibt es ein kostenloses Paket?",a:"Für Studierende und Masterarbeiten bieten wir ein kostenloses Paket (bis 50 Teilnehmende) auf der vollständigen Plattform. Kontaktieren Sie uns für einen Zugang."}
       ]
+    },
+    publikationen:{
+      eyebrow:"Wissenschaftlicher Hintergrund",
+      title:"Publikationen",
+      intro:"Peer-reviewed Studien, die mit PULSE bzw. PhoneStudy erhoben wurden. Ein wachsendes Corpus aus Experience Sampling und Mobile Sensing.",
+      stats:[
+        {value:"8+", label:"Veröffentlichungen"},
+        {value:"2023–2025", label:"Zeitraum"},
+        {value:"Nature Comms.", label:"Höchste Sichtbarkeit"}
+      ],
+      note:"Liste wird laufend aktualisiert. Wenn Ihre Studie auf PhoneStudy oder PULSE basiert und hier fehlt, schreiben Sie uns."
     }
   },
   en:{
@@ -1401,6 +1419,7 @@ Lab`,
       login:"Login",
       allMethods:"All Methods",
       seeApp:"See the App",
+      publications:"Publications",
       pulseEnvironment:{
         items:[
           {label:"Platform",href:"/plattform",description:"Study console, pipeline and data model"},
@@ -2468,6 +2487,12 @@ Lab`,
           eyebrow:"06 · Institute",
           title:"Center for Computation of Human Behavior",
           description:"Independent institute, founded in 2026 as the home of PULSE, the successor to the PhoneStudy platform built on twelve years of academic groundwork."
+        },
+        {
+          href:"/publikationen",
+          eyebrow:"07 · Publications",
+          title:"Peer-reviewed studies with PULSE & PhoneStudy",
+          description:"Eight published studies spanning experience sampling and mobile sensing — from Nature Communications to JPSP."
         }]
       },
       credibility:{
@@ -2771,6 +2796,17 @@ Lab`,
         {q:"What happens with the data after the study ends?",a:"Your data stays in PULSE for 90 days after the study ends and can be fully exported. After that it is deleted in line with GDPR."},
         {q:"Is there a free tier?",a:"For students and master's theses we offer a free tier (up to 50 participants) on the full platform. Contact us for access."}
       ]
+    },
+    publikationen:{
+      eyebrow:"Academic background",
+      title:"Publications",
+      intro:"Peer-reviewed studies collected with PULSE or PhoneStudy. A growing corpus across experience sampling and mobile sensing research.",
+      stats:[
+        {value:"8+", label:"Publications"},
+        {value:"2023–2025", label:"Time span"},
+        {value:"Nature Comms.", label:"Highest visibility"}
+      ],
+      note:"This list is updated continuously. If your study used PhoneStudy or PULSE and is missing here, please get in touch."
     }
   }
 };

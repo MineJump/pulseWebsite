@@ -13,6 +13,7 @@ import PreisePage from "./pages/PreisePage.jsx";
 import UeberUnsPage from "./pages/UeberUnsPage.jsx";
 import ImpressumPage from "./pages/ImpressumPage.jsx";
 import PrivacyPage from "./pages/PrivacyPage.jsx";
+import PublikationenPage from "./pages/PublikationenPage.jsx";
 
 const METHOD_SLUGS = ["befragen", "beobachten", "intervenieren", "auswerten"];
 
@@ -32,6 +33,7 @@ function pageForPath(path) {
   if (path === "/anwendungen") return { key: "anwendungen", element: <AnwendungenPage /> };
   if (path === "/preise") return { key: "preise", element: <PreisePage /> };
   if (path === "/ueber-uns") return { key: "ueber-uns", element: <UeberUnsPage /> };
+  if (path === "/publikationen") return { key: "publikationen", element: <PublikationenPage /> };
   return { key: "home", element: <HomePage /> };
 }
 
