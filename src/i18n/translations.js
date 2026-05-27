@@ -1089,7 +1089,7 @@ Lab`,
           href:"/anwendungen/publikationen",
           eyebrow:"07 · Publikationen",
           title:"Peer-reviewed Studien mit PULSE & PhoneStudy",
-          description:"Acht veröffentlichte Studien aus Experience Sampling und Mobile Sensing – von Nature Communications bis JPSP."
+          description:"Acht veröffentlichte Studien aus Experience Sampling und Mobile Sensing."
         }]
       },
       credibility:{
@@ -1123,7 +1123,7 @@ Lab`,
       pubTeaser:{
         eyebrow:"Publikationen",
         title:"Peer-reviewed Studien mit PULSE & PhoneStudy",
-        body:"9 veröffentlichte Arbeiten aus Experience Sampling und Mobile Sensing – von Nature Communications bis JPSP.",
+        body:"9 veröffentlichte Arbeiten aus Experience Sampling und Mobile Sensing.",
         cta:"Alle Publikationen"
       },
       needsLabel:"Bedarf",
@@ -2506,7 +2506,7 @@ Lab`,
           href:"/anwendungen/publikationen",
           eyebrow:"07 · Publications",
           title:"Peer-reviewed studies with PULSE & PhoneStudy",
-          description:"Eight published studies spanning experience sampling and mobile sensing — from Nature Communications to JPSP."
+          description:"Eight published studies spanning experience sampling and mobile sensing."
         }]
       },
       credibility:{
@@ -2540,7 +2540,7 @@ Lab`,
       pubTeaser:{
         eyebrow:"Publications",
         title:"Peer-reviewed studies with PULSE & PhoneStudy",
-        body:"9 published papers spanning experience sampling and mobile sensing — from Nature Communications to JPSP.",
+        body:"9 published papers spanning experience sampling and mobile sensing.",
         cta:"All publications"
       },
       needsLabel:"Needs",
