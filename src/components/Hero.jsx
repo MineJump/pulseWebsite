@@ -16,7 +16,7 @@ export default function Hero() {
 
   return (
     <section className="relative w-full min-h-[100svh] flex items-center overflow-hidden section-fade-bottom-elev">
-      <div className="hidden xl:block absolute right-[4%] top-1/2 -translate-y-1/2 z-[1] opacity-70 pointer-events-none">
+      <div className="hidden xl:block absolute right-[4%] top-1/2 -translate-y-1/2 z-[1] pointer-events-none">
         <GooeyBlobs size={360} />
       </div>
       <motion.div
