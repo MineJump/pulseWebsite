@@ -21,59 +21,62 @@ function PlanCard({ plan, badgeLabel, closeLabel, selected, onToggle, onRequest 
       role="button"
       aria-expanded={selected}
     >
-      <div className="flex items-center justify-between gap-3 mb-3 min-h-[28px]">
+      {/* Header block — fixed height so separator always aligns across cards */}
+      <div className="min-h-[8.5rem] flex flex-col justify-start">
+        <div className="flex items-center justify-between gap-3 mb-3 min-h-[28px]">
+          <p
+            className="text-base font-semibold"
+            style={{
+              color: "var(--ink)",
+              fontFamily: "'IBM Plex Mono', monospace",
+            }}
+          >
+            {plan.name}
+          </p>
+          {plan.highlight && (
+            <span
+              className="flex-shrink-0 px-2.5 py-1 rounded-full text-[10px] uppercase tracking-[0.18em] leading-none"
+              style={{
+                backgroundColor: "var(--accent)",
+                color: "#fff",
+                fontFamily: "'IBM Plex Mono', monospace",
+              }}
+            >
+              {badgeLabel}
+            </span>
+          )}
+        </div>
+
+        <div className="mb-3">
+          <span
+            className="text-2xl font-bold"
+            style={{
+              color: "var(--ink)",
+              fontFamily: "'IBM Plex Mono', monospace",
+            }}
+          >
+            {plan.price}
+          </span>
+          {plan.period && (
+            <span
+              className="text-sm ml-1"
+              style={{
+                color: "var(--text-dim)",
+                fontFamily: "'IBM Plex Mono', monospace",
+              }}
+            >
+              {plan.period}
+            </span>
+          )}
+        </div>
+
         <p
-          className="text-base font-semibold"
-          style={{
-            color: "var(--ink)",
-            fontFamily: "'IBM Plex Mono', monospace",
-          }}
+          className="text-sm leading-relaxed"
+          style={{ color: "var(--text-muted)" }}
         >
-          {plan.name}
+          {plan.tagline}
         </p>
-        {plan.highlight && (
-          <span
-            className="flex-shrink-0 px-2.5 py-1 rounded-full text-[10px] uppercase tracking-[0.18em] leading-none"
-            style={{
-              backgroundColor: "var(--accent)",
-              color: "#fff",
-              fontFamily: "'IBM Plex Mono', monospace",
-            }}
-          >
-            {badgeLabel}
-          </span>
-        )}
       </div>
-
-      <div className="mb-3">
-        <span
-          className="text-2xl font-bold"
-          style={{
-            color: "var(--ink)",
-            fontFamily: "'IBM Plex Mono', monospace",
-          }}
-        >
-          {plan.price}
-        </span>
-        {plan.period && (
-          <span
-            className="text-sm ml-1"
-            style={{
-              color: "var(--text-dim)",
-              fontFamily: "'IBM Plex Mono', monospace",
-            }}
-          >
-            {plan.period}
-          </span>
-        )}
-      </div>
-
-      <p
-        className="text-sm leading-relaxed mb-5"
-        style={{ color: "var(--text-muted)" }}
-      >
-        {plan.tagline}
-      </p>
 
       <div
         className="mb-5 pt-4 flex flex-col gap-2.5"

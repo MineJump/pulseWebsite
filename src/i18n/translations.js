@@ -1129,8 +1129,8 @@ Lab`,
         "Granulare Versionierung pro Studie",
         "Faire akademische Lizenzen"],
         example:{
-          label:"Beispielstudie",
-          text:"Längsschnitt zu Stressregulation bei Studierenden über zwei Semester, drei Standorte, mit gemischtem Design aus EMA und Passive Sensing."
+          label:"Referenzstudie",
+          text:"CoCo-Studie (Coping with Corona): Multi-Site-Längsschnittstudie der WWU Münster, Universität Osnabrück und LMU München. EMA und Passive Sensing zur Erfassung von sozialer Interaktion, Persönlichkeit, Stimmung und Wohlbefinden im Alltag der COVID-19-Pandemie. Weitere Studie: DIPS (Universität Heidelberg, DIW Berlin, LMU München) – Längsschnittuntersuchung zu Dynamiken in sozialen Beziehungen und dem Einfluss von Persönlichkeitsmerkmalen im Alltag."
         }
       },
       {
@@ -1148,7 +1148,7 @@ Lab`,
         "Schnittstelle zu KIS und elektronischer Patientenakte"],
         example:{
           label:"Beispielprojekt",
-          text:"EMA als ambulante Ergänzung bei Patient:innen mit Depression: tägliche Stimmungsratings, passive Aktivitätsdaten und kontextuelle Mikro-Interventionen."
+          text:"Moody Life Study (LMU München): 14-tägige Studie zu Schlaf, Stimmung und Smartphone-Nutzungsverhalten – mit EMA-Kurzfragebögen, Passive Sensing und Bewegungsmessungsarmband. Untersuchung, wie Smartphone-Nutzungsdaten auf Schlafgewohnheiten und -qualität im Alltag schließen lassen."
         }
       },
       {
@@ -1166,7 +1166,7 @@ Lab`,
         "Rechtssichere Grundlagen für Auftragsforschung"],
         example:{
           label:"Beispielprojekt",
-          text:"Bevölkerungsstudie zu mentaler Gesundheit nach Pandemie-Phasen: 8-Wellen-Design über 18 Monate mit kombinierter EMA und Sensorik."
+          text:"ZPID Smartphone Sensing Panel (Leibniz-Institut für Psychologie, ZPID): Großangelegte Panel-Studie mit über 800 Teilnehmenden über 3 bis 6 Monate. Untersuchung von Smartphone-Nutzungsgewohnheiten, menschlichem Erleben, Gewohnheiten und Verhalten im Alltag."
         }
       },
       {
@@ -1280,7 +1280,7 @@ Lab`,
           price:"€ 1.900",
           period:"/ Jahr",
           tagline:"Ideal für reine Fragebogen-Studien — ohne Sensing.",
-          features:["bis 400 Teilnehmer","Alle EMA-Fragebogentypen","CSV + API + Custom Export","E-Mail + Onboarding-Call","DSGVO-konformes EU-Hosting"],
+          features:["bis 400 Teilnehmer","Unbegrenzte Studienanzahl","Alle EMA-Fragebogentypen","CSV + API + Custom Export","E-Mail + Onboarding-Call","DSGVO-konformes EU-Hosting"],
           overage:"Mehrnutzung: € 10 / zusätzl. Teilnehmer (bis 1.000)",
           cta:"EMA Only wählen",
           ctaHref:"https://pulse.2chub.com",
@@ -1292,7 +1292,7 @@ Lab`,
           price:"€ 2.900",
           period:"/ Jahr",
           tagline:"Ideal für Pilotstudien & Masterarbeiten.",
-          features:["bis 100 Teilnehmer","Standard Sensing (Steps, Location, Screen Time)","Alle EMA-Fragebogentypen","CSV + API + Custom Export","E-Mail-Support","DSGVO-konformes EU-Hosting"],
+          features:["bis 100 Teilnehmer","Unbegrenzte Studienanzahl","Standard Sensing (Steps, Location, Screen Time)","Alle EMA-Fragebogentypen","CSV + API + Custom Export","E-Mail-Support","DSGVO-konformes EU-Hosting"],
           cta:"Explore wählen",
           ctaHref:"https://pulse.2chub.com",
           detail:"Explore ist der Einstiegsplan für Pilotstudien und Masterarbeiten. Standard-Sensing (Steps, Location, Screen Time) ist inklusive – keine Add-On-Berechnung wie bei Wettbewerbern. Alle Fragebogentypen verfügbar, vollständiger Datenexport (CSV + API + Custom). Bei Überschreiten der 100 Teilnehmer ist ein Upgrade auf Research jederzeit möglich."
@@ -1303,7 +1303,7 @@ Lab`,
           price:"€ 9.900",
           period:"/ Jahr",
           tagline:"Ideal für DFG-Projekte & Dissertationen.",
-          features:["bis 400 Teilnehmer","Full Sensing (alle Sensoren)","Alle EMA-Fragebogentypen","CSV + API + Custom Export","Priority + Onboarding-Call","DSGVO-konformes EU-Hosting"],
+          features:["bis 400 Teilnehmer","Unbegrenzte Studienanzahl","Full Sensing (alle Sensoren)","Alle EMA-Fragebogentypen","CSV + API + Custom Export","Priority + Onboarding-Call","DSGVO-konformes EU-Hosting"],
           overage:"Mehrnutzung: € 25 / zusätzl. Teilnehmer über 400",
           cta:"Research wählen",
           ctaHref:"https://pulse.2chub.com",
@@ -1316,7 +1316,7 @@ Lab`,
           price:"€ 14.900",
           period:"/ Jahr",
           tagline:"Ideal für Forschungsgruppen & Laboratorien.",
-          features:["bis 1.000 Teilnehmer","Full Sensing + Priority Processing","Alle EMA-Fragebogentypen","CSV + API + Custom Export","Priority + Onboarding-Call","DSGVO-konformes EU-Hosting"],
+          features:["bis 1.000 Teilnehmer","Unbegrenzte Studienanzahl","Full Sensing + Priority Processing","Alle EMA-Fragebogentypen","CSV + API + Custom Export","Priority + Onboarding-Call","DSGVO-konformes EU-Hosting"],
           overage:"Mehrnutzung: € 15 / zusätzl. Teilnehmer über 1.000",
           cta:"Lab wählen",
           ctaHref:"https://pulse.2chub.com",
@@ -1340,6 +1340,7 @@ Lab`,
         featureColLabel:"Feature",
         rows:[
           {label:"Teilnehmer",group:!0,cells:["bis 400","bis 100","bis 400","bis 1.000","Custom"]},
+          {label:"Unbegrenzte Studienanzahl",cells:["check","check","check","check","check"]},
           {label:"Alle EMA-Fragebogentypen",cells:["check","check","check","check","check"]},
           {label:"Standard Sensing (Steps, Location, Screen Time)",cells:["dash","check","check","check","check"]},
           {label:"Full Sensing (alle Sensoren)",cells:["dash","dash","check","check","check"]},
@@ -2515,7 +2516,7 @@ Lab`,
         "Fair academic licences"],
         example:{
           label:"Example study",
-          text:"Longitudinal study on stress regulation in students across two semesters and three sites, with a mixed design of EMA and passive sensing."
+          text:"CoCo Study (Coping with Corona): multi-site longitudinal study by WWU Münster, University of Osnabrück and LMU Munich. EMA and passive sensing to capture social interaction, personality, mood and wellbeing during the COVID-19 pandemic. Further reference: DIPS (University of Heidelberg, DIW Berlin, LMU Munich) – longitudinal investigation of dynamics in social relationships and the influence of personality traits in everyday life."
         }
       },
       {
@@ -2533,7 +2534,7 @@ Lab`,
         "Interface to HIS and electronic patient records"],
         example:{
           label:"Example project",
-          text:"Outpatient EMA complementing depression treatment: daily mood ratings, passive activity data and contextual micro-interventions."
+          text:"Moody Life Study (LMU Munich): 14-day study on sleep, mood and smartphone use – combining EMA, passive sensing and a wrist-worn accelerometer. Investigated how smartphone usage data can indicate sleep habits and sleep quality in everyday life."
         }
       },
       {
@@ -2551,7 +2552,7 @@ Lab`,
         "Contractually clean commissioned research"],
         example:{
           label:"Example project",
-          text:"Population study on mental health after pandemic phases: 8-wave design over 18 months combining EMA and sensor data."
+          text:"ZPID Smartphone Sensing Panel (Leibniz Institute for Psychology, ZPID): large-scale panel study with over 800 participants across 3 to 6 months. Investigation of smartphone usage habits, everyday experiences, routines and behaviour."
         }
       },
       {
