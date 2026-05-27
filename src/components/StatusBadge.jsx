@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { useLang } from "../lib/i18n.jsx";
-import { usePrefersReducedMotion } from "../lib/hooks.js";
 
 const STATUS_URL = "https://2chub.statuspage.io";
 const STATUS_API = "https://2chub.statuspage.io/api/v2/status.json";
@@ -17,7 +15,6 @@ const COLORS = {
 
 export default function StatusBadge() {
   const { t } = useLang();
-  const reduced = usePrefersReducedMotion();
   const [indicator, setIndicator] = useState("unknown");
 
   useEffect(() => {
@@ -52,33 +49,10 @@ export default function StatusBadge() {
       aria-label={`${label} — Status-Page öffnen`}
     >
       <span
-        className="relative inline-flex items-center justify-center"
-        style={{ width: 10, height: 10 }}
+        className="inline-block rounded-full flex-shrink-0"
+        style={{ width: 7, height: 7, backgroundColor: color }}
         aria-hidden="true"
-      >
-        <motion.span
-          className="absolute rounded-full"
-          style={{
-            width: 10,
-            height: 10,
-            backgroundColor: color,
-          }}
-          animate={
-            reduced
-              ? undefined
-              : { opacity: [0.35, 0.85, 0.35], scale: [1, 1.7, 1] }
-          }
-          transition={
-            reduced
-              ? undefined
-              : { duration: 2.4, repeat: Infinity, ease: "easeInOut" }
-          }
-        />
-        <span
-          className="relative rounded-full"
-          style={{ width: 7, height: 7, backgroundColor: color }}
-        />
-      </span>
+      />
       <span>{label}</span>
     </a>
   );
