@@ -33,7 +33,7 @@ function pageForPath(path) {
   if (path === "/anwendungen") return { key: "anwendungen", element: <AnwendungenPage /> };
   if (path === "/preise") return { key: "preise", element: <PreisePage /> };
   if (path === "/ueber-uns") return { key: "ueber-uns", element: <UeberUnsPage /> };
-  if (path === "/publikationen") return { key: "publikationen", element: <PublikationenPage /> };
+  if (path === "/anwendungen/publikationen") return { key: "publikationen", element: <PublikationenPage /> };
   return { key: "home", element: <HomePage /> };
 }
 

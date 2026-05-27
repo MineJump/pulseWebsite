@@ -1086,7 +1086,7 @@ Lab`,
           description:"Eigenständiges Institut hinter PULSE – der Weiterentwicklung der PhoneStudy-Plattform auf Basis von zwölf Jahren akademischer Vorarbeit."
         },
         {
-          href:"/publikationen",
+          href:"/anwendungen/publikationen",
           eyebrow:"07 · Publikationen",
           title:"Peer-reviewed Studien mit PULSE & PhoneStudy",
           description:"Acht veröffentlichte Studien aus Experience Sampling und Mobile Sensing – von Nature Communications bis JPSP."
@@ -1120,6 +1120,12 @@ Lab`,
       intro:"PULSE wird in akademischer Forschung, in der klinischen Versorgung, in Forschungsinstituten, in Unternehmen sowie in der Markt- und Feldforschung eingesetzt. Im Folgenden zeigen wir fünf Anwendungsfelder mit typischen Anforderungen, Lösungsansätzen und konkreten Beispielprojekten.",
       ctaPrimary:"Demo vereinbaren",
       ctaSecondary:"Plattform ansehen",
+      pubTeaser:{
+        eyebrow:"Publikationen",
+        title:"Peer-reviewed Studien mit PULSE & PhoneStudy",
+        body:"9 veröffentlichte Arbeiten aus Experience Sampling und Mobile Sensing – von Nature Communications bis JPSP.",
+        cta:"Alle Publikationen"
+      },
       needsLabel:"Bedarf",
       deliversLabel:"Was PULSE liefert",
       areas:[{
@@ -1403,6 +1409,14 @@ Lab`,
         {value:"2022–2025", label:"Zeitraum"},
         {value:"Nature Comms.", label:"Höchste Sichtbarkeit"}
       ],
+      searchPlaceholder:"Titel, Autoren oder Journal …",
+      filterAll:"Alle",
+      entries:"Einträge",
+      colYear:"Jahr",
+      colTitle:"Titel / Autoren",
+      colJournal:"Journal",
+      colDoi:"DOI",
+      noResults:"Keine Einträge gefunden.",
       note:"Liste wird laufend aktualisiert. Wenn Ihre Studie auf PhoneStudy oder PULSE basiert und hier fehlt, schreiben Sie uns."
     }
   },
@@ -2489,7 +2503,7 @@ Lab`,
           description:"Independent institute, founded in 2026 as the home of PULSE, the successor to the PhoneStudy platform built on twelve years of academic groundwork."
         },
         {
-          href:"/publikationen",
+          href:"/anwendungen/publikationen",
           eyebrow:"07 · Publications",
           title:"Peer-reviewed studies with PULSE & PhoneStudy",
           description:"Eight published studies spanning experience sampling and mobile sensing — from Nature Communications to JPSP."
@@ -2523,6 +2537,12 @@ Lab`,
       intro:"PULSE is used in academic research, in clinical care, in research institutes, in companies and in market and field research. Below are five application areas with typical requirements, approaches and concrete example projects.",
       ctaPrimary:"Request a demo",
       ctaSecondary:"See the platform",
+      pubTeaser:{
+        eyebrow:"Publications",
+        title:"Peer-reviewed studies with PULSE & PhoneStudy",
+        body:"9 published papers spanning experience sampling and mobile sensing — from Nature Communications to JPSP.",
+        cta:"All publications"
+      },
       needsLabel:"Needs",
       deliversLabel:"What PULSE delivers",
       areas:[{
@@ -2806,6 +2826,14 @@ Lab`,
         {value:"2022–2025", label:"Time span"},
         {value:"Nature Comms.", label:"Highest visibility"}
       ],
+      searchPlaceholder:"Title, authors or journal …",
+      filterAll:"All",
+      entries:"entries",
+      colYear:"Year",
+      colTitle:"Title / Authors",
+      colJournal:"Journal",
+      colDoi:"DOI",
+      noResults:"No entries found.",
       note:"This list is updated continuously. If your study used PhoneStudy or PULSE and is missing here, please get in touch."
     }
   }

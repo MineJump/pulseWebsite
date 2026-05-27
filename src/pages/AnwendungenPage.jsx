@@ -43,6 +43,63 @@ export default function AnwendungenPage() {
             </motion.div>
           </div>
         </section>
+        {/* Publications teaser box */}
+        {a.pubTeaser && (
+          <section className="relative w-full px-6 md:px-12 lg:px-16 mb-10">
+            <div className="max-w-[1100px] mx-auto">
+              <motion.div
+                variants={item}
+                initial={reduced ? false : "hidden"}
+                whileInView="show"
+                viewport={{ once: true, margin: "-40px" }}
+              >
+                <a
+                  href="/anwendungen/publikationen"
+                  className="group flex flex-col sm:flex-row sm:items-center justify-between gap-5 p-6 md:p-8 rounded-2xl focus-halo"
+                  style={{
+                    background: "var(--bg-elev)",
+                    border: "1px solid var(--border)",
+                    transition: "border-color 0.2s ease, box-shadow 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "var(--accent)";
+                    e.currentTarget.style.boxShadow = "0 0 0 1px var(--accent)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "var(--border)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
+                >
+                  <div>
+                    <p
+                      className="text-xs uppercase tracking-[0.2em] mb-2 inline-flex items-center gap-2"
+                      style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
+                    >
+                      <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
+                      {a.pubTeaser.eyebrow}
+                    </p>
+                    <h3
+                      className="text-base md:text-lg font-semibold mb-1"
+                      style={{ fontFamily: "'IBM Plex Mono', monospace", color: "var(--ink)" }}
+                    >
+                      {a.pubTeaser.title}
+                    </h3>
+                    <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+                      {a.pubTeaser.body}
+                    </p>
+                  </div>
+                  <span
+                    className="flex-shrink-0 text-sm uppercase tracking-[0.16em] inline-flex items-center gap-2"
+                    style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
+                  >
+                    {a.pubTeaser.cta} →
+                  </span>
+                </a>
+              </motion.div>
+            </div>
+          </section>
+        )}
+
         <section className="relative w-full px-6 md:px-12 lg:px-16 pb-20 overflow-hidden">
           <div className="relative z-10 max-w-[1100px] mx-auto">
           {a.areas && (
