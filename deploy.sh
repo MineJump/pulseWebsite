@@ -4,7 +4,7 @@ set -euo pipefail
 # Deploys the 2chub website to the production Lightsail instance.
 # Requires the Frankfurt Lightsail SSH key at the path below.
 
-SSH_KEY="/Users/till-olelohse/AWS Key/Frankfurt Lightsail.pem"
+SSH_KEY="${PULSE_DEPLOY_KEY:-$HOME/.ssh/lightsail-frankfurt.pem}"
 SSH_TARGET="ubuntu@3.76.225.82"
 REMOTE_ROOT="/var/www/2chub"
 

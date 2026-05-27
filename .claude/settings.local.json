@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sips *)",
+      "Bash(python3 *)",
+      "Bash(git *)",
+      "Bash(npm run *)",
+      "Bash(brew install *)",
+      "Bash(pdftoppm -v)",
+      "Bash(pdftotext \"/Users/hendrik/Documents/2-Studium/Project Study/pulseWebsite/public/PULSE.pdf\" -)",
+      "Bash(pdftotext *)",
+      "Bash(npx tsc *)",
+      "Bash(gh pr *)",
+      "WebFetch(domain:iconstack.io)",
+      "WebSearch",
+      "Bash(xmllint *)",
+      "Bash(npx --yes svgexport)"
+    ]
+  }
+}

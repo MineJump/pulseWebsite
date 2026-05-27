@@ -1,0 +1,5 @@
+Contact: mailto:security@2chub.com
+Contact: mailto:info@2chub.com
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: de, en
+Canonical: https://2chub.com/.well-known/security.txt

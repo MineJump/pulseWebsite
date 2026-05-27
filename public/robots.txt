@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block trivially exploitable / non-canonical paths
+Disallow: /assets/
+
+Sitemap: https://2chub.com/sitemap.xml

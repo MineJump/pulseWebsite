@@ -3,22 +3,224 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2chub — Center for Computation of Human Behavior</title>
+
+    <!--
+      Note: Security headers (CSP, HSTS, X-Frame-Options, Permissions-Policy,
+      Referrer-Policy, COOP, CORP) are set as HTTP response headers by the
+      hosting platform — see vercel.json (Vercel) and public/_headers
+      (Netlify / Cloudflare Pages). Meta-CSP is intentionally NOT used here
+      because it would also apply to vite dev and break HMR, eval, and inline
+      scripts that Vite's dev server relies on. The deploy-side headers are
+      the canonical enforcement point and cannot be tampered with from the
+      page itself.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>2CHuB — Center for Computation of Human Behavior</title>
     <meta
       name="description"
-      content="2chub — Center for Computation of Human Behavior. Unabhängiges Forschungsinstitut für mobile Studien, Experience Sampling und Passive Sensing."
+      content="2CHuB — Center for Computation of Human Behavior. Unabhängiges Forschungsinstitut für mobile Studien, Experience Sampling und Passive Sensing."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="2chub — Center for Computation of Human Behavior" />
+    <meta property="og:title" content="2CHuB — Center for Computation of Human Behavior" />
     <meta
       property="og:description"
       content="Unabhängiges Forschungsinstitut für mobile Studien, Experience Sampling und Passive Sensing."
     />
     <meta name="theme-color" content="#FAFAF7" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <style>
+      /*
+        Pipeline-Diagramm: opaker Backdrop hinter jeder Karte, damit die Pfeile nicht
+        durch die Cards durchscheinen. Wir überschreiben NICHT die background-color
+        der Karte selbst, also bleiben Hover/Focus-States des React-Codes intakt.
+      */
+      .hidden.lg\:block.relative.w-full button .material-regular {
+        position: relative;
+      }
+      .hidden.lg\:block.relative.w-full button .material-regular::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: #FAFAF7;
+        border-radius: inherit;
+        pointer-events: none;
+      }
+      .hidden.lg\:block.relative.w-full button .material-regular > * {
+        position: relative;
+      }
+    </style>
+    <script>
+      /*
+        Die zwei horizontalen SVG-Pfade (HRV+Schlaf → Compute Engine und
+        Compute Engine → Live-Dashboard) sind im Build kürzer als die anderen 6
+        und enden nur 16 px innerhalb der Cards. Bei opaken Karten verschwinden
+        sie dadurch fast komplett. Wir ersetzen die `d`-Attribute zur Laufzeit
+        durch leicht geschwungene, längere Bézier-Pfade, damit das Diagramm
+        konsistent aussieht.
+      */
+      (() => {
+        const HORIZONTAL_FIX = {
+          2: "M 11 50 C 22 46, 33 54, 44 50",
+          6: "M 56 50 C 67 46, 78 54, 89 50",
+        };
+        const apply = () => {
+          const dia = document.querySelector(".hidden.lg\\:block.relative.w-full");
+          if (!dia) return;
+          const svg = dia.querySelector("svg.absolute.inset-0");
+          if (!svg) return;
+          const paths = svg.querySelectorAll("path[stroke-dasharray]");
+          if (paths.length < 7) return;
+          for (const [i, d] of Object.entries(HORIZONTAL_FIX)) {
+            const p = paths[+i];
+            if (p && p.getAttribute("d") !== d) p.setAttribute("d", d);
+          }
+        };
+        let scheduled = false;
+        const schedule = () => {
+          if (scheduled) return;
+          scheduled = true;
+          requestAnimationFrame(() => {
+            scheduled = false;
+            apply();
+          });
+        };
+        const observer = new MutationObserver(schedule);
+        const init = () => {
+          apply();
+          observer.observe(document.body, { childList: true, subtree: true });
+        };
+        if (document.readyState !== "loading") init();
+        else document.addEventListener("DOMContentLoaded", init);
+      })();
+
+      /*
+        Beim ersten Page-Load triggern manche Framer-Motion `useInView`-Hooks
+        nicht (Observer wird nach Mount registriert, verpasst aber den Initial-
+        Check). Folge: scroll-getriggerte Animationen starten erst nach SPA-
+        Navigation. Wir feuern darum bei Mount und nach Route-Wechseln mehrfach
+        synthetische scroll/resize-Events, damit die Observer ihre Elemente
+        re-evaluieren.
+      */
+      (() => {
+        const nudge = () => {
+          window.dispatchEvent(new Event("scroll"));
+          window.dispatchEvent(new Event("resize"));
+        };
+        const delays = [50, 200, 500, 1000];
+        let pending = false;
+        const burst = () => {
+          if (pending) return;
+          pending = true;
+          delays.forEach((d) => setTimeout(nudge, d));
+          setTimeout(() => {
+            pending = false;
+          }, delays[delays.length - 1] + 50);
+        };
+        if (document.readyState === "complete") burst();
+        else window.addEventListener("load", burst);
+        window.addEventListener("pageshow", burst);
+        window.addEventListener("popstate", burst);
+        const origPushState = history.pushState.bind(history);
+        history.pushState = function () {
+          const r = origPushState.apply(this, arguments);
+          burst();
+          return r;
+        };
+        const origReplaceState = history.replaceState.bind(history);
+        history.replaceState = function () {
+          const r = origReplaceState.apply(this, arguments);
+          burst();
+          return r;
+        };
+      })();
+
+      /*
+        Fallback-Pulse für die orangefarbenen Punkte in der "Pre-processed
+        Pipeline"-Section. Wenn Framer-Motion seinen Initial-Animation-Check
+        beim ersten Page-Load verpasst, bleiben die Punkte konstant auf
+        opacity: 0. Wir starten dann einen sanften Pulse-Loop per requestAnimationFrame.
+        Erkennt das System, dass Framer-Motion doch noch übernimmt (irgendein
+        Punkt erreicht eine opacity zwischen 0 und 1, die wir nicht selbst
+        gesetzt haben), übergeben wir die Kontrolle zurück.
+      */
+      (() => {
+        const isOrangeDot = (el) => {
+          const s = el.getAttribute("style") || "";
+          return s.includes("rgba(255, 146, 66") && s.includes("rounded-full") === false;
+        };
+        const findDots = () => {
+          return Array.from(
+            document.querySelectorAll(
+              "span.absolute.rounded-full.pointer-events-none"
+            )
+          ).filter((d) => (d.getAttribute("style") || "").includes("rgba(255, 146, 66"));
+        };
+        let intervalHandle = null;
+        let lastSetOpacities = new WeakMap();
+        let startTs = 0;
+        const stop = () => {
+          if (intervalHandle !== null) clearInterval(intervalHandle);
+          intervalHandle = null;
+        };
+        const tick = () => {
+          const dots = findDots();
+          if (dots.length === 0) {
+            stop();
+            return;
+          }
+          const now = performance.now();
+          if (!startTs) startTs = now;
+          const t = (now - startTs) / 1000;
+          for (const d of dots) {
+            const myLast = lastSetOpacities.get(d);
+            const actual = parseFloat(d.style.opacity || "0");
+            if (myLast !== undefined && Math.abs(actual - myLast) > 0.01) {
+              stop();
+              return;
+            }
+          }
+          dots.forEach((d, i) => {
+            const phase = ((t * 0.45) + i * 0.18) % 1;
+            const pulse = phase < 0.5 ? phase * 2 : (1 - phase) * 2;
+            const op = (pulse * pulse * 0.85).toFixed(3);
+            d.style.opacity = op;
+            lastSetOpacities.set(d, parseFloat(op));
+          });
+        };
+        const snapshot = (dots) =>
+          dots.map((d) => parseFloat(d.style.opacity || "0").toFixed(3)).join(",");
+        const tryActivate = () => {
+          if (intervalHandle !== null) return;
+          const dots = findDots();
+          if (dots.length < 2) return;
+          const before = snapshot(dots);
+          setTimeout(() => {
+            if (intervalHandle !== null) return;
+            const after = snapshot(findDots());
+            if (before === after) {
+              startTs = 0;
+              lastSetOpacities = new WeakMap();
+              intervalHandle = setInterval(tick, 33);
+            }
+          }, 400);
+        };
+        const init = () => {
+          setTimeout(tryActivate, 1500);
+        };
+        if (document.readyState === "complete") init();
+        else window.addEventListener("load", init);
+        window.addEventListener("popstate", () =>
+          setTimeout(tryActivate, 800)
+        );
+        window.addEventListener("pageshow", () =>
+          setTimeout(tryActivate, 800)
+        );
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
