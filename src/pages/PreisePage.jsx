@@ -9,6 +9,7 @@ import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
 import PricingMatrix from "../components/diagrams/PricingMatrix.jsx";
 import PricingRequestModal from "../components/PricingRequestModal.jsx";
+import { CheckIcon } from "../components/MethodEyebrow.jsx";
 
 // Card for each plan — no inline expansion; selection is shown via ring highlight
 function PlanCard({ plan, badgeLabel, selected, onToggle, onRequest }) {
@@ -67,9 +68,7 @@ function PlanCard({ plan, badgeLabel, selected, onToggle, onRequest }) {
       >
         {plan.features.map((f, j) => (
           <div key={j} className="flex items-start gap-2">
-            <span className="text-xs mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }}>
-              ✓
-            </span>
+            <CheckIcon size="sm" />
             <span className="text-xs leading-snug" style={{ color: "var(--text-muted)" }}>
               {f}
             </span>
@@ -425,7 +424,7 @@ export default function PreisePage() {
                               className="text-xs leading-snug flex items-center gap-1.5"
                               style={{ color: "var(--text-muted)" }}
                             >
-                              <span style={{ color: "var(--accent)" }}>✓</span>
+                              <CheckIcon size="sm" />
                               <span>{f}</span>
                             </li>
                           ))}

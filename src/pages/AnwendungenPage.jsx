@@ -7,6 +7,7 @@ import PageHero from "../components/PageHero.jsx";
 import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
 import SubtleArrowLink from "../components/SubtleArrowLink.jsx";
+import { CheckIcon } from "../components/MethodEyebrow.jsx";
 
 export default function AnwendungenPage() {
   const { t } = useLang();
@@ -146,14 +147,15 @@ export default function AnwendungenPage() {
                         >
                           {a.deliversLabel}
                         </p>
-                        <ul className="space-y-1.5">
+                        <ul className="space-y-2">
                           {area.delivers.map((d, i) => (
                             <li
                               key={i}
-                              className="text-sm md:text-base"
+                              className="flex items-start gap-2.5 text-sm md:text-base"
                               style={{ color: "var(--ink)" }}
                             >
-                              ✓ {d}
+                              <CheckIcon />
+                              <span>{d}</span>
                             </li>
                           ))}
                         </ul>

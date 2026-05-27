@@ -3,32 +3,31 @@ import { motion, useInView } from "framer-motion";
 import { useLang } from "../../lib/i18n.jsx";
 import { usePrefersReducedMotion } from "../../lib/hooks.js";
 
+// px sizes: md = 20, lg = 24  (match the old w-5/w-6 container sizes)
+const CELL_CHECK = {
+  md: { px: 20, cx: 10, cy: 10, r: 9,  path: "M6.1 10.2L8.7 12.8L13.9 7.2", sw: 1.4 },
+  lg: { px: 24, cx: 12, cy: 12, r: 11, path: "M7.3 12.3L10.4 15.3L16.7 8.7", sw: 1.5 },
+};
+
 function Cell({ value, highlight, size = "md", compact = false }) {
-  const sizeClass = size === "lg" ? "w-6 h-6" : "w-5 h-5";
   const dashSize = size === "lg" ? 20 : 18;
   if (value === "check") {
+    const { px, cx, cy, r, path, sw } = CELL_CHECK[size] ?? CELL_CHECK.md;
+    const color = highlight ? "var(--accent)" : "var(--text-muted)";
     return (
       <span
-        className={`inline-flex items-center justify-center rounded-full ${sizeClass}`}
-        style={{
-          backgroundColor: highlight
-            ? "rgba(255,146,66,0.15)"
-            : "rgba(15,13,41,0.07)",
-        }}
+        className="inline-flex items-center justify-center"
+        style={{ width: px, height: px }}
       >
-        <svg
-          width={size === "lg" ? 13 : 11}
-          height={size === "lg" ? 11 : 9}
-          viewBox="0 0 11 9"
-          fill="none"
-        >
+        <svg width={px} height={px} viewBox={`0 0 ${px} ${px}`} fill="none">
+          <circle cx={cx} cy={cy} r={r} stroke={color} strokeWidth="1" fill="none" />
           <path
-            d="M1 4.5L4 7.5L10 1"
-            stroke={highlight ? "var(--accent)" : "currentColor"}
-            strokeWidth="1.8"
+            d={path}
+            stroke={color}
+            strokeWidth={sw}
             strokeLinecap="round"
             strokeLinejoin="round"
-            style={highlight ? undefined : { color: "var(--ink)" }}
+            fill="none"
           />
         </svg>
       </span>

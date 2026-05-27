@@ -3,15 +3,15 @@ import { motion } from "framer-motion";
 import { dur, ease } from "../lib/motion.js";
 
 const SENSOR_LABELS = [
-  { name: "gps", x: 22, y: 22, opacity: 0.55 },
-  { name: "app", x: 50, y: 14, opacity: 0.5 },
-  { name: "accel", x: 38, y: 28, opacity: 0.6 },
-  { name: "wifi_rssi", x: 8, y: 34, opacity: 0.4 },
-  { name: "screen", x: 34, y: 42, opacity: 0.55 },
-  { name: "esm", x: 18, y: 52, opacity: 0.5 },
-  { name: "audio", x: 50, y: 56, opacity: 0.45 },
-  { name: "sleep", x: 12, y: 68, opacity: 0.55 },
-  { name: "hrv", x: 42, y: 82, opacity: 0.5 },
+  { name: "gps", x: 32, y: 34, opacity: 0.55 },
+  { name: "app", x: 38, y: 26, opacity: 0.5 },
+  { name: "accel", x: 24, y: 44, opacity: 0.6 },
+  { name: "wifi_rssi", x: 16, y: 52, opacity: 0.4 },
+  { name: "screen", x: 40, y: 56, opacity: 0.55 },
+  { name: "esm", x: 26, y: 64, opacity: 0.5 },
+  { name: "audio", x: 44, y: 68, opacity: 0.45 },
+  { name: "sleep", x: 18, y: 76, opacity: 0.55 },
+  { name: "hrv", x: 36, y: 84, opacity: 0.5 },
 ];
 
 const PROCESSING_DOTS = [
@@ -43,14 +43,14 @@ const FEATURE_LABELS = [
 ];
 
 const PARTICLES = [
-  { sx: 22, sy: 22, ey: 17, dur: 3.2, delay: 0, size: 8 },
-  { sx: 50, sy: 14, ey: 35, dur: 3.4, delay: 0.5, size: 9 },
-  { sx: 38, sy: 28, ey: 53, dur: 3, delay: 1, size: 8 },
-  { sx: 8, sy: 34, ey: 71, dur: 3.6, delay: 1.5, size: 9 },
-  { sx: 18, sy: 52, ey: 17, dur: 3.2, delay: 2, size: 8 },
-  { sx: 42, sy: 82, ey: 35, dur: 3.4, delay: 2.5, size: 9 },
-  { sx: 50, sy: 56, ey: 53, dur: 3, delay: 3, size: 8 },
-  { sx: 12, sy: 68, ey: 71, dur: 3.2, delay: 3.5, size: 8 },
+  { sx: 32, sy: 34, ey: 17, dur: 3.2, delay: 0, size: 8 },
+  { sx: 38, sy: 26, ey: 35, dur: 3.4, delay: 0.5, size: 9 },
+  { sx: 24, sy: 44, ey: 53, dur: 3, delay: 1, size: 8 },
+  { sx: 16, sy: 52, ey: 71, dur: 3.6, delay: 1.5, size: 9 },
+  { sx: 26, sy: 64, ey: 17, dur: 3.2, delay: 2, size: 8 },
+  { sx: 36, sy: 84, ey: 35, dur: 3.4, delay: 2.5, size: 9 },
+  { sx: 44, sy: 68, ey: 53, dur: 3, delay: 3, size: 8 },
+  { sx: 18, sy: 76, ey: 71, dur: 3.2, delay: 3.5, size: 8 },
 ];
 
 function SensorLabel({ label, reduced }) {
