@@ -1399,8 +1399,8 @@ Lab`,
       title:"Publikationen",
       intro:"Peer-reviewed Studien, die mit PULSE bzw. PhoneStudy erhoben wurden. Ein wachsendes Corpus aus Experience Sampling und Mobile Sensing.",
       stats:[
-        {value:"8+", label:"Veröffentlichungen"},
-        {value:"2023–2025", label:"Zeitraum"},
+        {value:"9+", label:"Veröffentlichungen"},
+        {value:"2022–2025", label:"Zeitraum"},
         {value:"Nature Comms.", label:"Höchste Sichtbarkeit"}
       ],
       note:"Liste wird laufend aktualisiert. Wenn Ihre Studie auf PhoneStudy oder PULSE basiert und hier fehlt, schreiben Sie uns."
@@ -2802,8 +2802,8 @@ Lab`,
       title:"Publications",
       intro:"Peer-reviewed studies collected with PULSE or PhoneStudy. A growing corpus across experience sampling and mobile sensing research.",
       stats:[
-        {value:"8+", label:"Publications"},
-        {value:"2023–2025", label:"Time span"},
+        {value:"9+", label:"Publications"},
+        {value:"2022–2025", label:"Time span"},
         {value:"Nature Comms.", label:"Highest visibility"}
       ],
       note:"This list is updated continuously. If your study used PhoneStudy or PULSE and is missing here, please get in touch."

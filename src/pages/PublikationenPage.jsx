@@ -33,24 +33,30 @@ function PublicationCard({ pub, variants }) {
         </div>
 
         {/* Title */}
-        <a
-          href={pub.doi}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex-1 focus-halo rounded-sm"
-        >
+        {pub.doi ? (
+          <a
+            href={pub.doi}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex-1 focus-halo rounded-sm"
+          >
+            <h3
+              className="text-base md:text-[1.05rem] leading-snug font-semibold transition-colors"
+              style={{ fontFamily: "'IBM Plex Mono', monospace", color: "var(--ink)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink)")}
+            >
+              {pub.title}
+            </h3>
+          </a>
+        ) : (
           <h3
-            className="text-base md:text-[1.05rem] leading-snug font-semibold transition-colors"
-            style={{
-              fontFamily: "'IBM Plex Mono', monospace",
-              color: "var(--ink)",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink)")}
+            className="flex-1 text-base md:text-[1.05rem] leading-snug font-semibold"
+            style={{ fontFamily: "'IBM Plex Mono', monospace", color: "var(--ink)" }}
           >
             {pub.title}
           </h3>
-        </a>
+        )}
 
         {/* Authors + volume */}
         <div className="mt-auto pt-3" style={{ borderTop: "1px solid var(--border)" }}>
@@ -67,17 +73,19 @@ function PublicationCard({ pub, variants }) {
             >
               {pub.volume}
             </span>
-            <a
-              href={pub.doi}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs uppercase tracking-[0.14em] transition-colors focus-halo rounded-sm"
-              style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-            >
-              DOI →
-            </a>
+            {pub.doi && (
+              <a
+                href={pub.doi}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-xs uppercase tracking-[0.14em] transition-opacity focus-halo rounded-sm"
+                style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+              >
+                DOI →
+              </a>
+            )}
           </div>
         </div>
       </Card>

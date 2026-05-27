@@ -74,4 +74,13 @@ export const PUBLICATIONS = [
     volume: "124(2), 437–460",
     doi: "https://doi.org/10.1037/pspp0000422",
   },
+  {
+    id: "birtwistle-2022-mobile-sensing",
+    year: 2022,
+    authors: "Birtwistle, E., Schoedel, R., Bemmann, F., Wirth, A., Sürig, C., Stachl, C., Bühner, M., & Niklas, F.",
+    title: "Mobile sensing in psychological and educational research: Examples from two application fields",
+    journal: "International Journal of Testing",
+    volume: "22, 264–288",
+    doi: "",
+  },
 ];
