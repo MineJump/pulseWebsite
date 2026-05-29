@@ -23,9 +23,12 @@ function PlanCard({ plan, badgeLabel, selected, onToggle, onRequest, asGrid }) {
     if (!asGrid) return;
     let timer;
     if (selected) {
+      // Wait for column expansion to finish before inserting detail into DOM
       timer = setTimeout(() => setShowDetail(true), 360);
     } else {
-      setShowDetail(false);
+      // Delay DOM removal so AnimatePresence exit plays while the column narrows —
+      // without this, Row 3 height snaps back immediately while the column is still wide.
+      timer = setTimeout(() => setShowDetail(false), 220);
     }
     return () => clearTimeout(timer);
   }, [selected, asGrid]);
@@ -89,20 +92,24 @@ function PlanCard({ plan, badgeLabel, selected, onToggle, onRequest, asGrid }) {
               </div>
             ))}
           </div>
-          {showDetail && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.22 }}
-              className="flex-1 pl-5"
-              style={{ borderLeft: "1px solid var(--border)" }}
-            >
-              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{plan.detail}</p>
-              {plan.overage && (
-                <p className="text-[11px] mt-3 leading-snug" style={{ color: "var(--text-dim)" }}>{plan.overage}</p>
-              )}
-            </motion.div>
-          )}
+          <AnimatePresence>
+            {showDetail && (
+              <motion.div
+                key="grid-detail"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.18 }}
+                className="flex-1 pl-5"
+                style={{ borderLeft: "1px solid var(--border)" }}
+              >
+                <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{plan.detail}</p>
+                {plan.overage && (
+                  <p className="text-[11px] mt-3 leading-snug" style={{ color: "var(--text-dim)" }}>{plan.overage}</p>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Row 4 — overage note (collapsed only) + CTA button */}
