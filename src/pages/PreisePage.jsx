@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { useLang } from "../lib/i18n.jsx";
 import { usePrefersReducedMotion } from "../lib/hooks.js";
@@ -11,134 +11,152 @@ import PricingMatrix from "../components/diagrams/PricingMatrix.jsx";
 import PricingRequestModal from "../components/PricingRequestModal.jsx";
 import { CheckIcon } from "../components/MethodEyebrow.jsx";
 
-// Card for each plan — no inline expansion; selection is shown via ring highlight
-function PlanCard({ plan, badgeLabel, selected, onToggle, onRequest }) {
+function PlanCard({ plan, badgeLabel, selected, onToggle, onRequest, asGrid }) {
+
+  /* Delay detail-panel DOM insertion until the column-width CSS transition
+     has finished (~360 ms). Without this delay, the detail div enters the
+     DOM at the starting (narrow) column width, wraps to many lines, bloats
+     Row 3 instantly, and the whole grid jumps — the "extend down then back"
+     glitch. By waiting, the panel only enters once the column is wide. */
+  const [showDetail, setShowDetail] = useState(false);
+  useEffect(() => {
+    if (!asGrid) return;
+    let timer;
+    if (selected) {
+      timer = setTimeout(() => setShowDetail(true), 360);
+    } else {
+      setShowDetail(false);
+    }
+    return () => clearTimeout(timer);
+  }, [selected, asGrid]);
+
+  /* ── XL grid mode: 4 bare rows — the parent motion.div is the visual card ── */
+  if (asGrid) {
+    const badge = plan.highlight && (
+      <span
+        className="flex-shrink-0 px-2.5 py-1 rounded-full text-[10px] uppercase tracking-[0.18em] leading-none"
+        style={{ backgroundColor: "var(--accent)", color: "#fff", fontFamily: "'IBM Plex Mono', monospace" }}
+      >
+        {badgeLabel}
+      </span>
+    );
+    const closeBtn = (
+      <AnimatePresence>
+        {selected && (
+          <motion.button
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onToggle(); }}
+            className="flex-shrink-0 text-xs transition-opacity hover:opacity-60 focus-halo rounded-sm mt-0.5 px-1 py-0.5"
+            style={{ color: "var(--text-dim)" }}
+            aria-label="Schließen"
+          >✕</motion.button>
+        )}
+      </AnimatePresence>
+    );
+    return (
+      <>
+        {/* Row 1 — name + badge + price + close */}
+        <div className="pt-6 md:pt-7 px-6 md:px-7 flex items-start justify-between gap-3">
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-3 mb-2 flex-wrap min-h-[28px]">
+              <p className="text-base font-semibold" style={{ color: "var(--ink)" }}>{plan.name}</p>
+              {badge}
+            </div>
+            <div>
+              <span className="text-2xl font-bold" style={{ color: "var(--ink)" }}>{plan.price}</span>
+              {plan.period && (
+                <span className="text-sm ml-1" style={{ color: "var(--text-dim)" }}>{plan.period}</span>
+              )}
+            </div>
+          </div>
+          {closeBtn}
+        </div>
+
+        {/* Row 2 — tagline */}
+        <div className="px-6 md:px-7 pt-2 pb-3">
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{plan.tagline}</p>
+        </div>
+
+        {/* Row 3 — features (left) + detail panel (right, when expanded) */}
+        <div className="px-6 md:px-7 py-4 flex flex-row gap-5" style={{ borderTop: "1px solid var(--border)" }}>
+          <div className="flex flex-col gap-2.5 flex-1">
+            {plan.features.map((f, j) => (
+              <div key={j} className="flex items-start gap-2">
+                <CheckIcon size="sm" />
+                <span className="text-xs leading-snug" style={{ color: "var(--text-muted)" }}>{f}</span>
+              </div>
+            ))}
+          </div>
+          {showDetail && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.22 }}
+              className="flex-1 pl-5"
+              style={{ borderLeft: "1px solid var(--border)" }}
+            >
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{plan.detail}</p>
+              {plan.overage && (
+                <p className="text-[11px] mt-3 leading-snug" style={{ color: "var(--text-dim)" }}>{plan.overage}</p>
+              )}
+            </motion.div>
+          )}
+        </div>
+
+        {/* Row 4 — overage note (collapsed only) + CTA button */}
+        <div className="px-6 md:px-7 pb-6 md:pb-7 pt-3 flex flex-col gap-2.5 justify-end">
+          {plan.overage && !selected && (
+            <p className="text-[11px] leading-snug" style={{ color: "var(--text-dim)" }}>{plan.overage}</p>
+          )}
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onRequest(plan); }}
+            className="block w-full text-center px-4 py-2.5 rounded-full text-xs uppercase tracking-[0.12em] transition-opacity hover:opacity-85 focus-halo"
+            style={{
+              backgroundColor: plan.highlight ? "var(--accent)" : "var(--bg-elev)",
+              color: plan.highlight ? "#fff" : "var(--ink)",
+              border: plan.highlight ? "1px solid var(--accent)" : "1px solid var(--border)",
+            }}
+          >{plan.cta}</button>
+        </div>
+      </>
+    );
+  }
+
+  /* ── Mobile / tablet mode: Card wrapper with flex-col layout ── */
   return (
     <Card
       variant="material"
-      className={`relative p-6 md:p-7 h-full cursor-pointer transition-all duration-200 ${
+      className={`relative p-6 md:p-7 h-full flex flex-col transition-all duration-200 ${
         plan.highlight ? "ring-1 ring-[color:var(--accent)]" : ""
-      } ${selected ? "ring-2 ring-[color:var(--ink)]" : ""}`}
-      onClick={onToggle}
+      } ${selected ? "ring-2 ring-[color:var(--ink)]" : "cursor-pointer"}`}
+      onClick={selected ? undefined : onToggle}
       role="button"
       aria-expanded={selected}
     >
-      {/* Header block — fixed height so separator always aligns across cards */}
-      <div className="min-h-[8.5rem] flex flex-col justify-start">
-        <div className="flex items-center justify-between gap-3 mb-3 min-h-[28px]">
-          <p
-            className="text-base font-semibold"
-            style={{ color: "var(--ink)" }}
-          >
-            {plan.name}
-          </p>
-          {plan.highlight && (
-            <span
-              className="flex-shrink-0 px-2.5 py-1 rounded-full text-[10px] uppercase tracking-[0.18em] leading-none"
-              style={{
-                backgroundColor: "var(--accent)",
-                color: "#fff",
-                fontFamily: "'IBM Plex Mono', monospace",
-              }}
-            >
-              {badgeLabel}
-            </span>
-          )}
-        </div>
-
-        <div className="mb-3">
-          <span className="text-2xl font-bold" style={{ color: "var(--ink)" }}>
-            {plan.price}
-          </span>
-          {plan.period && (
-            <span className="text-sm ml-1" style={{ color: "var(--text-dim)" }}>
-              {plan.period}
-            </span>
-          )}
-        </div>
-
-        <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-          {plan.tagline}
-        </p>
-      </div>
-
-      <div
-        className="mb-5 pt-4 flex flex-col gap-2.5"
-        style={{ borderTop: "1px solid var(--border)" }}
-      >
-        {plan.features.map((f, j) => (
-          <div key={j} className="flex items-start gap-2">
-            <CheckIcon size="sm" />
-            <span className="text-xs leading-snug" style={{ color: "var(--text-muted)" }}>
-              {f}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      {plan.overage && (
-        <p className="text-[11px] mb-4 leading-snug" style={{ color: "var(--text-dim)" }}>
-          {plan.overage}
-        </p>
-      )}
-
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          onRequest(plan);
-        }}
-        className="mt-auto block w-full text-center px-4 py-2.5 rounded-full text-xs uppercase tracking-[0.12em] transition-opacity hover:opacity-85 focus-halo"
-        style={{
-          backgroundColor: plan.highlight ? "var(--accent)" : "var(--bg-elev)",
-          color: plan.highlight ? "#fff" : "var(--ink)",
-          border: plan.highlight
-            ? "1px solid var(--accent)"
-            : "1px solid var(--border)",
-        }}
-      >
-        {plan.cta}
-      </button>
-
-      {/* Selected indicator — chevron pointing toward the detail panel */}
-      <AnimatePresence>
-        {selected && (
-          <motion.div
-            initial={{ opacity: 0, x: -4 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -4 }}
-            transition={{ duration: 0.18 }}
-            className="absolute top-1/2 -right-3 -translate-y-1/2 hidden xl:flex items-center justify-center"
-            style={{ color: "var(--ink)", zIndex: 2 }}
-            aria-hidden
-          >
-            <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
-              <path
-                d="M1 1l7 7-7 7"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </Card>
-  );
-}
-
-// Detail panel shown to the right of the cards (desktop) or below (mobile/tablet)
-function PlanDetailPanel({ plan, closeLabel, onClose, onRequest }) {
-  return (
-    <Card variant="material" className="p-6 h-full flex flex-col">
       {/* Header */}
-      <div className="flex items-start justify-between gap-3 mb-4">
-        <div>
-          <p className="text-xs uppercase tracking-[0.14em] mb-1" style={{ color: "var(--text-dim)", fontFamily: "'IBM Plex Mono', monospace" }}>
-            {plan.name}
-          </p>
-          <div>
+      <div className="flex items-start justify-between gap-3 mb-3">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-3 mb-2 flex-wrap min-h-[28px]">
+            <p className="text-base font-semibold" style={{ color: "var(--ink)" }}>
+              {plan.name}
+            </p>
+            {plan.highlight && (
+              <span
+                className="flex-shrink-0 px-2.5 py-1 rounded-full text-[10px] uppercase tracking-[0.18em] leading-none"
+                style={{
+                  backgroundColor: "var(--accent)",
+                  color: "#fff",
+                  fontFamily: "'IBM Plex Mono', monospace",
+                }}
+              >
+                {badgeLabel}
+              </span>
+            )}
+          </div>
+          <div className="mb-2">
             <span className="text-2xl font-bold" style={{ color: "var(--ink)" }}>
               {plan.price}
             </span>
@@ -148,39 +166,83 @@ function PlanDetailPanel({ plan, closeLabel, onClose, onRequest }) {
               </span>
             )}
           </div>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            {plan.tagline}
+          </p>
         </div>
-        <button
-          type="button"
-          onClick={onClose}
-          className="flex-shrink-0 text-xs transition-opacity hover:opacity-60 focus-halo rounded-sm mt-1 px-1 py-0.5"
-          style={{ color: "var(--text-dim)" }}
-          aria-label={closeLabel}
-        >
-          ✕
-        </button>
+        <AnimatePresence>
+          {selected && (
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              type="button"
+              onClick={(e) => { e.stopPropagation(); onToggle(); }}
+              className="flex-shrink-0 text-xs transition-opacity hover:opacity-60 focus-halo rounded-sm mt-0.5 px-1 py-0.5"
+              style={{ color: "var(--text-dim)" }}
+              aria-label="Schließen"
+            >
+              ✕
+            </motion.button>
+          )}
+        </AnimatePresence>
       </div>
 
-      {/* Detail text */}
+      {/* Middle section: features + detail */}
       <div
-        className="pt-4 flex-1 flex flex-col"
+        className="mb-5 pt-4 flex flex-col flex-1 gap-5"
         style={{ borderTop: "1px solid var(--border)" }}
       >
-        <p className="text-sm leading-relaxed mb-5 flex-1" style={{ color: "var(--text-muted)" }}>
-          {plan.detail}
-        </p>
-
-        {plan.overage && (
-          <p className="text-[11px] mb-4 leading-snug" style={{ color: "var(--text-dim)" }}>
-            {plan.overage}
-          </p>
-        )}
+        <div className="flex flex-col gap-2.5">
+          {plan.features.map((f, j) => (
+            <div key={j} className="flex items-start gap-2">
+              <CheckIcon size="sm" />
+              <span className="text-xs leading-snug" style={{ color: "var(--text-muted)" }}>
+                {f}
+              </span>
+            </div>
+          ))}
+        </div>
+        <AnimatePresence>
+          {selected && (
+            <motion.div
+              key="detail"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.22, delay: 0.18 }}
+              className="pt-3"
+              style={{ borderTop: "1px solid var(--border)" }}
+            >
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                {plan.detail}
+              </p>
+              {plan.overage && (
+                <p className="text-[11px] mt-3 leading-snug" style={{ color: "var(--text-dim)" }}>
+                  {plan.overage}
+                </p>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
-      {/* CTA */}
+      {/* Overage note (collapsed only) */}
+      {plan.overage && !selected && (
+        <p className="text-[11px] mb-4 leading-snug" style={{ color: "var(--text-dim)" }}>
+          {plan.overage}
+        </p>
+      )}
+
+      {/* CTA button */}
       <button
         type="button"
-        onClick={() => onRequest(plan)}
-        className="block w-full text-center px-4 py-2.5 rounded-full text-xs uppercase tracking-[0.12em] transition-opacity hover:opacity-85 focus-halo"
+        onClick={(e) => {
+          e.stopPropagation();
+          onRequest(plan);
+        }}
+        className="mt-auto block w-full text-center px-4 py-2.5 rounded-full text-xs uppercase tracking-[0.12em] transition-opacity hover:opacity-85 focus-halo"
         style={{
           backgroundColor: plan.highlight ? "var(--accent)" : "var(--bg-elev)",
           color: plan.highlight ? "#fff" : "var(--ink)",
@@ -252,25 +314,10 @@ export default function PreisePage() {
   const container = reduced ? { hidden: {}, show: {} } : stagger(0.06, 0.05);
 
   const nonEnterprisePlans = p.plans.filter((plan) => !plan.isEnterprise);
-  const selectedPlanData = selectedPlan
-    ? nonEnterprisePlans.find((pl) => pl.id === selectedPlan) ?? null
-    : null;
 
   function togglePlan(id) {
     setSelectedPlan((prev) => (prev === id ? null : id));
   }
-
-  const planCards = nonEnterprisePlans.map((plan) => (
-    <motion.div key={plan.id} variants={item} className="h-full">
-      <PlanCard
-        plan={plan}
-        badgeLabel={p.badge}
-        selected={selectedPlan === plan.id}
-        onToggle={() => togglePlan(plan.id)}
-        onRequest={(pl) => setRequestPlan(pl)}
-      />
-    </motion.div>
-  ));
 
   return (
     <PageScaffold>
@@ -281,98 +328,80 @@ export default function PreisePage() {
         <section className="relative w-full px-6 md:px-12 lg:px-16 -mt-6 md:-mt-10 mb-6 md:mb-8">
           <div className="relative z-10 max-w-[1280px] mx-auto">
 
-            {/* ═══ Wide desktop: panel inserts right of the selected card (xl+) ═══ */}
-            <LayoutGroup id="pricing-cards">
-              <motion.div
-                variants={container}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                className="hidden xl:flex gap-5 items-stretch"
-              >
-                {nonEnterprisePlans.map((plan) => {
-                  const isSelected = selectedPlan === plan.id;
-                  return (
-                    <React.Fragment key={plan.id}>
-                      {/* Card — layout-animated so it smoothly shifts when siblings change */}
-                      <motion.div layout variants={item} className="flex-1 min-w-0">
-                        <PlanCard
-                          plan={plan}
-                          badgeLabel={p.badge}
-                          selected={isSelected}
-                          onToggle={() => togglePlan(plan.id)}
-                          onRequest={(pl) => setRequestPlan(pl)}
-                        />
-                      </motion.div>
+            {/* ═══ Wide desktop: CSS grid + subgrid for aligned dividers (xl+) ═══
+                  Column widths animate via CSS transition (no Framer Motion layout),
+                  which prevents the height-jitter glitch when clicking through cards.
+                  CSS subgrid (grid-template-rows: subgrid) ensures the horizontal
+                  divider lines sit at the exact same Y position across all cards.     */}
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="hidden xl:grid"
+              style={{
+                gridTemplateColumns: nonEnterprisePlans.map((pl) =>
+                  pl.id === selectedPlan ? "2fr" : "1fr"
+                ).join(" "),
+                gridTemplateRows: "auto auto 1fr auto",
+                columnGap: "1.25rem",
+                transition: "grid-template-columns 0.38s cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
+            >
+              {nonEnterprisePlans.map((plan) => {
+                const isSelected = selectedPlan === plan.id;
+                return (
+                  <motion.div
+                    key={plan.id}
+                    variants={item}
+                    role="button"
+                    aria-expanded={isSelected}
+                    onClick={isSelected ? undefined : () => togglePlan(plan.id)}
+                    className={`relative material-regular transition-all duration-200 ${
+                      plan.highlight ? "ring-1 ring-[color:var(--accent)]" : ""
+                    } ${isSelected ? "ring-2 ring-[color:var(--ink)]" : "cursor-pointer"}`}
+                    style={{
+                      borderRadius: "20px",
+                      display: "grid",
+                      gridRow: "span 4",
+                      gridTemplateRows: "subgrid",
+                      minWidth: 0,
+                    }}
+                  >
+                    <PlanCard
+                      plan={plan}
+                      badgeLabel={p.badge}
+                      selected={isSelected}
+                      onToggle={() => togglePlan(plan.id)}
+                      onRequest={(pl) => setRequestPlan(pl)}
+                      asGrid
+                    />
+                  </motion.div>
+                );
+              })}
+            </motion.div>
 
-                      {/* Detail panel — inserted immediately after the selected card */}
-                      <AnimatePresence>
-                        {isSelected && (
-                          <motion.div
-                            key={`detail-${plan.id}`}
-                            layout
-                            initial={{ width: 0 }}
-                            animate={{ width: 280 }}
-                            exit={{ width: 0 }}
-                            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-                            style={{ flexShrink: 0, overflow: "hidden" }}
-                          >
-                            <motion.div
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0 }}
-                              transition={{ duration: 0.2, delay: 0.14 }}
-                              style={{ width: 280 }}
-                              className="h-full"
-                            >
-                              <PlanDetailPanel
-                                plan={plan}
-                                closeLabel={p.close}
-                                onClose={() => setSelectedPlan(null)}
-                                onRequest={(pl) => setRequestPlan(pl)}
-                              />
-                            </motion.div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </React.Fragment>
-                  );
-                })}
-              </motion.div>
-            </LayoutGroup>
-
-            {/* ═══ Mobile / tablet / narrow desktop: stacked grid + detail below (< xl) ═══ */}
+            {/* ═══ Mobile / tablet: stacked grid, card expands vertically (< xl) ═══ */}
             <div className="xl:hidden">
               <motion.div
                 variants={container}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-stretch"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start"
               >
-                {planCards}
-              </motion.div>
-
-              {/* Below-cards detail panel */}
-              <AnimatePresence>
-                {selectedPlanData && (
-                  <motion.div
-                    key={selectedPlanData.id}
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden mt-5"
-                  >
-                    <PlanDetailPanel
-                      plan={selectedPlanData}
-                      closeLabel={p.close}
-                      onClose={() => setSelectedPlan(null)}
+                {nonEnterprisePlans.map((plan) => (
+                  <motion.div key={plan.id} variants={item}>
+                    <PlanCard
+                      plan={plan}
+                      badgeLabel={p.badge}
+                      selected={selectedPlan === plan.id}
+                      onToggle={() => togglePlan(plan.id)}
                       onRequest={(pl) => setRequestPlan(pl)}
                     />
                   </motion.div>
-                )}
-              </AnimatePresence>
+                ))}
+              </motion.div>
             </div>
 
             {/* Overflow note */}

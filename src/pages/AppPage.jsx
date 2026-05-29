@@ -107,7 +107,7 @@ export default function AppPage() {
     <PageScaffold>
       <main>
         <PageHero eyebrow={a.eyebrow} title={a.title} intro={a.subtitle} />
-        <section className="relative z-10 w-full -mt-12 md:-mt-16 pt-20 md:pt-28 mb-20 md:mb-28">
+        <section className="relative z-10 w-full -mt-12 md:-mt-16 pt-8 md:pt-10 mb-20 md:mb-28">
           <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16">
             <motion.div
               variants={container}

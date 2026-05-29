@@ -23,7 +23,7 @@ export default function AnwendungenPage() {
     <PageScaffold>
       <main>
         <PageHero eyebrow={a.eyebrow} title={a.title} intro={a.intro} />
-        <section className="relative z-10 w-full -mt-12 md:-mt-16 mb-16 md:mb-20">
+        <section className="relative z-10 w-full -mt-12 md:-mt-16 pt-8 md:pt-10 mb-16 md:mb-20">
           <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16">
             <motion.div
               variants={item}

@@ -694,7 +694,7 @@ export default function MethodDetailPage({ slug }) {
           title={method.pageTitle}
           intro={method.pageIntro}
         />
-        <section className="relative z-10 w-full -mt-12 md:-mt-16 mb-16 md:mb-20">
+        <section className="relative z-10 w-full -mt-12 md:-mt-16 pt-8 md:pt-10 mb-16 md:mb-20">
           <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16">
             <motion.div
               variants={item}

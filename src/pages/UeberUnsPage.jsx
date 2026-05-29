@@ -23,7 +23,7 @@ export default function UeberUnsPage() {
     <PageScaffold>
       <main>
         <PageHero eyebrow={u.eyebrow} title={u.title} intro={u.subtitle} />
-        <section className="relative z-10 w-full -mt-12 md:-mt-16 mb-12 md:mb-16">
+        <section className="relative z-10 w-full -mt-12 md:-mt-16 pt-8 md:pt-10 mb-12 md:mb-16">
           <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16">
             <motion.p
               variants={item}

@@ -1299,11 +1299,11 @@ Lab`,
           name:"Explore",
           price:"€ 2.900",
           period:"/ Jahr",
-          tagline:"Für Masterarbeiten und Pilotstudien mit Sensing-Komponente — Laufzeit 1 Semester.",
+          tagline:"Für Pilotstudien mit Sensing-Komponente.",
           features:["bis 100 Teilnehmer","Standard Sensing (Steps, Location, Screen Time)","Alle EMA-Fragebogentypen","CSV + API + Custom Export","E-Mail-Support","DSGVO-konformes EU-Hosting"],
           cta:"Explore wählen",
           ctaHref:"https://pulse.2chub.com",
-          detail:"Explore ist der Einstiegsplan für Pilotstudien und Masterarbeiten. Standard-Sensing (Steps, Location, Screen Time) ist inklusive – keine Add-On-Berechnung wie bei Wettbewerbern. Alle Fragebogentypen verfügbar, vollständiger Datenexport (CSV + API + Custom). Bei Überschreiten der 100 Teilnehmer ist ein Upgrade auf Research jederzeit möglich."
+          detail:"Explore ist der Einstiegsplan für Pilotstudien. Standard-Sensing (Steps, Location, Screen Time) ist inklusive – keine Add-On-Berechnung wie bei Wettbewerbern. Alle Fragebogentypen verfügbar, vollständiger Datenexport (CSV + API + Custom). Bei Überschreiten der 100 Teilnehmer ist ein Upgrade auf Research jederzeit möglich."
         },
         {
           id:"research",
@@ -2717,11 +2717,11 @@ Lab`,
           name:"Explore",
           price:"€ 2,900",
           period:"/ year",
-          tagline:"For master's theses and pilot studies with a sensing component — one-semester duration.",
+          tagline:"For pilot studies with a sensing component.",
           features:["up to 100 participants","Standard sensing (steps, location, screen time)","All ESM questionnaire types","CSV + API + Custom export","Email support","GDPR-compliant EU hosting"],
           cta:"Choose Explore",
           ctaHref:"https://pulse.2chub.com",
-          detail:"Explore is the entry-level plan for pilot studies and master's theses. Standard sensing (steps, location, screen time) is included — no add-on charges as with competitors. All questionnaire types available, full data export (CSV + API + custom). Once you exceed 100 participants you can upgrade to Research at any time."
+          detail:"Explore is the entry-level plan for pilot studies. Standard sensing (steps, location, screen time) is included — no add-on charges as with competitors. All questionnaire types available, full data export (CSV + API + custom). Once you exceed 100 participants you can upgrade to Research at any time."
         },
         {
           id:"research",

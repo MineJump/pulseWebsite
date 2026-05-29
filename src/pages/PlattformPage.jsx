@@ -24,7 +24,7 @@ export default function PlattformPage() {
     <PageScaffold>
       <main>
         <PageHero eyebrow={p.eyebrow} title={p.title} intro={p.subtitle} />
-        <section className="relative z-10 w-full -mt-12 md:-mt-16 mb-24 md:mb-32">
+        <section className="relative z-10 w-full -mt-12 md:-mt-16 pt-8 md:pt-10 mb-24 md:mb-32">
           <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16">
             <motion.div
               variants={container}
