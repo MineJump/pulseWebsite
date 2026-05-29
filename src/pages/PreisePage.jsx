@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { useLang } from "../lib/i18n.jsx";
 import { usePrefersReducedMotion } from "../lib/hooks.js";
@@ -13,26 +13,6 @@ import { CheckIcon } from "../components/MethodEyebrow.jsx";
 
 function PlanCard({ plan, badgeLabel, selected, onToggle, onRequest, asGrid }) {
 
-  /* Delay detail-panel DOM insertion until the column-width CSS transition
-     has finished (~360 ms). Without this delay, the detail div enters the
-     DOM at the starting (narrow) column width, wraps to many lines, bloats
-     Row 3 instantly, and the whole grid jumps — the "extend down then back"
-     glitch. By waiting, the panel only enters once the column is wide. */
-  const [showDetail, setShowDetail] = useState(false);
-  useEffect(() => {
-    if (!asGrid) return;
-    let timer;
-    if (selected) {
-      // Wait for column expansion to finish before inserting detail into DOM
-      timer = setTimeout(() => setShowDetail(true), 360);
-    } else {
-      // Delay DOM removal so AnimatePresence exit plays while the column narrows —
-      // without this, Row 3 height snaps back immediately while the column is still wide.
-      timer = setTimeout(() => setShowDetail(false), 220);
-    }
-    return () => clearTimeout(timer);
-  }, [selected, asGrid]);
-
   /* ── XL grid mode: 4 bare rows — the parent motion.div is the visual card ── */
   if (asGrid) {
     const badge = plan.highlight && (
@@ -43,38 +23,20 @@ function PlanCard({ plan, badgeLabel, selected, onToggle, onRequest, asGrid }) {
         {badgeLabel}
       </span>
     );
-    const closeBtn = (
-      <AnimatePresence>
-        {selected && (
-          <motion.button
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            type="button"
-            onClick={(e) => { e.stopPropagation(); onToggle(); }}
-            className="flex-shrink-0 text-xs transition-opacity hover:opacity-60 focus-halo rounded-sm mt-0.5 px-1 py-0.5"
-            style={{ color: "var(--text-dim)" }}
-            aria-label="Schließen"
-          >✕</motion.button>
-        )}
-      </AnimatePresence>
-    );
     return (
       <>
-        {/* Row 1 — name + badge + price + close */}
-        <div className="pt-6 md:pt-7 px-6 md:px-7 flex items-start justify-between gap-3">
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-3 mb-2 flex-wrap min-h-[28px]">
-              <p className="text-base font-semibold" style={{ color: "var(--ink)" }}>{plan.name}</p>
-              {badge}
-            </div>
-            <div>
-              <span className="text-2xl font-bold" style={{ color: "var(--ink)" }}>{plan.price}</span>
-              {plan.period && (
-                <span className="text-sm ml-1" style={{ color: "var(--text-dim)" }}>{plan.period}</span>
-              )}
-            </div>
+        {/* Row 1 — name + badge + price */}
+        <div className="pt-6 md:pt-7 px-6 md:px-7">
+          <div className="flex items-center gap-3 mb-2 flex-wrap min-h-[28px]">
+            <p className="text-base font-semibold" style={{ color: "var(--ink)" }}>{plan.name}</p>
+            {badge}
           </div>
-          {closeBtn}
+          <div>
+            <span className="text-2xl font-bold" style={{ color: "var(--ink)" }}>{plan.price}</span>
+            {plan.period && (
+              <span className="text-sm ml-1" style={{ color: "var(--text-dim)" }}>{plan.period}</span>
+            )}
+          </div>
         </div>
 
         {/* Row 2 — tagline */}
@@ -82,9 +44,20 @@ function PlanCard({ plan, badgeLabel, selected, onToggle, onRequest, asGrid }) {
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{plan.tagline}</p>
         </div>
 
-        {/* Row 3 — features (left) + detail panel (right, when expanded) */}
-        <div className="px-6 md:px-7 py-4 flex flex-row gap-5" style={{ borderTop: "1px solid var(--border)" }}>
-          <div className="flex flex-col gap-2.5 flex-1">
+        {/* Row 3 — features in normal flow (drive row height across subgrid);
+                   detail panel is position:absolute + overflow:hidden so its
+                   wrapping during column transitions can never grow Row 3.    */}
+        <div
+          className="px-6 md:px-7 py-4 relative"
+          style={{ borderTop: "1px solid var(--border)" }}
+        >
+          <div
+            className="flex flex-col gap-2.5 min-w-0"
+            style={{
+              width: selected ? "calc(50% - 0.625rem)" : "100%",
+              transition: "width 0.38s cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
+          >
             {plan.features.map((f, j) => (
               <div key={j} className="flex items-start gap-2">
                 <CheckIcon size="sm" />
@@ -93,15 +66,17 @@ function PlanCard({ plan, badgeLabel, selected, onToggle, onRequest, asGrid }) {
             ))}
           </div>
           <AnimatePresence>
-            {showDetail && (
+            {selected && (
               <motion.div
                 key="grid-detail"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.18 }}
-                className="flex-1 pl-5"
-                style={{ borderLeft: "1px solid var(--border)" }}
+                animate={{ opacity: 1, transition: { duration: 0.2, delay: 0.36 } }}
+                exit={{ opacity: 0, transition: { duration: 0.16 } }}
+                className="absolute top-4 bottom-4 right-6 md:right-7 pl-5 overflow-hidden pointer-events-none"
+                style={{
+                  left: "calc(50% + 0.625rem)",
+                  borderLeft: "1px solid var(--border)",
+                }}
               >
                 <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{plan.detail}</p>
                 {plan.overage && (
@@ -136,64 +111,45 @@ function PlanCard({ plan, badgeLabel, selected, onToggle, onRequest, asGrid }) {
   return (
     <Card
       variant="material"
-      className={`relative p-6 md:p-7 h-full flex flex-col transition-all duration-200 ${
+      className={`relative p-6 md:p-7 h-full flex flex-col cursor-pointer transition-all duration-200 ${
         plan.highlight ? "ring-1 ring-[color:var(--accent)]" : ""
-      } ${selected ? "ring-2 ring-[color:var(--ink)]" : "cursor-pointer"}`}
-      onClick={selected ? undefined : onToggle}
+      } ${selected ? "ring-2 ring-[color:var(--ink)]" : ""}`}
+      onClick={onToggle}
       role="button"
       aria-expanded={selected}
     >
       {/* Header */}
-      <div className="flex items-start justify-between gap-3 mb-3">
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-3 mb-2 flex-wrap min-h-[28px]">
-            <p className="text-base font-semibold" style={{ color: "var(--ink)" }}>
-              {plan.name}
-            </p>
-            {plan.highlight && (
-              <span
-                className="flex-shrink-0 px-2.5 py-1 rounded-full text-[10px] uppercase tracking-[0.18em] leading-none"
-                style={{
-                  backgroundColor: "var(--accent)",
-                  color: "#fff",
-                  fontFamily: "'IBM Plex Mono', monospace",
-                }}
-              >
-                {badgeLabel}
-              </span>
-            )}
-          </div>
-          <div className="mb-2">
-            <span className="text-2xl font-bold" style={{ color: "var(--ink)" }}>
-              {plan.price}
-            </span>
-            {plan.period && (
-              <span className="text-sm ml-1" style={{ color: "var(--text-dim)" }}>
-                {plan.period}
-              </span>
-            )}
-          </div>
-          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            {plan.tagline}
+      <div className="mb-3">
+        <div className="flex items-center gap-3 mb-2 flex-wrap min-h-[28px]">
+          <p className="text-base font-semibold" style={{ color: "var(--ink)" }}>
+            {plan.name}
           </p>
-        </div>
-        <AnimatePresence>
-          {selected && (
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.15 }}
-              type="button"
-              onClick={(e) => { e.stopPropagation(); onToggle(); }}
-              className="flex-shrink-0 text-xs transition-opacity hover:opacity-60 focus-halo rounded-sm mt-0.5 px-1 py-0.5"
-              style={{ color: "var(--text-dim)" }}
-              aria-label="Schließen"
+          {plan.highlight && (
+            <span
+              className="flex-shrink-0 px-2.5 py-1 rounded-full text-[10px] uppercase tracking-[0.18em] leading-none"
+              style={{
+                backgroundColor: "var(--accent)",
+                color: "#fff",
+                fontFamily: "'IBM Plex Mono', monospace",
+              }}
             >
-              ✕
-            </motion.button>
+              {badgeLabel}
+            </span>
           )}
-        </AnimatePresence>
+        </div>
+        <div className="mb-2">
+          <span className="text-2xl font-bold" style={{ color: "var(--ink)" }}>
+            {plan.price}
+          </span>
+          {plan.period && (
+            <span className="text-sm ml-1" style={{ color: "var(--text-dim)" }}>
+              {plan.period}
+            </span>
+          )}
+        </div>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+          {plan.tagline}
+        </p>
       </div>
 
       {/* Middle section: features + detail */}
@@ -363,10 +319,10 @@ export default function PreisePage() {
                     variants={item}
                     role="button"
                     aria-expanded={isSelected}
-                    onClick={isSelected ? undefined : () => togglePlan(plan.id)}
-                    className={`relative material-regular transition-all duration-200 ${
+                    onClick={() => togglePlan(plan.id)}
+                    className={`relative material-regular cursor-pointer transition-all duration-200 ${
                       plan.highlight ? "ring-1 ring-[color:var(--accent)]" : ""
-                    } ${isSelected ? "ring-2 ring-[color:var(--ink)]" : "cursor-pointer"}`}
+                    } ${isSelected ? "ring-2 ring-[color:var(--ink)]" : ""}`}
                     style={{
                       borderRadius: "20px",
                       display: "grid",
