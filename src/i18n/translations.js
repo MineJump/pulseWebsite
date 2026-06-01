@@ -1103,7 +1103,7 @@ Lab`,
           overage:"Mehrnutzung: € 10 / zusätzl. Teilnehmer (bis 1.000)",
           cta:"EMA Only wählen",
           ctaHref:"https://pulse.2chub.com",
-          detail:"EMA Only ist der spezialisierte Plan für rein Fragebogen-basierte Studien — bewusst ohne Sensing, dafür mit niedrigerem Preis und bis zu 400 Teilnehmern. API-Zugang und Onboarding-Call sind inklusive. Mehrnutzung möglich: € 10 pro zusätzlichem Teilnehmer bis 1.000."
+          detail:"Spezialplan für reine Fragebogen-Studien — ohne Sensing, dafür günstiger und bis 400 Teilnehmer. API-Zugang und Onboarding-Call inklusive."
         },
         {
           id:"explore",
@@ -1114,7 +1114,7 @@ Lab`,
           features:["bis 100 Teilnehmer","Standard Sensing (Steps, Location, Screen Time)","Alle EMA-Fragebogentypen","CSV + API + Custom Export","E-Mail-Support","DSGVO-konformes EU-Hosting"],
           cta:"Explore wählen",
           ctaHref:"https://pulse.2chub.com",
-          detail:"Explore ist der Einstiegsplan für Pilotstudien. Standard-Sensing (Steps, Location, Screen Time) ist inklusive – keine Add-On-Berechnung wie bei Wettbewerbern. Alle Fragebogentypen verfügbar, vollständiger Datenexport (CSV + API + Custom). Bei Überschreiten der 100 Teilnehmer ist ein Upgrade auf Research jederzeit möglich."
+          detail:"Einstiegsplan für Pilotstudien. Standard-Sensing (Steps, Location, Screen Time), alle Fragebogentypen und voller Datenexport inklusive. Upgrade auf Research jederzeit möglich."
         },
         {
           id:"research",
@@ -1127,7 +1127,7 @@ Lab`,
           cta:"Research wählen",
           ctaHref:"https://pulse.2chub.com",
           highlight:!0,
-          detail:"Research richtet sich an DFG-Projekte und Dissertationen. Full Sensing umfasst alle Sensoren (GPS, Calls, Music, Activity, Screen Time und weitere). Priority-Support und ein dediziertes Onboarding-Gespräch sind enthalten. Bei Bedarf können zusätzliche Teilnehmer über 400 hinaus für je € 25 hinzugebucht werden — Drittmittel-kompatibel und ohne Quote-Anfragen."
+          detail:"Für DFG-Projekte und Dissertationen. Full Sensing (alle Sensoren), Priority-Support und dediziertes Onboarding-Gespräch inklusive."
         },
         {
           id:"lab",
@@ -1139,7 +1139,7 @@ Lab`,
           overage:"Mehrnutzung: € 15 / zusätzl. Teilnehmer über 1.000",
           cta:"Lab wählen",
           ctaHref:"https://pulse.2chub.com",
-          detail:"Lab ist für Forschungsgruppen und größere Labs mit bis zu 1.000 Teilnehmern. Full Sensing wird mit Priority Processing der Sensor-Streams ausgeliefert, sodass auch große Kohorten ohne Verzögerung ausgewertet werden können. Priority-Support für die gesamte Forschungsgruppe."
+          detail:"Für Forschungsgruppen und größere Labs bis 1.000 Teilnehmer. Full Sensing mit Priority Processing, Priority-Support für die gesamte Gruppe."
         },
         {
           id:"enterprise",
@@ -1151,7 +1151,7 @@ Lab`,
           cta:"Angebot anfragen",
           ctaHref:"mailto:info@2chub.com?subject=Enterprise-Anfrage%20PULSE",
           isEnterprise:!0,
-          detail:"Enterprise richtet sich an Kliniken, Konsortien und Studien ab 1.000 Teilnehmern. Sensor-Konfiguration, Datenpipeline, Vertragsmodell und Hosting werden individuell nach Anforderung gestaltet. Ein dedizierter Account Manager begleitet die Implementierung. Preisangaben auf Anfrage."
+          detail:"Für Kliniken, Konsortien und Studien ab 1.000 Teilnehmern. Sensor-Konfiguration, Pipeline, Vertrag und Hosting individuell; dedizierter Account Manager."
         }
       ],
       matrixHeading:"Leistungsstufen im Vergleich",
@@ -2438,7 +2438,7 @@ Lab`,
           overage:"Overage: € 10 / extra participant (up to 1,000)",
           cta:"Choose EMA Only",
           ctaHref:"https://pulse.2chub.com",
-          detail:"EMA Only is the specialised plan for survey-based studies — deliberately without sensing, in exchange for a lower price and up to 400 participants. API access and an onboarding call are included. Overage: € 10 per additional participant up to 1,000."
+          detail:"The specialised plan for survey-only studies — no sensing, a lower price and up to 400 participants. API access and an onboarding call included."
         },
         {
           id:"explore",
@@ -2449,7 +2449,7 @@ Lab`,
           features:["up to 100 participants","Standard sensing (steps, location, screen time)","All ESM questionnaire types","CSV + API + Custom export","Email support","GDPR-compliant EU hosting"],
           cta:"Choose Explore",
           ctaHref:"https://pulse.2chub.com",
-          detail:"Explore is the entry-level plan for pilot studies. Standard sensing (steps, location, screen time) is included — no add-on charges as with competitors. All questionnaire types available, full data export (CSV + API + custom). Once you exceed 100 participants you can upgrade to Research at any time."
+          detail:"Entry-level plan for pilot studies. Standard sensing (steps, location, screen time), all question types and full data export included. Upgrade to Research at any time."
         },
         {
           id:"research",
@@ -2462,7 +2462,7 @@ Lab`,
           cta:"Choose Research",
           ctaHref:"https://pulse.2chub.com",
           highlight:!0,
-          detail:"Research is for grant projects and dissertations. Full sensing covers all sensors (GPS, calls, music, activity, screen time and more). Priority support and a dedicated onboarding call are included. If needed, additional participants beyond 400 can be added at € 25 each — grant-friendly and without quote requests."
+          detail:"For grant projects and dissertations. Full sensing (all sensors), priority support and a dedicated onboarding call included."
         },
         {
           id:"lab",
@@ -2474,7 +2474,7 @@ Lab`,
           overage:"Overage: € 15 / extra participant above 1,000",
           cta:"Choose Lab",
           ctaHref:"https://pulse.2chub.com",
-          detail:"Lab is for research groups and larger labs with up to 1,000 participants. Full sensing is delivered with priority processing of sensor streams so that even large cohorts can be analysed without delay. Priority support for the entire research group."
+          detail:"For research groups and larger labs up to 1,000 participants. Full sensing with priority processing, priority support for the whole group."
         },
         {
           id:"enterprise",
@@ -2486,7 +2486,7 @@ Lab`,
           cta:"Request a quote",
           ctaHref:"mailto:info@2chub.com?subject=Enterprise%20request%20PULSE",
           isEnterprise:!0,
-          detail:"Enterprise is for clinics, consortia and studies with 1,000+ participants. Sensor configuration, data pipeline, contract model and hosting are tailored to your requirements. A dedicated account manager supports the implementation. Pricing on request."
+          detail:"For clinics, consortia and studies with 1,000+ participants. Sensor config, pipeline, contract and hosting tailored; dedicated account manager."
         }
       ],
       matrixHeading:"Tiers compared",
