@@ -4,27 +4,10 @@ import { usePrefersReducedMotion } from "../lib/hooks.js";
 import { fadeUp, fadeUpScale, stagger } from "../lib/motion.js";
 import PageScaffold from "../components/PageScaffold.jsx";
 import Hero from "../components/Hero.jsx";
-import Marquee from "../components/Marquee.jsx";
+import TrustBadges from "../components/TrustBadges.jsx";
 import Card from "../components/Card.jsx";
 import SubtleArrowLink from "../components/SubtleArrowLink.jsx";
 import UspPipelineDiagram from "../components/UspPipelineDiagram.jsx";
-
-const MARQUEE_ITEMS_DE = [
-  "Experience Sampling",
-  "Passive Sensordatenerfassung",
-  "Ecological Momentary Assessment",
-  "Mobile Verhaltensforschung",
-  "Klinische Studien",
-  "Verhaltenswissenschaft",
-];
-const MARQUEE_ITEMS_EN = [
-  "Experience Sampling",
-  "Passive Sensing",
-  "Ecological Momentary Assessment",
-  "Mobile Research",
-  "Clinical Studies",
-  "Behavioural Science",
-];
 
 function UspSection() {
   const { t } = useLang();
@@ -97,7 +80,7 @@ function SubpageCard({ item, isFirst }) {
     <Card
       variant="material"
       interactive
-      className="relative flex flex-col p-6 md:p-7 min-h-[260px] h-full"
+      className="relative flex flex-col p-6 md:p-7 h-full"
     >
       <a
         href={item.href}
@@ -107,13 +90,14 @@ function SubpageCard({ item, isFirst }) {
         <span className="sr-only">{item.title}</span>
       </a>
       <p
-        className="text-xs tracking-[0.2em] mb-4"
+        className="text-xs tracking-[0.2em] mb-4 flex items-center justify-between"
         style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
       >
         {item.eyebrow}
+        <span aria-hidden="true" style={{ fontFamily: "sans-serif", letterSpacing: 0 }}>→</span>
       </p>
       <h3
-        className="text-lg md:text-xl mb-3 leading-tight flex-grow"
+        className="text-lg md:text-xl mb-3 leading-tight"
       >
         {item.title}
       </h3>
@@ -189,11 +173,10 @@ function SubpagesSection() {
 }
 
 export default function HomePage() {
-  const { language } = useLang();
   return (
     <PageScaffold topPad={false}>
       <Hero />
-      <Marquee items={language === "de" ? MARQUEE_ITEMS_DE : MARQUEE_ITEMS_EN} />
+      <TrustBadges />
       <UspSection />
       <SubpagesSection />
     </PageScaffold>

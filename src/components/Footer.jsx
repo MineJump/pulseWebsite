@@ -41,6 +41,12 @@ export default function Footer() {
         <Card
           variant="material"
           className="relative overflow-hidden px-6 md:px-10 py-8 md:py-10 mb-12 md:mb-16"
+          style={{
+            background: "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
+            borderColor: "rgba(255,255,255,0.18)",
+            boxShadow:
+              "inset 0 1px 0 rgba(255,255,255,0.32), 0 18px 48px -16px rgba(29,78,216,0.45), 0 4px 12px -4px rgba(15,13,41,0.18)",
+          }}
         >
           <motion.div
             variants={container}
@@ -53,13 +59,14 @@ export default function Footer() {
               <motion.h3
                 variants={item}
                 className="text-2xl md:text-[1.65rem] leading-tight mb-3"
+                style={{ color: "#fff" }}
               >
                 {t.contact.heading}
               </motion.h3>
               <motion.p
                 variants={item}
                 className="text-sm md:text-base leading-relaxed max-w-[540px]"
-                style={{ color: "var(--text-muted)" }}
+                style={{ color: "rgba(255,255,255,0.82)" }}
               >
                 {t.contact.subheading}
               </motion.p>
@@ -68,7 +75,13 @@ export default function Footer() {
               variants={item}
               className="md:col-span-5 flex flex-col items-start md:items-end gap-6"
             >
-              <div className="flex flex-col items-center gap-3">
+              <div
+                className="flex flex-col items-center gap-3"
+                style={{
+                  "--btn-primary-bg": "#ffffff",
+                  "--btn-primary-fg": "#1d4ed8",
+                }}
+              >
                 <Button
                   href={`mailto:${t.contact.email}`}
                   variant="primary"
@@ -82,14 +95,14 @@ export default function Footer() {
                   <a
                     href={`mailto:${t.contact.email}`}
                     className="focus-halo rounded-sm transition-colors"
-                    style={{ color: "var(--ink)" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--ink)")}
+                    style={{ color: "#fff" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#fff")}
                   >
                     {t.contact.email}
                   </a>
-                  <span aria-hidden="true" style={{ color: "var(--text-dim)" }}>·</span>
-                  <span style={{ color: "var(--text-dim)" }}>{t.contact.location}</span>
+                  <span aria-hidden="true" style={{ color: "rgba(255,255,255,0.55)" }}>·</span>
+                  <span style={{ color: "rgba(255,255,255,0.7)" }}>{t.contact.location}</span>
                 </div>
               </div>
             </motion.div>

@@ -21,7 +21,8 @@ export const translations = {
         items:[
           {label:"Plattform",href:"/plattform",description:"Studienkonsole, Pipeline und Datenmodell"},
           {label:"Mobile App",href:"/app",description:"Native iOS/Android-App für Teilnehmende"},
-          {label:"Methoden",href:"/methoden",description:"ESM, Sensing, Interventionen, Auswertung"}
+          // {label:"Methoden",href:"/methoden",description:"ESM, Sensing, Interventionen, Auswertung"},
+          {label:"Features",href:"/features",description:"Fragetypen und Sensorik im Überblick"}
         ]
       }
     },
@@ -1048,24 +1049,24 @@ Lab`,
       subpages:{
         eyebrow:"Bereiche",
         title:"Inhalte im Überblick",
-        intro:"Ein schneller Überblick über die zentralen Bereiche von PULSE: Methodik, Architektur, Studien-App, Anwendungsfelder, Preismodelle und institutioneller Hintergrund.",
+        intro:"Ein schneller Überblick über die zentralen Bereiche von PULSE: Plattform-Architektur, Studien-App, Features, Anwendungsfelder, Preismodelle und institutioneller Hintergrund.",
         items:[{
-          href:"/methoden",
-          eyebrow:"01 · Methoden",
-          title:"Vier Methoden, ein durchgängiger Studienablauf",
-          description:"PULSE verbindet Experience Sampling, passive Sensordatenerfassung, adaptive Interventionen und reproduzierbare Auswertung in einem integrierten Studiensystem."
-        },
-        {
           href:"/plattform",
-          eyebrow:"02 · Plattform",
+          eyebrow:"01 · Plattform",
           title:"Studieninfrastruktur und Architektur",
-          description:"Studien-App, webbasiertes Cockpit, validierte Sensorverarbeitung und dokumentierte Datenexporte."
+          description:"Studien-App, webbasiertes Cockpit, validierte Sensorverarbeitung und dokumentierte Datenexporte – eine durchgängige Infrastruktur von der Studienanlage bis zum analysierbaren Datensatz."
         },
         {
           href:"/app",
-          eyebrow:"03 · App",
+          eyebrow:"02 · App",
           title:"Mobile Anwendung für Studienteilnehmende",
           description:"Native iOS- und Android-Anwendung. Datensparsam, transparent, white-label-fähig."
+        },
+        {
+          href:"/features",
+          eyebrow:"03 · Features",
+          title:"Fragetypen und Sensorik",
+          description:"Zwölf Fragetypen für Experience Sampling und zwölf Sensor- und Wearable-Datenquellen für Passive Sensing – alles konfigurierbar im Studio."
         },
         {
           href:"/anwendungen",
@@ -1107,6 +1108,11 @@ Lab`,
           value:"3",
           label:"Bücher zur Studiendurchführung"
         }]
+      },
+      trustBar:{
+        dsgvo:{ title:"DSGVO", sub:"konform" },
+        germany:{ line1:"Entwickelt in Deutschland", line2:"Gehostet in Deutschland" },
+        lmu:{ label:"ein LMU Spinoff" }
       }
     },
     anwendungen:{
@@ -1419,6 +1425,118 @@ Lab`,
       colDoi:"DOI",
       noResults:"Keine Einträge gefunden.",
       note:"Liste wird laufend aktualisiert. Wenn Ihre Studie auf PhoneStudy oder PULSE basiert und hier fehlt, schreiben Sie uns."
+    },
+    // Eigenständiger Block für /features — bewusst getrennt von methods.items, da Methoden-Route deaktiviert ist.
+    features:{
+      eyebrow:"Features",
+      title:"Fragetypen und Sensorik",
+      intro:"Alle erhebbaren Datenpunkte im Überblick: zwölf Fragetypen für Experience Sampling und zwölf Sensor- und Wearable-Datenquellen für Passive Sensing.",
+      itemTypes:{
+        eyebrow:"Fragetypen",
+        title:"Zwölf Fragetypen in einem Editor",
+        body:"Drag-and-Drop im Studio. Branching, Computation und kontextsensitive Trigger inklusive.",
+        items:[{
+          name:"Single-Choice",
+          description:"Klassische Einfachauswahl"
+        },
+        {
+          name:"Multiple-Choice",
+          description:"Mehrere Optionen gleichzeitig"
+        },
+        {
+          name:"Likert-Skala",
+          description:"Granularität frei wählbar"
+        },
+        {
+          name:"Slider",
+          description:"Mit optionalem Anker der letzten Antwort"
+        },
+        {
+          name:"Continuous Line",
+          description:"Intensitätsverläufe einzeichnen"
+        },
+        {
+          name:"Freitext",
+          description:"Kurz oder lang, mit Längenlimit"
+        },
+        {
+          name:"Voice Memo",
+          description:"Audio-Antworten mit Transkription"
+        },
+        {
+          name:"Foto / Bild",
+          description:"Probandenfoto direkt im Item"
+        },
+        {
+          name:"Video",
+          description:"Kurze Video-Clips als Antwort"
+        },
+        {
+          name:"Matrix",
+          description:"Zweidimensionale Anordnung, etwa als Mood-Map"
+        },
+        {
+          name:"Conditional Logic",
+          description:"Verzweigungen je nach Antwort"
+        },
+        {
+          name:"Computation",
+          description:"Werte aus Vorantworten on-device berechnen"
+        }]
+      },
+      sensors:{
+        eyebrow:"Sensoren & Wearables",
+        title:"Smartphone und Wearable in einer Pipeline",
+        body:"Technisch möglicher Sensorumfang, konfigurierbar pro Studie und granular einwilligbar pro Sensor.",
+        items:[{
+          name:"GPS / Standort",
+          description:"Mobilitätsprofile, Heim-Aufenthalt, besuchte Orte"
+        },
+        {
+          name:"Accelerometer",
+          description:"Bewegungsenergie und Aktivitätserkennung"
+        },
+        {
+          name:"Schritte",
+          description:"Pedometer-Integration, robust gegen Drift"
+        },
+        {
+          name:"Bildschirm-Events",
+          description:"Screen on/off, App-Wechsel, Sessions"
+        },
+        {
+          name:"Bildschirmzeit",
+          description:"Bedtime-Use, App-Kategorien, Tagesdauer"
+        },
+        {
+          name:"Umgebungslicht",
+          description:"Tageslicht-Exposition, Indoor/Outdoor"
+        },
+        {
+          name:"Mikrofon (Lautstärke)",
+          description:"Umgebungsgeräusch ohne Inhaltserfassung"
+        },
+        {
+          name:"Apple Health",
+          description:"Apple Watch, HRV, Schlaf, Aktivität"
+        },
+        {
+          name:"WHOOP",
+          description:"Strain, Recovery, Schlafphasen"
+        },
+        {
+          name:"Oura Ring",
+          description:"Schlaf, Temperatur, Readiness"
+        },
+        {
+          name:"Garmin",
+          description:"Rohdaten oder Aggregator-Bridge"
+        },
+        {
+          name:"Fitbit",
+          description:"Über Aggregator: Aktivität und Schlaf"
+        }]
+      }
     }
   },
   en:{
@@ -1439,7 +1557,8 @@ Lab`,
         items:[
           {label:"Platform",href:"/plattform",description:"Study console, pipeline and data model"},
           {label:"Mobile App",href:"/app",description:"Native iOS/Android app for participants"},
-          {label:"Methods",href:"/methoden",description:"ESM, sensing, interventions, analysis"}
+          // {label:"Methods",href:"/methoden",description:"ESM, sensing, interventions, analysis"},
+          {label:"Features",href:"/features",description:"Question types and sensors at a glance"}
         ]
       }
     },
@@ -2466,24 +2585,24 @@ Lab`,
       subpages:{
         eyebrow:"Sections",
         title:"Content at a glance",
-        intro:"Direct access to the central areas of the platform: methodology, architecture, mobile application, application fields, pricing structure and institutional background.",
+        intro:"Direct access to the central areas of the platform: architecture, mobile app, features, application fields, pricing structure and institutional background.",
         items:[{
-          href:"/methoden",
-          eyebrow:"01 · Methods",
-          title:"Four methods, one continuous pipeline",
-          description:"Experience sampling, passive sensing, adaptive interventions and reproducible analysis in one system."
-        },
-        {
           href:"/plattform",
-          eyebrow:"02 · Platform",
+          eyebrow:"01 · Platform",
           title:"Study infrastructure and architecture",
-          description:"Native mobile application, studio cockpit, validated sensor pipelines, documented data exports."
+          description:"Native mobile application, studio cockpit, validated sensor pipelines, and documented data exports — end-to-end infrastructure from study setup to analysis-ready dataset."
         },
         {
           href:"/app",
-          eyebrow:"03 · App",
+          eyebrow:"02 · App",
           title:"Mobile application for study participants",
           description:"Native iOS and Android application. Data-minimal, transparent, white-label-ready."
+        },
+        {
+          href:"/features",
+          eyebrow:"03 · Features",
+          title:"Question types and sensors",
+          description:"Twelve question types for experience sampling and twelve sensor and wearable data sources for passive sensing — all configurable in the studio."
         },
         {
           href:"/anwendungen",
@@ -2525,6 +2644,11 @@ Lab`,
           value:"3",
           label:"Books on running mobile studies"
         }]
+      },
+      trustBar:{
+        dsgvo:{ title:"GDPR", sub:"compliant" },
+        germany:{ line1:"Developed in Germany", line2:"Hosted in Germany" },
+        lmu:{ label:"an LMU Spin-off" }
       }
     },
     anwendungen:{
@@ -2837,6 +2961,118 @@ Lab`,
       colDoi:"DOI",
       noResults:"No entries found.",
       note:"This list is updated continuously. If your study used PhoneStudy or PULSE and is missing here, please get in touch."
+    },
+    // Standalone block for /features — intentionally separate from methods.items since methods route is disabled.
+    features:{
+      eyebrow:"Features",
+      title:"Question Types and Sensors",
+      intro:"All collectible data points at a glance: twelve question types for experience sampling and twelve sensor and wearable data sources for passive sensing.",
+      itemTypes:{
+        eyebrow:"Question types",
+        title:"Twelve question types in one editor",
+        body:"Drag-and-drop in the studio. Branching, computation and context-aware triggers included.",
+        items:[{
+          name:"Single Choice",
+          description:"Classic single selection"
+        },
+        {
+          name:"Multiple Choice",
+          description:"Several options at once"
+        },
+        {
+          name:"Likert Scale",
+          description:"Granularity freely chosen"
+        },
+        {
+          name:"Slider",
+          description:"Optional anchor of the last response"
+        },
+        {
+          name:"Continuous Line",
+          description:"Intensity drawn over time"
+        },
+        {
+          name:"Free Text",
+          description:"Short or long, with length limit"
+        },
+        {
+          name:"Voice Memo",
+          description:"Audio responses with transcription"
+        },
+        {
+          name:"Photo / Image",
+          description:"Participant photo within the item"
+        },
+        {
+          name:"Video",
+          description:"Short video clips as response"
+        },
+        {
+          name:"Matrix",
+          description:"Two-dimensional arrangement such as a mood map"
+        },
+        {
+          name:"Conditional Logic",
+          description:"Branching based on answers"
+        },
+        {
+          name:"Computation",
+          description:"Values computed on-device from prior answers"
+        }]
+      },
+      sensors:{
+        eyebrow:"Sensors & wearables",
+        title:"Smartphone and wearable in one pipeline",
+        body:"Technically available sensors, configurable per study and with granular consent per sensor.",
+        items:[{
+          name:"GPS / Location",
+          description:"Mobility profiles, time at home, places visited"
+        },
+        {
+          name:"Accelerometer",
+          description:"Movement energy and activity recognition"
+        },
+        {
+          name:"Steps",
+          description:"Pedometer integration, drift-resistant"
+        },
+        {
+          name:"Screen events",
+          description:"Screen on/off, app switches, sessions"
+        },
+        {
+          name:"Screen time",
+          description:"Bedtime use, app categories, daily duration"
+        },
+        {
+          name:"Ambient light",
+          description:"Daylight exposure, indoor/outdoor"
+        },
+        {
+          name:"Microphone (volume)",
+          description:"Ambient noise without content capture"
+        },
+        {
+          name:"Apple Health",
+          description:"Apple Watch, HRV, sleep, activity"
+        },
+        {
+          name:"WHOOP",
+          description:"Strain, recovery, sleep stages"
+        },
+        {
+          name:"Oura Ring",
+          description:"Sleep, temperature, readiness"
+        },
+        {
+          name:"Garmin",
+          description:"Raw data or aggregator bridge"
+        },
+        {
+          name:"Fitbit",
+          description:"Via aggregator: activity and sleep"
+        }]
+      }
     }
   }
 };

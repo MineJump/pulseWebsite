@@ -4,8 +4,9 @@ import { LinkInterceptor, MiniRouterProvider, useRoute } from "./lib/router.jsx"
 import PageTransition from "./components/PageTransition.jsx";
 import Header from "./components/Header.jsx";
 import HomePage from "./pages/HomePage.jsx";
-import MethodenPage from "./pages/MethodenPage.jsx";
-import MethodDetailPage from "./pages/MethodDetailPage.jsx";
+// import MethodenPage from "./pages/MethodenPage.jsx";     // deaktiviert — Route auskommentiert
+// import MethodDetailPage from "./pages/MethodDetailPage.jsx"; // deaktiviert — Route auskommentiert
+import FeaturesPage from "./pages/FeaturesPage.jsx";
 import PlattformPage from "./pages/PlattformPage.jsx";
 import AppPage from "./pages/AppPage.jsx";
 import AnwendungenPage from "./pages/AnwendungenPage.jsx";
@@ -15,19 +16,20 @@ import ImpressumPage from "./pages/ImpressumPage.jsx";
 import PrivacyPage from "./pages/PrivacyPage.jsx";
 import PublikationenPage from "./pages/PublikationenPage.jsx";
 
-const METHOD_SLUGS = ["befragen", "beobachten", "intervenieren", "auswerten"];
+// const METHOD_SLUGS = ["befragen", "beobachten", "intervenieren", "auswerten"]; // deaktiviert
 
 function pageForPath(path) {
   if (path === "/impressum") return { key: "impressum", element: <ImpressumPage /> };
   if (path === "/privacy") return { key: "privacy", element: <PrivacyPage /> };
-  if (path === "/methoden") return { key: "methoden", element: <MethodenPage /> };
-  const m = path.match(/^\/methoden\/([^/]+)\/?$/);
-  if (m) {
-    const slug = m[1];
-    if (METHOD_SLUGS.includes(slug)) {
-      return { key: `methoden-${slug}`, element: <MethodDetailPage slug={slug} /> };
-    }
-  }
+  // if (path === "/methoden") return { key: "methoden", element: <MethodenPage /> };        // deaktiviert
+  // const m = path.match(/^\/methoden\/([^/]+)\/?$/);                                        // deaktiviert
+  // if (m) {                                                                                  // deaktiviert
+  //   const slug = m[1];                                                                      // deaktiviert
+  //   if (METHOD_SLUGS.includes(slug)) {                                                      // deaktiviert
+  //     return { key: `methoden-${slug}`, element: <MethodDetailPage slug={slug} /> };        // deaktiviert
+  //   }                                                                                       // deaktiviert
+  // }                                                                                         // deaktiviert
+  if (path === "/features") return { key: "features", element: <FeaturesPage /> };
   if (path === "/plattform") return { key: "plattform", element: <PlattformPage /> };
   if (path === "/app") return { key: "app", element: <AppPage /> };
   if (path === "/anwendungen") return { key: "anwendungen", element: <AnwendungenPage /> };

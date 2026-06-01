@@ -21,6 +21,9 @@ function buildCrumbs(path, t) {
     }
     return base;
   }
+  if (seg0 === "features") {
+    return [home, { label: t.features?.eyebrow || "Features", href: "/features" }];
+  }
   if (seg0 === "anwendungen") {
     const base = [home, { label: t.nav.applications, href: "/anwendungen" }];
     if (seg1 === "publikationen") {
