@@ -59,7 +59,6 @@ export default function ImpressumPage() {
                   <p>Handelsregister: HRB 311657</p>
                   <p>Registergericht: Amtsgericht München</p>
                   <p>EUID: DED2601V.HRB311657</p>
-                  <p>USt-IdNr.: wird ergänzt</p>
                 </div>
               </div>
             </section>

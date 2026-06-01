@@ -35,53 +35,6 @@ Verhaltensforschung`,
       primaryCta:"Plattform ansehen",
       secondaryCta:"Demo vereinbaren"
     },
-    research:{
-      eyebrow:"Was wir tun",
-      heading:"Vier Säulen unserer Forschung",
-      intro:"Das Center for Computation of Human Behavior kombiniert etablierte Methoden der Psychologie mit moderner Sensorik und Datenanalyse. Unsere Studien entstehen in Kooperation mit Universitäten, Kliniken und Unternehmen.",
-      items:[{
-        number:"01",
-        title:"Experience Sampling",
-        description:"Kurze, kontextsensitive Fragebögen direkt im Alltag. Gedanken, Emotionen und Erfahrungen erfassen, ohne auf retrospektive Erinnerung angewiesen zu sein."
-      },
-      {
-        number:"02",
-        title:"Passive Sensing",
-        description:"Bewegung, Standort, Aktivität, Kommunikation, Medienkonsum und Bildschirmzeit: hochfrequente, anonymisierte Verhaltensdaten direkt vom Smartphone."
-      },
-      {
-        number:"03",
-        title:"Momentary Interventions",
-        description:"Digitale Interventionen im richtigen Moment: personalisiert, wissenschaftlich validiert und in ihrer Wirkung messbar."
-      },
-      {
-        number:"04",
-        title:"Clinical and Applied Research",
-        description:"Studien zu psychischer Gesundheit, Arbeit, Bildung und Konsumverhalten. Von der Forschungsfrage bis zur publikationsreifen Auswertung."
-      }]
-    },
-    platform:{
-      eyebrow:"Unsere Plattform",
-      heading:"PULSE",
-      subheading:"Die Infrastruktur hinter jeder Studie",
-      description:"PULSE ist die vom Center for Computation of Human Behavior entwickelte Forschungsplattform für mobile Studien, bestehend aus einer iOS- und Android-App für Teilnehmende sowie einem Admin-Panel für Forschende. DSGVO-konform, gehostet in Europa, offen für Kooperationen.",
-      features:[{
-        title:"Mobile App",
-        description:"Native Apps für iOS und Android. Abfragen, Benachrichtigungen, Sensorzugriff, Offline-Support."
-      },
-      {
-        title:"Admin Panel",
-        description:"Studien konfigurieren, Fragebögen bauen, Teilnehmende verwalten, Daten exportieren. Ohne Code."
-      },
-      {
-        title:"Passive Sensing",
-        description:"Sensorik für Standort, Bewegung, Aktivität, Anrufe, Musik und Bildschirmzeit: transparent und konfigurierbar."
-      },
-      {
-        title:"Datenschutz by Design",
-        description:"Hosting in der EU, verschlüsselte Uploads, granulare Einwilligungen, DSGVO-konform."
-      }]
-    },
     team:{
       eyebrow:"Das Team",
       heading:"Wer hinter 2CHuB steht",
@@ -113,7 +66,8 @@ Verhaltensforschung`,
       subheading:"Wir unterstützen Sie dabei, PULSE in Förderanträgen nachvollziehbar darzustellen – ob für DFG, BMBF, EU-Förderprogramme oder Industrieprojekte. Methoden-Bausteine, Kostenkalkulationen und Referenzen aus laufenden Studien stellen wir auf Anfrage zur Verfügung.",
       email:"info@2chub.com",
       location:"München",
-      cta:"Antragsunterlagen anfordern"
+      cta:"Antragsunterlagen anfordern",
+      mailSubject:"Antragsunterlagen PULSE"
     },
     footer:{
       legalName:"2CHuB GmbH · Center for Computation of Human Behavior",
@@ -778,15 +732,6 @@ analysefertige Daten`,
         secondary:"Preise ansehen"
       }
     },
-    pages:{
-      anwendungen:{
-        eyebrow:"Anwendungen",
-        title:"Wo PULSE bereits eingesetzt wird",
-        intro:"Klinische Studien, Arbeits- und Organisationspsychologie, Bildung sowie Konsumforschung: überall dort, wo Verhalten im Alltag valider erfasst werden muss als im Labor."
-      },
-      placeholder:"Detaillierte Inhalte zu dieser Seite folgen. Fragen erreichen uns jederzeit unter info@2chub.com.",
-      contactCta:"Kontakt aufnehmen"
-    },
     plattform:{
       eyebrow:"Plattform",
       title:"Studieninfrastruktur und Architektur",
@@ -794,89 +739,6 @@ analysefertige Daten`,
       intro:"PULSE bündelt mobile Datenerhebung, on-device Vorverarbeitung, Studienkonfiguration und Auswertung in einer einheitlichen Plattform. Studienteams konfigurieren ihre Erhebungen im PULSE Admin Panel, statt sie zu programmieren. Teilnehmende nutzen eine zurückhaltende, transparente Anwendung. Daten werden DSGVO-konform und mit dokumentierter Schema-Version verarbeitet, vom ersten Pilotprojekt bis zur Multi-Site-Studie.",
       ctaPrimary:"Demo vereinbaren",
       ctaSecondary:"Preise ansehen",
-      pipeline:{
-        eyebrow:"Interaktive Pipeline",
-        title:"Vom Rohsignal zur Anwendung",
-        description:"Zwei Erhebungsmodi speisen einen versionierten Feature-Layer. Aus diesem Layer entstehen sowohl Just-in-Time-Interventionen als auch reproduzierbare Auswertungen. Hover oder Tap auf einen Knoten zeigt die Verarbeitungsschritte.",
-        stageLabels:{
-          capture:"Erhebung",
-          process:"Feature-Layer",
-          activate:"Anwendung"
-        },
-        defaultNodeId:"plattform",
-        nodes:[{
-          id:"esm",
-          stage:"capture",
-          label:"Befragen · ESM/EMA",
-          value:"Item-Stream",
-          description:"Adaptive Mikro-Befragungen im Alltag. Trigger nach Zeit, Kontext oder Sensor-Signal, mit Items aus validierten Skalen oder eigenen Konstruktionen.",
-          badge:"esm_v3.4 · 12 Items"
-        },
-        {
-          id:"sensor",
-          stage:"capture",
-          label:"Beobachten · Smartphone",
-          value:"Sensor-Stream",
-          description:"Hochfrequente Verhaltensdaten vom Smartphone. GPS, Beschleunigung, Screen-Events, Bewegung und App-Nutzung in granular einwilligungsbasierten Kanälen.",
-          badge:"stream_v1.7 · 14 sensors"
-        },
-        {
-          id:"wearable",
-          stage:"capture",
-          label:"Beobachten · Wearable",
-          value:"HRV + Schlaf",
-          description:"Herzfrequenz, HRV, Schlafphasen und Bewegung über Apple Watch, Fitbit oder Garmin. Synchronisation läuft über das Gerät der Teilnehmenden.",
-          badge:"wear_v1.2 · HRV + Sleep"
-        },
-        {
-          id:"audio",
-          stage:"capture",
-          label:"Beobachten · Audio",
-          value:"On-device Features",
-          description:"Optionale, kurze Audio-Aufnahmen mit on-device Transkription. Rohdatei verlässt das Gerät nicht, übertragen werden ausschließlich Sprachfeatures.",
-          badge:"audio_v0.6 · on-device"
-        },
-        {
-          id:"context",
-          stage:"capture",
-          label:"Beobachten · Kontext",
-          value:"Geofence + BLE",
-          description:"Räumlicher Kontext über Geofences und Bluetooth-Beacons, etwa zur Erkennung sozialer Situationen oder bestimmter Orte wie Universität, Klinik oder Zuhause.",
-          badge:"ctx_v0.8 · 6 zones"
-        },
-        {
-          id:"plattform",
-          stage:"process",
-          label:"PULSE Plattform",
-          value:"Compute Engine",
-          description:"Eine Plattform bündelt DSGVO-Gate, Edge-Validation, Feature-Compute, versionierten Feature Store, Schema-Registry und Audit-Log. Rohsignale werden pseudonymisiert, zu validierten Verhaltensfeatures aggregiert und reproduzierbar abgelegt. Jeder Schritt ist versioniert und auditierbar.",
-          badge:"core_v2.1 · 184 IDs"
-        },
-        {
-          id:"jitai",
-          stage:"activate",
-          label:"Intervenieren · JITAI",
-          value:"Trigger-Engine",
-          description:"Just-in-Time Adaptive Interventions. Regeln kombinieren Sensor-Streams, Kontext und Studienarm und verankern Mikro-Interventionen im Alltag.",
-          badge:"jitai_v0.9 · 8 rules"
-        },
-        {
-          id:"dashboard",
-          stage:"activate",
-          label:"Auswerten · Monitor",
-          value:"Live-Dashboard",
-          description:"Studienteams sehen in Echtzeit Compliance, Drop-out-Risiko und Datenqualität pro Studienarm. Frühwarnung statt Post-hoc-Analyse.",
-          badge:"dash_v1.1 · realtime"
-        },
-        {
-          id:"analyse",
-          stage:"activate",
-          label:"Auswerten",
-          value:"R · Python · SPSS · LLM",
-          description:"Direkter Zugriff auf den versionierten Feature Store über R-, Python- und SPSS-Pakete sowie REST-API. Optional ergänzt um einen LLM-gestützten Reportentwurf auf Basis der Studienspezifikation.",
-          badge:"analytics_v2.0"
-        }]
-      },
       architecture:{
         eyebrow:"Architektur",
         title:"Drei Schichten, sauber getrennt",
@@ -898,23 +760,6 @@ analysefertige Daten`,
           tag:"Dashboard · API · KI",
           title:"Auswerten",
           description:"Live-Dashboard, R-/SPSS-Export und API-Anbindung liefern direkt auswertbare Ergebnisse statt eines reinen Rohdaten-Exports."
-        }]
-      },
-      trust:{
-        items:[{
-          eyebrow:"European Data Sovereignty",
-          title:"EU-Hosting",
-          description:"Frankfurt und München auf ISO 27001-zertifizierter Infrastruktur. Datenflüsse außerhalb der EU finden nicht statt, auch nicht für Backups."
-        },
-        {
-          eyebrow:"Privacy Architecture",
-          title:"On-device Pre-processing",
-          description:"Sensor-Cleaning und Privacy-Filter laufen am Gerät, bevor Daten überhaupt synchronisiert werden. Aggregation reduziert, was hochgeladen wird."
-        },
-        {
-          eyebrow:"Reproducibility",
-          title:"Versionierte Schemas",
-          description:"Item-Version, Feature-Set und Dataset-Hash gewährleisten, dass jede Auswertung auch Monate später exakt rekonstruierbar bleibt, unabhängig von der Weiterentwicklung der Plattform."
         }]
       },
       whiteLabel:{
@@ -1013,13 +858,6 @@ Lab`,
           description:"White-Label: eigenes Icon, eigener Name, eigene Akzentfarbe. PULSE bleibt als technische Grundlage im Hintergrund."
         }]
       },
-      finalCta:{
-        eyebrow:"Live-Einblick",
-        title:"Die App in einer realen Studie",
-        body:"Eine 30-minütige Demo zeigt Studien-Setup, App-Erlebnis und Datenpipeline anhand laufender Studien, einschließlich eines Beispiel-Datensatzes.",
-        primary:"Demo buchen",
-        secondary:"Plattform ansehen"
-      }
     },
     welcome:{
       usp:{
@@ -1027,7 +865,7 @@ Lab`,
         titleLine1:"Validierte Verhaltensfeatures statt",
         titleLine2:"unstrukturierter Sensor-Streams.",
         body:"PULSE verdichtet hochfrequente Sensor- und ESM-Streams automatisch zu validierten Verhaltensfeatures mit dokumentierter Provenienz. Studienteams beginnen ihre Auswertung bei der wissenschaftlichen Hypothese, nicht bei der Datenbereinigung.",
-        link:"Zur Pipeline-Architektur",
+        link:"Zur Plattform-Architektur",
         diagram:{
           rawLabel:"Roh",
           pipelineLabel:"Pipeline",
@@ -1075,27 +913,6 @@ Lab`,
           description:"Eigenständiges Institut hinter PULSE – der Weiterentwicklung der PhoneStudy-Plattform auf Basis von zwölf Jahren akademischer Vorarbeit."
         },
 ]
-      },
-      credibility:{
-        eyebrow:"Wissenschaftlicher Hintergrund",
-        title:"Forschungsplattform mit institutioneller Verankerung",
-        body:"PULSE wurde 2014 am Lehrstuhl für psychologische Methodenlehre der LMU München entwickelt und wird seit der Ausgründung in das Center for Computation of Human Behavior als Software-Infrastruktur für mobile Verhaltensforschung weitergeführt. Die Plattform ist in Studien an mehr als zwölf Universitäten und Forschungsinstituten in Deutschland und der Schweiz im Einsatz.",
-        stats:[{
-          value:"12+",
-          label:"Universitäten in Kooperation"
-        },
-        {
-          value:"12",
-          label:"Jahre Plattform-Entwicklung"
-        },
-        {
-          value:"EU",
-          label:"Hosting und Datenverarbeitung"
-        },
-        {
-          value:"3",
-          label:"Bücher zur Studiendurchführung"
-        }]
       },
       trustBar:{
         dsgvo:{ title:"DSGVO", sub:"konform" },
@@ -1376,12 +1193,6 @@ Lab`,
         successBody:"Vielen Dank — wir haben Ihre Anfrage erhalten und melden uns innerhalb von 2 Werktagen unter der angegebenen E-Mail-Adresse.",
         successCta:"Schließen"
       },
-      advisor:{
-        heading:"Unklarheiten bei der Förderung?",
-        body:"Wir unterstützen Sie dabei, PULSE in Förderanträgen nachvollziehbar darzustellen – ob für DFG, BMBF, EU-Förderprogramme oder Industrieprojekte. Methoden-Bausteine, Kostenkalkulationen und Referenzen aus laufenden Studien stellen wir auf Anfrage zur Verfügung.",
-        cta:"Antragsunterlagen anfordern",
-        mailSubject:"Antragsmaterial PULSE"
-      },
       faqHeading:"Häufige Fragen",
       faqs:[
         {q:"Was passiert bei mehr als 1.000 Teilnehmenden?",a:"Ab 1.000 Teilnehmenden ist Enterprise das richtige Paket. Sensor-Konfiguration, Datenpipeline und Hosting werden individuell aufgesetzt. Schreiben Sie uns für ein Angebot."},
@@ -1559,53 +1370,6 @@ behavioural research`,
       primaryCta:"See the platform",
       secondaryCta:"Request a demo"
     },
-    research:{
-      eyebrow:"What we do",
-      heading:"Four pillars of our research",
-      intro:"The Center for Computation of Human Behavior combines established psychological methods with modern sensing and data science. Our studies run in partnership with universities, clinics, and industry.",
-      items:[{
-        number:"01",
-        title:"Experience Sampling",
-        description:"Brief, context-aware surveys delivered in the moment. Capture thoughts, emotions, and experiences without relying on retrospective recall."
-      },
-      {
-        number:"02",
-        title:"Passive Sensing",
-        description:"Motion, location, activity, communication, media use and screen time: high-frequency, anonymised behavioural data collected directly from the phone."
-      },
-      {
-        number:"03",
-        title:"Momentary Interventions",
-        description:"Digital interventions delivered in the moment: personalised, validated and measurable in their effect."
-      },
-      {
-        number:"04",
-        title:"Clinical and Applied Research",
-        description:"Studies on mental health, work, education, and consumer behaviour. From research question to publication-ready analysis."
-      }]
-    },
-    platform:{
-      eyebrow:"Our platform",
-      heading:"PULSE",
-      subheading:"The infrastructure behind every study",
-      description:"PULSE is the research platform developed by the Center for Computation of Human Behavior, comprising native iOS and Android apps for participants and an admin panel for researchers. GDPR-compliant, hosted in Europe, open for collaboration.",
-      features:[{
-        title:"Mobile App",
-        description:"Native iOS and Android apps. Questionnaires, notifications, sensor access, offline support."
-      },
-      {
-        title:"Admin Panel",
-        description:"Configure studies, build questionnaires, manage participants, export data. No code required."
-      },
-      {
-        title:"Passive Sensing",
-        description:"Sensors for location, motion, activity, calls, music and screen time: transparent and configurable."
-      },
-      {
-        title:"Privacy by Design",
-        description:"Hosted in the EU, encrypted uploads, granular consent, GDPR-compliant."
-      }]
-    },
     team:{
       eyebrow:"The team",
       heading:"Who is behind 2CHuB",
@@ -1637,7 +1401,8 @@ behavioural research`,
       subheading:"We help researchers integrate PULSE into grant applications — DFG, BMBF, EU or industry. Methodology blocks, cost calculations and references from ongoing studies are available on request.",
       email:"info@2chub.com",
       location:"Munich, Germany",
-      cta:"Request proposal material"
+      cta:"Request proposal material",
+      mailSubject:"PULSE proposal material"
     },
     footer:{
       legalName:"2CHuB GmbH · Center for Computation of Human Behavior",
@@ -2302,15 +2067,6 @@ ready for science`,
         secondary:"See pricing"
       }
     },
-    pages:{
-      anwendungen:{
-        eyebrow:"Applications",
-        title:"Where PULSE is already in use",
-        intro:"Clinical trials, work and organisational psychology, education and consumer research: wherever behaviour in everyday life must be captured more validly than in the laboratory."
-      },
-      placeholder:"Detailed content for this page is coming. For questions reach out to info@2chub.com.",
-      contactCta:"Get in touch"
-    },
     plattform:{
       eyebrow:"Platform",
       title:"Study infrastructure and architecture",
@@ -2318,89 +2074,6 @@ ready for science`,
       intro:"PULSE bundles mobile data collection, on-device pre-processing, study configuration and analysis into a unified platform. Research teams configure their studies in the PULSE Admin Panel rather than programming them. Participants use a quiet, transparent application. Data is processed GDPR-compliant and with a documented schema version, from the first pilot to the multi-site study.",
       ctaPrimary:"Request a demo",
       ctaSecondary:"See pricing",
-      pipeline:{
-        eyebrow:"Interactive pipeline",
-        title:"From raw signal to application",
-        description:"Two collection modes feed a versioned feature layer. From this layer, both just-in-time interventions and reproducible analyses emerge. Hover or tap any node to inspect the processing steps.",
-        stageLabels:{
-          capture:"Collection",
-          process:"Feature layer",
-          activate:"Application"
-        },
-        defaultNodeId:"plattform",
-        nodes:[{
-          id:"esm",
-          stage:"capture",
-          label:"Survey · ESM/EMA",
-          value:"Item Stream",
-          description:"Adaptive micro-surveys delivered in everyday life. Triggers based on time, context or sensor signal, with items from validated scales or custom designs.",
-          badge:"esm_v3.4 · 12 items"
-        },
-        {
-          id:"sensor",
-          stage:"capture",
-          label:"Observe · Smartphone",
-          value:"Sensor Stream",
-          description:"High-frequency behavioural data from the smartphone. GPS, accelerometer, screen events, mobility and app usage in granularly consent-based channels.",
-          badge:"stream_v1.7 · 14 sensors"
-        },
-        {
-          id:"wearable",
-          stage:"capture",
-          label:"Observe · Wearable",
-          value:"HRV + Sleep",
-          description:"Heart rate, HRV, sleep stages and motion via Apple Watch, Fitbit or Garmin. Synchronisation runs through the participant's own device.",
-          badge:"wear_v1.2 · HRV + Sleep"
-        },
-        {
-          id:"audio",
-          stage:"capture",
-          label:"Observe · Audio",
-          value:"On-device Features",
-          description:"Optional short audio recordings with on-device transcription. The raw file never leaves the device, only speech features are transmitted.",
-          badge:"audio_v0.6 · on-device"
-        },
-        {
-          id:"context",
-          stage:"capture",
-          label:"Observe · Context",
-          value:"Geofence + BLE",
-          description:"Spatial context via geofences and Bluetooth beacons, useful for detecting social situations or specific locations such as university, clinic or home.",
-          badge:"ctx_v0.8 · 6 zones"
-        },
-        {
-          id:"plattform",
-          stage:"process",
-          label:"PULSE Platform",
-          value:"Compute Engine",
-          description:"One platform bundles GDPR gate, edge validation, feature compute, a versioned feature store, schema registry and audit log. Raw signals are pseudonymised, aggregated into validated behavioural features and stored reproducibly. Every step is versioned and auditable.",
-          badge:"core_v2.1 · 184 IDs"
-        },
-        {
-          id:"jitai",
-          stage:"activate",
-          label:"Intervene · JITAI",
-          value:"Trigger Engine",
-          description:"Just-in-Time Adaptive Interventions. Rules combine sensor streams, context and study arm and anchor micro-interventions in everyday life.",
-          badge:"jitai_v0.9 · 8 rules"
-        },
-        {
-          id:"dashboard",
-          stage:"activate",
-          label:"Analyse · Monitor",
-          value:"Live Dashboard",
-          description:"Study teams see real-time compliance, drop-out risk and data quality per study arm. Early warning rather than post-hoc analysis.",
-          badge:"dash_v1.1 · realtime"
-        },
-        {
-          id:"analyse",
-          stage:"activate",
-          label:"Analyse",
-          value:"R · Python · SPSS · LLM",
-          description:"Direct access to the versioned feature store through R, Python and SPSS packages as well as the REST API. Optionally complemented by an LLM-drafted report based on the study specification.",
-          badge:"analytics_v2.0"
-        }]
-      },
       architecture:{
         eyebrow:"Architecture",
         title:"Three layers, cleanly separated",
@@ -2422,23 +2095,6 @@ ready for science`,
           tag:"Dashboard · API · AI",
           title:"Analyse",
           description:"Live dashboard, R/SPSS export and API integration deliver directly analysable findings — not just a raw-data export."
-        }]
-      },
-      trust:{
-        items:[{
-          eyebrow:"European Data Sovereignty",
-          title:"EU hosting",
-          description:"Frankfurt and Munich on ISO 27001-certified infrastructure. No data flows occur outside the EU, not even for backups."
-        },
-        {
-          eyebrow:"Privacy Architecture",
-          title:"On-device pre-processing",
-          description:"Sensor cleaning and privacy filters run on the device before any data is synced. Aggregation reduces what is uploaded in the first place."
-        },
-        {
-          eyebrow:"Reproducibility",
-          title:"Versioned schemas",
-          description:"Item version, feature set and dataset hash together ensure that every analysis remains exactly reconstructible months later, independent of how the platform evolves."
         }]
       },
       whiteLabel:{
@@ -2537,13 +2193,6 @@ Lab`,
           description:"White-label: own icon, own name, own accent colour. PULSE stays the engine in the background."
         }]
       },
-      finalCta:{
-        eyebrow:"Live walkthrough",
-        title:"The app in a real study",
-        body:"A 30-minute demo presents study setup, participant experience and data pipeline from active studies, including a sample dataset.",
-        primary:"Book a demo",
-        secondary:"See the platform"
-      }
     },
     welcome:{
       usp:{
@@ -2551,7 +2200,7 @@ Lab`,
         titleLine1:"Validated behavioural features instead of",
         titleLine2:"unstructured sensor streams.",
         body:"PULSE automatically condenses high-frequency sensor and ESM streams into validated behavioural features with documented provenance. Research teams start their analysis with the scientific hypothesis rather than with data cleaning.",
-        link:"View the pipeline architecture",
+        link:"View the platform architecture",
         diagram:{
           rawLabel:"Raw",
           pipelineLabel:"Pipeline",
@@ -2599,27 +2248,6 @@ Lab`,
           description:"Independent institute, founded in 2026 as the home of PULSE, the successor to the PhoneStudy platform built on twelve years of academic groundwork."
         },
 ]
-      },
-      credibility:{
-        eyebrow:"Scientific background",
-        title:"A research platform with institutional grounding",
-        body:"PULSE was developed in 2014 at the Chair of Psychological Methodology at LMU Munich and has been maintained, since the spin-out into the Center for Computation of Human Behavior, as the software infrastructure for mobile behavioural research. The platform is used in studies at more than twelve universities and research institutes across Germany and Switzerland.",
-        stats:[{
-          value:"12+",
-          label:"Universities in collaboration"
-        },
-        {
-          value:"12",
-          label:"Years of platform development"
-        },
-        {
-          value:"EU",
-          label:"Hosting and data processing"
-        },
-        {
-          value:"3",
-          label:"Books on running mobile studies"
-        }]
       },
       trustBar:{
         dsgvo:{ title:"GDPR", sub:"compliant" },
@@ -2861,7 +2489,7 @@ Lab`,
           detail:"Enterprise is for clinics, consortia and studies with 1,000+ participants. Sensor configuration, data pipeline, contract model and hosting are tailored to your requirements. A dedicated account manager supports the implementation. Pricing on request."
         }
       ],
-      matrixHeading:"What's included in every tier",
+      matrixHeading:"Tiers compared",
       matrix:{
         featureColLabel:"Feature",
         compareHint:"selected",
@@ -2899,12 +2527,6 @@ Lab`,
         successTitle:"Inquiry sent",
         successBody:"Thank you — we've received your inquiry and will get back to you within 2 business days at the email address you provided.",
         successCta:"Close"
-      },
-      advisor:{
-        heading:"Questions about funding?",
-        body:"We help researchers integrate PULSE into grant applications — DFG, BMBF, EU or industry. Methodology blocks, cost calculations and references from ongoing studies are available on request.",
-        cta:"Request proposal material",
-        mailSubject:"PULSE proposal material"
       },
       faqHeading:"Frequently asked questions",
       faqs:[

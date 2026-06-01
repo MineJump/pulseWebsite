@@ -83,7 +83,7 @@ export default function Footer() {
                 }}
               >
                 <Button
-                  href={`mailto:${t.contact.email}`}
+                  href={`mailto:${t.contact.email}?subject=${encodeURIComponent(t.contact.mailSubject)}`}
                   variant="primary"
                   iconRight={<span>→</span>}
                 >

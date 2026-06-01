@@ -13,14 +13,6 @@ function buildCrumbs(path, t) {
   if (seg0 === "app") {
     return [home, { label: t.nav.pulseEnvironment?.items?.[1]?.label || "Mobile App", href: "/app" }];
   }
-  if (seg0 === "methoden") {
-    const base = [home, { label: t.nav.methods || "Methoden", href: "/methoden" }];
-    if (seg1) {
-      const method = t.methods?.items?.find((m) => m.slug === seg1);
-      if (method) base.push({ label: method.title, href: `/methoden/${seg1}` });
-    }
-    return base;
-  }
   if (seg0 === "features") {
     return [home, { label: t.features?.eyebrow || "Features", href: "/features" }];
   }

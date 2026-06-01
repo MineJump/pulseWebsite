@@ -42,7 +42,6 @@ export default function UeberUnsPage() {
 
           {u.timeline && (
             <motion.section
-              id="team"
               variants={container}
               initial="hidden"
               whileInView="show"
@@ -82,6 +81,7 @@ export default function UeberUnsPage() {
 
           {team && team.members && (
             <motion.section
+              id="team"
               variants={container}
               initial="hidden"
               whileInView="show"
