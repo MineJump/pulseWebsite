@@ -6,7 +6,7 @@ import PageScaffold from "../components/PageScaffold.jsx";
 import Hero from "../components/Hero.jsx";
 import TrustBadges from "../components/TrustBadges.jsx";
 import Card from "../components/Card.jsx";
-import SubtleArrowLink from "../components/SubtleArrowLink.jsx";
+import Button from "../components/Button.jsx";
 import UspPipelineDiagram from "../components/UspPipelineDiagram.jsx";
 
 function UspSection() {
@@ -57,7 +57,9 @@ function UspSection() {
               {t.welcome.usp.body}
             </motion.p>
             <motion.div variants={item}>
-              <SubtleArrowLink href="/plattform" label={t.welcome.usp.link} />
+              <Button href="/plattform" variant="secondary">
+                {t.welcome.usp.link}
+              </Button>
             </motion.div>
           </motion.div>
           <motion.div
