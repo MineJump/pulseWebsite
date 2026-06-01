@@ -1103,7 +1103,7 @@ Lab`,
           overage:"Mehrnutzung: € 10 / zusätzl. Teilnehmer (bis 1.000)",
           cta:"EMA Only wählen",
           ctaHref:"https://pulse.2chub.com",
-          detail:"Fragebogen-Studien ohne Sensing, bis 400 Teilnehmer."
+          detail:"Reine Fragebogen-Studien ohne Sensing — günstiger und bis 400 Teilnehmer."
         },
         {
           id:"explore",
@@ -1114,7 +1114,7 @@ Lab`,
           features:["bis 100 Teilnehmer","Standard Sensing (Steps, Location, Screen Time)","Alle EMA-Fragebogentypen","CSV + API + Custom Export","E-Mail-Support","DSGVO-konformes EU-Hosting"],
           cta:"Explore wählen",
           ctaHref:"https://pulse.2chub.com",
-          detail:"Pilotstudien mit Standard-Sensing."
+          detail:"Einstiegsplan für Pilotstudien mit Standard-Sensing. Upgrade auf Research jederzeit möglich."
         },
         {
           id:"research",
@@ -1127,7 +1127,7 @@ Lab`,
           cta:"Research wählen",
           ctaHref:"https://pulse.2chub.com",
           highlight:!0,
-          detail:"Für DFG-Projekte & Dissertationen, Full Sensing."
+          detail:"Für DFG-Projekte und Dissertationen, mit Full Sensing und Priority-Support."
         },
         {
           id:"lab",
@@ -1139,7 +1139,7 @@ Lab`,
           overage:"Mehrnutzung: € 15 / zusätzl. Teilnehmer über 1.000",
           cta:"Lab wählen",
           ctaHref:"https://pulse.2chub.com",
-          detail:"Forschungsgruppen bis 1.000 Teilnehmer, Full Sensing."
+          detail:"Für Forschungsgruppen bis 1.000 Teilnehmer, Full Sensing mit Priority Processing."
         },
         {
           id:"enterprise",
@@ -1151,7 +1151,7 @@ Lab`,
           cta:"Angebot anfragen",
           ctaHref:"mailto:info@2chub.com?subject=Enterprise-Anfrage%20PULSE",
           isEnterprise:!0,
-          detail:"Kliniken & Konsortien, individuell konfiguriert."
+          detail:"Für Kliniken und Konsortien ab 1.000 Teilnehmern — alles individuell konfiguriert."
         }
       ],
       matrixHeading:"Leistungsstufen im Vergleich",
@@ -2438,7 +2438,7 @@ Lab`,
           overage:"Overage: € 10 / extra participant (up to 1,000)",
           cta:"Choose EMA Only",
           ctaHref:"https://pulse.2chub.com",
-          detail:"Survey-only studies, no sensing, up to 400 participants."
+          detail:"Survey-only studies without sensing — cheaper and up to 400 participants."
         },
         {
           id:"explore",
@@ -2449,7 +2449,7 @@ Lab`,
           features:["up to 100 participants","Standard sensing (steps, location, screen time)","All ESM questionnaire types","CSV + API + Custom export","Email support","GDPR-compliant EU hosting"],
           cta:"Choose Explore",
           ctaHref:"https://pulse.2chub.com",
-          detail:"Pilot studies with standard sensing."
+          detail:"Entry-level plan for pilot studies with standard sensing. Upgrade to Research at any time."
         },
         {
           id:"research",
@@ -2462,7 +2462,7 @@ Lab`,
           cta:"Choose Research",
           ctaHref:"https://pulse.2chub.com",
           highlight:!0,
-          detail:"Grant projects & dissertations, full sensing."
+          detail:"For grant projects and dissertations, with full sensing and priority support."
         },
         {
           id:"lab",
@@ -2474,7 +2474,7 @@ Lab`,
           overage:"Overage: € 15 / extra participant above 1,000",
           cta:"Choose Lab",
           ctaHref:"https://pulse.2chub.com",
-          detail:"Research groups up to 1,000 participants, full sensing."
+          detail:"For research groups up to 1,000 participants, full sensing with priority processing."
         },
         {
           id:"enterprise",
@@ -2486,7 +2486,7 @@ Lab`,
           cta:"Request a quote",
           ctaHref:"mailto:info@2chub.com?subject=Enterprise%20request%20PULSE",
           isEnterprise:!0,
-          detail:"Clinics & consortia, configured individually."
+          detail:"For clinics and consortia with 1,000+ participants — everything configured individually."
         }
       ],
       matrixHeading:"Tiers compared",
