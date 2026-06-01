@@ -12,7 +12,7 @@ export default function MethodEyebrow({ text, variants }) {
     >
       <span
         aria-hidden="true"
-        className="inline-block w-1.5 h-1.5 rounded-full"
+        className="inline-block shrink-0 w-1.5 h-1.5 rounded-full"
         style={{ backgroundColor: "var(--accent)" }}
       />
       {text}

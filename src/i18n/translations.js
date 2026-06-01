@@ -880,36 +880,24 @@ analysefertige Daten`,
       architecture:{
         eyebrow:"Architektur",
         title:"Drei Schichten, sauber getrennt",
-        description:"Studienlogik, Datenerhebung und Auswertung sind als Module organisiert, nicht als Monolith. Jede Schicht verfügt über ein eigenes Vertragsinterface und ist testbar, austauschbar und versioniert.",
+        description:"Erhebung, Aufbereitung und Auswertung sind klar voneinander getrennt. Jede Schicht ist eigenständig, lässt sich einzeln anpassen oder austauschen, und jede Änderung bleibt durch Versionierung nachvollziehbar.",
         layers:[{
           number:"01",
           tag:"iOS · Android · Wearable",
-          title:"Capture",
-          description:"Native Apps mit kontextsensitiven Triggern und on-device Privacy-Filter. Sensorik wird nur erhoben, was die Studie tatsächlich braucht.",
-          bullets:["ESM/EMA-Engine mit Branching-Logik",
-          "Passiver Sensor-Bus (14 Kanäle, konfigurierbar)",
-          "Wearable-Bridge (Apple Watch, Wear OS, Fitbit)",
-          "White-Label-fähig pro Studie oder Institution"]
+          title:"Erfassen",
+          description:"Native Apps lösen Befragungen kontextabhängig aus; erhoben wird nur, was die Studie wirklich braucht."
         },
         {
           number:"02",
-          tag:"Feature Store",
-          title:"Process",
-          description:"Cleaning, validierte Algorithmen und versionierte Schemas. Ihr Datensatz ist nicht „was angekommen ist“, sondern ein reproduzierbares Artefakt.",
-          bullets:["Pre-processed Features statt Roh-Streams",
-          "Schema-Versioning mit Dataset-Hash",
-          "JITAI-Trigger Engine (Regel-DSL + ML)",
-          "On-device Pre-Aggregation reduziert Volumen"]
+          tag:"Datenaufbereitung",
+          title:"Aufbereiten",
+          description:"Rohdaten werden mit geprüften Verfahren zu reproduzierbaren, analysefertigen Kennwerten verdichtet."
         },
         {
           number:"03",
-          tag:"Studio · API · LLM",
-          title:"Analyse",
-          description:"Live-Dashboard, R-Pakete, REDCap/OSF-Schnittstellen und optionale LLM-Berichte. Forschungsoutput, nicht nur Rohdaten-Dumps.",
-          bullets:["Live Compliance-Dashboard pro Studie",
-          "R-Pakete & SPSS-Export out of the box",
-          "REDCap / OSF / API-Anbindung",
-          "LLM-Drafting für Reports und Methodenteile"]
+          tag:"Dashboard · API · KI",
+          title:"Auswerten",
+          description:"Live-Dashboard, R-/SPSS-Export und API-Anbindung liefern direkt auswertbare Ergebnisse statt eines reinen Rohdaten-Exports."
         }]
       },
       trust:{
@@ -2416,36 +2404,24 @@ ready for science`,
       architecture:{
         eyebrow:"Architecture",
         title:"Three layers, cleanly separated",
-        description:"Study logic, data collection and analysis are organised as modules rather than as a monolith. Every layer exposes its own contract interface and is testable, swappable and versioned.",
+        description:"Collection, preparation and analysis are kept clearly separate. Each layer works on its own, can be adapted or swapped individually, and every change stays traceable through versioning.",
         layers:[{
           number:"01",
           tag:"iOS · Android · Wearable",
           title:"Capture",
-          description:"Native apps with context-aware triggers and on-device privacy filters. Sensing only collects what the study actually needs.",
-          bullets:["ESM/EMA engine with branching logic",
-          "Passive sensor bus (14 channels, configurable)",
-          "Wearable bridge (Apple Watch, Wear OS, Fitbit)",
-          "White-label per study or institution"]
+          description:"Native apps trigger surveys based on context; only what the study truly needs is collected."
         },
         {
           number:"02",
-          tag:"Feature Store",
-          title:"Process",
-          description:'Cleaning, validated algorithms and versioned schemas. The resulting dataset is not simply "what arrived" but a reproducible artefact.',
-          bullets:["Pre-processed features instead of raw streams",
-          "Schema versioning with dataset hash",
-          "JITAI trigger engine (rule DSL + ML)",
-          "On-device pre-aggregation reduces volume"]
+          tag:"Data preparation",
+          title:"Prepare",
+          description:"Raw data is processed with validated methods into reproducible, analysis-ready metrics."
         },
         {
           number:"03",
-          tag:"Studio · API · LLM",
+          tag:"Dashboard · API · AI",
           title:"Analyse",
-          description:"Live dashboard, R packages, REDCap/OSF interfaces and optional LLM reports. Research output, not just raw-data dumps.",
-          bullets:["Live compliance dashboard per study",
-          "R packages and SPSS export out of the box",
-          "REDCap / OSF / API integration",
-          "LLM drafting for reports and methods sections"]
+          description:"Live dashboard, R/SPSS export and API integration deliver directly analysable findings — not just a raw-data export."
         }]
       },
       trust:{

@@ -6,7 +6,6 @@ import PageScaffold from "../components/PageScaffold.jsx";
 import PageHero from "../components/PageHero.jsx";
 import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
-import SubtleArrowLink from "../components/SubtleArrowLink.jsx";
 import { CheckIcon } from "../components/MethodEyebrow.jsx";
 
 export default function AnwendungenPage() {
@@ -74,7 +73,13 @@ export default function AnwendungenPage() {
                   {a.pubTeaser.body}
                 </motion.p>
                 <motion.div variants={item}>
-                  <SubtleArrowLink href="/anwendungen/publikationen" label={a.pubTeaser.cta} />
+                  <Button
+                    href="/anwendungen/publikationen"
+                    variant="secondary"
+                    iconRight={<span>→</span>}
+                  >
+                    {a.pubTeaser.cta}
+                  </Button>
                 </motion.div>
               </motion.div>
             </div>

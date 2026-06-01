@@ -146,8 +146,20 @@ function TableRow({ pub, query, index, reduced }) {
             href={pub.doi}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs uppercase tracking-[0.14em] focus-halo rounded-sm transition-opacity hover:opacity-60"
-            style={{ color: "var(--accent)", ...MONO }}
+            className="inline-flex items-center gap-1 text-xs uppercase tracking-[0.14em] px-3 py-1.5 rounded-full focus-halo transition-colors"
+            style={{
+              color: "var(--accent)",
+              border: "1px solid var(--accent)",
+              ...MONO,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--accent)";
+              e.currentTarget.style.color = "#fff";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.color = "var(--accent)";
+            }}
           >
             DOI →
           </a>

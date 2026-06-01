@@ -1,15 +1,13 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLang } from "../lib/i18n.jsx";
 import { usePrefersReducedMotion } from "../lib/hooks.js";
-import { dur, ease, fadeUp, fadeUpScale, stagger } from "../lib/motion.js";
+import { fadeUp, fadeUpScale, stagger } from "../lib/motion.js";
 import PageScaffold from "../components/PageScaffold.jsx";
 import PageHero from "../components/PageHero.jsx";
 import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
 
-function MethodCard({ item, cta, variants, isFirst }) {
-  const [hover, setHover] = useState(false);
+function MethodCard({ item, cta, variants }) {
   return (
     <Card
       variant="material"
@@ -17,8 +15,6 @@ function MethodCard({ item, cta, variants, isFirst }) {
       variants={variants}
       className="relative flex flex-col p-6 md:p-7 min-h-[360px]"
       style={{ backdropFilter: "none", WebkitBackdropFilter: "none", background: "var(--bg)" }}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
     >
       <div
         className="flex items-center gap-2.5 mb-7"
@@ -53,24 +49,9 @@ function MethodCard({ item, cta, variants, isFirst }) {
       >
         {item.cardDesc}
       </p>
-      <a
-        href={`/methoden/${item.slug}`}
-        className="relative inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] focus-halo rounded-md self-start py-1"
-        style={{
-          color: hover ? "var(--ink)" : "var(--text-muted)",
-          fontFamily: "'IBM Plex Mono', monospace",
-          transition: `color ${dur.fast}s var(--ease-in-out-soft)`,
-        }}
-      >
-        <span>{cta}</span>
-        <motion.span
-          aria-hidden="true"
-          animate={{ x: hover ? 4 : 0 }}
-          transition={{ duration: dur.fast, ease: ease.inOut }}
-        >
-          →
-        </motion.span>
-      </a>
+      <Button href={`/methoden/${item.slug}`} variant="ghost" iconRight={<span>→</span>} className="self-start">
+        {cta}
+      </Button>
     </Card>
   );
 }

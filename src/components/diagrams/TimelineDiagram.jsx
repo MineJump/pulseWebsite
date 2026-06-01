@@ -157,7 +157,7 @@ export default function TimelineDiagram() {
               className="flex items-start gap-6 pb-10"
             >
               <span
-                className="flex-shrink-0 w-14 text-sm text-right pt-0.5 font-semibold"
+                className="flex-shrink-0 w-14 pr-3 text-sm text-right pt-0.5 font-semibold"
                 style={{
                   color: "var(--accent)",
                   fontFamily: "'IBM Plex Mono', monospace",

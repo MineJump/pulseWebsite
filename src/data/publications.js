@@ -81,6 +81,6 @@ export const PUBLICATIONS = [
     title: "Mobile sensing in psychological and educational research: Examples from two application fields",
     journal: "International Journal of Testing",
     volume: "22, 264–288",
-    doi: null,
+    doi: "https://doi.org/10.1080/15305058.2022.2036160",
   },
 ];

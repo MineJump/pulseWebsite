@@ -16,7 +16,15 @@
       "Bash(xmllint *)",
       "Bash(npx --yes svgexport)",
       "Bash(textutil -convert txt -stdout \"/Users/hendrik/Documents/2-Studium/Project-Study/Website_Feedback.docx\")",
-      "Bash(curl -s http://localhost:5174/)"
+      "Bash(curl -s http://localhost:5174/)",
+      "Bash(npx playwright *)",
+      "Bash(node -e ' *)",
+      "Bash(kill %1)",
+      "Bash(curl -s http://localhost:5199)",
+      "Bash(node *)",
+      "Bash(npx --yes playwright@1.60.0 screenshot --browser chromium --viewport-size \"1440,900\" \"http://localhost:5199/preise\" /tmp/preise_collapsed.png)",
+      "Bash(npx vite *)",
+      "Bash(curl -s http://localhost:5174)"
     ]
   }
 }

@@ -535,14 +535,9 @@ function ExploreOtherSection({ items, currentSlug, eyebrow, allLink, item, conta
             />
             {eyebrow}
           </p>
-          <a
-            href="/methoden"
-            className="text-xs uppercase tracking-[0.18em] inline-flex items-center gap-2 focus-halo rounded-sm transition-colors"
-            style={{ color: "var(--ink)", fontFamily: "'IBM Plex Mono', monospace" }}
-          >
-            <span>{allLink}</span>
-            <span aria-hidden="true">→</span>
-          </a>
+          <Button href="/methoden" variant="ghost" iconRight={<span>→</span>}>
+            {allLink}
+          </Button>
         </motion.div>
         <motion.div
           className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"

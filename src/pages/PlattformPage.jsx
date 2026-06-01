@@ -7,7 +7,6 @@ import PageHero from "../components/PageHero.jsx";
 import Card from "../components/Card.jsx";
 import Button from "../components/Button.jsx";
 import SubtleArrowLink from "../components/SubtleArrowLink.jsx";
-import PlattformPipeline from "../components/PlattformPipeline.jsx";
 
 export default function PlattformPage() {
   const { t } = useLang();
@@ -18,7 +17,6 @@ export default function PlattformPage() {
   const container = reduced ? { hidden: {}, show: {} } : stagger(0.06, 0.05);
 
   const p = t.plattform;
-  const pipeline = p.pipeline;
 
   return (
     <PageScaffold>
@@ -56,44 +54,6 @@ export default function PlattformPage() {
         </section>
         <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16">
 
-          {pipeline && (
-            <motion.section
-              variants={container}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="mt-20"
-            >
-              <motion.p
-                variants={item}
-                className="text-xs uppercase tracking-[0.22em] mb-3"
-                style={{
-                  color: "var(--accent)",
-                  fontFamily: "'IBM Plex Mono', monospace",
-                }}
-              >
-                {pipeline.eyebrow}
-              </motion.p>
-              <motion.h2 variants={item} className="mb-5">
-                {pipeline.title}
-              </motion.h2>
-              <motion.p
-                variants={item}
-                className="text-base md:text-lg leading-relaxed max-w-[920px] mb-10"
-                style={{ color: "var(--text-muted)" }}
-              >
-                {pipeline.description}
-              </motion.p>
-              <motion.div variants={item}>
-                <PlattformPipeline
-                  nodes={pipeline.nodes}
-                  stageLabels={pipeline.stageLabels}
-                  defaultNodeId={pipeline.defaultNodeId}
-                />
-              </motion.div>
-            </motion.section>
-          )}
-
           {p.architecture && (
             <motion.section
               variants={container}
@@ -104,12 +64,13 @@ export default function PlattformPage() {
             >
               <motion.p
                 variants={item}
-                className="text-xs uppercase tracking-[0.22em] mb-3"
+                className="text-xs uppercase tracking-[0.22em] mb-3 inline-flex items-center gap-2.5"
                 style={{
                   color: "var(--accent)",
                   fontFamily: "'IBM Plex Mono', monospace",
                 }}
               >
+                <span aria-hidden="true" className="inline-block shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--accent)" }} />
                 {p.architecture.eyebrow}
               </motion.p>
               <motion.h2 variants={item} className="mb-5">
@@ -140,64 +101,17 @@ export default function PlattformPage() {
                       {l.title}
                     </h3>
                     <p
-                      className="text-sm leading-relaxed mb-4"
+                      className="text-sm leading-relaxed"
                       style={{ color: "var(--text-muted)" }}
                     >
                       {l.description}
                     </p>
-                    <ul className="space-y-1.5">
-                      {l.bullets.map((b, i) => (
-                        <li
-                          key={i}
-                          className="text-sm"
-                          style={{ color: "var(--ink)" }}
-                        >
-                          · {b}
-                        </li>
-                      ))}
-                    </ul>
                   </Card>
                 ))}
               </motion.div>
             </motion.section>
           )}
 
-          {p.trust && (
-            <motion.section
-              variants={container}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-5"
-            >
-              {p.trust.items.map((it) => (
-                <motion.div key={it.title} variants={item}>
-                  <Card variant="material" className="p-6 h-full">
-                    <p
-                      className="text-xs uppercase tracking-[0.22em] mb-3"
-                      style={{
-                        color: "var(--accent)",
-                        fontFamily: "'IBM Plex Mono', monospace",
-                      }}
-                    >
-                      {it.eyebrow}
-                    </p>
-                    <h3
-                      className="text-lg mb-2"
-                    >
-                      {it.title}
-                    </h3>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: "var(--text-muted)" }}
-                    >
-                      {it.description}
-                    </p>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.section>
-          )}
 
           {p.whiteLabel && (
             <motion.section
@@ -209,12 +123,13 @@ export default function PlattformPage() {
             >
               <motion.p
                 variants={item}
-                className="text-xs uppercase tracking-[0.22em] mb-3"
+                className="text-xs uppercase tracking-[0.22em] mb-3 inline-flex items-center gap-2.5"
                 style={{
                   color: "var(--accent)",
                   fontFamily: "'IBM Plex Mono', monospace",
                 }}
               >
+                <span aria-hidden="true" className="inline-block shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--accent)" }} />
                 {p.whiteLabel.eyebrow}
               </motion.p>
               <motion.h2
@@ -319,12 +234,13 @@ export default function PlattformPage() {
             >
               <motion.p
                 variants={item}
-                className="text-xs uppercase tracking-[0.22em] mb-3"
+                className="text-xs uppercase tracking-[0.22em] mb-3 inline-flex items-center gap-2.5"
                 style={{
                   color: "var(--accent)",
                   fontFamily: "'IBM Plex Mono', monospace",
                 }}
               >
+                <span aria-hidden="true" className="inline-block shrink-0 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--accent)" }} />
                 {p.participantExperience.eyebrow}
               </motion.p>
               <motion.h2 variants={item} className="mb-5">
@@ -338,7 +254,7 @@ export default function PlattformPage() {
                 {p.participantExperience.body}
               </motion.p>
               <motion.div variants={item}>
-                <SubtleArrowLink href="/app" label={p.participantExperience.cta} />
+                <Button href="/app" variant="secondary">{p.participantExperience.cta}</Button>
               </motion.div>
             </motion.section>
           )}

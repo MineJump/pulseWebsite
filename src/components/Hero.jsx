@@ -31,7 +31,7 @@ export default function Hero() {
           style={{ color: "var(--accent)", fontFamily: "'IBM Plex Mono', monospace" }}
         >
           <span
-            className="inline-block w-2 h-2 rounded-full pulse-dot-shift"
+            className="inline-block shrink-0 w-2 h-2 rounded-full pulse-dot-shift"
             aria-hidden="true"
           />
           {t.hero.eyebrow}
